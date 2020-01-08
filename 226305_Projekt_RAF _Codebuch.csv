@@ -1,0 +1,42 @@
+CODEBUCH,
+"Im Codebuch definieren wir, wie und nach welchen Kriterien erfasst werden.",
+,
+Wert,Kommentar
+edgelist,Grundregel: Die Edgelist darf pro Spalte immer nur einen Wert enthalten. Bis auf die ID idealerweise numerisch codiert (als Zahl).
+from,"definiert den Sender in gerichteten Netzwerken. Entspricht ID in der Nodelist. Keine Sonderzeichen, nur ein Wort"
+to ,"definiert den Empfänger in ungerichteten Netzwerken. Entspricht ID in der Nodelist. Keine Sonderzeichen, etc. "
+relationship,"definiert die Art der Beziehung bei multiplexen Netzwerken mit verschiedenen Beziehungsarten; 1= Bekanntschaft (Kontakt), 2= Freundschaft (mehrmaliger Kontakt), 3= Liebesbeziehung, 4= Wohngemeinschaft, 5= gemeinsame Haft, 6= Versorgung, 7=Beteiligung an der Aktion"
+,
+,
+,
+nodelist,Grundregel: die IDs der Nodelist müssen mit den IDs der Edgelist komplett übereinstimmen. Ausprägungen der Attribute in der Regel numerisch definieren.
+id,"eindeutige Identifikation jedes einzelnen Knotens (vertex), der erfasst wird.  "
+name,Name oder Bezeichnung des Knotens. 
+sex,"definiert das Geschlecht der natürlichen Personen; 1= männlich, 2=weiblich, 3=divers"
+religion,"definiert die Religionszugehörigkeit der natürlichen Personen; 1= katholisch, 2= evangelisch, 3= andere"
+job,"definiert, welcher Berufsgruppe die natürlichen Personen angehört haben; 1= Journalist/in, 2= Lehramt/Pädagogik, 3= Jurist/in, 4= sonstige"
+generation,"definiert, welcher der beiden ersten Generationen die natürlichen Personen angehört haben; 1= 1.Generation, 2 = 2.Generation, 3 = beide Generationen"
+type,"definiert den Typ der Knoten des two mode-Networks; 1= Person, 2= Aktion"
+training,"definiert den Ort, an dem die natürlichen Personen kämpferisch ausgebildet wurden; 1= Deutschland, 2= Nahost, 3=Andere"
+place,"definiert den Ort, an dem die Aktionen durchgeführt wurden; 1= Deutschland, 2= Ausland"
+year,"definiert das Jahr, in dem die Aktion durchgeführt wurde (im Zeitraum von 1970-1977)"
+membership,"definiert, ob die Person Mitglied der RAF war; 1=Ja, 2=Nein"
+education,"definiert den höchsten Schulabschluss der natürlichen Personen; 1=kein Abschluss, 2= Hauptschule, 3= Realschule, 4= Gymnasium 5=Hochschulabschluss"
+category,"definiert die Art der Knoten, bei denen es sich um eine Aktion handelt; 1= Mord, 2= Brandstiftung, 3=Raub, 4= Bombenanschlag, 5= Geiselnahme, 6= Andere "
+motivation,"definiert die Motivation, die den Aktionen zugrunde lag; 1= politisch, 2= persönlich (dient der Befreiung der 1.Generation)"
+,
+99,Fehlermeldung
+NA,not available
+,
+,
+Bearbeitungshinweise,
+"Achten Sie bitte auf die Kommentare in den Spalten. Diese erklären genauer, welche Daten erfasst werden. ",
+"Sie sehen die Kommentare, wenn Sie auf die entsprechende Spalte gehen. ",
+"Skizzieren Sie zunächst Ihr Netzwerk bzw. die Daten, die für Sie relevant sind. ",
+Welche Informationen wollen Sie erheben? Wie müssen diese erfasst sein?,
+"Legen Sie bitte im Codebuch möglichst genau fest, wie die Daten erhoben werden (Codebuch)",
+"Bitte verwenden Sie keine Sonderzeichen in der Erfassung, dazu gehören Satzzeichen, Umlaute, etc.",
+"Verpflichten Sie alle Teammitglieder darauf, das Codebuch zwingend einzuhalten. ",
+Wer seine Daten nicht sauber erstellt muss diese nachbereinigen.,
+"Dokumentieren Sie jeden Schritt Ihrer Datenerfassung mit, um dies zu rekonstruieren.",
+Nutzen Sie das Skript zur Datenbereinigung auf dem letzten Reiter!,

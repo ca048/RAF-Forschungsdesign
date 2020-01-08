@@ -1,0 +1,69 @@
+
+```{r}
+# Skript Erstellung einfaches Netzwerk
+
+
+# lädt igraph Bibliothek (ggf. vorher isntallieren)
+library(igraph)
+
+# liest die Edgelist als "el" ein
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/RAF%20%20-%20226305_Projekt_RAF_Edgelist.csv", header=T, as.is=T, sep = ",")
+
+# zeigt die ersten sechs Zeilen des Datensatzes an
+head(el)
+
+# liest die Nodelist mit den Namen ein
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/RAF%20%20-%20226305_Projekt_RAF_Nodelist.csv", header=T, as.is=T, sep = ",")
+
+# zeigt die ersten sechs Zeilen der Nodelist und die Attribute der Nodes an
+head(nodes)
+
+# Zwischenschritt verbindet die Edge- und Nodelist zu einer Matrix
+raf_matrix <- as.matrix(el)
+
+```
+
+# zeigt die Matrix an
+raf_matrix
+```{r}
+
+# generiert ein igraph-Objekt (dataframe) aus der Matrix, das gerichtet ist (directed = true)
+raf <- graph_from_data_frame(d=raf_matrix, vertices=nodes, directed=TRUE)
+
+# ruft unser neues igraph-Objekt auf
+raf
+
+# generiert die Standard-Visualisierung des Netzwerks
+plot(raf)
+
+```
+
+
+```{r}
+# Für Fortgeschrittene: verfeinerte Netzwerkdarstellung
+# definiert einige grafische Elemente, damit wir diese nicht immer wieder eingeben müssen
+#
+
+V(raf)$label.dist =0.8
+V(raf)$label.degree=3
+V(raf)$label.cex=.8
+V(raf)$label.family="Helvetica"
+V(raf)$label.font=1
+V(raf)$label.color="black"
+
+degree <- degree(raf)
+degree
+
+# einfacher plot
+plot(raf,
+     layout=layout_nicely,
+     vertex.size=degree*5,
+     vertex.color="red",
+     vertex.frame.color="black",
+     vertex.size=5,
+     edge.color="grey",
+     edge.arrow.size=0,
+     main="Pretest: RAF-Netzwerk")
+
+```
+

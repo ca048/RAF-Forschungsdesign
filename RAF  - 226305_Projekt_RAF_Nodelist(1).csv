@@ -1,4 +1,4 @@
-name,sex,religion,job,generation,type,founding member,membership,different organisation,entry,resignation,year of resignation,symbolic death ,education,upbringing,place,year,category,motivation
+id,name,sex,religion,job,generation,type,founding member,membership,different organisation,entry,resignation,year of resignation,symbolic death ,education,upbringing,place,year,category,motivation
 ab,Andreas Baader,1,1,4,1,1,1,1,NA,1970,3,NA,1977,3,2,NA,NA,NA,NA
 ge,Gudrun Ensslin,2,2,2,1,1,1,1,NA,1970,3,NA,1977,4,1,NA,NA,NA,NA
 um,Ulrike Meinhof,2,2,1,1,1,1,1,NA,1970,3,NA,1977,5,2,NA,NA,NA,NA

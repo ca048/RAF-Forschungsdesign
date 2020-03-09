@@ -15,7 +15,7 @@ ab,ge,5,1968
 ab,ge,5,1969
 ab,ge,4,1969
 ab,ge,4,1970
-ab,ajj,7,1970
+ab,aij,7,1970
 ab,ge,5,1974
 ab,ge,5,1975
 ab,ge,5,1976
@@ -96,7 +96,7 @@ ge,um,1,1968
 ge,um,2,1969
 ge,um,2,1970
 ge,um,4,1970
-ge,ajj,7,1970
+ge,aij,7,1970
 ge,um,2,1971
 ge,um,2,1972
 ge,um,2,1973
@@ -144,7 +144,7 @@ ge,pda,7,1972
 ge,bus,7,1972
 ge,tns,7,1977
 um,ap,1,1969
-um,ajj,7,1970
+um,aij,7,1970
 um,ap,5,1972
 um,jcr,4,1969
 um,jcr,2,1969
@@ -190,7 +190,7 @@ ph,hm,8,1970
 ph,ab,8,1970
 ph,ge,8,1970
 ph,bak,8,1970
-ph,ajj,7,1970
+ph,aij,7,1970
 ba,hom,2,1968
 ba,hom,2,1969
 ba,hom,2,1970
@@ -199,7 +199,7 @@ ba,is,1,1970
 ba,mb,1,1970
 ba,ig,1,1970
 ba,bef,7,1970
-hb,ajj,7,1970
+hb,aij,7,1970
 hb,dsb,7,1970
 hb,eg,2,1970
 hb,hom,2,1970
@@ -216,7 +216,7 @@ im,rh,4,1998
 im,rh,4,1969
 im,rh,4,1970
 im,kj,1,1972
-ps,ajj,7,1970
+ps,aij,7,1970
 ps,bef,7,1970
 ps,mg,4,1968
 ps,mg,3,1968
@@ -240,7 +240,7 @@ ap,pjb,4,1968
 ap,tw,2,1969
 ap,ab,2,1969
 ap,ge,2,1969
-ap,ajj,7,1970
+ap,aij,7,1970
 hm,ffm,7,1972
 hm,pda,7,1972
 hm,ab,2,1970
@@ -260,12 +260,12 @@ ib,ge,2,1971
 ib,wg,3,1971
 mb,hom,2,1970
 mb,bef,7,1970
-mb,ajj,7,1970
+mb,aij,7,1970
 mb,ig,1,1970
 mb,is,1,1970
 mb,bak,1,1970
 ig,bef,7,1970
-ig,ajj,7,1970
+ig,aij,7,1970
 ig,dsb,7,1970
 ig,ab,4,1970
 ig,um,4,1970
@@ -298,7 +298,7 @@ gm,pzm,7,1972
 gm,ms,1,1971
 gm,um,2,1971
 gm,um,2,1972
-mg,ajj,7,1970
+mg,aij,7,1970
 mg,wg,2,1971
 mg,hom,6,1972
 mg,ps,3,1970

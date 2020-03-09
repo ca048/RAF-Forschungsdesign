@@ -357,8 +357,7 @@ moh,ck,1,1974
 moh,vsp,1,1974
 moh,gs,1,1974
 moh,lt,1,1974
-"moh
-,brf,1,1974"
+moh,brf,1,1974
 moh,tib,7,1977
 moh,gs,1,1977
 moh,sa,1,1977
@@ -422,8 +421,7 @@ tw,kbs,7,1968
 tw,hs,2,1970
 tw,ge,2,1967
 tw,ab,2,1967
-"tw,""ge"
-",4,1968
+tw,ge,4,1968
 tw,hs,5,1968
 tw,hs,5,1969
 tw,ge,5,1968
@@ -595,7 +593,7 @@ sh,rm,2,1976
 sh,ck,2,1976
 sih,tij,7,1975
 sih,ent,7,1977
-sih,ugh,,1979
+sih,ugh,1979
 sih,bm,2,1976
 sih,bm,2,1977
 sih,bm,2,1978
@@ -787,21 +785,18 @@ cw,kc,2,1976
 cw,kc,2,1977
 jp,bb,1,1971
 jp,iv,1,1975
-jp,rr"
-",1,1975
+jp,rr,1,1975
 jp,iv,5,1975
-jp,mb"
-",5,1975
+jp,mb,5,1975
 jp,wb,1,1980
 iv,rr,1,1975
 bmr,khd,1,1973
 bmr,cd,1,1973
-bmr ,wb,1,1973
+bmr,wb,1,1973
 bmr,ce,1,1973
-bmr ,sa,4,NA
+bmr,sa,4,NA
 bmr,cd,4,NA
-bmr"
-",khd,4,NA
+bmr,khd,4,NA
 eb,ab,2,1973
 eb,sh,2,NA
 eb,um,2,NA
@@ -811,13 +806,10 @@ sis,sa,1,1972
 sis,khd,1,1972
 sis,smw,1,1972
 sis,mh,1,1972
-sis,bmr"
-",1,1972
+sis,bmr,1,1972
 sis,sa,4,1972
-sis,smw"
-",4,1973
-sis,rf"
-",1,1979
+sis,smw,4,1973
+sis,rf,1,1979
 eb,ist,1,1973
 hpk,jl,2,1978
 hpk,ab,1,1972
@@ -829,8 +821,7 @@ esh,ck,1,1982
 pu,ab,1,1970
 pu,hm,1,1970
 pu,bb,1,1970
-heb,wb,2,NA"
-"
+heb,wb,2,NA
 wb,ab,5,1977
 wb,ge,5,1977
 wb,um,5,1977
@@ -840,8 +831,7 @@ wb,wh,5,1977
 wb,hp,5,1977
 wb,is,5,1977
 lr,ge,2,NA
-lr,ge"
-",4,1969
+lr,ge,4,1969
 lr,ab,4,1969
 lr,ap,4,1969
 mkh,zh,3,1975
@@ -856,8 +846,7 @@ kc,um,1,1977
 kc,asp,1,1977
 kc,evd,1,1977
 kc,wps,1,1977
-kc,rf"
-",1,1977
+kc,rf,1,1977
 kc,cw,1,1977
 kc,sa,1,1977
 kc,smw,1,1977
@@ -865,8 +854,7 @@ kc,sh,1,1974
 mkh,lhl,7,1977
 mkh,bm,1,NA
 mkh,pjb,1,1978
-mkh"
-",ssa,1,1977
+mkh,ssa,1,1977
 ssa,zh,1,1977
 ssa,lhl,7,1977
 os,hom,6,1971
@@ -880,8 +868,7 @@ bw,rw,3,NA
 us,ab,1,1969
 us,hm,1,1969
 hj,hb,2,1970
-hj"
-",um,2,1970
+hj,um,2,1970
 hj,aij,7,1970
 ft,kbs,7,1968
 hom,ft,6,1968
@@ -890,4 +877,4 @@ ft,ge,1,NA
 ft,tw,1,NA
 rl,kbs,7,1968
 hom,rl,6,1968
-rl,ft,2,1968"
+rl,ft,2,1968

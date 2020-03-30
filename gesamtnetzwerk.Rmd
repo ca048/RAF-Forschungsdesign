@@ -20,14 +20,14 @@ library(igraph)
 options(max.print=1000000)
 
 # liest die Edgelist als "el" ein
-el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/Kopie%20von%20RAF%20%20-%20226305_Projekt_RAF_Edgelist.csv", header=T, as.is=T, sep = ",", row.names=NULL)
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",", row.names=NULL)
 
 
 # zeigt die ersten sechs Zeilen des Datensatzes an
 head(el)
 
 # liest die Nodelist mit den Namen ein
-nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/RAF%20%20-%20226305_Projekt_RAF_Nodelist(1).csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
 
 # zeigt die ersten sechs Zeilen der Nodelist und die Attribute der Nodes an
 head(nodes)
@@ -55,11 +55,3 @@ plot(raf,
      layout=layout_nicely,
      main="RAF-Netzwerk")
 ```
-
-
-
-
-
-
-
-

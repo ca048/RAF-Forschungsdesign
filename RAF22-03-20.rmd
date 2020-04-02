@@ -20,10 +20,10 @@ library(igraph)
 options(max.print=1000000)
 
 # liest die Edgelist als "el" ein
-el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edgelist", header=T, as.is=T, sep = ",")
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
 
 # liest die Nodelist mit den Namen ein
-nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodelist", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
 
 # Zwischenschritt verbindet die Edge- und Nodelist zu einer Matrix
 raf_matrix <- as.matrix(el)

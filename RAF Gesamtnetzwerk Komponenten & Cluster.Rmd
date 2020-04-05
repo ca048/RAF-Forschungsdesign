@@ -1,0 +1,61 @@
+---
+title: "RAF Gesamtnetzwerk"
+author: "Hannah Bauer"
+date: "9 3 2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Skript Erstellung einfaches Netzwerk
+# lädt igraph Bibliothek (ggf. vorher installieren)
+library(igraph)
+# erhöht das limit auf 10000000
+options(max.print=1000000)
+# liest die Edgelist als "el" ein
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+# liest die Nodelist mit den Namen ein
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+# Zwischenschritt verbindet die Edge- und Nodelist zu einer Matrix
+raf_matrix <- as.matrix(el)
+# zeigt die Matrix an
+raf_matrix
+# generiert ein igraph-Objekt (dataframe) aus der Matrix, das ungerichtet ist (directed = false)
+raf <- graph_from_data_frame(d=raf_matrix, vertices=nodes, directed=FALSE)
+# ruft unser neues igraph-Objekt auf
+raf
+# generiert die Standard-Visualisierung des Netzwerks
+#plot(raf)
+#degree <- degree(raf)
+#degree
+#test, ob Anfangsproblem behoben ist (d.h. alle Nodeattribute eingelesen werden und in die Matrix übernommen wurden)
+#list.vertex.attributes(raf)
+#Grafisch werden Ereignisse/Aktionen  anders dargestellt als Akteure
+V(raf)[V(raf)$type == 1]$shape <- "circle" # Personen als Kreise
+V(raf)[V(raf)$type == 2]$shape <- "square" # Aktionen als Quadrate
+# einfacher plot
+plot(raf,
+     layout=layout_nicely,
+     main="RAF-Netzwerk")
+```
+## 1 Komponenten analysieren
+Da insbesondere bei großen Netzwerken die Teilkomponenten nicht immer sichtbar sind, ist es hilfreich zu Beginn der Analyse sich alle Komponenten anzeigen zu lassen
+Der Befehl groups() zeigt an, welche Knoten zu welcher Komponente gehören. 
+
+```{r components, exercise=TRUE, exercise.lines = 10}
+# Grafik des Gesamtnetzwerks
+plot(raf, layout=layout_with_kk, main="Gesamtnetzwerk")
+````
+```{r components, exercise=TRUE, exercise.lines = 10}
+# Anzahl der Komponenten
+count_components(raf)
+```
+```{r components, exercise=TRUE, exercise.lines = 10}
+# Um genauer zu verstehen, welche Vertices zu welcher Gruppe gehören, lassen sie sich mit dem Befehl groups(g) in Grupppen unterteilten. 
+raf_groups <- groups(components(raf))
+raf_groups
+```
+# es gibt also keine abgesonderte Gruppe, die nicht mit dem Hauptteil verbunden ist, überall besteht irgendwie eine Verbindung

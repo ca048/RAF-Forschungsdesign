@@ -5,7 +5,7 @@ Wert,Kommentar
 edgelist,Grundregel: Die Edgelist darf pro Spalte immer nur einen Wert enthalten. Bis auf die ID idealerweise numerisch codiert (als Zahl).
 from,"definiert den Sender in gerichteten Netzwerken. Entspricht ID in der Nodelist. Keine Sonderzeichen, nur ein Wort"
 to ,"definiert den Empfänger in ungerichteten Netzwerken. Entspricht ID in der Nodelist. Keine Sonderzeichen, etc. "
-relationship,"definiert die Art der Beziehung bei multiplexen Netzwerken mit verschiedenen Beziehungsarten; 1= Bekanntschaft (Kontakt), 2= Freundschaft (mehrmaliger Kontakt), 3= Liebesbeziehung, 4= Wohngemeinschaft, 5= gemeinsame Haft, 6= Versorgung, 7=Beteiligung an der Aktion"
+relationship,"definiert die Art der Beziehung bei multiplexen Netzwerken mit verschiedenen Beziehungsarten; 1= Bekanntschaft (Kontakt), 2= Freundschaft (mehrmaliger Kontakt), 3= Liebesbeziehung, 4= Wohngemeinschaft, 5= gemeinsame Haft, 6= Versorgung, 7=Beteiligung an der Aktion, 8= gemeinsame Ausbildung, 9=anwerben, 10= Verwandt"
 ,
 ,
 ,
@@ -14,19 +14,27 @@ id,"eindeutige Identifikation jedes einzelnen Knotens (vertex), der erfasst wird
 name,Name oder Bezeichnung des Knotens. 
 sex,"definiert das Geschlecht der natürlichen Personen; 1= männlich, 2=weiblich, 3=divers"
 religion,"definiert die Religionszugehörigkeit der natürlichen Personen; 1= katholisch, 2= evangelisch, 3= andere"
-job,"definiert, welcher Berufsgruppe die natürlichen Personen angehört haben; 1= Journalist/in, 2= Lehramt/Pädagogik, 3= Jurist/in, 4= sonstige"
-generation,"definiert, welcher der beiden ersten Generationen die natürlichen Personen angehört haben; 1= 1.Generation, 2 = 2.Generation, 3 = beide Generationen"
+job,"definiert, welcher Berufsgruppe die natürlichen Personen angehört haben; 1= Journalist/in, 2= Lehramt/Pädagogik, 3= Jurist/in, 4= sonstige, 5= Student*in, 6=Künstler*in"
+generation,"definiert, welcher der beiden ersten Generationen die natürlichen Personen angehört haben; 1= 1.Generation, 2 = 2.Generation, 3 = beide Generationen, 4=Unterstützer*in"
 type,"definiert den Typ der Knoten des two mode-Networks; 1= Person, 2= Aktion"
-training,"definiert den Ort, an dem die natürlichen Personen kämpferisch ausgebildet wurden; 1= Deutschland, 2= Nahost, 3=Andere"
 place,"definiert den Ort, an dem die Aktionen durchgeführt wurden; 1= Deutschland, 2= Ausland"
-year,"definiert das Jahr, in dem die Aktion durchgeführt wurde (im Zeitraum von 1970-1977)"
+year,"definiert das Jahr, in dem die Aktion durchgeführt wurde"
 membership,"definiert, ob die Person Mitglied der RAF war; 1=Ja, 2=Nein"
+different organisation,"definiert, ob die Person Mitglied in einer anderen Organisation als der RAF war 1=SPK, 2= Kommune I, 3= Zentralrat der umherschweifenden Haschrebellen, 4= Bewegung 2. Juni"
+entry,definiert das Eintrittsjahr in die RAF 
+founding member,"definiert, ob eine Person ein Gründungsmitglied der RAF war 1=Ja, 2=Nein"
 education,"definiert den höchsten Schulabschluss der natürlichen Personen; 1=kein Abschluss, 2= Hauptschule, 3= Realschule, 4= Gymnasium 5=Hochschulabschluss"
-category,"definiert die Art der Knoten, bei denen es sich um eine Aktion handelt; 1= Mord, 2= Brandstiftung, 3=Raub, 4= Bombenanschlag, 5= Geiselnahme, 6= Andere "
-motivation,"definiert die Motivation, die den Aktionen zugrunde lag; 1= politisch, 2= persönlich (dient der Befreiung der 1.Generation)"
+category,"definiert die Art der Knoten, bei denen es sich um eine Aktion handelt; 1= Mord, 2= Brandstiftung, 3=Raub, 4= Bombenanschlag, 5= Geiselnahme, 6= Befreiung, 7= Andere "
+motivation,"definiert die Motivation, die den Aktionen zugrunde lag; 1= politisch, 2= persönlich (dient der Befreiung der 1.Generation), 3= Versorgung (Bank, Sprengstoff usw.) "
+upbringing,"definiert ob im Elternhaus ein*e Pfarrer*in/Pastor*in war; 1= ja , 2= nein"
+resignation,"definiert den Austritt oder den Rückzugs eines Mitglieds der Organisation; 1= Ja, 2= Nein, 3= bis zum Tod Mitglied"
+year of resignation ,definiert Austrittsjahr aus der RAF
+symbolic death,"definiert das Todesjahr eines RAF Mitglieds, während es noch aktiv an der Sache beteiligt war (Suizid, Tod bei Schusswechsell,...)"
+,
 ,
 99,Fehlermeldung
 NA,not available
+,
 ,
 ,
 Bearbeitungshinweise,

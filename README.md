@@ -1,6 +1,7 @@
 # RAF-Forschungsdesign
 Netzwerkanalyse der Rote-Armee-Fraktion 
 
+(EN)
 This is a project of an undergraduate seminar for 4th year students at Stuttgart Media University, University of applied sciences.
 The goal of the module is to learn the basics of Social Network Analysis by applied research projects using the "igraph" package on R.
 
@@ -13,8 +14,8 @@ Important disclaimer:
 This being a student project, we do not guarantee for a wholesome representation because we could not acquire all of the necessary data.
 Taking into consideration, that the RAF was a terror group and has kept many things secret / undercover, this fact is only natural.
 Therefore, we cannot give insights into every detail but ensure that we have done our very best to collect all the available data.
-
-
+_______________________
+(DE)
 Dieses Projekt ist Teil des Moduls "Netzwerk- und Beziehungsmanagement" im Rahmen des Bachelorstudiengangs "Crossmedia-Redaktion und Public Relations" an der Hochschule der Medien in Stuttgart. 
 Ziel des Moduls ist es, die soziale Netzwerkanalyse sowohl theoretisch als auch empirisch in kleineren Fallstudien zu erlernen und dann in einem eigenen Projekt umzusetzen. 
 Das Projekt beinhaltet die Entwicklung einer Forschungsfrage, die Datenerhebung und -bereinigung, die Analyse der Daten mit dem ipgraph package und eine Aufbereitung als datenjournalistischer Artikel für das Online-Magazin "edit"..

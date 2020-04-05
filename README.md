@@ -1,5 +1,4 @@
-# RAF-Forschungsdesign
-Netzwerkanalyse der Rote-Armee-Fraktion 
+# Netzwerkanalyse der Rote-Armee-Fraktion 
 
 (EN)
 This is a project of an undergraduate seminar for 4th year students at Stuttgart Media University, University of applied sciences.

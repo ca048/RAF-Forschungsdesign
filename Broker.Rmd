@@ -1,0 +1,144 @@
+---
+title: "Broker"
+author: "Jana Mack"
+date: "3 4 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+# Skript Erstellung einfaches Netzwerk
+
+# lädt igraph Bibliothek (ggf. vorher installieren)
+library(igraph)
+
+# erhöht das limit auf 10000000
+options(max.print=1000000)
+
+# liest die Edgelist als "el" ein
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+
+# liest die Nodelist mit den Namen ein
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+# Zwischenschritt verbindet die Edge- und Nodelist zu einer Matrix
+raf_matrix <- as.matrix(el)
+
+# zeigt die Matrix an
+raf_matrix
+
+# generiert ein igraph-Objekt (dataframe) aus der Matrix, das ungerichtet ist (directed = false)
+raf <- graph_from_data_frame(d=raf_matrix, vertices=nodes, directed=FALSE)
+
+# ruft unser neues igraph-Objekt auf
+raf
+
+# generiert die Standard-Visualisierung des Netzwerks
+#plot(raf)
+
+#degree <- degree(raf)
+#degree
+
+#test, ob Anfangsproblem behoben ist (d.h. alle Nodeattribute eingelesen werden und in die Matrix übernommen wurden)
+#list.vertex.attributes(raf)
+
+#Grafisch werden Ereignisse/Aktionen  anders dargestellt als Akteure
+V(raf)[V(raf)$type == 1]$shape <- "circle" # Personen als Kreise
+V(raf)[V(raf)$type == 2]$shape <- "square" # Aktionen als Quadrate
+
+# einfacher plot
+plot(raf,
+     layout=layout_nicely,
+     main="RAF-Netzwerk")
+
+```
+
+```{r Teilnetzwerk nur Personen ohne Aktionen}
+
+# Gesamtnetzwerk ohne Aktionen
+raf_personen <- delete_vertices(raf, V(raf)[type !="1"]) # löscht alle Knoten, für die der Wert von type nicht 1 beträgt, d.h. die keine Person sind
+
+raf_personen
+
+V(raf_personen)[V(raf_personen)$generation == 1]$color <- "blue" #erste Generation blau einfärben
+V(raf_personen)[V(raf_personen)$generation == 2]$color <- "green" # zweite Generation grün einfärben
+V(raf_personen)[V(raf_personen)$generation == 3]$color <- "red" # Mitglieder beider Generationen rot einfärben
+
+plot(raf_personen,
+    layout=layout_with_kk,
+    edge.arrow.size=.3,
+    vertex.size=5,
+    edge.curved=curve_multiple(raf_personen), #sorgt dafür, dass sich keine Kanten überlagern
+    main="Netzwerk ohne Aktionen",
+    sub="Legende: blau: Mitglieder der ersten Generation, grün: Mitglieder der zweiten Generation, rot: Mitglieder beider Generationen")
+     
+```
+
+```{r Ego-Netzwerk Peter-Jürgen Boock}
+
+# selektiert aus dem Netzwerk raf_personen alle Knoten, die mit Boock über einen Schritt verbunden sind.
+boock <- make_ego_graph(raf_personen, order=1, nodes = V(raf_personen)$name == "Peter-Juergen Boock", mode = "all")
+
+# liefert eine Liste der Verbindungen (in diesem Falle alle out/indgree Beziehungen von Boock)
+boock
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+boock1 <- boock[[1]]
+boock1
+
+plot(boock1, 
+     main="Ego-Netzwerk Peter-Jürgen Boock, erster Grad",
+     edge.arrow.size=.3,
+     sub="nur direkte Beziehungen des ersten Grads")
+
+```
+
+```{r Ego-Netzwerk Brigitte Mohnhaupt}
+
+# selektiert aus dem Netzwerk raf_personen alle Knoten, die mit Mohnhaupt über einen Schritt verbunden sind.
+mohnhaupt <- make_ego_graph(raf_personen, order=1, nodes = V(raf_personen)$name == "Brigitte Mohnhaupt", mode = "all")
+
+# liefert eine Liste der Verbindungen (in diesem Falle alle out/indgree Beziehungen von Mohnhaupt)
+mohnhaupt
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+mohnhaupt1 <- mohnhaupt[[1]]
+mohnhaupt1
+
+plot(mohnhaupt1, 
+     main="Ego-Netzwerk Brigitte Mohnhaupt, erster Grad",
+     edge.arrow.size=.3,
+     sub="nur direkte Beziehungen des ersten Grads")
+
+```
+
+```{r Ego-Netzwerk Klaus Croissant}
+
+# selektiert aus dem Netzwerk raf_personen alle Knoten, die mit Croissant über einen Schritt verbunden sind.
+croissant <- make_ego_graph(raf_personen, order=1, nodes = V(raf_personen)$name == "Klaus Croissant", mode = "all")
+
+# liefert eine Liste der Verbindungen (in diesem Falle alle out/indgree Beziehungen von Croissant)
+croissant
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+croissant1 <- croissant[[1]]
+croissant1
+
+plot(croissant1, 
+     main="Ego-Netzwerk Klaus Croissant, erster Grad",
+     edge.arrow.size=.3,
+     sub="nur direkte Beziehungen des ersten Grads")
+
+```
+ 
+```{r Knoten mit den meisten Edges}
+ego_size(raf_personen)
+
+degree(raf_personen)
+
+```

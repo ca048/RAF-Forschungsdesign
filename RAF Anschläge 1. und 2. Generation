@@ -71,7 +71,7 @@ vertex_attr(raf)$generation
 anschlaege_erste_gen <- delete_vertices(raf, V(raf)[generation > "1"]) 
 anschlaege_erste_gen
 plot(anschlaege_erste_gen, layout=layout_with_kk,
-     main="Anschläge erste Generation",
+     main="Anschläge zweite Generation",
      edge.color="green",
      edge.arrow.size=.5,
      vertex.color="red")

@@ -1,8 +1,8 @@
 # Netzwerkanalyse der Rote-Armee-Fraktion 
 
 (EN)
-This is a project of an undergraduate seminar for 4th year students at Stuttgart Media University, University of applied sciences.
-The goal of the module is to learn the basics of Social Network Analysis by applied research projects using the "igraph" package on R.
+This is a project of 4th year students at Stuttgart Media University, University of applied sciences.
+The general aim is to learn the basics of Social Network Analysis by applied research projects using the "igraph" package on R.
 
 In our project, we aim to visualize the networks within the first and the second generation of the German terror group Rote-Armee-Fraktion that have been active from the 1960s to the late 1980s.
 The guiding research question is whether and to which extent the first two generations differ and whether there have been central nodes who created the link and the shift from generation 1 to generation 2.

@@ -369,8 +369,8 @@ raf_mem
 # 1 = Austritt / Rückzug 2 = nein, kein Austritt, 3 = bis zum Tod Mitglied, 99 = keine Angabe gefunden
 
 # Veränderung der Füllfarbe des Vertex
-V(raf_mem)$color <- "white" # zur Abgrenzung sollen alle Knoten, die keinen symbolischen Tod hatten oder keine Angabe dazu vorliegt, weiß gefärbt werden
-V(raf_mem)[V(raf_mem)$symbolicdeath == 99]$color <- "red" # symbolic deaths rot hervorheben
+V(raf_mem)$color <- "white" # zur Abgrenzung sollen zunächst alle Knoten weiß gefärbt werden
+V(raf_mem)[V(raf_mem)$symbolicdeath != 99]$color <- "red" # Nun werden alle Knoten, die für das Vertex-Attribut symbolicdeath nicht den Wert 99 haben, rot hervorgehoben. Dies schien mir die einfachste Lösung, da ich sonst einzeln die verschiedenen Todesjahre hätte eintragen müssen, dass die zugehörigen Knoten rot gefärbt werden. Daher habe ich eher dieses Ausschlussprinzip gewählt
 
 plot(raf_mem,
      edge.color="grey80",
@@ -391,8 +391,8 @@ raf_mem
 raf_eins_mem <- delete_vertices(raf_mem, V(raf_mem)[generation !="1"]) # löscht alle RAF-Mitglieder bzw. Knoten, für die der Wert von generation nicht 1 beträgt, d.h. die nicht der ersten Generation angehört haben. 
 
 # Veränderung der Füllfarbe des Vertex
-V(raf_eins_mem)$color <- "white" # zur Abgrenzung sollen alle Knoten, die keinen symbolischen Tod hatten oder keine Angabe dazu vorliegt, weiß gefärbt werden
-V(raf_eins_mem)[V(raf_eins_mem)$symbolicdeath == 99]$color <- "red" # symbolic deaths rot hervorheben
+V(raf_eins_mem)$color <- "white" # zur Abgrenzung sollen alle Knoten weiß gefärbt werden, diejenigen, die eines symbolischen Todes gestorben sind, werden im nächsten Schritt selektiert und hervorgehoebn
+V(raf_eins_mem)[V(raf_eins_mem)$symbolicdeath != 99]$color <- "red" # symbolic deaths rot hervorheben (die Knoten, bei denen für das Attribut symbolicdeath eine Jahreszahl als Wert eingetragen ist und somit nicht der Wert 99 steht, werden rot gefärbt)
 
 raf_eins_mem
 
@@ -401,8 +401,8 @@ raf_eins_mem
 raf_zwei_mem <- delete_vertices(raf_mem, V(raf_mem)[generation !="2"]) # löscht alle Raf-Mitglieder bzw. Knoten, für die der Wert von generation nicht 1 beträgt, d.h. die nicht der zweiten Generation angehört haben. 
 
 # Veränderung der Füllfarbe des Vertex
-V(raf_zwei_mem)$color <- "white" # zur Abgrenzung sollen alle Knoten, die keinen symbolischen Tod hatten oder keine Angabe dazu vorliegt, weiß gefärbt werden
-V(raf_zwei_mem)[V(raf_zwei_mem)$symbolicdeath == 99]$color <- "red" # symbolic deaths rot hervorheben
+V(raf_zwei_mem)$color <- "white" # zur Abgrenzung sollen alle Knoten weiß gefärbt werden
+V(raf_zwei_mem)[V(raf_zwei_mem)$symbolicdeath != 99]$color <- "red" # symbolic deaths rot hervorheben
 
 raf_zwei_mem
 

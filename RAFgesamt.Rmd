@@ -206,6 +206,39 @@ plot(raf,
 
 
 ```
+```{r Teilnetzwerk der Gründungsmitglieder}
+
+raf_eins_mem
+
+raf_gm <- delete_vertices(raf_eins_mem, V(raf_eins_mem)[foundingmember > "1"]) # löscht alle Knoten, die keine Gründungsmitglieder waren und erstellt so ein Teilnetzwerk der Gründungsmitglieder
+
+raf_gm
+
+# Einfärben der Knoten nach deren Geschlecht
+V(raf_gm)[V(raf_gm)$sex == 1]$color <- "pink" # männlich
+V(raf_gm)[V(raf_gm)$sex == 2]$color <- "lightblue" # weiblich
+
+# Anpassung der Darstellung
+l <- layout_with_kk(raf_gm)
+l <- norm_coords(l, ymin=-1, ymax=1, xmin=-1, xmax=1)
+
+# Beste Visualisierung ist mit Faktor 1.2
+par(mfrow=c(1,1), mar=c(2,2,2,2))
+
+
+plot(raf_gm, 
+     layout=layout_with_kk,
+     rescale=T,
+     edge.color="grey70",
+     edge.arrow.size=.3,
+     vertex.size = 10,
+     main="Teilnetzwerk der Gründungsmitglieder",
+     sub="pink = männliche Knoten, blau = weibliche Knoten")
+
+
+# Frage: kann man auch verhindern, dass alle Beziehungen als einzelne Striche dargestellt werden und stattdessen je mehr Bzgh. es gibt, desto dicker die Verbindung zwischen zwei Knoten? Kann man so eine Gewichtung machen?
+```
+
 
 ```{r Gründungsmitglieder im Netzwerk der ersten Generation hervorheben}
 

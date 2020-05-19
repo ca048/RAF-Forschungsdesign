@@ -1,0 +1,373 @@
+
+```{r wichtigste packages abrufen}
+#wir laden nun vorab die wichtigsten packages
+library(igraph)
+library(igraphdata)
+library(knitr) 
+library(rmarkdown)
+library(visNetwork)
+```
+
+```{r Gesamtnetzwerk einlesen}
+# Wir lesen das Netzwerk im Folgenden ein
+# Zunächst werden Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+raf
+# Visualisierung des Netzwerks
+plot(raf,
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(raf), # verhindert, dass sich Kanten überlagern
+     vertex.label=NA, # entfernt die Beschriftung der Knoten für bessere Übersichtlichkeit
+     vertex.size=5,
+     main="RAF-Gesamtnetzwerk der RAF",
+     sub="erste und zweite Generation")
+```
+
+```{r Egonetzwerk Befreiung von Andreas Bader 1970}
+raf
+ego_bef<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Befreiung Andreas Baader 14.05.1970", mode = "all")
+
+# Alle zusammenhängenden Edges werden aufgelistet 
+ego_bef
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_bef1 <- ego_bef[[1]]
+ego_bef1
+
+# Man selektiert alle Nodes, die mit dem Anschlag über eine Edge verbunden sind
+ego_bef1 <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Befreiung Andreas Baader 14.05.1970", mode = "all")
+
+# liefert eine Liste der Verbindungen (in diesem Falle alle out/indgree Beziehungen des Anschlags)
+ego_bef1
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_bef1 <- ego_bef[[1]]
+ego_bef1 <- simplify(ego_bef1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+ego_bef1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_bef1)[V(ego_bef1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_bef1)[V(ego_bef1)$sex == 1]$color <- "pink" # Männer werden pink dargestellt
+V(ego_bef1)[V(ego_bef1)$sex == 2]$color <- "lightblue" # Frauen werden hellbau dargestellt
+V(ego_bef1)[V(ego_bef1)$name == "Befreiung Andreas Baader 14.05.1970"]$color <- "red" # Anschlag wird rot hervorgehoben
+V(ego_bef1)[V(ego_bef1)$type == 2]$shape <- "square" # Anschläge werden als Quadrat dargestellt
+
+#Entzerrte Darstellung, Anpassung der Visualisierung 
+l <- layout_with_kk(ego_bef1) #legt den Layout-Typ fest
+l <- norm_coords(l, ymin=-1, ymax=1, xmin=-5, xmax=5)
+plot(ego_bef1, 
+     layout=layout_with_kk,
+     rescale=T,
+     layout=l*0.9,
+     asp=0,
+     main="Ego-Netzwerk Befreiung Andreas Baader 14.05.1970, erster Grad",
+     sub="nur direkte Beziehungen des ersten Grads; rosa = Männer; blau = Frauen",
+     edge.color="grey80",
+     vertex.label.size=2,
+     vertex.size=5)
+
+
+```
+```{r Egonetzwerk Entführung Hanns Martin-Schleyer 05.09.1977}
+raf
+ego_ent<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977", mode = "all")
+
+# Alle zusammenhängenden Edges werden aufgelistet 
+ego_ent
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_ent1 <- ego_ent[[1]]
+ego_ent1
+
+# Man selektiert alle Nodes, die mit dem Anschlag über eine Edge verbunden sind
+ego_ent1 <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977", mode = "all")
+
+# liefert eine Liste der Verbindungen (in diesem Falle alle out/indgree Beziehungen des Anschlags)
+ego_ent1
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_ent1 <- ego_ent[[1]]
+ego_ent1 <- simplify(ego_ent1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+ego_ent1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_ent1)[V(ego_ent1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_ent1)[V(ego_ent1)$sex == 1]$color <- "pink" # Männer werden pink dargestellt
+V(ego_ent1)[V(ego_ent1)$sex == 2]$color <- "lightblue" # Frauen werden hellbau dargestellt
+V(ego_ent1)[V(ego_ent1)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977"]$color <- "red" # Anschlag wird rot hervorgehoben
+#V(ego_ent1)[V(ego_ent1)$type == 2]$color <- "orange" # Anschläge werden orange dargestellt
+V(ego_ent1)[V(ego_ent1)$type == 2]$shape <- "square" # Anschläge werden als Quadrat dargestellt
+
+#Entzerrte Darstellung, Anpassung der Visualisierung 
+l <- layout_with_kk(ego_ent1) #legt den Layout-Typ fest
+l <- norm_coords(l, ymin=-1, ymax=1, xmin=-5, xmax=5)
+plot(ego_ent1, 
+     layout=layout_with_kk,
+     rescale=T,
+     layout=l*1.4,
+     asp=0,
+     main="Ego-Netzwerk Entführung Hanns Martin-Schleyer 05.09.1977, erster Grad",
+     sub="nur direkte Beziehungen des ersten Grads; rosa = Männer; blau = Frauen",
+     edge.color="grey80",
+     vertex.label.size=2,
+     vertex.size=5)
+
+# Der Anschlag war sehr bedeutend für die RAF, er ist auch ein Schnittpunkt zwischen den ersten beiden Generationen. Ihre Beteiligung soll deshalb hervorgehoben werden.
+V(ego_ent1)[V(ego_ent1)$generation == 1]$color <- "blue"
+V(ego_ent1)[V(ego_ent1)$generation == 2]$color <- "green"
+V(ego_ent1)[V(ego_ent1)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977"]$color <- "red" # Anschlag wird rot hervorgehoben
+par(mar=c(0,0,0,0)) #setzt die Ränder auf 0
+plot(ego_ent1,
+     layout=layout_with_kk,
+     vertex.label.color= "black",
+     main="Ego-Netzwerk der Entführung Hanns Martin-Schleyer 05.09.1977. Beziehungen ersten Grades",
+     sub=" blau = 1. Gen.; grün = 2. Gen.; rosa = beide / keine Gen.; rot = Entführung Hanns Martin-Schleyer",
+     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
+     rescale=TRUE, 
+     layout=l*1.2)
+
+```
+
+```{r Bombenanschlag auf Bundesrichter Buddenberg 15.05.1972}
+raf
+ego_bbb<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Bombenanschlag auf Bundesrichter Buddenberg 15.05.1972", mode = "all")
+
+# Alle zusammenhängenden Edges werden aufgelistet 
+ego_bbb
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_bbb1 <- ego_bbb[[1]]
+ego_bbb
+
+# Man selektiert alle Nodes, die mit dem Anschlag über eine Edge verbunden sind
+ego_bbb1 <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Bombenanschlag auf Bundesrichter Buddenberg 15.05.1972", mode = "all")
+
+# liefert eine Liste der Verbindungen (in diesem Falle alle out/indgree Beziehungen des Anschlags)
+ego_bbb1
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_bbb1 <- ego_bbb[[1]]
+ego_bbb1 <- simplify(ego_bbb1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+ego_bbb1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_bbb1)[V(ego_bbb1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_bbb1)[V(ego_bbb1)$sex == 1]$color <- "pink" # Männer werden pink dargestellt
+V(ego_bbb1)[V(ego_bbb1)$sex == 2]$color <- "lightblue" # Frauen werden hellbau dargestellt
+V(ego_bbb1)[V(ego_bbb1)$name == "Bombenanschlag auf Bundesrichter Buddenberg 15.05.1972"]$color <- "red" # Anschlag wird rot hervorgehoben
+#V(ego_bbb1)[V(ego_bbb1)$type == 2]$color <- "orange" # Anschläge werden orange dargestellt
+V(ego_bbb1)[V(ego_bbb1)$type == 2]$shape <- "square" # Anschläge werden als Quadrat dargestellt
+
+#Entzerrte Darstellung, Anpassung der Visualisierung 
+l <- layout_with_kk(ego_bbb1) #legt den Layout-Typ fest
+l <- norm_coords(l, ymin=-1, ymax=1, xmin=-5, xmax=5)
+plot(ego_bbb1, 
+     layout=layout_with_kk,
+     rescale=T,
+     layout=l*0.9,
+     asp=0,
+     main="Ego-Netzwerk Bombenanschlag auf Bundesrichter Buddenberg 15.05.1972, erster Grad",
+     sub="nur direkte Beziehungen des ersten Grads; rosa = Männer; blau = Frauen",
+     edge.color="grey80",
+     vertex.label.size=2,
+     vertex.size=5)
+
+# Welche Generation(en) hat/haben mitgewirkt?
+V(ego_bbb1)[V(ego_bbb1)$generation == 1]$color <- "blue"
+V(ego_bbb1)[V(ego_bbb1)$generation == 2]$color <- "green"
+V(ego_bbb1)[V(ego_bbb1)$name == "Bombenanschlag auf Bundesrichter Buddenberg 15.05.1972"]$color <- "red" # Anschlag wird rot hervorgehoben
+par(mar=c(0,0,0,0)) #setzt die Ränder auf 0
+plot(ego_bbb1,
+     layout=layout_with_kk,
+     vertex.label.color= "black",
+     main="Ego-Netzwerk der Entführung Hanns Martin-Schleyer 05.09.1977. Beziehungen ersten Grades",
+     sub=" blau = 1. Gen.; grün = 2. Gen.; rosa = beide / keine Gen.; rot = Bombenanschlag auf Bundesrichter Buddenberg 15.05.1972",
+     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
+     rescale=TRUE, 
+     layout=l*0.7)
+
+```
+
+```{r Egonetzwerk Ermordung Jürgen Ponto 30.07.1977}
+raf
+ego_ejp<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Ermordung Juergen Ponto 30.07.1977", mode = "all")
+
+# Alle zusammenhängenden Edges werden aufgelistet 
+ego_ejp
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_ejp1 <- ego_ejp[[1]]
+ego_ejp1
+
+# Man selektiert alle Nodes, die mit dem Anschlag über eine Edge verbunden sind
+ego_ejp1 <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Ermordung Juergen Ponto 30.07.1977", mode = "all")
+
+# liefert eine Liste der Verbindungen (in diesem Falle alle out/indgree Beziehungen des Anschlags)
+ego_ejp1
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_ejp1 <- ego_ejp[[1]]
+ego_ejp1 <- simplify(ego_ejp1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+ego_ejp1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_ejp1)[V(ego_ejp1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_ejp1)[V(ego_ejp1)$sex == 1]$color <- "pink" # Männer werden pink dargestellt
+V(ego_ejp1)[V(ego_ejp1)$sex == 2]$color <- "lightblue" # Frauen werden hellbau dargestellt
+V(ego_ejp1)[V(ego_ejp1)$name == "Ermordung Juergen Ponto 30.07.1977"]$color <- "red" # Anschlag wird rot hervorgehoben
+#V(ego_ejp1)[V(ego_ejp1)$type == 2]$color <- "orange" # Anschläge werden orange dargestellt
+V(ego_ejp1)[V(ego_ejp1)$type == 2]$shape <- "square" # Anschläge werden als Quadrat dargestellt
+
+#Entzerrte Darstellung, Anpassung der Visualisierung 
+l <- layout_with_kk(ego_ejp1) #legt den Layout-Typ fest
+l <- norm_coords(l, ymin=-1, ymax=1, xmin=-5, xmax=5)
+plot(ego_ejp1, 
+     layout=layout_with_kk,
+     rescale=T,
+     layout=l*1.4,
+     asp=0,
+     main="Ego-Netzwerk Ermordung Jürgen Ponto 30.07.1977, erster Grad",
+     sub="nur direkte Beziehungen des ersten Grads; rosa = Männer; blau = Frauen",
+     edge.color="grey80",
+     vertex.label.size=2,
+     vertex.size=5)
+
+# Welche Generation(en) war(en) beteiligt?
+V(ego_ejp1)[V(ego_ejp1)$generation == 1]$color <- "blue"
+V(ego_ejp1)[V(ego_ejp1)$generation == 2]$color <- "green"
+V(ego_ejp1)[V(ego_ejp1)$name == "Ermordung Juergen Ponto 30.07.1977"]$color <- "red" # Anschlag wird rot hervorgehoben
+par(mar=c(0,0,0,0)) #setzt die Ränder auf 0
+plot(ego_ejp1,
+     layout=layout_with_kk,
+     vertex.label.color= "black",
+     main="Ego-Netzwerk der Ermordung Jürgen Pontos 30.07.1977. Beziehungen ersten Grades",
+     sub=" blau = 1. Gen.; grün = 2. Gen.; rosa = beide / keine Gen.; rot = Ermordung Jürgen Ponto 30.07.1977",
+     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
+     rescale=TRUE, 
+     layout=l*1.2)
+
+```
+
+```{r Egonetzwerk Ermordung Siegfried Buback 07.04.1977}
+raf
+ego_esb<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Ermordung Siegfried Buback 07.04.1977", mode = "all")
+
+# Alle zusammenhängenden Edges werden aufgelistet 
+ego_esb
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_esb1 <- ego_esb[[1]]
+ego_esb1
+
+# Man selektiert alle Nodes, die mit dem Anschlag über eine Edge verbunden sind
+ego_esb1 <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Ermordung Siegfried Buback 07.04.1977", mode = "all")
+
+# liefert eine Liste der Verbindungen (in diesem Falle alle out/indgree Beziehungen des Anschlags)
+ego_esb1
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_esb1 <- ego_esb[[1]]
+ego_esb1 <- simplify(ego_esb1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+ego_esb1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_esb1)[V(ego_esb1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_esb1)[V(ego_esb1)$sex == 1]$color <- "pink" # Männer werden pink dargestellt
+V(ego_esb1)[V(ego_esb1)$sex == 2]$color <- "lightblue" # Frauen werden hellbau dargestellt
+V(ego_esb1)[V(ego_esb1)$name == "Ermordung Siegfried Buback 07.04.1977"]$color <- "red" # Anschlag wird rot hervorgehoben
+#V(ego_esb1)[V(ego_esb1)$type == 2]$color <- "orange" # Anschläge werden orange dargestellt
+V(ego_esb1)[V(ego_esb1)$type == 2]$shape <- "square" # Anschläge werden als Quadrat dargestellt
+
+#Entzerrte Darstellung, Anpassung der Visualisierung 
+l <- layout_with_kk(ego_esb1) #legt den Layout-Typ fest
+l <- norm_coords(l, ymin=-1, ymax=1, xmin=-5, xmax=5)
+plot(ego_esb1, 
+     layout=layout_with_kk,
+     rescale=T,
+     layout=l*1.4,
+     asp=0,
+     main="Ego-Netzwerk Ermordung Siegfried Buback 07.04.1977, erster Grad",
+     sub="nur direkte Beziehungen des ersten Grads; rosa = Männer; blau = Frauen",
+     edge.color="grey80",
+     vertex.label.size=2,
+     vertex.size=5)
+
+# Welche Generation(en) war(en) beteiligt?
+V(ego_esb1)[V(ego_esb1)$generation == 1]$color <- "blue"
+V(ego_esb1)[V(ego_esb1)$generation == 2]$color <- "green"
+V(ego_esb1)[V(ego_esb1)$name == "Ermordung Siegfried Buback 07.04.1977"]$color <- "red" # Anschlag wird rot hervorgehoben
+par(mar=c(0,0,0,0)) #setzt die Ränder auf 0
+plot(ego_ent1,
+     layout=layout_with_kk,
+     vertex.label.color= "black",
+     main="Ego-Netzwerk der Ermordung Siegfried Bubacks 07.04.1977. Beziehungen ersten Grades",
+     sub=" blau = 1. Gen.; grün = 2. Gen.; rosa = beide / keine Gen.; rot = Ermordung Siegfried Buback 07.04.1977",
+     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
+     rescale=TRUE, 
+     layout=l*1.2)
+
+```
+
+```{r Egonetzwerk Entfuehrung Lufthansa Maschine Landshut 13.10.1977}
+raf
+ego_lhl<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Entfuehrung Lufthansa Maschine Landshut 13.10.1977", mode = "all")
+
+# Alle zusammenhängenden Edges werden aufgelistet 
+ego_lhl
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_lhl1 <- ego_lhl[[1]]
+ego_lhl1
+
+# Man selektiert alle Nodes, die mit dem Anschlag über eine Edge verbunden sind
+ego_lhl1 <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Entfuehrung Lufthansa Maschine Landshut 13.10.1977", mode = "all")
+
+# liefert eine Liste der Verbindungen (in diesem Falle alle out/indgree Beziehungen des Anschlags)
+ego_lhl1
+
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_lhl1 <- ego_lhl[[1]]
+ego_lhl1 <- simplify(ego_lhl1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+ego_lhl1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_lhl1)[V(ego_lhl1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_lhl1)[V(ego_lhl1)$sex == 1]$color <- "pink" # Männer werden pink dargestellt
+V(ego_lhl1)[V(ego_lhl1)$sex == 2]$color <- "lightblue" # Frauen werden hellbau dargestellt
+V(ego_lhl1)[V(ego_lhl1)$name == "Entfuehrung Lufthansa Maschine Landshut 13.10.1977"]$color <- "red" # Anschlag wird rot hervorgehoben
+#V(ego_lhl1)[V(ego_lhl1)$type == 2]$color <- "orange" # Anschläge werden orange dargestellt
+V(ego_lhl1)[V(ego_lhl1)$type == 2]$shape <- "square" # Anschläge werden als Quadrat dargestellt
+
+#Entzerrte Darstellung, Anpassung der Visualisierung 
+l <- layout_with_kk(ego_lhl1) #legt den Layout-Typ fest
+l <- norm_coords(l, ymin=-1, ymax=1, xmin=-5, xmax=5)
+plot(ego_lhl1, 
+     layout=layout_with_kk,
+     rescale=T,
+     layout=l*1.4,
+     asp=0,
+     main="Ego-Netzwerk Entführung Lufthansa Maschine Landshut 13.10.1977, erster Grad",
+     sub="nur direkte Beziehungen des ersten Grads; rosa = Männer; blau = Frauen",
+     edge.color="grey80",
+     vertex.label.size=2,
+     vertex.size=5)
+
+# Welche Generation(en) war(en) beteiligt?
+V(ego_lhl1)[V(ego_lhl1)$generation == 1]$color <- "blue"
+V(ego_lhl1)[V(ego_lhl1)$generation == 2]$color <- "green"
+V(ego_lhl1)[V(ego_lhl1)$name == "Entfuehrung Lufthansa Maschine Landshut 13.10.1977"]$color <- "red" # Anschlag wird rot hervorgehoben
+par(mar=c(0,0,0,0)) #setzt die Ränder auf 0
+plot(ego_lhl1,
+     layout=layout_with_kk,
+     vertex.label.color= "black",
+     main="Ego-Netzwerk der Entführung der Lufthansa Maschine Landshut 13.10.1977. Beziehungen ersten Grades",
+     sub=" blau = 1. Gen.; grün = 2. Gen.; rosa = beide / keine Gen.; rot = Entführung Lufthansa Maschine Landshut 13.10.1977",
+     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
+     rescale=TRUE, 
+     layout=l*1.2)
+
+```

@@ -161,7 +161,7 @@ definiert die Motivation, die den Aktionen zugrunde lag
 3 = Versorgung (Beschaffung von Geld, Sprengstoff o.ä.)
 
 
-*Fehlende Werte*
+# Fehlende Werte
 99 = fehlende Werte, etwa wenn diese nicht verfügbar waren oder wenn das Attribut nur auf Personen bezogen ist, wurde bei Knoten des Typs 2 (Aktion) dieser Wert vergeben, Eine vorherige Codierung mit "NA" hat zu Problemen bei der Netzwerkgenerierung geführt, was mit Vergabe des Werts "99" stattdessen behoben werden konnte.
 
 ##

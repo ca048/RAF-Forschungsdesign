@@ -5,7 +5,7 @@ erstellt von Hannah Bauer (hb062@hdm-stuttgart.de)
 ## Inhalt
 - Edges.csv (Edgelist)
 - Nodes.csv (Nodelist)
-- Codebuch.rm (Codierung der Datensätze)
+- Codebuch.md (Codierung der Datensätze)
 
 ## Forschungsinteresse, Ursprung und Datenerhebung
 In unserem Netzwerkforschungprojekt wollen wir die Netzwerke der ersten und zweiten RAF-Generation visualisieren, die von den 1960er bis zu den späten 1980er-Jahren aktiv waren. Die zentrale Forschungsfrage ist dabei, ob und inwieferen sich die ersten beiden Generationen unterscheiden und ob es zentrale Knoten gab, welche die Verbindung und den Shift zwischen den Generationen geschaffen haben. Die Daten haben wir anhand von Literaturrecherche erhoben und entsprechend der nachfolgenden Kriterien kategorisiert und codiert.

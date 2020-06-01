@@ -1,4 +1,4 @@
-Datensatz RAF /n
+Datensatz RAF
 Codebuch Stand 2020-06-01  
 erstellt von Hannah Bauer (hb062@hdm-stuttgart.de)
 
@@ -26,16 +26,16 @@ Die Werte in der Spalte "to" definieren den Empfänger in ungerichteten Netzwerk
 **relation**
 Das Edge-Attribut "relationship" definiert die Art der Beziehung zwischen den Knoten, da es sich um ein multiplexes Netzwerk mit verschiedenen Beziehungsarten handelt. 
 
-1 = *Bekanntschaft* Bekanntschaft meint, dass zwei Akteure in Kontakt waren, jedoch nur einmalig oder wenige Male, sodass von keiner Freundschaft gesprochen werden kann. 
-2 = *Freundschaft* Freundschaft setzt einen mehrmaligen Kontakt voraus oder wurde dann erhoben, wenn in den verwendeten Quellen explizit davon gesprochen wurde. 
-3 = *Liebesbeziehung* 
-4 = *Wohngemeinschaft*
-5 = *gemeinsame Haft* 
-6 = *Versorgung* Versorgung bedeutet beispielsweise, dass jemand eine andere Person als Anwalt unterstützt oder seine Wohnung zur Verfügung gestellt hat 
-7 = *Teilnahme / Beteiligung an der Aktion* Die Beteiligung an einer Aktion kann sowohl deren Vorbereitung, Planung oder die Beschaffung der nötigen Mittel bedeuten als auch die aktive Teilnahme und Durchführung der Aktion. 
-8 = *gemeinsame Ausbildung* 
-9 = *Rekrutierung*  
-10 = *Verwandschaft* 
+1 = Bekanntschaft *Bekanntschaft meint, dass zwei Akteure in Kontakt waren, jedoch nur einmalig oder wenige Male, sodass von keiner Freundschaft gesprochen werden kann.* 
+2 = Freundschaft *Freundschaft setzt einen mehrmaligen Kontakt voraus oder wurde dann erhoben, wenn in den verwendeten Quellen explizit davon gesprochen wurde. 
+3 = Liebesbeziehung 
+4 = Wohngemeinschaft
+5 = gemeinsame Haft
+6 = Versorgung *Versorgung bedeutet beispielsweise, dass jemand eine andere Person als Anwalt unterstützt oder seine Wohnung zur Verfügung gestellt hat* 
+7 = Teilnahme / Beteiligung an der Aktion *Die Beteiligung an einer Aktion kann sowohl deren Vorbereitung, Planung oder die Beschaffung der nötigen Mittel bedeuten als auch die aktive Teilnahme und Durchführung der Aktion.*
+8 = gemeinsame Ausbildung
+9 = Rekrutierung 
+10 = Verwandschaft
 
 **year**  
 Das Edge-Attribut "year" definiert das Jahr, in dem die jeweilige Beziehung bestand, beispielsweise wenn zwei Akteure in einem spezifischen Jahr zusammengewohnt haben. Bei mehrjährigen Beziehungen wurde entsprechend für jedes separate Jahr eine Beziehung angelegt. Die Jahreszahlen reichen von 1961 bis 1998, ergo von den Anfangsjahren der RAF bis zum Ende der 90er Jahre, da einige Mitglieder zu diesem Zeitpunkt noch gemeinsam inhaftiert waren. Bei Beziehungen, bei denen das Jahr nicht bekannt war oder bei Verwandtschaftsbeziehungen, die beständig sind, wurde statt einer Jahreszahl der Wert "99" vergeben.

@@ -56,10 +56,13 @@ definiert den Typ der Knoten des two mode-Netzwerks
 1 = natürliche Person
 2 = Aktion der RAF
 
-*Node-Attribute, die Knoten des Typs 1 (natürliche Personen) näher definieren.*
+*Node-Attribute, die Knoten des Typs 1 (natürliche Personen) näher definieren:*
 
 **sex**    
-definiert das Geschlecht der natürlichen Personen; 1= männlich, 2=weiblich, 3=divers. 
+definiert das Geschlecht der natürlichen Personen 
+1 = männlich
+2 = weiblich
+3 = divers
   
 **religion**
 definiert die Religionszugehörigkeit der natürlichen Personen

@@ -28,14 +28,23 @@ Die Werte in der Spalte "to" definieren den Empfänger in ungerichteten Netzwerk
 Das Edge-Attribut "relationship" definiert die Art der Beziehung zwischen den Knoten, da es sich um ein multiplexes Netzwerk mit verschiedenen Beziehungsarten handelt. 
 
 1 = Bekanntschaft *Bekanntschaft meint, dass zwei Akteure in Kontakt waren, jedoch nur einmalig oder wenige Male, sodass von keiner Freundschaft gesprochen werden kann.* 
-2 = Freundschaft *Freundschaft setzt einen mehrmaligen Kontakt voraus oder wurde dann erhoben, wenn in den verwendeten Quellen explizit davon gesprochen wurde. 
+
+2 = Freundschaft *Freundschaft setzt einen mehrmaligen Kontakt voraus oder wurde dann erhoben, wenn in den verwendeten Quellen explizit davon gesprochen wurde.* 
+
 3 = Liebesbeziehung 
+
 4 = Wohngemeinschaft
+
 5 = gemeinsame Haft
+
 6 = Versorgung *Versorgung bedeutet beispielsweise, dass jemand eine andere Person als Anwalt unterstützt oder seine Wohnung zur Verfügung gestellt hat* 
+
 7 = Teilnahme / Beteiligung an der Aktion *Die Beteiligung an einer Aktion kann sowohl deren Vorbereitung, Planung oder die Beschaffung der nötigen Mittel bedeuten als auch die aktive Teilnahme und Durchführung der Aktion.*
+
 8 = gemeinsame Ausbildung
+
 9 = Rekrutierung 
+
 10 = Verwandschaft
 
 **year**  

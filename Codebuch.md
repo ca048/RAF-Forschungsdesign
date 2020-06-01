@@ -1,12 +1,3 @@
----
-title: "Codebuch"
-author: "Hannah Bauer"
-date: "1 6 2020"
-output:
-  word_document: default
-  pdf_document: default
----
-
 Datensatz RAF
 Codebuch Stand 2020-06-01  
 erstellt von Hannah Bauer (hb062@hdm-stuttgart.de)

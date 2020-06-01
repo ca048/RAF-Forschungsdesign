@@ -15,7 +15,7 @@ Das Netzwerk ist ein *ungerichtetes two-mode Akteursnetzwerk*.
 
 # EDGE-Attribute
 
-**Edgelist: Grundregel** 
+**Grundregel** 
 Die Edgelist darf pro Spalte immer nur einen Wert enthalten. Bis auf die ID und den Namen ist dieser idealerweise numerisch codiert (als Zahl).
 
 **from**

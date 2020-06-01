@@ -101,7 +101,7 @@ Die dritte Generation der RAF wurde außen vor gelassen, da hinsichtlich deren M
 4 = Unterstützer*in (kein offizielles / aktives Mitglied einer der beiden Generationen)
 
 **membership**
-definiert bei natürlichen Personen, ob diese Mitglied der RAF waren (oder ob es sich nur um Unterstützer*innen gehandelt hat). So können beispielsweise reine Mitgliedernetzwerke erstellt werden. Bei Knoten des Typs 2 (Aktion) wurde dies nicht definiert.
+definiert bei natürlichen Personen, ob diese Mitglied der RAF waren (oder ob es sich nur um Unterstützer*innen handelt). So können beispielsweise reine Mitgliedernetzwerke erstellt werden. Bei Knoten des Typs 2 (Aktion) wurde dies nicht definiert.
 1 = ja
 2 = nein
 
@@ -137,7 +137,7 @@ definiert das Todesjahr eines RAF Mitglieds, das gestorben ist, während es noch
 *Node-Attribute, die sich auf Knoten des Typs 2 (Aktionen der RAF) beziehen*
 
 **place**
-definitert den Ort, an dem die Aktionen durchgeführt wurden. Bei Knoten des Typs 1 (natürliche Person) wurde dies nicht definiert.
+definiert den Ort, an dem die Aktionen durchgeführt wurden. Bei Knoten des Typs 1 (natürliche Person) wurde dies nicht definiert.
 1 = Deutschland
 2 = Ausland
 
@@ -145,7 +145,7 @@ definitert den Ort, an dem die Aktionen durchgeführt wurden. Bei Knoten des Typ
 definiert das Jahr, in dem die jeweilige Aktion durchgeführt wurde. Der Wert besteht dabei aus einer Jahreszahl. Bei Knoten des Typs 1 (natürliche Person) wurde dies nicht definiert. 
 
 **category**
-category,"definiert die Art der Knoten, bei denen es sich um eine Aktion handelt
+definiert die Art der Knoten, bei denen es sich um eine Aktion handelt
 1 = Mord
 2 = Brandstiftung
 3 = Raub

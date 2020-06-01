@@ -1,5 +1,6 @@
-Datensatz des Netzwerkforschungsprojekts zur RAF: Codebuch 
-(Stand 2020-06-01)
+Datensatz des Netzwerkforschungsprojekts zur RAF: 
+Codebuch (Stand 2020-06-01)
+
 erstellt von Hannah Bauer (hb062@hdm-stuttgart.de)
 
 ## Inhalt

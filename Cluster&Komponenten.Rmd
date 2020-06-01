@@ -1,0 +1,404 @@
+---
+title: "RAF_Tag5"
+author: "ja053"
+date: "16 5 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r wichtigste packages abrufen}
+
+#wir laden nun vorab die wichtigsten packages
+library(igraph)
+library(igraphdata)
+library(knitr) 
+library(rmarkdown) 
+```
+#Visualisierung nach Knotentypen
+```{r fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# Wir lesen das Netzwerk im Folgenden ein
+
+# Zunächst werden Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+raf
+
+raf <- simplify(raf, remove.multiple = TRUE)#löscht doppelte Beziehungen
+
+#Grafisch werden Ereignisse/Aktionen  anders dargestellt als Akteure
+V(raf)[V(raf)$type == 1]$shape <- "circle" # Personen als Kreise
+V(raf)[V(raf)$type == 2]$shape <- "square" # Aktionen als Quadrate
+V(raf)[V(raf)$type == 1]$color <- "red" # Personen rot einfärben
+V(raf)[V(raf)$type == 2]$color <- "orange" #Aktionen orange einfärben
+
+
+# Visualisierung des Netzwerks
+plot(raf,
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(raf), # verhindert, dass sich Kanten überlagern
+     vertex.label=NA, # entfernt die Beschriftung der Knoten für bessere Übersichtlichkeit
+     vertex.size=5,
+     main="RAF-Gesamtnetzwerk"
+     )
+
+```
+#Egonetzwerk Baader 1. Grad
+```{r fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+# zeigt die Knoten mit den meisten Verbindungen, ähnlich wie der degree Wert.
+ego_size(raf)
+
+#zeigt die Nodes und die Anzahl ihrer Edges
+degree(raf)
+
+# Wir stellen fest, dass Andreas Bader die meisten degrees hat. Deshalb wollen wir ein Ego-Netzwerk aus diesem Graph generieren.
+
+# selektiert aus dem Netzwerk alle Knoten, die mit Andreas Baader über einen Schritt verbunden sind.
+king <- make_ego_graph(raf, order = 1, nodes = V(raf)$name == "Andreas Baader", mode ="all")
+
+
+# man braucht diesen Zwischenschrit, damit das igraph-Objekt von king1 hergestellt ist
+king1 <- king[[1]]
+king1
+
+plot(king1, 
+     main="Ego-Netzwerk Andreas Baader, erster Grad",
+     sub="nur direkte Beziehungen des ersten Grads")
+
+```
+#Egonetzwerk Baader 2. und 3. Grad
+```{r fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+#Zweiter Grad:
+
+king2 <- make_ego_graph(raf, order = 2, nodes = V(raf)$name == "Andreas Baader", mode ="all") #Bei "order" muss nun eine 2 stehen
+
+# man braucht diesen Zwischenschrit, damit das igraph-Objekt von king1 hergestellt ist
+king2 <- king2[[1]]
+king2
+
+plot(king2,
+     main="Ego-Netzwerk Andreas Baader, zweiter Grad",
+     sub="nur direkte Beziehungen ersten und zweiten Grads")
+
+
+#Dritter Grad:
+
+king3 <- make_ego_graph(raf, order = 3, nodes = V(raf)$name == "Andreas Baader", mode ="all") #Bei "order steht nun eine 3
+
+
+# man braucht diesen Zwischenschrit, damit das igraph-Objekt von king1 hergestellt ist
+king3 <- king3[[1]]
+king3
+
+plot(king3, 
+     main="Ego-Netzwerk Andreas Baader, dritter Grad",
+     sub="nur direkte Beziehungen ersten, zweiten und dritten Grads")
+```
+#Komponenten
+```{r}
+#Wir zählen die Komponenten:
+count_components(raf)
+#Anscheinend haben wir nur eine Komponente im Gesamtnetzwerk, damit lohnt es sich nicht, diese zu zerlegen. Let's try Cluster
+```
+#Cluster
+```{r}
+#Wir rufen die Cluser unseres Netzwerkes auf
+clusters(raf)
+#Im Gesamtnetzwerk gibt es auch nur ein Cluster, daher lohnt sich auch hier keine Analyse
+```
+#Erste Generation
+```{r fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+#Erstellung und Visualisierung des Netzwerks der Ersten Generation
+
+raf
+
+raf_eins <- delete_vertices(raf, V(raf)[generation !="1"])
+
+raf_eins
+
+raf_eins_mem <- delete_vertices(raf_eins, V(raf_eins)[type !="1"])
+
+raf_eins_mem
+
+#Entzerrte Darstellung, Anpassung der Visualisierung 
+l <- layout_with_kk(raf_eins_mem) #legt den Layout-Typ fest
+l <- norm_coords(l, ymin=-0.75, ymax=0.75, xmin=-0.75, xmax=0.75)
+
+
+# Beste Visualisierung ist mit Faktor 1.2
+par(mfrow=c(1,1), mar=c(2,2,2,2))
+
+# Nun wird das Netzwerk der Mitglieder der 1. Generation geplottet:
+plot(raf_eins_mem, 
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.color="red",
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_eins_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     main="Netzwerk der ersten Generation")
+```
+#Komponenten Erste Generation
+```{r}
+#Wir zählen die Komponenten der ersten Generation
+count_components(raf_eins_mem)
+
+#Wir finden 4 Komponenten
+
+# Um genauer zu verstehen, welche Vertices zu welcher Gruppe gehören, lassen sie sich mit dem Befehl groups(g) in Grupppen unterteilten. 
+raf_eins_mem_groups <- groups(components(raf_eins_mem))
+raf_eins_mem_groups
+
+#Es gibt also drei Komponenten mit nur einer Person
+
+#Starke und SChwache Komponenten:
+
+# Unteranalyse der Hauptkomponente
+is_connected(raf_eins_mem)
+
+# Analyse der Verteilung der Komponenenten
+components(raf_eins_mem, mode = c("weak", "strong"))
+
+# Analyse der starken Komponenten
+components(raf_eins_mem, mode = "strong")
+
+# Anzahl der Komponenten
+count_components(raf_eins_mem)
+
+# Aufteilung der Komponenten
+comp_raf_eins_mem <- components(raf_eins_mem)
+groups(comp_raf_eins_mem)
+
+#In einer Komponente sind also 42 "Mitglieder", in den anderen drei jeweil nur eines
+```
+#Cluster erste Generation
+```{r}
+# Anzahl der Clusters
+clusters(raf_eins_mem)
+
+# Sind die Cluster miteinander verbunden?
+is_connected(raf_eins_mem)
+
+#Es gibt also vier Cluster, die nicht verbunden sind
+```
+#Cluster in Komponenten zerlegen
+```{r fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+raf_eins_comp <- decompose.graph(raf_eins_mem)
+raf_eins_comp
+
+# Komponenten neu benennen
+raf_eins_comp1 <- raf_eins_comp[[1]]
+raf_eins_comp2 <- raf_eins_comp[[2]]
+raf_eins_comp3 <- raf_eins_comp[[3]]
+raf_eins_comp4 <- raf_eins_comp[[4]]
+
+# neue Teilkomponenten analysieren
+raf_eins_comp1
+raf_eins_comp2
+raf_eins_comp3
+raf_eins_comp4
+
+# Komponenten getrennt visualisieren
+par(mfrow=c(1,4), mar=c(0,0,2,1)) 
+plot(raf_eins_comp1, vertex.color="grey80", main="Komponente 1")
+plot(raf_eins_comp2, vertex.color="grey60", main="Komponente 2")
+plot(raf_eins_comp3, vertex.color="grey40", main="Komponente 3")
+plot(raf_eins_comp4, vertex.color="grey20", main="Komponente 4")
+par(mfrow=c(1,1), mar=c(0,0,1,1)) 
+```
+#Cluster mit Walktrap Erste Generation
+Hier werden innerhalb einer Komponente Cluster erstellt und aufgrund ihrer kürzesten Verbindung untereinander Visualisiert
+```{r fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# Clusterberechnung
+plot(raf_eins_comp1, vertex.color="grey80", main="Komponente 1")
+
+# Wie funktioniert der Befehl?
+?cluster_walktrap()
+
+# Berechnung der Cluster innerhalb der Komponente
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+cl <- cluster_walktrap(raf_eins_comp1)
+modularity(cl)
+membership(cl)
+
+plot(cl, raf_eins_comp1, 
+     main="Cluster-Walktrap Analyse von raf_eins_comp1")
+```
+```{r fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+#Versuch mit ganzer erster Generation ohne Komponenten
+
+# Clusterberechnung
+plot(raf_eins_mem, vertex.color="grey80", main="Komponente 1")
+
+# Wie funktioniert der Befehl?
+?cluster_walktrap()
+
+# Berechnung der Cluster innerhalb der Komponente
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+cl <- cluster_walktrap(raf_eins_mem)
+modularity(cl)
+membership(cl)
+
+plot(cl, raf_eins_mem, 
+     main="Cluster-Walktrap Analyse der Ersten Generation")
+
+#Fazit: Funktioniert und macht mehr Sinn wegen den Einzelleuten
+
+```
+
+#Cluster Edge-Betweenness
+Hier werden Sollbruchstellen als Verbindung der einzelnen Cluster analysiert (Broker?)
+```{r fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+# Clusterberechnung
+plot(raf_eins_mem, vertex.color="grey80", main="Erste Generation")
+
+# Berechnung der Cluster innerhalb der Komponente
+?cluster_edge_betweenness()
+
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+eb <- cluster_edge_betweenness(raf_eins_mem)
+eb
+
+plot(eb, raf_eins_mem, 
+     main="Edge-Betweenness Cluster")
+```
+
+
+#Zweite Generation mit Komponenten, Clustern und Clusterwalktrap
+```{r fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+raf
+
+raf_zwei <- delete_vertices(raf, V(raf)[generation !="2"])
+
+raf_zwei
+
+raf_zwei_mem <- delete_vertices(raf_zwei, V(raf_zwei)[type !="1"])#ohne Anschläge
+
+raf_zwei_mem
+
+#Entzerrte Darstellung, Anpassung der Visualisierung 
+l <- layout_with_kk(raf_zwei_mem) #legt den Layout-Typ fest
+l <- norm_coords(l, ymin=-0.75, ymax=0.75, xmin=-0.75, xmax=0.75)
+
+
+# Beste Visualisierung ist mit Faktor 1.2
+par(mfrow=c(1,1), mar=c(2,2,2,2))
+
+# Nun wird das Netzwerk der Mitglieder der 2. Generation geplottet:
+plot(raf_zwei_mem, 
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.color="red",
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_zwei_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     main="Netzwerk der zweiten Generation")
+```
+#Komponenten zweite Generation
+```{r}
+#Wir zählen die Komponenten der zweiten Generation:
+count_components(raf_zwei_mem)
+
+#Wir finden 3 Komponenten und lassen sie in Gruppen aufteilen
+raf_zwei_groups <- groups(components(raf_zwei_mem))
+raf_zwei_groups
+
+#Wir finden eine Gruppe mit vielen Mitgliedern, eine mit einem Mitglied und eine Zweiergruppe
+
+# Unteranalyse der Hauptkomponente
+is_connected(raf_zwei_mem)
+
+# Analyse der Verteilung der Komponenenten
+components(raf_zwei_mem, mode = c("weak", "strong"))
+
+# Analyse der starken Komponenten
+components(raf_zwei_mem, mode = "strong")
+
+# Anzahl der Komponenten
+count_components(raf_zwei_mem)
+
+# Aufteilung der Komponenten
+comp_raf_zwei_mem <- components(raf_zwei_mem)
+groups(comp_raf_zwei_mem)
+```
+#Cluster zweite Generation
+```{r}
+#ANzahl der Cluster
+clusters(raf_zwei_mem)
+
+# Sind die Cluster miteinander verbunden?
+is_connected(raf_zwei_mem)
+
+#Nicht verbunden
+```
+#Cluster Walktrap zweite Generation (Gesamt)
+
+```{r fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+
+# Clusterberechnung
+plot(raf_zwei_mem, vertex.color="grey80", main="Zweite Generation")
+
+# Wie funktioniert der Befehl?
+?cluster_walktrap()
+
+# Berechnung der Cluster innerhalb der Komponente
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+cl <- cluster_walktrap(raf_zwei_mem)
+modularity(cl)
+membership(cl)
+
+plot(cl, raf_zwei_mem, 
+     main="Cluster-Walktrap Analyse der Zweiten Generation")
+
+
+```
+#Cluster Edge-Beteweenness Zweite Generation
+```{r fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# Clusterberechnung
+plot(raf_zwei_mem, vertex.color="grey80", main="Zweite Generation")
+
+# Berechnung der Cluster innerhalb der Komponente
+?cluster_edge_betweenness()
+
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+eb <- cluster_edge_betweenness(raf_zwei_mem)
+eb
+
+plot(eb, raf_zwei_mem, 
+     main="Edge-Betweenness Cluster Zweite Generation")
+```
+#Cluster Edge-Betweenness Gesamtnetzwerk
+
+```{r fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+raf
+
+#Um die Cluster zu erstellen, müssen die Aktionen gelöscht werden
+
+raf_mem <- delete_vertices(raf, V(raf)[type !="1"])#ohne Anschläge
+
+# Clusterberechnung
+plot(raf_mem, vertex.color="grey80", main="Gesamtnetzwerk Akteure")
+
+# Berechnung der Cluster innerhalb der Komponente
+?cluster_edge_betweenness()
+
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+eb <- cluster_edge_betweenness(raf_mem)
+eb
+
+plot(eb, raf_mem, 
+     main="Edge-Betweenness Cluster")
+```

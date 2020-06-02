@@ -514,7 +514,7 @@ ego_esb<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Ermordung Siegfri
 # Alle zusammenhängenden Edges werden aufgelistet 
 ego_esb
 
-# Notwendiger Zwischenschrit für die Erstellung des igraph-Objekts
+# Notwendiger Zwischenschritt für die Erstellung des igraph-Objekts
 ego_esb1 <- ego_esb[[1]]
 
 ego_esb1 <- simplify(ego_esb1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
@@ -835,7 +835,7 @@ ego_pb <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Peter-Juergen Boo
 # liefert eine Liste der Verbindungen von Boock
 ego_pb
 
-ego_pb1 <- ego_pb[[1]] # notwendiger Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_pb1 <- ego_pb[[1]] # notwendiger Zwischenschritt, damit das igraph-Objekt hergestellt wird
 ego_pb1 <- simplify(ego_pb1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
 ego_pb1
 
@@ -956,7 +956,7 @@ ego_bm <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Brigitte Mohnhaup
 
 # liefert eine Liste der Verbindungen 
 ego_bm
-#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+#man braucht diesen Zwischenschritt, damit das igraph-Objekt hergestellt wird
 ego_bm1 <- ego_bm[[1]]
 ego_bm1
 
@@ -1020,7 +1020,7 @@ ego_kc<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Klaus Croissant", 
 
 # liefert eine Liste der Verbindungen 
 ego_kc
-#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+#man braucht diesen Zwischenschritt, damit das igraph-Objekt hergestellt wird
 ego_kc1 <- ego_kc[[1]]
 
 ego_kc1 <- simplify(ego_kc1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten

@@ -1,0 +1,1343 @@
+---
+title: "Gesamt2"
+author: "Hannah Bauer"
+date: "31 5 2020"
+output: html_document
+---
+
+# Set-Up
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r Wichtigste Packages abrufen}
+
+#Vorab werden die wichtigsten Packages geladen
+
+library(igraph)
+library(igraphdata)
+library(knitr) 
+library(rmarkdown)
+```
+
+```{r Gesamtnetzwerk einlesen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# Zunächst soll das Gesamtnetzwerk der RAF generiert werden.
+
+# Dazu werden zuerst Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+# zeigt die Matrix an
+edgematrix
+# generiert ein igraph-Objekt (dataframe) aus der Matrix, das gerichtet ist (directed = true)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+raf
+
+# Nun wird die Visualisierung der Knoten und Kanten angepasst.
+
+#Graphisch werden Ereignisse/Aktionen anders dargestellt als Akteure. Zudem wird bei den Akteuren optisch zwischen 1. und 2. Generation unterschieden
+
+V(raf)[V(raf)$type == 1]$shape <- "circle" # Personen werden als Kreise dargestellt
+V(raf)[V(raf)$type == 2]$shape <- "square" # Aktionen werden als Quadrate dargestellt
+V(raf)[V(raf)$generation == 1]$color <- "grey80" # Knoten der Mitglieder der 1. Generation werden in Farbe grey80 dargestellt
+V(raf)[V(raf)$generation == 2]$color <- "grey30" # Knoten der Mitglieder der 2. Generation werden in Farbe grey30 dargestellt
+V(raf)[V(raf)$generation == 3]$color <- "white" # Knoten der Mitglieder beider Generation werden weiß eingefärbt
+V(raf)[V(raf)$generation == 4]$color <- "lightpink" # Knoten der Unterstützer*innen werden hellrosa eingefärbt
+V(raf)[V(raf)$generation == 99]$color <- "white" # Knoten, zu denen keine Angabe bzgl. iher Generation vorliegt, werden weiß eingefärbt
+V(raf)[V(raf)$generation == 3]$vertex.frame <- "black" # weiß gefärbte Knoten sollen zur besseren Sichtbarkeit einen schwarzen Rahmen erhalten
+V(raf)[V(raf)$generation == 99]$vertex.frame <- "black" # weiß gefärbte Knoten sollen zur besseren Sichtbarkeit einen schwarzen Rahmen erhalten
+V(raf)[V(raf)$type == 2]$color <- "cornflowerblue" # Knoten der Aktionen werden kornblumenblau gefärbt
+
+# definiert die Farbe aller Kanten
+E(raf)$color <- "grey40"
+
+V(raf)$vertex.label.family <- "sans" # legt fest, dass nur Schriftarten ohne Serifen verwendet werden
+V(raf)$vertex.label.cex <- .07
+
+raf <- simplify(raf, remove.multiple = TRUE) # es werden keine doppelten oder mehrfachen Beziehungen angezeigt
+
+# Visualisierung des Netzwerks
+plot(raf,
+     layout=layout_with_kk,
+     asp=0, # definiert, dass der ganze Platz ausgenutzt werden soll
+     edge.curved=curve_multiple(raf), # verhindert, dass sich Kanten überlagern
+     vertex.label=NA, # entfernt die Beschriftung der Knoten für bessere Übersichtlichkeit
+     vertex.size=5,
+     main="Gesamtnetzwerk der RAF",
+     sub="erste und zweite Generation, hellgrau = 1. Generation, dunkelgrau = 2. Generation, \n weiß = beide Generationen / keine Angabe, hellrosa = Unterstützer*innen, blau = Aktionen")
+
+# Da es einige Knoten im Gesamtnetzwerk gibt, die nur als Unterstützer*innen tätig waren, soll nun ein Netzwerk erstellt werden, in dem diese ausgeblendet und nur wirkliche Mitglieder dargestellt werden.
+
+raf_mem <- delete.vertices(raf, V(raf)[generation == "4"]) # löscht alle Unterstützer*innen
+raf_mem <- simplify(raf_mem, remove.multiple = TRUE) # es werden keine doppelten oder mehrfachen Beziehungen angezeigt
+raf_mem # generiert das igraph-Objekt
+
+# Visualisierung des neuen Netzwerks:
+plot(raf_mem,
+     layout=layout_with_kk,
+     asp=0, # definiert, dass der ganze Platz ausgenutzt werden soll
+     edge.curved=curve_multiple(raf_mem), # verhindert, dass sich Kanten überlagern
+     vertex.label=NA, # entfernt die Beschriftung der Knoten für bessere Übersichtlichkeit
+     vertex.size=5,
+     main="Gesamtnetzwerk der RAF (ohne Unterstützer*innen)",
+     sub="erste und zweite Generation, hellgrau = 1. Generation, dunkelgrau = 2. Generation, \n weiß = beide Generationen / keine Angabe, blau = Aktionen")
+
+```
+```{r Gesamtnetzwerk mit verschiedenen Kantenfarben, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+# Skript Erstellung einfaches Netzwerk
+
+# Da es sich um ein multiplexes Netzwerk handelt, soll nachfolgend die Farbe der Kanten je nach dargestelltem Beziehungstyp angepasst werden.
+
+# lädt igraph Bibliothek (ggf. vorher installieren)
+library(igraph)
+
+# liest die Edgelist als "el" ein
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",", row.names=NULL)
+
+# zeigt die ersten sechs Zeilen des Datensatzes an
+head(el)
+
+# liest die Nodelist mit den Namen ein
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+# zeigt die ersten sechs Zeilen der Nodelist und die Attribute der Nodes an
+head(nodes)
+
+# Zwischenschritt verbindet die Edge- und Nodelist zu einer Matrix
+raf_matrix <- as.matrix(el)
+
+# zeigt die Matrix an
+raf_matrix
+
+# generiert ein igraph-Objekt (dataframe) aus der Matrix, das gerichtet ist (directed = true)
+raf <- graph_from_data_frame(d=raf_matrix, directed=FALSE)
+
+# ruft unser neues igraph-Objekt auf
+raf
+
+# stellt die Art der Beziehung farblich da
+E(raf)[E(raf)$relationship == " 1"]$color <-"red" # Bekanntschaften werden rot eingefärbt
+E(raf)[E(raf)$relationship == " 2"]$color <-"darkgreen" # Freundschaften werden dunkelgrün eingefärbt
+E(raf)[E(raf)$relationship == " 3"]$color <-"blue" # Liebesbeziehungen werden blau eingefärbt
+E(raf)[E(raf)$relationship == " 4"]$color <-"yellow" # Wohngemeinschaften werden gelb gefärbt
+E(raf)[E(raf)$relationship == " 5"]$color <-"purple" # Verbindungen durch gemeinsame Haft werden lila gefärbt
+E(raf)[E(raf)$relationship == " 6"]$color <-"pink" # Versorgungsbeziehungen werden pink gefärbt
+E(raf)[E(raf)$relationship == " 7"]$color <-"chartreuse" # Beteiligungen an Aktionen werden in  chartreuse dargestellt
+E(raf)[E(raf)$relationship == " 8"]$color <-"cyan" #  Verbindungen durch gemeinsame Ausbildung werden cyanfarben dargestellt
+E(raf)[E(raf)$relationship == " 9"]$color <-"darkslateblue" # Beziehungen des Typs "Anwerben" werden in darkslateblue dargestellt
+E(raf)[E(raf)$relationship == "10"]$color <-"springgreen" # Verwandschaften werden in hellem Grün dargestellt
+
+
+# einfacher plot
+
+edge.attributes(raf)
+
+plot(raf,
+     layout=layout_with_kk,
+     asp=0,
+     vertex.size=5,
+     vertex.frame.color=NA,
+     main="RAF-Netzwerk mit Edges")
+
+```
+
+# Teilnetzwerke der verschiedenen Beziehungstypen
+
+```{r Selektion nach Beziehungen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# Die verschiedenen Beziehungstypen sollen nun genauer betrachtet werden. Dafür soll für jeden Beziehungstyp ein einzelnes Egonetzwerk erstellt werden, um beispielsweise die bestehenden Liebesbeziehungen genauer betrachten zu können.
+
+raf # dazu wird das igraph Objekt raf abgerufen
+
+V(raf)$color <- "white" # Die Knoten werden weiß eingefärbt
+
+# Da der Beziehungstyp "Beteiligung an der Aktion" (codiert mit relationship = 7) sowohl Knoten des Typs Personen als auch Aktionen umfasst, sollen diese zwei Typen optisch unterschieden werden können:
+
+raf
+
+# Nun können die diversen Teilnetzwerke generiert werden: 
+
+#Bekanntschaftsnetzwerk:
+contact <- subgraph.edges(raf, E(raf)[relationship== " 1"]) # erstellt ein neues Teilnetzwerk indem nur die Beziehungen selektiert werden, bei denen es sich um Bekanntschaften handelt
+contact
+contact <- simplify(contact, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+contact
+
+# Visualisierung des Teilnetzwerks
+plot(contact,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     edge.curved=curve_multiple(contact), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color="black",
+     vertex.label.family="sans", #gibt die Schriftart an
+     edge.color="red",
+     main="Bekanntschafts-Netzwerk")
+
+
+#Freundschaftsnetzwerk:
+
+friendship <- subgraph.edges(raf, E(raf)[relationship== " 2"]) # erstellt ein neues Teilnetzwerk, in dem nur Freundschaftsbeziehungen dargestellt werden
+friendship <- simplify(friendship, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+friendship
+
+# Visualisierung des Teilnetzwerks
+plot(friendship,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     edge.curved=curve_multiple(friendship), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.family = "sans", #gibt die Schriftart an
+     edge.color="darkgreen",
+     main="Freundschafts-Netzwerk")
+
+
+#Liebesnetzwerk:
+love <- subgraph.edges(raf, E(raf)[relationship== " 3"]) # erstellt ein neues Teilnetzwerk, in dem nur Liebesbeziehungen dargestellt werden
+love <- simplify(love, remove.multiple=TRUE,) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+love
+
+# Visualisierung des Teilnetzwerks
+plot(love,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     edge.curved=curve_multiple(love), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.family = "sans", #gibt die Schriftart an
+     edge.color="blue",
+     main="Liebesbeziehungs-Netzwerk")
+
+#WG-Netzwerk
+
+wg <- subgraph.edges(raf, E(raf)[relationship== " 4"]) # erstellt ein Teilnetzwerk, in dem nur Verbindungen zwischen Knoten angezeigt werden, die in einer Wohngemeinschaft miteinander gelebt haben
+wg <- simplify(wg, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+wg
+
+# Visualisierung des Teilnetzwerks
+plot(wg,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     edge.curved=curve_multiple(wg), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     edge.color="yellow",
+     main="Wohnungsgemeinschafts-Netzwerk")
+
+#Haft-Netzwerk
+
+prison <- subgraph.edges(raf, E(raf)[relationship== " 5"]) # erstellt ein neues Teilnetzwerk in dem nur Verbindungen zwischen Knoten angezeigt werden, die gemeinsam inhaftiert waren
+prison <- simplify(prison, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+prison
+
+# Visualisierung des Teilnetzwerkes
+plot(prison,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     edge.curved=curve_multiple(prison), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     edge.color="purple",
+     main="Gemeinsame Haft Netzwerk")
+
+#Versorgungsnetzwerk
+
+provision <- subgraph.edges(raf, E(raf)[relationship== " 6"]) # erstellt ein neues Teilnetzwerk, in dem nur Versorgungsbeziehungen dargestellt werden
+provision <- simplify(provision, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+provision
+
+V(provision)[V(provision)$generation == 4]$color <- "lightpunk" # Unterstützer*innen werden hellrosa hervorgehoben, um zu sehen, wie viele Externe bzw. Nicht-Mitglieder eine Rolle gespielt haben
+
+# Visualisierung des Netzwerks: 
+plot(provision,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(provision), # verhindert, dass sich Kanten überlagern
+     vertex.size=10, # setzt die Größe der Knoten auf 10
+     vertex.label.color = "black",
+     vertex.label.family = "sans", #gibt die Schriftart an
+     edge.color="pink", # Kanten werden pink eingefärbt
+     main="Versorgungs-Netzwerk")
+
+
+#Aktionsbeteiligungs-Netzwerk
+
+participation <- subgraph.edges(raf, E(raf)[relationship== " 7"]) # erstellt ein neues Teilnetzwerk, in dem nur die Akteure angezeigt werden, die an einer Aktion beteiligt waren
+participation <- simplify(participation, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+V(participation)[V(participation)$type == 2]$color <- "cornflowerblue" # Aktionen und Anschläge werden blau eingefärbt, um diese besser erkennen zu können)
+participation
+
+# Visualisierung des Teilnetzwerkes
+plot(participation,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     edge.curved=curve_multiple(participation), # verhindert, dass sich Kanten überlagern
+     vertex.size=5,
+     vertex.label.color = "black",
+     vertex.label.family = "sans", #gibt die Schriftart an
+     vertex.label.cex=.5, # halbiert die Größe der Labelbeschriftung
+     edge.color="chartreuse",
+     main="Aktionsbeteiligungs-Netzwerk")
+
+# Die Teilnetzwerke der im Codebuch definierten Beziehungskategorien 8 und 9 (Anwerber- und gemeinsame Ausbildungs-Netzwerke) sollen hier nicht mehr betrachtet werden, da diese bei der Datenerhebung nicht umfassend erfasst werden konnten und daher keine besondere Aussagekraft hätten.
+
+#Verwandtschafts-Netzwerk:
+
+kinship <- subgraph.edges(raf, E(raf)[relationship== "10"]) # Erstellt ein neues Teilnetzwerk in dem nur Akteure mit Verwandschaftsbeziehungen dargestellt werden 
+kinship <- simplify(kinship, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+kinship
+
+# Visualisierung des Teilnetzwerks
+plot(kinship,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(kinship), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.family = "sans", #gibt die Schriftart an
+     edge.color="springgreen",
+     main="Verwandtschafts-Netzwerk")
+
+```
+
+# Egonetzwerke der Anschläge & Aktionen
+
+```{r Egonetzwerk Befreiung von Andreas Bader 1970, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# Die Baader-Befreiung war eine zentrale Aktion in den Anfangsjahren der RAF, weshalb genauer betrachtet werden soll, wer daran beteiligt war. Dazu wird für den Knoten "Befreiung Andreas Baader 14.05.1970" ein Ego-Netzwerk erstellt.
+
+raf # das Standard-Netzwerk der RAF wird abgerufen
+ego_bef<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Befreiung Andreas Baader 14.05.1970", mode = "all") # erstellt ein Ego-Netzwerk der Baader-Befreiung inklusive der beteiligten RAF-Mitglieder
+
+# notwendiger Zwischenschritt für die Erstellung des igraph-Objekts
+ego_bef1 <- ego_bef[[1]]
+ego_bef1
+
+ego_bef1 <- simplify(ego_bef1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+ego_bef1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_bef1)[V(ego_bef1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_bef1)[V(ego_bef1)$type == 2]$shape <- "square" # Anschläge werden als Quadrat dargestellt
+V(ego_bef1)[V(ego_bef1)$name == "Befreiung Andreas Baader 14.05.1970"]$color <- "firebrick" # der betrachtete Anschlag wird rot hervorgehoben
+V(ego_bef1)[V(ego_bef1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_bef1)[V(ego_bef1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+
+# Visualisierung des Netzwerks:
+plot(ego_bef1, 
+     layout=layout_with_kk,
+     main="Ego-Netzwerk: Befreiung von Andreas Baader (14.05.1970)",
+     sub="nur direkte Beziehungen des ersten Grads; grün = Männer; orange = Frauen",
+     edge.color="grey40", # definiert die Kantenfarbe
+     vertex.label.size=2,
+     vertex.label.color="black",
+     vertex.frame.color=NA, # entfernt den Rahmen um die Knoten
+     vertex.size=10, # setzt die Knotengröße auf 10
+     asp=0, # definiert, dass der gesamte Raum ausgenutzt werden soll,
+     rescale=T)
+    
+```
+
+```{r Egonetzwerk Entführung Hanns Martin-Schleyer 05.09.1977, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf # ruft das igraph-Objekt raf auf
+
+ego_ent<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977", mode = "all") # erstellt ein Ego-Netzwerk der Schleyer-Entführung inklusive der daran beteiligten RAF-Mitglieder, Selektion aller Nodes, die mit der Aktion direkt verbunden sind (Beziehung ersten Grades)
+
+# Alle zusammenhängenden Edges werden aufgelistet 
+ego_ent
+
+# notwendiger Zwischenschritt für die Erstellung des igraph-Objekts
+ego_ent1 <- ego_ent[[1]]
+ego_ent1 <- simplify(ego_ent1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass eine Verbindung zwischen den Knoten besteht
+ego_ent1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_ent1)[V(ego_ent1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_ent1)[V(ego_ent1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+V(ego_ent1)[V(ego_ent1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_ent1)[V(ego_ent1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_ent1)[V(ego_ent1)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977"]$color <- "firebrick" # die betrachtete Aktion wird rot hervorgehoben
+
+# Visualisierung des Netzwerkes:
+plot(ego_ent1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0, # definiert, dass der gesamte Platz ausgenutzt werden soll
+     main="Ego-Netzwerk Entführung Hanns Martin-Schleyer 
+     05.09.1977",
+     sub="nur direkte Beziehungen des ersten Grads; grün = Männer; orange = Frauen",
+     vertex.label.size=3,
+     vertex.size=10, 
+     vertex.label.color="black",
+     edge.color="grey40")
+
+# Farbliche Hervorhebung der Generations-Zugehörigkeiten:
+
+# Die Schleyer-Entführung war sehr bedeutend für die RAF und stellt einen Schnittpunkt zwischen den ersten beiden Generationen dar. Daher sollen die beiden Generationen in unterschiedenen Farben dargestellt werden, um diese erkennen und unterscheiden zu können.
+V(ego_ent1)[V(ego_ent1)$generation == 1]$color <- "grey80" # Mitglieder der ersten Generation werden hellgrau dargestellt
+V(ego_ent1)[V(ego_ent1)$generation == 2]$color <- "grey30" # Mitglieder der zweiten Generation werden dunkelgrau dargestellt
+V(ego_ent1)[V(ego_ent1)$generation == 3]$color <- "white" # Mitglieder der ersten und zweiten Generation werden weiß dargestellt
+V(ego_ent1)[V(ego_ent1)$generation == 99]$color <- "white" # Mitglieder, zu denen es keine Angabe bezüglich ihrer Generationszugehörigkeit gibt, werden weiß dargestellt
+V(ego_ent1)[V(ego_ent1)$generation == 3]$vertex.frame.color <- "black" # setzt Rahmenfarbe auf schwarz
+V(ego_ent1)[V(ego_ent1)$generation == 99]$vertex.frame.color <- "black" # setzt Rahmenfarbe auf schwarz
+V(ego_ent1)[V(ego_ent1)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977"]$color <- "firebrick" # Anschlag wird rot hervorgehoben
+
+plot(ego_ent1,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
+     rescale=TRUE,
+     main="Ego-Netzwerk der Entführung Hanns Martin-Schleyer 05.09.1977",
+     sub=" Beziehungen ersten Grades, hellgrau = 1. Generation, /n dunkelgrau = 2. Generation, weiß = beide Generationen / keine Angabe",
+     vertex.label.color="black",
+     edge.color="grey40")
+
+```
+
+```{r Bombenanschlag auf Bundesrichter Buddenberg 15.05.1972, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf # igraph-Objekt wird geladen
+
+# Erstellen eines Ego-Netzwerks des Buddenberg-Anschlags inklusive der daran beteiligten RAF-Mitglieder
+ego_bbb<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Bombenanschlag auf Bundesrichter Buddenberg 15.05.1972", mode = "all")
+
+# Alle zusammenhängenden Edges werden aufgelistet 
+ego_bbb
+
+# Notwendiger Zwischenschritt für die Erstellung des igraph-Objekts
+ego_bbb1 <- ego_bbb[[1]]
+ego_bbb1 <- simplify(ego_bbb1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+ego_bbb1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_bbb1)[V(ego_bbb1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_bbb1)[V(ego_bbb1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+V(ego_bbb1)[V(ego_bbb1)$generation == 1]$color <- "grey80" # Mitglieder der 1. Generation sind hellgrau eingefärbt
+V(ego_bbb1)[V(ego_bbb1)$generation == 2]$color <- "grey20" # Mitglieder der 2. Generation sind dunkelgrau eingefärbt
+V(ego_bbb1)[V(ego_bbb1)$name == "Bombenanschlag auf Bundesrichter Buddenberg 15.05.1972"]$color <- "red" # Anschlag wird rot hervorgehoben
+
+# Visualisierung des Egonetzwerks
+plot(ego_bbb1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0,
+     main="Ego-Netzwerk Bombenanschlag auf Bundesrichter Buddenberg
+     15.05.1972",
+     sub="nur direkte Anschlagsbeteiligungen (= Beziehungen ersten Grades),
+     hellgrau = Erste Generation",
+     edge.color="grey40",
+     vertex.label.size=2,
+     vertex.size=10)
+
+# Da bei dieser Aktion bis dato nicht gesichert bekannt ist, wer daran beteiligt war, ist diese Darstellung vermutlich nicht realistisch und daher nicht wirklich aussagekräftig. Eine alleinige Beteiligung Raspes ist unwahrscheinlich, vielmehr ist davon auszugehen, dass er dafür verantwortlich gemacht wurde, stellvertretend für das gesamte Kommando "Manfred Grashof", das den Anschlag verübt hat.
+
+```
+
+```{r Egonetzwerk Ermordung Jürgen Ponto 30.07.1977, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+raf # igraph-Objekt wird geladen
+
+# Erstellen eines Ego-Netzwerks des Ponto-Mordes inklusive der daran beteiligten RAF-Mitglieder
+ego_ejp<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Ermordung Juergen Ponto 30.07.1977", mode = "all")
+
+# Alle zusammenhängenden Edges werden aufgelistet 
+ego_ejp
+
+# Notwendiger Zwischenschrit für die Erstellung des igraph-Objekts
+ego_ejp1 <- ego_ejp[[1]]
+
+ego_ejp1 <- simplify(ego_ejp1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+ego_ejp1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit der Knotentypen und des Geschlechts
+V(ego_ejp1)[V(ego_ejp1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_ejp1)[V(ego_ejp1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+V(ego_ejp1)[V(ego_ejp1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_ejp1)[V(ego_ejp1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_ejp1)[V(ego_ejp1)$name == "Ermordung Juergen Ponto 30.07.1977"]$color <- "firebrick" # Aktion wird rot hervorgehoben
+
+# Visualisierung des Egonetzwerks:
+plot(ego_ejp1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0,
+     main="Ego-Netzwerk Ermordung Jürgen Ponto (30.07.1977)",
+     sub="nur direkte Beziehungen des ersten Grads; grün = Männer, orange = Frauen",
+     edge.color="grey40",
+     vertex.label.color="black",
+     vertex.label.size=2,
+     vertex.size=10)
+
+# Farbliche Anpassungen, um zu zeigen: Welche Generation(en) war(en) beteiligt?
+V(ego_ejp1)[V(ego_ejp1)$generation == 1]$color <- "grey80" # erste Generation wird hellgrau gefärbt
+V(ego_ejp1)[V(ego_ejp1)$generation == 2]$color <- "grey30" # zweite Generation wird dunkelgrau gefärbt
+V(ego_ejp1)[V(ego_ejp1)$generation == 3]$color <- "white" # Mitglieder beider Generationen werden weiß gefärbt und erhalten einen schwarzen Rahmen:
+V(ego_ejp1)[V(ego_ejp1)$generation == 3]$vertex.frame.color <- "black"
+V(ego_ejp1)[V(ego_ejp1)$name == "Ermordung Juergen Ponto 30.07.1977"]$color <- "firebrick" # Anschlag wird rot hervorgehoben
+
+plot(ego_ejp1,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
+     rescale=TRUE,
+     vertex.label.color="black",
+     vertex.size=10,
+     edge.color="grey40",
+     main="Ego-Netzwerk der Ermordung Jürgen Pontos (30.07.1977)",
+     sub="Beziehungen ersten Grades, hellgrau = 1. Geneneration, 
+     dunkelgrau = 2. Generation, weiß = beide / keine Generation")
+
+```
+
+```{r Egonetzwerk Ermordung Siegfried Buback 07.04.1977, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf  # igraph-Objekt wird geladen
+
+# Erstellen eines Ego-Netzwerks der Buback-Ermordung inklusive der daran beteiligten RAF-Mitglieder, Selektion aller Nodes, die mit der Aktion direkt verbunden sind (Beziehung ersten Grades)
+ego_esb<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Ermordung Siegfried Buback 07.04.1977", mode = "all")
+
+# Alle zusammenhängenden Edges werden aufgelistet 
+ego_esb
+
+# Notwendiger Zwischenschritt für die Erstellung des igraph-Objekts
+ego_esb1 <- ego_esb[[1]]
+
+ego_esb1 <- simplify(ego_esb1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+ego_esb1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_esb1)[V(ego_esb1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_esb1)[V(ego_esb1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+V(ego_esb1)[V(ego_esb1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_esb1)[V(ego_esb1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_esb1)[V(ego_esb1)$name == "Ermordung Siegfried Buback 07.04.1977"]$color <- "firebrick" # Aktion wird rot hervorgehoben
+
+plot(ego_esb1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0, # definiert, dass der gesamte Raum ausgenutzt werden soll
+     main="Ego-Netzwerk Ermordung Siegfried Buback (07.04.1977)",
+     sub="nur direkte Beziehungen des ersten Grads; grün = Männer, orange = Frauen",
+     edge.color="grey40",
+     vertex.label.color="black",
+     vertex.size=10)
+
+# Farbliche Anpassungen, um zu zeigen: Welche Generation(en) war(en) beteiligt?
+V(ego_esb1)[V(ego_esb1)$generation == 1]$color <- "grey80" # erste Generation wird hellgrau gefärbt
+V(ego_esb1)[V(ego_esb1)$generation == 2]$color <- "grey30" # zweite Generation wird dunkelgrau gefärbt
+V(ego_esb1)[V(ego_esb1)$generation == 3]$color <- "white" # Mitglieder beider Generationen werden weiß gefärbt und erhalten einen schwarzen Rahmen:
+V(ego_esb1)[V(ego_esb1)$generation == 3]$vertex.frame.color <- "black"
+V(ego_esb1)[V(ego_esb1)$name == "Ermordung Siegfried Buback 07.04.1977"]$color <- "firebrick" # Anschlag wird rot hervorgehoben
+
+# Visualisierung des Egonetzwerks:
+plot(ego_esb1,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
+     rescale=TRUE, 
+     main="Ego-Netzwerk der Ermordung Siegfried Bubacks 07.04.1977",
+     sub="nur direkte Beziehungen des ersten Grads, hellgrau = 1. Generation,
+     dunkelgrau = 2. Generation, weiß = beide / keine Generation",
+     vertex.label.color= "black",
+     vertex.size=10,
+     edge.color="grey40")
+
+```
+
+```{r Egonetzwerk Entfuehrung Lufthansa Maschine Landshut 13.10.1977, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+raf # igraph-Objekt wird geladen
+
+# Erstellen eines Ego-Netzwerks der Landshut-Entführung inklusive der daran beteiligten RAF-Mitglieder, Selektion der direkten Verbindungen (ersten Grades)
+ego_lhl<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Entfuehrung Lufthansa Maschine Landshut 13.10.1977", mode = "all")
+
+# Alle zusammenhängenden Edges werden aufgelistet 
+ego_lhl
+
+# Notwendiger Zwischenschritt für die Erstellung der igraph-Objekts
+ego_lhl1 <- ego_lhl[[1]]
+
+ego_lhl1 <- simplify(ego_lhl1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+ego_lhl1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_lhl1)[V(ego_lhl1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_lhl1)[V(ego_lhl1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+V(ego_lhl1)[V(ego_lhl1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_lhl1)[V(ego_lhl1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_lhl1)[V(ego_lhl1)$name == "Entfuehrung Lufthansa Maschine Landshut 13.10.1977"]$color <- "firebrick" # Aktion wird rot hervorgehoben
+
+#Entzerrte Darstellung, Anpassung der Visualisierung 
+l <- layout_with_kk(ego_lhl1) #legt den Layout-Typ fest
+l <- norm_coords(l, ymin=-1, ymax=1, xmin=-5, xmax=5)
+plot(ego_lhl1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0, # definiert, dass der ganze Raum ausgenutzt wird
+     main="Ego-Netzwerk Entführung Lufthansa Maschine Landshut (13.10.1977)",
+     sub="nur direkte Beziehungen des ersten Grads; grün = Männer, orange = Frauen",
+     edge.color="grey40",
+     vertex.label.color="black",
+     vertex.size=10)
+
+# Welche Generation(en) war(en) beteiligt?
+V(ego_lhl1)[V(ego_lhl1)$generation == 4]$color <- "lightpink" # Unterstützer*innen werden hellrosa dargestellt
+V(ego_lhl1)[V(ego_lhl1)$generation == 3]$color <- "white" # Mitglieder beider Generationen werden weiß gefärbt
+V(ego_lhl1)[V(ego_lhl1)$generation == 3]$vertex.frame.color <- "black" # Hinzufügen eines schwarzen Rahmens um die weißen Knoten, damit diese sichtbar sind
+V(ego_lhl1)[V(ego_lhl1)$name == "Entfuehrung Lufthansa Maschine Landshut 13.10.1977"]$color <- "firebrick" #Aktion wird rot hervorgehoben
+
+# Visualisierung des Egonetzwerks
+plot(ego_lhl1,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
+     rescale=TRUE,
+     main="Ego-Netzwerk der Entführung der Lufthansa Maschine Landshut (13.10.1977)",
+     sub="nur direkte Beziehungen des ersten Grads, weiß = Mitglieder beider Generationen, rosa = Unterstützer*innen (keine RAF-Mitglieder)",
+     vertex.label.color="black",
+     vertex.size=10,
+     edge.color="grey40")
+
+# Generell zeigt die Visualisierung, dass die Landshut-Entführung eher eine Aktion war, bei der die RAF nicht aktiv beteiligt war, sondern zu deren Zwecke (Befreiungsaktion) durchgeführt wurde. Die Aussagekraft der Visualisierung ist jedoch in Frage zu stellen, da wir vermutlich nicht alle Akteure erfasst haben, die die Entführung durchgeführt haben.
+
+```
+
+# Ego-Netzwerke zentraler RAF-Mitglieder
+
+```{r Ego-Netzwerk von Andreas Baader, ersten Grades, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf # das Standard-Netzwerk der RAF wird abgerufen
+
+# Uns interessieren die Ego-Netzwerke der Hauptakteure der RAF
+# Hierzu sehen wir uns zunächst die degree-Werte der Nodes an:
+degree(raf)
+
+# daraus ergibt sich folgende Lister der Knoten mit den meisten Verbindungen:
+# 1. Andreas Baader (133); 2. Gudrun Ensslin (124); 3. Ulrike Meinhof (74); Jan Carl Raspe (53), Brigitte Mohnhaupt (51), Klaus Croissant (45), Volker Speitel (45), Peter-Jürgen Boock (34)
+
+# ego_size() zeigt uns den Wert mit den höchsten Verbindungen (degrees)
+ego_size(raf)
+V(raf)$egos <- ego_size(raf)
+vertex.attributes(raf)$egos
+
+which.max(vertex.attributes(raf)$egos)
+
+# Baader hat die meisten Knoten, wie der obige Befehl nochmals bestätigt. Daher soll im folgenden sein Egonetzwerk erstellt werden.
+
+# erzeugt ein Egonetzwerk
+ego_ab <- make_ego_graph(raf, order = 1, nodes = V(raf)$name == "Andreas Baader", mode ="all")
+ego_ab
+ego_ab1 <- ego_ab[[1]] # notwendiger Schritt für Erstellen des igraph-Objekts
+
+ego_ab1 <- simplify(ego_ab1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+
+ego_ab1
+
+#Nun wird die Visualisierung des Netzwerkes angepasst
+V(ego_ab1)[V(ego_ab1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_ab1)[V(ego_ab1)$sex == 1]$color <- "darkseagreen" # Männer werden grün eingefärbt
+V(ego_ab1)[V(ego_ab1)$sex == 2]$color <- "darkorange3" # Frauen werden orange eingefärbt
+V(ego_ab1)[V(ego_ab1)$name == "Andreas Baader"]$color <- "firebrick" # Baader wird rot hervorgehoben
+V(ego_ab1)[V(ego_ab1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
+V(ego_ab1)[V(ego_ab1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+
+ego_ab1
+
+# Nun wird das Egonetzwerk von Baader geplottet:
+plot(ego_ab1,
+     layout=layout_with_kk,
+     asp=0,
+     rescale=TRUE, 
+     main="Ego-Netzwerk von Andreas Baader",
+     sub="Beziehungen ersten Grades;roter Kreis = Andreas Baader, grüner Kreis = Mann,
+     orangefarbener Kreis = Frau, blaues Quadrat = Aktion der RAF",
+     vertex.size=5,
+     vertex.label.color="black",
+     vertex.label.cex=.75, # Größe der Labelbeschriftung wird halbiert
+     edge.color="grey40")
+
+```
+
+```{r Ego-Netzwerk Baader Beziehungen 1. Grades (nur Personen), fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# Nun wird das Ego-Netzwerk Baaders mit den Beziehungen 1. Grades zu natürlichen Personen erstellt, das heißt, die Aktionen werden für diese Darstellung entfernt.
+
+ego_ab1
+
+ego_ab1_pers <- delete_vertices(ego_ab1, V(ego_ab1)[type != "1"]) #es werden alle Knoten gelöscht, die zu Baader eine Verbindung haben und KEINE natürlichen Personen sind
+
+# Visualisierung des Ego-Netzwerks:
+plot(ego_ab1_pers,  
+     layout=layout_with_kk,
+     rescale=T, 
+     asp=0, #definiert, dass der ganze Platz für die Darstellung genutzt werden soll
+     edge.curved=curve_multiple(ego_ab1_pers),
+     edge.color="grey40",
+     vertex.size=5,
+     vertex.label.color="black",
+     vertex.label.cex=.75,
+     main="Ego-Netzwerk Andreas Baader 
+     (nur direkte Beziehungen zu natürlichen Personen)",
+     sub="rot = Andreas Baader, grün = Männer, orange = Frauen")
+
+# Die Ego-Netzwerke Baaders mit Beziehungen zweiten und dritten Grades haben wir zwar erstellt und geplottet, jedoch war die Visualisierung sowohl unübersichtlich, als auch wenig aufschlussreich, weshalb wir uns entschlossen haben, diese nicht weiter zu berücksichtigen. 
+
+```
+
+``` {r Ego-Netzwerk von Gudrun Ensslin, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# Uns interessieren die Ego-Netzwerke der Hauptakteure der RAF
+# nach Baader hat Ensslin die zweithöchste Zahl an Verbindungen
+# Daher soll nun auch ihr Egonetzwerk visualisiert werden
+
+raf
+
+# erzeugt ein Egonetzwerk von Ensslin mit Beziehungen 1. Grades
+ego_ge <- make_ego_graph(raf, order = 1, nodes = V(raf)$name == "Gudrun Ensslin", mode ="all")
+ego_ge
+ego_ge1 <- ego_ge[[1]]
+
+ego_ge1 <- simplify(ego_ge1, remove.multiple = TRUE) # doppelte Edges werden entfernt, damit zwischen zwei Knoten mit Beziehungen nicht unzählige Verbindungen dargestellt werden. Das wäre zu unübersichtlich und eine Verbindung reicht aus, um in diesem Schritt zu zeigen, dass zwei Akteure etwas miteinander zu tun hatten
+
+ego_ge1
+
+#Zur besseren Unterscheidung werden die Knoten verschieden eingefärbt und ihnen verschiedene Formen zugewiesen
+V(ego_ge1)[V(ego_ge1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_ge1)[V(ego_ge1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_ge1)[V(ego_ge1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_ge1)[V(ego_ge1)$name == "Gudrun Ensslin"]$color <- "firebrick" # Ensslin wird rot hervorgehoben
+V(ego_ge1)[V(ego_ge1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
+V(ego_ge1)[V(ego_ge1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+
+ego_ge1
+
+# Nun wird das Ego-Netzwerk von Ensslin geplottet:
+plot(ego_ge1,
+     layout=layout_with_kk,
+     asp=0, # definiert, dass der gesamte Platz für die Darstellung genutzt wird
+     main="Ego-Netzwerk von Gudrun Ensslin",
+     sub="nur Beziehungen ersten Grades; roter Kreis = Gudrun Ensslin,
+     grüner Kreis = Mann, orangefarbener Kreis = Frau, blaues Quadrat = Aktion",
+     rescale=TRUE, 
+     vertex.size=5,
+     vertex.label.cex=0.75,
+     vertex.label.color="black",
+     edge.color="grey40")
+
+```
+
+```{r Ego-Netzwerk Ulrike Meinhof, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf # das Standard-Netzwerk der RAF wird abgerufen
+
+# Uns interessieren die Ego-Netzwerke der Hauptakteure der RAF
+# Ulrike Meinhof hat die drittmeisten Verbindungen, etwa 73 
+# Daher soll nun auch ihr Egonetzwerk visualisiert werden
+
+raf
+
+# erzeugt ein Egonetzwerk von Meinhof, bei dem nur direkte Beziehungen ersten Grades angezeigt werden:
+ego_um <- make_ego_graph(raf, order = 1, nodes = V(raf)$name == "Ulrike Meinhof", mode ="all")
+ego_um
+ego_um1 <- ego_um[[1]] # notwendiger Schritt für die Erstellung des igraph-Objekts
+
+ego_um1 <- simplify(ego_um1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+
+ego_um1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_um1)[V(ego_um1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_um1)[V(ego_um1)$sex == 1]$color <- "darkseagreen" # Männer werden pink dargestellt
+V(ego_um1)[V(ego_um1)$sex == 2]$color <- "darkorange3" # Frauen werden pink dargestellt
+V(ego_um1)[V(ego_um1)$name == "Ulrike Meinhof"]$color <- "firebrick" # Meinhof wird rot hervorgehoben
+V(ego_um1)[V(ego_um1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
+V(ego_um1)[V(ego_um1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+
+ego_um1
+
+
+# Nun wird das Ego-Netzwerk von Meinhof geplottet:
+plot(ego_um1,
+     layout=layout_with_kk,
+     rescale=TRUE,
+     asp=0, #legt fest, dass der ganze Raum ausgefüllt werden soll
+     main="Ego-Netzwerk von Ulrike Meinhof",
+     sub="nur Beziehungen ersten Grades; roter Kreis = Meinhof, grüner Kreis = Mann,
+     orangefarbener Kreis = Frau, blaues Quadrat = Aktion",
+     vertex.size=5,
+     vertex.label.color="black",
+     vertex.label.cex=0.7, # verkleinert die Schriftgröße des Labels der Knoten
+     edge.color="grey40")
+```
+
+```{r Ego-Netzwerk Jan-Carl Raspe, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+raf
+
+# Uns interessieren die Ego-Netzwerke der Hauptakteure der RAF
+# Raspe hat zwar nur um die 45 Verbindungen, war aber zentraler Akteur in der ersten Generation 
+# Daher soll nun auch sein Egonetzwerk visualisiert werden
+
+raf
+
+# erzeugt ein Egonetzwerk von Raspe, bei dem nur direkte Beziehungen ersten Grades angezeigt werden:
+ego_jcr <- make_ego_graph(raf, order = 1, nodes = V(raf)$name == "Jan-Carl Raspe", mode ="all")
+ego_jcr
+ego_jcr1 <- ego_jcr[[1]] # notwendiger Schritt, um ein igraph-Objekt zu erstellen
+
+ego_jcr1 <- simplify(ego_jcr1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+
+ego_jcr1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+
+V(ego_jcr1)[V(ego_jcr1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_jcr1)[V(ego_jcr1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_jcr1)[V(ego_jcr1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_jcr1)[V(ego_jcr1)$name == "Jan-Carl Raspe"]$color <- "firebrick" # Raspe wird rot hervorgehoben
+V(ego_jcr1)[V(ego_jcr1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
+V(ego_jcr1)[V(ego_jcr1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+
+ego_jcr1
+
+# Nun wird das Ego-Netzwerk von Raspe geplottet:
+plot(ego_jcr1,
+     layout=layout_with_kk,
+     rescale=TRUE, 
+     asp=0, # definiert, dass der gesamte Raum für die Darstellung genutzt wird
+     main="Ego-Netzwerk von Jan-Carl Raspe",
+     sub="nur Beziehungen ersten Grades; roter Kreis = Raspe, grüner Kreis = Mann,
+     orangefarbener Kreis = Frau, blaues Quadrat = Aktion",
+     vertex.size=10,
+     vertex.label.color="black",
+     vertex.label.cex=0.7, # Labelbeschriftungsgröße wird verkleinert, um Überschneidungen der Labels zu vermeiden
+     edge.color="grey40")
+
+```
+
+```{r Ego-Netzwerk Peter-Jürgen Boock, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf # das Standard-Netzwerk der RAF wird abgerufen
+
+# selektiert aus dem Netzwerk der RAF alle Knoten, die mit Boock über einen Schritt verbunden sind und erstellt ein Ego-Netzwerk ersten Grades
+ego_pb <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Peter-Juergen Boock", mode = "all")
+# liefert eine Liste der Verbindungen von Boock
+ego_pb
+
+ego_pb1 <- ego_pb[[1]] # notwendiger Zwischenschritt, damit das igraph-Objekt hergestellt wird
+ego_pb1 <- simplify(ego_pb1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+ego_pb1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_pb1)[V(ego_pb1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_pb1)[V(ego_pb1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_pb1)[V(ego_pb1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_pb1)[V(ego_pb1)$name == "Peter-Juergen Boock"]$color <- "firebrick" # Boock wird rot hervorgehoben
+V(ego_pb1)[V(ego_pb1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
+V(ego_pb1)[V(ego_pb1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+
+# Visualisierung von Boocks Ego-Netzwerk
+plot(ego_pb1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0, # der ganze Raum wird für die Darstellung ausgenutzt
+     main="Ego-Netzwerk Peter-Jürgen Boock",
+     sub="nur direkte Beziehungen des ersten Grads, rot = Boock, 
+     grün = Männer, orange = Frauen, blau = Aktionen",
+     edge.color="grey40",
+     vertex.label.color="black",
+     vertex.size=10)
+
+# nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Boock direkt verbunden war
+ego_pb1_p <- delete_vertices(ego_pb1, V(ego_pb1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
+
+ego_pb1_p
+
+# da Boock als Broker gesehen werden könnte, soll nun hervorgehoben werden, welcher Generation seine direkten Verbindungen angehörten
+V(ego_pb1_p)[V(ego_pb1_p)$generation == 1]$color <- "grey80" # erste Generation = hellgrau
+V(ego_pb1_p)[V(ego_pb1_p)$generation == 2]$color <- "grey30" # zweite Generation = dunkelgrau
+V(ego_pb1_p)[V(ego_pb1_p)$generation == 3]$color <- "white" # beide Generationen = weiß
+V(ego_pb1_p)[V(ego_pb1_p)$generation == 4]$color <- "lightpink" # Unterstützer*innen = hellrosa
+V(ego_pb1_p)[V(ego_pb1_p)$name == "Peter-Juergen Boock"]$color <- "firebrick"
+
+
+plot(ego_pb1_p,
+     layout=layout_with_kk,
+     rescale=TRUE, 
+     asp=0, #legt fest, dass der ganze Raum ausgenutzt werden soll
+     main="Ego-Netzwerk von Boock (Beziehungen 1.Grades)",
+     sub="roter Kreis = Boock, hellgrau = 1. Generation, 
+     dunkelgrau = 2. Generation, weiß = beide Generationen, rosa = Unterstützer*innen",
+     vertex.size=10,
+     vertex.label.color="black",
+     edge.color="grey40")
+```
+
+``` {r Ego-Netzwerk von Volker Speitel; Bzgh. ersten Grades, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# Uns interessieren die Ego-Netzwerke der Hauptakteure der RAF
+# Volker Speitel hat zwar "nur" 45 Verbindungen, verglichen mit einen zentralen Akteur wie Raspe (54 Verbindungen), sind das aber doch überraschend viele
+# Daher soll nun auch sein Egonetzwerk visualisiert werden
+
+# erzeugt ein Egonetzwerk von Volker Speitel, in dem nur Knoten angezeigt werden, die direkt mit ihm verbunden sind (Ego-Netzwerk ersten Grades)
+ego_vs <- make_ego_graph(raf, order = 1, nodes = V(raf)$name == "Volker Speitel", mode ="all")
+ego_vs
+ego_vs1 <- ego_vs[[1]] # notwendiger Schritt, um igraph-Objekt zu erstellen
+
+ego_vs1 <- simplify(ego_vs1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+
+ego_vs1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_vs1)[V(ego_vs1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_vs1)[V(ego_vs1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_vs1)[V(ego_vs1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_vs1)[V(ego_vs1)$name == "Volker Speitel"]$color <- "firebrick" # Volker Speitel wird rot dargestellt
+V(ego_vs1)[V(ego_vs1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau gefärbt 
+V(ego_vs1)[V(ego_vs1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+
+ego_vs1
+
+# Nun wird das Egonetzwerk von Speitel geplottet:
+plot(ego_vs1,
+     layout=layout_with_kk,
+     rescale=TRUE, 
+     asp=0, #legt fest, dass der ganze Raum ausgenutzt weden soll
+     main="Ego-Netzwerk von Volker Speitel; Beziehungen ersten Grades",
+     sub="pinke Kreise = Männer, blaue Kreise = Frauen, roter Kreis = Volker Speitel",
+     vertex.size=10,
+     vertex.label.color="black",
+     edge.color="grey40")
+
+# Visualisierung nach Generations-Zugehörigkeit
+
+
+# Anpassung der Darstellung der Knoten: verschiedene Farben zur besseren Unterscheidbarkeit der Generationen
+V(ego_vs1)[V(ego_vs1)$generation == 1]$color <- "grey80" # Mitglieder der ersten Generation werden hellgrau gefärbt
+V(ego_vs1)[V(ego_vs1)$generation == 2]$color <- "grey30" # Mitglieder der zweiten Generation werden dunkelgrau gefärbt
+V(ego_vs1)[V(ego_vs1)$generation == 3]$color <- "white" # Mitglieder beider Generationen oder zu denen es keine Angabe gab, werden weiß gefärbt
+V(ego_vs1)[V(ego_vs1)$generation == 3]$vertex.frame.color <- "black" # Rahmenfarbe um die Knoten auf schwarz setzen, zu deren besseren Sichtbarkeit
+V(ego_vs1)[V(ego_vs1)$generation == 4]$color <- "lightpink" # Unterstützer*innen werden hellrosa gefärbt
+V(ego_vs1)[V(ego_vs1)$name == "Volker Speitel"]$color <- "firebrick" # Speitel wird rot hervorgehoben
+
+ego_vs1
+
+# Nun wird das Egonetzwerk von Speitel geplottet:
+plot(ego_vs1,
+     layout=layout_with_kk,
+     rescale=TRUE, 
+     asp=0, #legt fest, dass der ganze Raum ausgenutzt weden soll
+     main="Ego-Netzwerk von Volker Speitel
+     (nur Beziehungen ersten Grades)",
+     sub="rot = Speitel, hellgrau = 1. Generation, dunkelgrau = 2. Generation, 
+     weiß = beide Generationen, rosa = Unterstützer*in",
+     vertex.size=10,
+     vertex.label.color="black",
+     edge.color="grey40")
+
+```
+
+```{r Ego-Netzwerk Brigitte Mohnhaupt, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf
+
+ego_bm <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Brigitte Mohnhaupt", mode = "all") # selektiert aus dem Netzwerk raf alle Knoten, die mit Mohnhaupt über einen Schritt verbunden sind.
+
+# liefert eine Liste der Verbindungen 
+ego_bm
+#man braucht diesen Zwischenschritt, damit das igraph-Objekt hergestellt wird
+ego_bm1 <- ego_bm[[1]]
+ego_bm1
+
+ego_bm1 <- simplify(ego_bm1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+ego_bm1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_bm1)[V(ego_bm1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_bm1)[V(ego_bm1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_bm1)[V(ego_bm1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_bm1)[V(ego_bm1)$name == "Brigitte Mohnhaupt"]$color <- "firebrick" # Mohnhaupt wird rot hervorgehoben
+V(ego_bm1)[V(ego_bm1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
+V(ego_bm1)[V(ego_bm1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+ego_bm1
+
+# Visualisierung des Ego-Netzwerks:
+plot(ego_bm1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0, # definiert, dass der gesamte Platz für die Darstellung genutzt wird
+     main="Ego-Netzwerk Brigitte Mohnhaupt",
+     sub="nur direkte Beziehungen des ersten Grades, grün = Männer; orange = Frauen,
+     blau = Aktionen",
+     edge.color="grey40",
+     vertex.size=5,
+     vertex.label.color="black")
+
+# nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Mohnhaupt direkt verbunden war
+ego_bm1_p <- delete_vertices(ego_bm1, V(ego_bm1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
+
+ego_bm1_p
+
+# da Mohnhaupt als Schlüsselfigur der 2. Generation gesehen werden könnte, soll nun hervorgehoben werden, welcher Generation ihre direkten Verbindungen angehörten und herauszufinden, ob sie eine Brokerin war
+V(ego_bm1_p)[V(ego_bm1_p)$generation == 1]$color <- "grey80" # Mitglieder der ersten Generation werden hellgrau gefärbt
+V(ego_bm1_p)[V(ego_bm1_p)$generation == 2]$color <- "grey30" # Mitglieder der zweiten Generation werden dunkelgrau gefärbt
+V(ego_bm1_p)[V(ego_bm1_p)$generation == 3]$color <- "white" # Mitglieder beider Generationen werden weiß gefärbt
+V(ego_bm1_p)[V(ego_bm1_p)$generation == 3]$vertex.frame.color <- "black" # Rahmenfarbe auf schwarz setzen zur besseren Sichtbarkeit der weißen Knoten
+V(ego_bm1_p)[V(ego_bm1_p)$generation == 4]$color <- "lightpink" # Unterstützer*innen werden hellrosa gefärbt
+V(ego_bm1_p)[V(ego_bm1_p)$name == "Brigitte Mohnhaupt"]$color <- "firebrick" # Mohnhaupt wird rot hervorgehoben
+
+plot(ego_bm1_p,
+     layout=layout_with_kk,
+     rescale=TRUE,
+     asp=0, # gesamter Raum wird für die Darstellung genutzt,
+     main="Ego-Netzwerk von Mohnhaupt
+     (nur Beziehungen 1. Grades)",
+     sub="rot = Mohnhaupt, hellgrau = 1. Generation, dunkelgrau = 2. Generation,
+     weiß = beide / keine Generation, rosa = Unterstützer*innen",
+     vertex.size=10, 
+     vertex.label.color= "black",
+     edge.color="grey40")
+```
+
+```{r Ego-Netzwerk Klaus Croissant, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# Da Croissant als Anwalt Kontakte zu vielen RAF-Mitgliedern hatte, die teils auch in seiner Kanzlei tätig waren und so zur RAF kamen, soll nun sein Ego-Netzwerk betrachtet werden.
+
+raf # igraph-Objekt laden
+
+ego_kc<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Klaus Croissant", mode = "all") # selektiert aus dem Netzwerk raf alle Knoten, die mit Croissant über einen Schritt direkt verbunden sind.
+
+# liefert eine Liste der Verbindungen 
+ego_kc
+#man braucht diesen Zwischenschritt, damit das igraph-Objekt hergestellt wird
+ego_kc1 <- ego_kc[[1]]
+
+ego_kc1 <- simplify(ego_kc1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+ego_kc1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_kc1)[V(ego_kc1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_kc1)[V(ego_kc1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_kc1)[V(ego_kc1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_kc1)[V(ego_kc1)$name == "Klaus Croissant"]$color <- "firebrick" # Croissant wird rot hervorgehoben
+V(ego_kc1)[V(ego_kc1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
+V(ego_kc1)[V(ego_kc1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+
+# Visualisierung des Ego-Netzwerks:
+plot(ego_kc1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0, # legt fest, dass der gesamte Raum für die Darstellung genutzt wird
+     main="Ego-Netzwerk Klaus Croissantd",
+     sub="nur direkte Beziehungen des ersten Grads; rot = Croissant,
+     grün = Männer, orange = Frauen, blau = Aktionen",
+     edge.color="grey40",
+     vertex.size=10,
+     vertex.label.color="black")
+
+# nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Croissant direkt verbunden war
+ego_kc1_p <- delete_vertices(ego_kc1, V(ego_kc1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
+
+ego_kc1_p
+
+# da Croissant als Anwalt viele seiner Angestellten zur RAF gebracht und gewissermaßen als Broker gesehen werden könnte, soll nun hervorgehoben werden, welcher Generation seine direkten Verbindungen angehörten, um herauszufinden, ob er auch als Verbindung zwischen den Generationen fungierte
+V(ego_kc1_p)[V(ego_kc1_p)$generation == 1]$color <- "grey80" # erste Generation = hellgrau
+V(ego_kc1_p)[V(ego_kc1_p)$generation == 2]$color <- "grey30" # zweite Generation = dunkelgrau
+V(ego_kc1_p)[V(ego_kc1_p)$generation == 3]$vertex.frame.color <- "black" # weiße Knoten schwarz umranden, damit sie besser zu erkennen sind 
+V(ego_kc1_p)[V(ego_kc1_p)$generation == 3]$color <- "white" # Mitglieder beider Generationen = weiß
+V(ego_kc1_p)[V(ego_kc1_p)$generation == 4]$color <- "lightpink" # Unterstützer*innen = hellrosa
+V(ego_kc1_p)[V(ego_kc1_p)$name == "Klaus Croissant"]$color <- "firebrick" # Croissant rot hervorheben
+
+plot(ego_kc1_p,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
+     rescale=TRUE, 
+     main="Ego-Netzwerk von Croissant
+     (nur Beziehungen 1. Grades)",
+     sub="rot = Croissant, hellgrau = 1. Generation, dunkelgrau = 2. Generation, 
+     weiß = Mitglieder beider Generationen, rosa = Unterstützer*innen",
+     vertex.label.color= "black",
+     vertex.size=10,
+     edge.color="grey40")
+```
+
+
+```{r Ego-Netzwerk Christine Kuby, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf # igraph-Objekt laden
+
+ego_chk<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Christine Kuby", mode = "all") # selektiert aus dem Netzwerk raf alle Knoten, die mit Kuby über einen Schritt direkt verbunden sind.
+
+# liefert eine Liste der Verbindungen 
+ego_chk
+
+ego_chk1 <- ego_chk[[1]] # notwendiger Zwischenschritt, damit das igraph-Objekt hergestellt wird
+ego_chk1
+
+ego_chk1 <- simplify(ego_chk1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+ego_chk1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_chk1)[V(ego_chk1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_chk1)[V(ego_chk1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_chk1)[V(ego_chk1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_chk1)[V(ego_chk1)$name == "Christine Kuby"]$color <- "firebrick" # Kuby wird rot hervorgehoben
+V(ego_chk1)[V(ego_chk1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
+V(ego_chk1)[V(ego_chk1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+
+# Visualisierung des Ego-Netzwerks
+plot(ego_chk1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0, # legt fest, dass der gesamte Raum für die Darstellung genutzt wird
+     main="Ego-Netzwerk Christine Kuby",
+     sub="nur direkte Beziehungen des ersten Grads; rot = Kuby, grün = Männer,
+     orange = Frauen, blau = Aktionen",
+     edge.color="grey40",
+     vertex.label.color="black",
+     vertex.size=10)
+
+# nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Kuby direkt verbunden war
+ego_chk1_p <- delete_vertices(ego_chk1, V(ego_chk1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
+
+ego_chk1_p
+
+# Nun soll farblich hervorgehoben werden, welcher Generation Kubys direkte Verbindungen angehörten
+V(ego_chk1_p)[V(ego_chk1_p)$generation == 1]$color <- "grey80" # Mitglieder der ersten Generation = hellgrau
+V(ego_chk1_p)[V(ego_chk1_p)$generation == 2]$color <- "grey30" # Mitglieder der zweiten Generation = dunkelgrau
+V(ego_chk1_p)[V(ego_chk1_p)$generation == 3]$color <- "white" # Mitglieder beider Generationen = weiß
+V(ego_chk1_p)[V(ego_chk1_p)$generation == 3]$vertex.frame.color <- "black" # weiße Knoten schwarz umrahmen
+V(ego_chk1_p)[V(ego_chk1_p)$generation == 4]$color <- "lightpink" # Unterstützer*innen (keine RAF-Mitglieder) = rosa
+V(ego_chk1_p)[V(ego_chk1_p)$name == "Christine Kuby"]$color <- "firebrick" # Kuby wird rot hervorgehoben
+
+plot(ego_chk1_p,
+     layout=layout_with_kk,
+     rescale=TRUE, 
+     asp=0, # gesamter Platz wird für die Darstellung genutzt
+     main="Ego-Netzwerk von Kuby, Bzgh. 1. Grades",
+     sub="rot = Kuby, hellgrau = 1. Generation, dunkelgrau = 2. Generation,
+     weiß = Mitglieder beider Generationen",
+     vertex.label.color="black",
+     vertex.size=10,
+     edge.color="grey40")
+```
+
+```{r Ego-Netzwerk Rolf Heissler, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf # ruft das igraph-Objekt auf
+
+ego_rh <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Rolf Heissler", mode = "all") # selektiert aus dem Netzwerk raf alle Knoten, die mit Heissler über einen Schritt direkt verbunden sind (Ego-Netzwerk ersten Grades)
+ego_rh
+
+ego_rh1 <- ego_rh[[1]] # notwendiger Zwischenschritt, damit das igraph-Objekt hergestellt wird
+
+ego_rh1 <- simplify(ego_rh1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+ego_rh1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_rh1)[V(ego_rh1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_rh1)[V(ego_rh1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_rh1)[V(ego_rh1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_rh1)[V(ego_rh1)$name == "Rolf Heissler"]$color <- "firebrick" # Heissler wird rot hervorgehoben
+V(ego_rh1)[V(ego_rh1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
+V(ego_rh1)[V(ego_rh1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+
+# Visualisierung des Ego-Netzwerks
+plot(ego_rh1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0, # legt fest, dass der gesamte Platz für die Darstellung genutzt wird
+     main="Ego-Netzwerk Rolf Heissler",
+     sub="nur direkte Beziehungen des ersten Grads; rot = Heissler, grün = Männer,
+     orange = Frauen, blau = Aktionen",
+     edge.color="grey40",
+     vertex.label.color="black",
+     vertex.label.cex=.7, # verkleinert die Labelbeschriftung
+     vertex.size=10)
+
+# nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Heissler direkt verbunden war
+ego_rh1_p <- delete_vertices(ego_rh1, V(ego_rh1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
+
+ego_rh1_p
+
+# Nun soll hervorgehoben werden, welcher Generation die direkten Verbindungen Heisslers angehörten
+V(ego_rh1_p)[V(ego_rh1_p)$generation == 1]$color <- "grey80" # 1. Generation = hellgrau
+V(ego_rh1_p)[V(ego_rh1_p)$generation == 2]$color <- "grey30" # 2. Generation = dunkelgrau
+V(ego_rh1_p)[V(ego_rh1_p)$generation == 3]$color <- "white" # Mitglieder beider Generationen = weiß
+V(ego_rh1_p)[V(ego_rh1_p)$generation == 3]$vertex.frame.color <- "black" # fügt einen schwarzen Rahmen hinzu, damit weiße Nodes besser sichtbar sind
+V(ego_rh1_p)[V(ego_rh1_p)$generation == 4]$color <- "lightpink" # Unterstützer*innen = rosa
+V(ego_rh1_p)[V(ego_rh1_p)$name == "Rolf Heissler"]$color <- "firebrick"
+
+plot(ego_rh1_p,
+     layout=layout_with_kk,
+     rescale=TRUE,
+     asp=0, # definiert, dass der gesamte Platz für die Darstellung genutzt wird
+     main="Ego-Netzwerk von Heissler, Bzgh. 1. Grades",
+     sub="rot = Heissler, hellgrau = 1. Generation, dunkelgrau = 2. Generation, 
+     weiß = Mitglieder beider Generationen, rosa = Unterstützer*innen",
+     vertex.label.color="black",
+     vertex.size=10,
+     edge.color="grey40")
+
+```
+# Berechnungen
+
+```{r Komponenten analysieren, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf # ruft das Standard RAF-Netzwerk auf
+
+# 1 Komponenten analysieren
+# Da insbesondere bei großen Netzwerken die Teilkomponenten nicht immer sichtbar sind, ist es hilfreich zu Beginn der Analyse sich alle Komponenten anzeigen zu lassen
+# Der Befehl groups() zeigt an, welche Knoten zu welcher Komponente gehören. 
+
+# Grafik des Gesamtnetzwerks
+plot(raf, layout=layout_with_kk, main="Gesamtnetzwerk")
+
+# Anzahl der Komponenten
+count_components(raf)
+
+# Um genauer zu verstehen, welche Vertices zu welcher Gruppe gehören, lassen sie sich mit dem Befehl groups(g) in Grupppen unterteilten. 
+raf_groups <- groups(components(raf))
+raf_groups
+
+# es gibt also keine abgesonderte Gruppe, die nicht mit dem Hauptteil verbunden ist, überall besteht mindestens eine Verbindung
+
+```
+
+```{r Dichte des Gesamtnetzwerkes berechnen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# Berechnung der Dichte
+
+# Gesamtnetzwerk neu einlesen
+
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=F)
+
+raf_pers <- delete_vertices(raf, V(raf)[type > "1"]) # löscht alle Nodes, bei denen es sich um Aktionen und nicht um natürliche Personen handelt
+
+raf_pers
+plot(raf_pers, layout=layout_with_kk,
+     main="Netzwerk Gesamt",
+     edge.color="grey40",
+     edge.arrow.size=.5,
+     vertex.size=5)
+
+## 1 Berechnung der Dichte des Netzwerks raf
+edge_density(raf_pers)
+
+#Die Dichte des Gesamtnetzwerks beträgt 0.1320082, das bedeutet, dass ca. 13,2% von allen möglichen Beziehungen zwischen den Knoten realisiert wurde. Dies bedeutet auch, dass zwischen ca. 87% der Knoten keine Beziehungen bestehen. Im Vergleich zur Dichte des Gesamtnetzwerks ist die Dichte der ersten und zweiten Generation damit erheblich größer. Dies kann wohl auch daran liegen, dass sich die Mitglieder der ersten und zweiten Generation teils untereinander nicht direkt kannten, da sie zeitlich versetzt aktiv waren.
+
+```
+
+```{r Dichte der ersten Generation berechnen}
+
+###Vergleich Dichte Netzwerke erste und zweite Generation
+##Dichte des Netzwerks der ersten Generation
+#Erstellung Netzwerk erste Generation
+
+raf_pers # igraph-Objekt wird abgerufen
+
+raf_eins <- delete_vertices(raf_pers, V(raf_pers)[generation > "1"]) # löscht alle Nodes, die nicht der ersten Generation angehört haben
+
+# Einfache Visualisierung
+plot(raf_eins, 
+     layout=layout_with_kk,
+     asp=0,
+     main="Netzwerk der 1. Generation",
+     edge.color="grey40",
+     vertex.size=5)
+
+# Berechnung Dichte Netzwerk erste Generation
+edge_density(raf_eins)
+#Die Dichte des Netzwerks der ersten Generation beträgt also 0.2828283, das bedeutet, dass ca. 28% von allen möglichen Beziehungen zwischen den Knoten realisiert wurde. Dies bedeutet auch, dass zwischen ca. 72% der Knoten keine Beziehungen bestehen. Im Vergleich zur Dichte des Gesamtnetzwerks ist die Dichte der ersten Generation damit erheblich größer.
+```
+
+```{r Dichte des Netzwerks der zweiten Generation, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+#Erstellung Netzwerk zweite Generation
+
+raf
+raf_zwei <- delete_vertices(raf, V(raf)[generation <"2"]) # Löschen der Knoten, die der 1. Generation angehört haben
+raf_zwei
+
+# Einfache Visualisierung
+plot(raf_zwei, 
+     layout=layout_with_kk,
+     main="Netzwerk der 2. Generation",
+     edge.color="grey40",
+     vertex.size=5,
+     vertex.label.color="black")
+
+#Löschen derer, für die generation > 2 gilt
+raf_zwei_fast_final <- delete.vertices(raf_zwei, V(raf_zwei)[generation > "2"])
+raf_zwei_fast_final
+
+# Einfache Visualisierung
+plot(raf_zwei_fast_final, 
+     layout=layout_with_kk,
+     main="Netzwerk 2. Generation fast final",
+     edge.color="grey40",
+     vertex.size=5,
+     vertex.label.color="black")
+
+#Löschen der Aktionen, sodass nur noch die natürlichen Personen der zweiten Generation übrig bleiben
+raf_zwei_final <- delete.vertices(raf_zwei_fast_final, V(raf_zwei_fast_final)[type > "1"])
+raf_zwei_final
+
+# Einfache Visualisierung
+plot(raf_zwei_final, 
+     layout=layout_with_kk,
+     main="Netzwerk der Mitglieder der 2. Generation",
+     edge.color="grey40",
+     vertex.size=5,
+     vertex.label.color="black")
+
+#Berechnung der Dichte des Netzwerks der zweiten Generation
+edge_density(raf_zwei_final)
+
+#Die Dichte des Netzwerks der zweiten Generation beträgt also 0.3083779, das bedeutet, dass ca. 30,8% (gerundet knapp 31%) von allen möglichen Beziehungen zwischen den Knoten realisiert wurde. Dies bedeutet auch, dass zwischen ca. 69% der Knoten keine Beziehungen bestehen. Im Vergleich zur Dichte des Gesamtnetzwerks ist die Dichte der zweiten Generation damit erheblich größer. Im Vergleich zur Dichte des Netzwerks der ersten Generation ist sie nur etwa 2-3% größer.
+
+```
+
+```{r Pfaddistanz berechnen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# Berechnung der Pfaddistanz und des Durchmessers
+
+raf # Das Standard-Netzwerk der RAF wird abgerufen
+
+#Grafisch werden Ereignisse/Aktionen  anders dargestellt als Akteure
+V(raf)[V(raf)$type == 1]$shape <- "circle" # Personen als Kreise
+V(raf)[V(raf)$type == 2]$shape <- "square" # Aktionen als Quadrate
+
+# Einfacher plot
+plot(raf,
+     asp=0,
+     layout=layout_with_kk,
+     main="RAF-Gesamtnetzwerk")
+
+## 2 Berechnung des Durchmessers und der Pfaddistanz
+#Diameter beschreibt den längsten Pfad innerhalb eines Netzwerks, also die maximal mögliche Distanz zwischen zwei Knoten innerhalb des Netzwerks. 
+#Pfadistanz ist ein Maß für die Anzahl der Schritte, dies es braucht, um ein Netzwerk zu "durchschreiten". Dabei sind die kürzesten und längsten Pfaddistanzen wichtige Aussagen.
+# Was ist die maximale Distanz zwischen zwei Knoten im Netzwerk?
+# Achtung: bei Netzwerken mit Kantengewicht müssen die Kantengewichte ausgeschaltet werden! 
+diameter(raf, weights = NA) 
+# die maximale Distanz im Netzwerk beträgt 7
+
+# Welche Knoten sind am weitesten voneinander entfernt, also haben die längsten Schritte??
+farthest_vertices(raf) 
+# Die zwei Knoten, die am weitesten entfernt sind (7 Schritte) sind Christine Dümlein und Carmen Roll. Dies ist nicht sonderlich verwunderlich, da beide in verschiedenen Generationen aktiv waren (Dümlein in der zweiten, Roll in der ersten Generation). Dies zeigt, dass die RAF zwar sprachlich oft als Gesamtkonstrukt bezeichnet wird ("DIE" Rote-Armee-Fraktion), faktisch aber gerade zwischen den ersten beiden Generationen (die dritte wurde nicht betrachtet) nicht die stärksten Bindungen bestandne.
+
+```

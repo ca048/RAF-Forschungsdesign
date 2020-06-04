@@ -1,0 +1,1881 @@
+
+```{r wichtigste packages abrufen}
+
+#wir laden nun vorab die wichtigsten packages
+library(igraph)
+library(igraphdata)
+library(knitr) 
+library(rmarkdown) 
+```
+
+```{r Gesamtnetzwerk einlesen}
+
+# Wir lesen das Netzwerk im Folgenden ein
+
+# Zunächst werden Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+raf
+
+# Visualisierung des Netzwerks
+plot(raf,
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(raf), # verhindert, dass sich Kanten überlagern
+     vertex.label=NA, # entfernt die Beschriftung der Knoten für bessere Übersichtlichkeit
+     vertex.size=5,
+     main="RAF-Gesamtnetzwerk der RAF",
+     sub="erste und zweite Generation")
+
+```
+
+```{r Visualisierung nach Knotentypen}
+
+# Wir lesen das Netzwerk im Folgenden ein
+
+# Zunächst werden Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+raf
+
+#Grafisch werden Ereignisse/Aktionen  anders dargestellt als Akteure
+V(raf)[V(raf)$type == 1]$shape <- "circle" # Personen als Kreise
+V(raf)[V(raf)$type == 2]$shape <- "square" # Aktionen als Quadrate
+V(raf)[V(raf)$type == 1]$color <- "red" # Personen rot einfärben
+V(raf)[V(raf)$type == 2]$color <- "orange" #Aktionen orange einfärben
+
+# Visualisierung des Netzwerks nach Knotentypen
+plot(raf,
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(raf), # verhindert, dass sich Kanten überlagern
+     vertex.label=NA, # entfernt die Beschriftung der Knoten für bessere Übersichtlichkeit
+     vertex.size=5,
+     main="RAF-Gesamtnetzwerk nach Knotentypen",
+     sub="Kreis = Person, Aktion = Quadrat",
+     asp=0)
+
+```
+
+```{r Visualisierung nach Generationen}
+raf
+
+V(raf)[V(raf)$generation == 1]$color <- "red" # Personen rot einfärben
+V(raf)[V(raf)$generation == 2]$color <- "orange" #Aktionen orange einfärben
+V(raf)[V(raf)$generation == 3]$color <- "pink" # Personen rot einfärben
+V(raf)[V(raf)$type == 2]$color <- "black" # Aktionen schwarz einfärben
+
+# Visualisierung des Netzwerks nach Generationen
+plot(raf,
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(raf), # verhindert, dass sich Kanten überlagern
+     vertex.label=NA, # entfernt die Beschriftung der Knoten für bessere Übersichtlichkeit
+     vertex.size=5,
+     main="RAF-Gesamtnetzwerk nach Generationen",
+     sub="Mitglieder der verschiedenen Generationen werden unterschiedlich eingefärbt. 
+     Erste Generation = rot, Zweite Generation = orange, Beide Generationen = pink, Aktionen =  
+     schwarz")
+```
+
+```{r Teilnetzwerk der ersten Generation}
+
+raf
+# Zeigt uns die Vertex-Attribute des Gesamtnetzwerks "raf" an.
+vertex_attr(raf)
+
+# Wir wollen nun wissen, wie das Netzwerk der ersten Generation der RAF aussieht:
+raf_eins <- delete_vertices(raf, V(raf)[generation !="1"]) # löscht alle Knoten, für die der Wert von generation nicht 1 beträgt, d.h. die nicht der ersten Generation angehört haben. 
+
+#raf_eins <- add.vertices(raf, V(raf)[generation !="3"]) # Da im Codebuch neben Akteuren, die der ersten und zweiten Generation angehört haben, auch Akteure, die beiden Generationen angehört haben, definiert sind, sollen diese dem Netzwerk wieder hinzugefügt werden. Im Schritt zuvor wurden diese ja mit herausgelöscht, da nur Knoten mit dem Wert generation = 1 behalten wurden, aber wer beiden Generationen angehört hat (generation = 1), muss natürlich auch dem Netzwerk der 1. Generation hinzugefügt werden. !! Notiz: eigentlich wichtiger Befehl, aber irgendeinwie plottet es damit gerade nicht, deshalb vorübergehend deaktiviert, bis ich eine Lösung gefunden habe
+
+raf_eins
+vertex_attr(raf_eins)
+
+# um das Netzwerk der ersten Generation anzuzeigen, sollen nun die Knoten, bei denen es sich um Aktionen und nicht um natürliche Personen handelt, gelöscht werden 
+raf_eins_mem <- delete_vertices(raf_eins, V(raf_eins)[type !="1"])
+
+raf_eins_mem
+
+#Entzerrte Darstellung, Anpassung der Visualisierung 
+l <- layout_with_kk(raf_eins_mem) #legt den Layout-Typ fest
+l <- norm_coords(l, ymin=-0.75, ymax=0.75, xmin=-0.75, xmax=0.75)
+
+#par(mfrow=c(2,2), mar=c(3,3,3,3)) #Austesten verschiedener Layout-Optionen
+#plot(raf_eins, rescale=F, layout=l*0.4)
+#plot(raf_eins, rescale=F, layout=l*0.8)
+#plot(raf_eins, rescale=F, layout=l*1.2)
+#plot(raf_eins, rescale=F, layout=l*1.6)
+
+# Beste Visualisierung ist mit Faktor 1.2
+par(mfrow=c(1,1), mar=c(2,2,2,2))
+
+# Nun wird das Netzwerk der Mitglieder der 1. Generation geplottet:
+plot(raf_eins_mem, 
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.color="red",
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_eins_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der ersten Generation")
+     
+```
+```{r Teilnetzwerk der zweiten Generation}
+raf
+# Zeigt uns die Vertex-Attribute des Gesamtnetzwerks "raf" an.
+vertex_attr(raf)
+
+# Wir wollen nun wissen, wie das Netzwerk der ersten Generation der RAF aussieht:
+raf_zwei <- delete_vertices(raf, V(raf)[generation !="2"]) # löscht alle Knoten, für die der Wert von generation nicht 1 beträgt, d.h. die nicht der ersten Generation angehört haben. 
+
+#raf_eins <- add.vertices(raf, V(raf)[generation !="3"]) # Da im Codebuch neben Akteuren, die der ersten und zweiten Generation angehört haben, auch Akteure, die beiden Generationen angehört haben, definiert sind, sollen diese dem Netzwerk wieder hinzugefügt werden. Im Schritt zuvor wurden diese ja mit herausgelöscht, da nur Knoten mit dem Wert generation = 1 behalten wurden, aber wer beiden Generationen angehört hat (generation = 1), muss natürlich auch dem Netzwerk der 1. Generation hinzugefügt werden. !! Notiz: eigentlich wichtiger Befehl, aber irgendeinwie plottet es damit gerade nicht, deshalb vorübergehend deaktiviert, bis ich eine Lösung gefunden habe
+
+raf_zwei
+vertex_attr(raf_zwei)
+
+# um das Netzwerk der zweiten Generation anzuzeigen, sollen nun die Knoten, bei denen es sich um Aktionen und nicht um natürliche Personen handelt, gelöscht werden 
+raf_zwei_mem <- delete_vertices(raf_zwei, V(raf_zwei)[type !="1"])
+
+raf_zwei_mem
+
+#Entzerrte Darstellung, Anpassung der Visualisierung 
+l <- layout_with_kk(raf_zwei_mem) #legt den Layout-Typ fest
+l <- norm_coords(l, ymin=-0.75, ymax=0.75, xmin=-0.75, xmax=0.75)
+
+#par(mfrow=c(2,2), mar=c(3,3,3,3)) #Austesten verschiedener Layout-Optionen
+#plot(raf_eins, rescale=F, layout=l*0.4)
+#plot(raf_eins, rescale=F, layout=l*0.8)
+#plot(raf_eins, rescale=F, layout=l*1.2)
+#plot(raf_eins, rescale=F, layout=l*1.6)
+
+# Beste Visualisierung ist mit Faktor 1.2
+par(mfrow=c(1,1), mar=c(2,2,2,2))
+
+# Nun wird das Netzwerk der Mitglieder der 1. Generation geplottet:
+plot(raf_zwei_mem, 
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.color="red",
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_zwei_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der zweiten Generation")
+ 
+```
+
+
+```{r Hervorheben der Gründungsmitglieder}
+
+# Nun wollen wir visualisieren, wo die Gründungsmitglieder im Gesamtnetzwerk zu verorten sind.
+
+# Wir lesen das Netzwerk dazu im Folgenden neu ein
+
+# Zunächst werden Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+
+raf
+
+#alle Knoten, bei denen es sich nicht um natürliche Personen (ergo, alle Anschläge) werden gelöscht
+delete_vertices(raf, V(raf)[type !="1"]) 
+
+V(raf)[V(raf)$foundingmember == 1]$color <- "red" # Gründungsmitglieder rot einfärben
+
+plot(raf,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der ersten und zweiten Generation",
+     sub="Gründungsmitglieder rot hervorgehoben")
+
+
+```
+```{r Teilnetzwerk der Gründungsmitglieder}
+
+raf_eins_mem
+
+raf_gm <- delete_vertices(raf_eins_mem, V(raf_eins_mem)[foundingmember > "1"]) # löscht alle Knoten, die keine Gründungsmitglieder waren und erstellt so ein Teilnetzwerk der Gründungsmitglieder
+
+raf_gm
+
+# Einfärben der Knoten nach deren Geschlecht
+V(raf_gm)[V(raf_gm)$sex == 1]$color <- "pink" # männlich
+V(raf_gm)[V(raf_gm)$sex == 2]$color <- "lightblue" # weiblich
+
+# Anpassung der Darstellung
+l <- layout_with_kk(raf_gm)
+l <- norm_coords(l, ymin=-1, ymax=1, xmin=-1, xmax=1)
+
+# Beste Visualisierung ist mit Faktor 1.2
+par(mfrow=c(1,1), mar=c(2,2,2,2))
+
+
+plot(raf_gm, 
+     layout=layout_with_kk,
+     rescale=T,
+     edge.color="grey70",
+     edge.arrow.size=.3,
+     vertex.size = 10,
+     main="Teilnetzwerk der Gründungsmitglieder",
+     sub="pink = männliche Knoten, blau = weibliche Knoten")
+
+
+# Frage: kann man auch verhindern, dass alle Beziehungen als einzelne Striche dargestellt werden und stattdessen je mehr Bzgh. es gibt, desto dicker die Verbindung zwischen zwei Knoten? Kann man so eine Gewichtung machen?
+```
+
+
+```{r Gründungsmitglieder im Netzwerk der ersten Generation hervorheben}
+
+# nun fokussieren wir uns auf das Netzwerk der ersten Generation, da die Gründungsmitglieder diese ja schließlich begründet haben und wollen uns deren Position im Netzwerk genauer ansehen.
+
+# Dazu erstellen wir erneut das Teilnetzwerk der ersten Generation
+raf_eins <- delete_vertices(raf, V(raf)[generation !="1"]) # löscht alle Knoten, für die der Wert von generation nicht 1 beträgt, d.h. die nicht der ersten Generation angehört haben. 
+
+#raf_eins <- add.vertices(raf, V(raf)[generation !="3"]) # Da im Codebuch neben Akteuren, die der ersten und zweiten Generation angehört haben, auch Akteure, die beiden Generationen angehört haben, definiert sind, sollen diese dem Netzwerk wieder hinzugefügt werden. Im Schritt zuvor wurden diese ja mit herausgelöscht, da nur Knoten mit dem Wert generation = 1 behalten wurden, aber wer beiden Generationen angehört hat (generation = 1), muss natürlich auch dem Netzwerk der 1. Generation hinzugefügt werden. !! Notiz: eigentlich wichtiger Befehl, aber irgendeinwie plottet es damit gerade nicht, deshalb vorübergehend deaktiviert, bis ich eine Lösung gefunden habe
+
+raf_eins
+
+# um das Netzwerk der ersten Generation anzuzeigen, sollen nun die Knoten, bei denen es sich um Aktionen und nicht um natürliche Personen handelt, gelöscht werden 
+raf_eins_mem <- delete_vertices(raf_eins, V(raf_eins)[type !="1"])
+
+raf_eins_mem
+raf_eins_mem
+
+V(raf_eins_mem)[V(raf_eins_mem)$foundingmember == 1]$color <- "red" # Gründungsmitglieder rot einfärben
+
+plot(raf_eins_mem, 
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_eins_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der ersten Generation",
+     sub="Gründungsmitglieder rot hervorgehoben")
+```
+
+```{r Gesamt- und Teilnetzwerk der ersten Generation gegenüberstellen}
+
+par(mfrow=c(1,2), mar=c(0,0,2,1)) # definiert, dass zwei Abbildungen in einer Zeile stehen
+
+
+plot(raf,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Gesamtnetzwerk",
+     sub="Gründungsmitglieder rot hervorgehoben")
+
+plot(raf_eins_mem, 
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_eins_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Erste Generation",
+     sub="Gründungsmitglieder rot hervorgehoben")
+
+```
+```{r Ausgetretene Mitglieder}
+
+# wir lesen das Gesamtnetzwerk neu ein
+
+# Zunächst werden Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+raf
+
+# da es um ausgetretene Mitglieder geht, sollen nun die Knoten, bei denen es sich um Aktionen und nicht um natürliche Personen handelt, gelöscht werden 
+raf_pers <- delete_vertices(raf, V(raf)[type !="1"])
+
+# außerdem sollen alle Knoten gelöscht werden, die kein Mitglied der RAF waren, da diese dann ja logischerweise auch nicht austreten können. 
+raf_mem <- delete_vertices(raf_pers, V(raf_pers)[membership !="1"])
+raf_mem
+
+# Nun soll die Darstellung der Mitglieder angepasst werden, je nachdem ob sie ausgetreten sind oder nicht
+# im Codebuch sind für das Vertex-Attribut resignation folgende Werte definiert
+# 1 = Austritt / Rückzug 2 = nein, kein Austritt, 3 = bis zum Tod Mitglied, 99 = keine Angabe gefunden
+
+V(raf_mem)[V(raf_mem)$resignation == 99]$color <- "white" # Knoten, zu denen es keine Angabe gibt, bleiben weiß
+V(raf_mem)[V(raf_mem)$resignation == 1]$color <- "red" # Alle Mitglieder, die ausgetreten sind, schwarz einfärben
+V(raf_mem)[V(raf_mem)$resignation == 2]$color <- "black" # Dauerhafte Mitglieder schwarz einfärben
+V(raf_mem)[V(raf_mem)$resignation == 3]$color <- "orange" # Alle, die bis zum Tod Mitglied waren, orange einfärben
+
+plot(raf_mem,
+     edge.color="grey80",
+     layout=layout_with_kk,
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der ersten und zweiten Generation - Ausgetretene Mitglieder",
+     sub="rot = Austritt/Rückzug, schwarz = kein Austritt, 
+     orange = Mitglied bis zum Tod, weiß = keine Angabe gefunden")
+
+
+```
+```{r Vergleich der Austritte in den Generationen}
+
+raf_mem
+
+# Wir wollen nun wissen, wie das Netzwerk der ersten Generation der RAF aussieht:
+raf_eins_mem <- delete_vertices(raf_mem, V(raf_mem)[generation !="1"]) # löscht alle RAF-Mitglieder bzw. Knoten, für die der Wert von generation nicht 1 beträgt, d.h. die nicht der ersten Generation angehört haben. 
+
+raf_eins_mem
+
+# Wir wollen nun wissen, wie das Netzwerk der zweiten Generation der RAF aussieht:
+raf_zwei_mem <- delete_vertices(raf_mem, V(raf_mem)[generation !="2"]) # löscht alle Raf-Mitglieder bzw. Knoten, für die der Wert von generation nicht 1 beträgt, d.h. die nicht der zweiten Generation angehört haben. 
+
+raf_zwei_mem
+
+par(mfrow=c(1,2), mar=c(0,0,2,1)) # definiert, dass zwei Abbildungen in einer Zeile stehen
+
+raf_eins_mem
+
+plot(raf_eins_mem, 
+     layout=layout_with_kk,
+     edge.color="grey",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_eins_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung
+     main="Erste Generation",
+     sub="rot = Austritt/Rückzug, schwarz = kein Austritt, 
+     orange = Mitglied bis zum Tod, weiß = keine Angabe gefunden")
+
+plot(raf_zwei_mem, 
+     layout=layout_with_kk,
+     edge.color="grey",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_zwei_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     main="Zweite Generation",
+     sub="rot = Austritt/Rückzug, schwarz = kein Austritt, 
+     vertex.label=NA,
+     orange = Mitglied bis zum Tod, weiß = keine Angabe gefunden")
+```
+```{r symbolic death}
+
+# Nun sollen die Mitglieder hervorgehoben werden, die noch während ihrer aktiven Mitgliedschaft gestorben sind, bei einem Schusswechsel oder durch Suizid
+
+# wir lesen das Gesamtnetzwerk neu ein
+
+# Zunächst werden Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+raf
+
+# da es um ausgetretene Mitglieder geht, sollen nun die Knoten, bei denen es sich um Aktionen und nicht um natürliche Personen handelt, gelöscht werden 
+raf_pers <- delete_vertices(raf, V(raf)[type !="1"])
+
+# außerdem sollen alle Knoten gelöscht werden, die kein Mitglied der RAF waren, da diese dann ja logischerweise auch nicht austreten können. 
+raf_mem <- delete_vertices(raf_pers, V(raf_pers)[membership !="1"])
+raf_mem
+
+# Nun soll die Darstellung der Mitglieder angepasst werden, je nachdem ob sie ausgetreten sind oder nicht
+# im Codebuch sind für das Vertex-Attribut resignation folgende Werte definiert
+# 1 = Austritt / Rückzug 2 = nein, kein Austritt, 3 = bis zum Tod Mitglied, 99 = keine Angabe gefunden
+
+# Veränderung der Füllfarbe des Vertex
+V(raf_mem)$color <- "white" # zur Abgrenzung sollen zunächst alle Knoten weiß gefärbt werden
+V(raf_mem)[V(raf_mem)$symbolicdeath != 99]$color <- "red" # Nun werden alle Knoten, die für das Vertex-Attribut symbolicdeath nicht den Wert 99 haben, rot hervorgehoben. Dies schien mir die einfachste Lösung, da ich sonst einzeln die verschiedenen Todesjahre hätte eintragen müssen, dass die zugehörigen Knoten rot gefärbt werden. Daher habe ich eher dieses Ausschlussprinzip gewählt
+
+plot(raf_mem,
+     edge.color="grey80",
+     layout=layout_with_kk,
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der ersten und zweiten Generation - Symbolischer Tod",
+     sub="rot = symbolischer Tod, weiß = keine Angabe gefunden oder kein symbolischer Tod")
+
+
+```
+```{r symbolic death - Vergleich der zwei Generationen}
+raf_mem
+
+# Wir wollen nun wissen, wie das Netzwerk der ersten Generation der RAF aussieht:
+raf_eins_mem <- delete_vertices(raf_mem, V(raf_mem)[generation !="1"]) # löscht alle RAF-Mitglieder bzw. Knoten, für die der Wert von generation nicht 1 beträgt, d.h. die nicht der ersten Generation angehört haben. 
+
+# Veränderung der Füllfarbe des Vertex
+V(raf_eins_mem)$color <- "white" # zur Abgrenzung sollen alle Knoten weiß gefärbt werden, diejenigen, die eines symbolischen Todes gestorben sind, werden im nächsten Schritt selektiert und hervorgehoebn
+V(raf_eins_mem)[V(raf_eins_mem)$symbolicdeath != 99]$color <- "red" # symbolic deaths rot hervorheben (die Knoten, bei denen für das Attribut symbolicdeath eine Jahreszahl als Wert eingetragen ist und somit nicht der Wert 99 steht, werden rot gefärbt)
+
+raf_eins_mem
+
+
+# Wir wollen nun wissen, wie das Netzwerk der zweiten Generation der RAF aussieht:
+raf_zwei_mem <- delete_vertices(raf_mem, V(raf_mem)[generation !="2"]) # löscht alle Raf-Mitglieder bzw. Knoten, für die der Wert von generation nicht 1 beträgt, d.h. die nicht der zweiten Generation angehört haben. 
+
+# Veränderung der Füllfarbe des Vertex
+V(raf_zwei_mem)$color <- "white" # zur Abgrenzung sollen alle Knoten weiß gefärbt werden
+V(raf_zwei_mem)[V(raf_zwei_mem)$symbolicdeath != 99]$color <- "red" # symbolic deaths rot hervorheben
+
+raf_zwei_mem
+
+par(mfrow=c(1,2), mar=c(0,0,2,1)) # definiert, dass zwei Abbildungen in einer Zeile stehen
+
+raf_eins_mem
+
+plot(raf_eins_mem, 
+     layout=layout_with_kk,
+     edge.color="grey",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_eins_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung
+     main="Erste Generation",
+     sub="rot = symbolischer Tod, weiß = keine Angabe gefunden oder kein symbolischer Tod")
+
+plot(raf_zwei_mem, 
+     layout=layout_with_kk,
+     edge.color="grey",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_zwei_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung
+     main="Zweite Generation",
+     sub="rot = symbolischer Tod, weiß = keine Angabe gefunden oder kein symbolischer Tod")
+```
+
+```{r Ausbildungsgrad einfärben}
+
+# wir lesen das Gesamtnetzwerk neu ein
+
+# Zunächst werden Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+raf
+
+# da es um den Ausbildungsgrad der Personen geht, sollen nun die Knoten, bei denen es sich um Aktionen und nicht um natürliche Personen handelt, gelöscht werden 
+delete_vertices(raf, V(raf)[type !="1"])
+
+# Nun sollen die Knoten je nach ihrem Abschluss unterschiedlich eingefärbt werden
+# im Codebuch gibt es dazu folgende Codierung: das Vertext-Attribut education hat folgende Werte: 1 = kein Abschluss, 2 = Hauptschulabschluss, 3 = mittlere Reife, 4 = Gymnasialabschluss, 5 = Hochschulabschluss
+
+V(raf)[V(raf)$education == 1]$color <- "black" # kein Abschluss wird schwarz gefärbt
+V(raf)[V(raf)$education == 2]$color <- "red" # Hauptschulabsolventen rot einfärben
+V(raf)[V(raf)$education == 3]$color <- "orange" # Realschulabsolventen orange einfräben
+V(raf)[V(raf)$education == 4]$color <- "lightgreen" # Gymnasialabsolventen hellgrün einfärben
+V(raf)[V(raf)$education == 5]$color <- "darkgreen" # Hochschulabsolventen dunkelgrün einfärben
+V(raf)[V(raf)$education == 99]$color <- "white" # Knoten, zu denen es keine Angabe gibt, werden weiß gefärbt
+
+# Visualisierung des Gesamtnetzwerks der Mitglieder nach Ausbildungsgrad
+plot(raf, 
+     layout=layout_with_kk,
+     edge.color="grey",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung
+     main="Netzwerk der ersten und zweiten RAF-Generation nach Ausbildungsgrad",
+     sub="schwarz = kein Abschluss, rot = Hauptschulabschluss, orange = mittlere Reife, 
+     hellgrün = Gymnasialabschluss, dunkelgrün = Hochschulabschluss, weiß = keine Angabe")
+
+```
+
+```{r Teilnetzwerke mit Vergleich des Ausbildungsgrades}
+
+# um zu sehen, ob es Unterschiede in der Verteilung der Bildungsabschlüsse zwischen den beiden Generationen (1 und 2) gab, sollen diese nun als Teilnetzwerke verglichen werden
+raf
+
+# Wir wollen nun wissen, wie das Netzwerk der ersten Generation der RAF aussieht:
+raf_eins <- delete_vertices(raf, V(raf)[generation !="1"]) # löscht alle RAF-Mitglieder bzw. Knoten, für die der Wert von generation nicht 1 beträgt, d.h. die nicht der ersten Generation angehört haben. 
+
+# Veränderung der Füllfarbe der Vertices der 1. Generation je nach Ausbildungsgrad
+V(raf_eins)[V(raf_eins)$education == 1]$color <- "black" # kein Abschluss wird schwarz gefärbt
+V(raf_eins)[V(raf_eins)$education == 2]$color <- "red" # Hauptschulabsolventen rot einfärben
+V(raf_eins)[V(raf_eins)$education == 3]$color <- "orange" # Realschulabsolventen orange einfräben
+V(raf_eins)[V(raf_eins)$education == 4]$color <- "lightgreen" # Gymnasialabsolventen hellgrün einfärben
+V(raf_eins)[V(raf_eins)$education == 5]$color <- "darkgreen" # Hochschulabsolventen dunkelgrün einfärben
+V(raf_eins)[V(raf_eins)$education == 99]$color <- "white" # Knoten, zu denen es keine Angabe gibt, werden weiß gefärbt
+
+raf_eins
+
+# Wir wollen nun wissen, wie das Netzwerk der zweiten Generation der RAF aussieht:
+raf_zwei <- delete_vertices(raf, V(raf)[generation !="2"]) # löscht alle Raf-Mitglieder bzw. Knoten, für die der Wert von generation nicht 1 beträgt, d.h. die nicht der zweiten Generation angehört haben. 
+
+# Veränderung der Füllfarbe der Vertices der 2. Generation je nach Ausbildungsgrad
+V(raf_zwei)[V(raf_zwei)$education == 1]$color <- "black" # kein Abschluss wird schwarz gefärbt
+V(raf_zwei)[V(raf_zwei)$education == 2]$color <- "red" # Hauptschulabsolventen rot einfärben
+V(raf_zwei)[V(raf_zwei)$education == 3]$color <- "orange" # Realschulabsolventen orange einfräben
+V(raf_zwei)[V(raf_zwei)$education == 4]$color <- "lightgreen" # Gymnasialabsolventen hellgrün einfärben
+V(raf_zwei)[V(raf_zwei)$education == 5]$color <- "darkgreen" # Hochschulabsolventen dunkelgrün einfärben
+V(raf_zwei)[V(raf_zwei)$education == 99]$color <- "white" # Knoten, zu denen es keine Angabe gibt, werden weiß gefärbt
+raf_zwei
+
+par(mfrow=c(1,2), mar=c(0,0,2,1)) # definiert, dass zwei Abbildungen in einer Zeile stehen
+
+raf_eins
+
+plot(raf_eins, 
+     layout=layout_with_kk,
+     edge.color="grey",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_eins), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung
+     main="Erste Generation",
+     sub="schwarz = kein Abschluss, rot = Hauptschulabschluss, orange = mittlere Reife, 
+     hellgrün = Gymnasialabschluss, dunkelgrün = Hochschulabschluss")
+
+plot(raf_zwei, 
+     layout=layout_with_kk,
+     edge.color="grey",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_zwei), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung
+     main="Zweite Generation",
+     sub="schwarz = kein Abschluss, rot = Hauptschulabschluss, orange = mittlere Reife, 
+     hellgrün = Gymnasialabschluss, dunkelgrün = Hochschulabschluss")
+
+```
+
+
+```{r Hervorheben der Mitglieder aus gläubig-geprägtem Elternhaus}
+
+# wir lesen das Gesamtnetzwerk neu ein
+
+# Zunächst werden Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+raf
+
+# da es um das Elternhaus der Personen geht, sollen nun die Knoten, bei denen es sich um Aktionen und nicht um natürliche Personen handelt, gelöscht werden 
+delete_vertices(raf, V(raf)[type !="1"])
+
+# Nun sollen die Knoten je nach religiöser Prägung in ihrem Elternhaus unterschiedlich eingefärbt werden
+# im Codebuch gibt es dazu folgende Codierung: das Vertext-Attribut upbringing hat folgende Werte: 1 = Pfarrer*in bzw. Pastor*in im Elternhaus, 2 = kein Pfarrer*in / Priester*in im Elternhaus, 99 = keine Angabe gefunden
+
+V(raf)[V(raf)$upbringing == 1]$color <- "red" # kein Abschluss wird schwarz gefärbt
+V(raf)[V(raf)$upbringing == 2]$color <- "black" # Hauptschulabsolventen rot einfärben
+V(raf)[V(raf)$upbringing == 99]$color <- "white" # Knoten, zu denen es keine Angabe gibt, werden weiß gefärbt
+# die letzten zwei Zeilen könnte man auch durch einen Kommentar "ausschalten", da es auch ausreichen würde, nur die tatsächlichen Pfarrerskinder zu highlighten. Dazu müsste dann noch die Unterüberschrift des Plots angepasst werden, sodass dort in der Legende nur steht "rot = ..."
+
+# Visualisierung des Gesamtnetzwerks der Mitglieder nach Elternhaus
+plot(raf, 
+     layout=layout_with_kk,
+     edge.color="grey",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung
+     main="Pfarrerskinder im Netzwerk der ersten und zweiten RAF-Generation",
+     sub=" rot = Pfarrer*in bzw. Pastor*in im Elternhaus, schwarz = kein Pfarrerskind, 
+     weiß = keine Angaben gefunden")
+
+# dieser Plot ist jedoch wahrscheinlich obsolet, da es nur drei gab und somit keine überwältigende Erkenntis entstanden ist
+
+```
+
+```{r Visualisierung des Gesamtnetzwerks der Mitglieder nach Berufsfeldern}
+
+# wir lesen das Gesamtnetzwerk neu ein, sicherheitshalber sollten Environment und Console gereinigt werden
+
+# Zunächst werden Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+raf
+
+raf
+list.vertex.attributes(raf)
+
+# Das Vertex-Attribut job definiert, welcher Berufsgruppe die natürlichen Personen angehört haben; 1= Journalist/in, 2= Lehramt/Pädagogik, 3= Jurist/in, 4= sonstige. Im Folgenden sollen die Knoten, bei denen es sich um Personen handelt, je nach ihrer Berufsgruppe unterschiedlich farbig eingefärbt werden.
+
+V(raf)[V(raf)$job == 1]$color <- "blue" # Journalist*innen blau einfärben
+V(raf)[V(raf)$job == 2]$color <- "green" # Lehrer*innen etc grün einfärben
+V(raf)[V(raf)$job == 3]$color <- "red" # Jurist*innen rot einfärben
+V(raf)[V(raf)$job == 4]$color <- "orange" # Sonstige Berufsgruppe orange einfärben
+V(raf)[V(raf)$job == 5]$color <- "pink" # Studierende rot einfärben
+V(raf)[V(raf)$job == 6]$color <- "black" # Kunstschaffende orange einfärben
+
+# Visualisierung des Gesamtnetzwerks der Mitglieder nach Berufsfeldern
+plot(raf, 
+     layout=layout_with_kk,
+     edge.color="grey",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung
+     main="Netzwerk der ersten und zweiten RAF-Generation nach Berufsfeldern",
+     sub="blau = Journalist*innen, grün = Lehrer*innen/Pädadog*innen, rot = Jurist*innen, 
+     pink = Student*in, schwarz = Künstler*in, orange = Sonstige")
+
+```
+
+```{r Teilnetzwerk der 1. Generation nach Berufsfeldern}
+# Wir lesen hierzu das Netzwerk nochmal neu ein:
+
+# Zunächst werden Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+raf
+
+# Wir wollen nun wissen, wie das Netzwerk der ersten Generation der RAF aussieht:
+raf_eins <- delete_vertices(raf, V(raf)[generation !="1"]) # löscht alle Knoten, für die der Wert von generation nicht 1 beträgt, d.h. die nicht der ersten Generation angehört haben. 
+
+#raf_eins <- add.vertices(raf, V(raf)[generation !="3"]) # Da im Codebuch neben Akteuren, die der ersten und zweiten Generation angehört haben, auch Akteure, die beiden Generationen angehört haben, definiert sind, sollen diese dem Netzwerk wieder hinzugefügt werden. Im Schritt zuvor wurden diese ja mit herausgelöscht, da nur Knoten mit dem Wert generation = 1 behalten wurden, aber wer beiden Generationen angehört hat (generation = 1), muss natürlich auch dem Netzwerk der 1. Generation hinzugefügt werden. !! Notiz: eigentlich wichtiger Befehl, aber irgendeinwie plottet es damit gerade nicht, deshalb vorübergehend deaktiviert, bis ich eine Lösung gefunden habe
+
+raf_eins
+vertex_attr(raf_eins)
+
+# um das Netzwerk der ersten Generation anzuzeigen, sollen nun die Knoten, bei denen es sich um Aktionen und nicht um natürliche Personen handelt, gelöscht werden 
+raf_eins_mem <- delete_vertices(raf_eins, V(raf_eins)[type !="1"])
+
+raf_eins_mem
+
+
+V(raf_eins_mem)[V(raf_eins_mem)$job == 1]$color <- "blue" # Journalist*innen blau einfärben
+V(raf_eins_mem)[V(raf_eins_mem)$job == 2]$color <- "green" # Lehrer*innen etc grün einfärben
+V(raf_eins_mem)[V(raf_eins_mem)$job == 3]$color <- "red" # Jurist*innen rot einfärben
+V(raf_eins_mem)[V(raf_eins_mem)$job == 4]$color <- "orange" # Sonstige Berufsgruppe orange einfärben
+V(raf_eins_mem)[V(raf_eins_mem)$job == 5]$color <- "pink" # Studierende rot einfärben
+V(raf_eins_mem)[V(raf_eins_mem)$job == 6]$color <- "black" # Kunstschaffende orange einfärben
+
+# Visualisierung des Gesamtnetzwerks der Mitglieder nach Berufsfeldern
+plot(raf_eins_mem, 
+     layout=layout_with_kk,
+     edge.color="grey",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_eins_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung
+     main="Netzwerk der ersten RAF-Generation nach Berufsfeldern",
+     sub="blau = Journalist*innen, grün = Lehrer*innen/Pädadog*innen, rot = Jurist*innen, 
+     pink = Student*in, schwarz = Künstler*in, orange = Sonstige")
+
+```
+
+```{r Teilnetzwerk der ersten und zweiten Generation nach Berufsfeldern}
+# gegebenenfalls muss das Netzwerk nochmal neu eingelesen werden, den code findet man beispielsweise zwei Chunks weiter oben. Wenn man jedoch erst environment und console bereinigt und dann die zwei vorherigen Chunks ausführt, bevor man diesen chunk plottet, sollte es auch so funktionieren.
+
+# Wir wollen nun wissen, wie das Netzwerk der zweiten Generation der RAF aussieht:
+raf_zwei <- delete_vertices(raf, V(raf)[generation !="2"]) # löscht alle Knoten, für die der Wert von generation nicht 1 beträgt, d.h. die nicht der ersten Generation angehört haben. 
+
+raf_eins <- add.vertices(raf, V(raf)[generation !="3"]) # Da im Codebuch neben Akteuren, die der ersten und zweiten Generation angehört haben, auch Akteure, die beiden Generationen angehört haben, definiert sind, sollen diese dem Netzwerk wieder hinzugefügt werden. Im Schritt zuvor wurden diese ja mit herausgelöscht, da nur Knoten mit dem Wert generation = 1 behalten wurden, aber wer beiden Generationen angehört hat (generation = 1), muss natürlich auch dem Netzwerk der 1. Generation hinzugefügt werden. 
+
+raf_zwei
+vertex_attr(raf_zwei)
+
+# um das Netzwerk der zweiten Generation anzuzeigen, sollen nun die Knoten, bei denen es sich um Aktionen und nicht um natürliche Personen handelt, gelöscht werden 
+raf_zwei_mem <- delete_vertices(raf_zwei, V(raf_zwei)[type !="1"])
+
+raf_zwei_mem
+
+
+V(raf_zwei_mem)[V(raf_zwei_mem)$job == 1]$color <- "blue" # Journalist*innen blau einfärben
+V(raf_zwei_mem)[V(raf_zwei_mem)$job == 2]$color <- "green" # Lehrer*innen etc grün einfärben
+V(raf_zwei_mem)[V(raf_zwei_mem)$job == 3]$color <- "red" # Jurist*innen rot einfärben
+V(raf_zwei_mem)[V(raf_zwei_mem)$job == 4]$color <- "orange" # Sonstige Berufsgruppe orange einfärben
+V(raf_zwei_mem)[V(raf_zwei_mem)$job == 5]$color <- "pink" # Studierende rot einfärben
+V(raf_zwei_mem)[V(raf_zwei_mem)$job == 6]$color <- "black" # Kunstschaffende orange einfärben
+
+# Visualisierung des Gesamtnetzwerks der Mitglieder nach Berufsfeldern
+plot(raf_zwei_mem, 
+     layout=layout_with_kk,
+     edge.color="grey",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_zwei_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung
+     main="Netzwerk der zweiten RAF-Generation nach Berufsfeldern",
+     sub="blau = Journalist*innen, grün = Lehrer*innen/Pädadog*innen, rot = Jurist*innen, 
+     pink = Student*in, schwarz = Künstler*in, orange = Sonstige")
+
+par(mfrow=c(1,2), mar=c(0,0,2,1)) # definiert, dass zwei Abbildungen in einer Zeile stehen
+
+raf_eins_mem
+
+plot(raf_eins_mem, 
+     layout=layout_with_kk,
+     edge.color="grey",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_eins_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung
+     main="Erste Generation",
+     sub="blau = Journalist*innen, grün = Lehrer*innen/Pädadog*innen, rot = Jurist*innen, 
+     pink = Student*in, schwarz = Künstler*in, orange = Sonstige")
+
+plot(raf_zwei_mem, 
+     layout=layout_with_kk,
+     edge.color="grey",
+     edge.arrow.size=.3,
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_zwei_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung
+     main="Zweite Generation",
+     sub="blau = Journalist*innen, grün = Lehrer*innen/Pädadog*innen, rot = Jurist*innen, 
+     pink = Student*in, schwarz = Künstler*in, orange = Sonstige")
+```
+
+
+```{r Visualisierung nach Knotentypen}
+# Wir lesen das Netzwerk im Folgenden ein
+# Zunächst werden Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+raf
+#Grafisch werden Ereignisse/Aktionen  anders dargestellt als Akteure
+V(raf)[V(raf)$type == 1]$shape <- "circle" # Personen als Kreise
+V(raf)[V(raf)$type == 2]$shape <- "square" # Aktionen als Quadrate
+V(raf)[V(raf)$type == 1]$color <- "red" # Personen rot einfärben
+V(raf)[V(raf)$type == 2]$color <- "orange" #Aktionen orange einfärben
+# Visualisierung des Netzwerks nach Akteurstypen
+plot(raf,
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(raf), # verhindert, dass sich Kanten überlagern
+     vertex.label=NA, # entfernt die Beschriftung der Knoten für bessere Übersichtlichkeit
+     vertex.size=5,
+     main="RAF-Gesamtnetzwerk nach Akteurstypen",
+     sub="Kreis = Person, Aktion = Quadrat")
+```
+
+```{r Visualisierung nach Generationen}
+raf
+V(raf)[V(raf)$generation == 1]$color <- "red" # Personen rot einfärben
+V(raf)[V(raf)$generation == 2]$color <- "orange" #Aktionen orange einfärben
+V(raf)[V(raf)$generation == 3]$color <- "pink" # Personen rot einfärben
+V(raf)[V(raf)$type == 2]$color <- "black" # Aktionen schwarz einfärben
+# Visualisierung des Netzwerks nach Akteurstypen
+plot(raf,
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(raf), # verhindert, dass sich Kanten überlagern
+     vertex.label=NA, # entfernt die Beschriftung der Knoten für bessere Übersichtlichkeit
+     vertex.size=5,
+     main="RAF-Gesamtnetzwerk nach Generationen",
+     sub="Mitglieder der verschiedenen Generationen werden unterschiedlich eingefärbt. 
+     Erste Generation = rot, Zweite Generation = orange, Beide Generationen = pink, Aktionen =  
+     schwarz")
+```
+
+```{r Teilnetzwerk der ersten Generation}
+raf
+# Zeigt uns die Vertex-Attribute des Gesamtnetzwerks "raf" an.
+vertex_attr(raf)
+# Wir wollen nun wissen, wie das Netzwerk der ersten Generation der RAF aussieht:
+raf_eins <- delete_vertices(raf, V(raf)[generation !="1"]) # löscht alle Knoten, für die der Wert von generation nicht 1 beträgt, d.h. die nicht der ersten Generation angehört haben. 
+#raf_eins <- add.vertices(raf, V(raf)[generation !="3"]) # Da im Codebuch neben Akteuren, die der ersten und zweiten Generation angehört haben, auch Akteure, die beiden Generationen angehört haben, definiert sind, sollen diese dem Netzwerk wieder hinzugefügt werden. Im Schritt zuvor wurden diese ja mit herausgelöscht, da nur Knoten mit dem Wert generation = 1 behalten wurden, aber wer beiden Generationen angehört hat (generation = 1), muss natürlich auch dem Netzwerk der 1. Generation hinzugefügt werden. !! NOtiz: eigentlich wichtiger Befehl, aber irgendeinwie plottet es damit gerade nicht, deshalb vorübergehend deaktiviert, bis ich eine Lösung gefunden habe
+raf_eins
+vertex_attr(raf_eins)
+# um das Netzwerk der ersten Generation anzuzeigen, sollen nun die Knoten, bei denen es sich um Aktionen und nicht um natürliche Personen handelt, gelöscht werden 
+raf_eins_mem <- delete_vertices(raf_eins, V(raf_eins)[type !="1"])
+raf_eins_mem
+#Entzerrte Darstellung, Anpassung der Visualisierung 
+l <- layout_with_kk(raf_eins_mem) #legt den Layout-Typ fest
+l <- norm_coords(l, ymin=-0.75, ymax=0.75, xmin=-0.75, xmax=0.75)
+#par(mfrow=c(2,2), mar=c(3,3,3,3)) #Austesten verschiedener Layout-Optionen
+#plot(raf_eins, rescale=F, layout=l*0.4)
+#plot(raf_eins, rescale=F, layout=l*0.8)
+#plot(raf_eins, rescale=F, layout=l*1.2)
+#plot(raf_eins, rescale=F, layout=l*1.6)
+# Beste Visualisierung ist mit Faktor 1.2
+par(mfrow=c(1,1), mar=c(2,2,2,2))
+# Nun wird das Netzwerk der Mitglieder der 1. Generation geplottet:
+plot(raf_eins_mem, 
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.color="red",
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_eins_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der ersten Generation")
+     
+```
+
+
+```{r Teilnetzwerk der zweiten Generation}
+# Wir wollen nun wissen, wie das Netzwerk der zweiten Generation der RAF aussieht:
+raf_zwei <- delete_vertices(raf, V(raf)[generation !="2"]) # löscht alle Knoten, für die der Wert von generation nicht 2 beträgt, d.h. die nicht der ersten Generation angehört haben. 
+#raf_zwei <- add.vertices(raf, V(raf)[generation !="3"]) # Da im Codebuch neben Akteuren, die der ersten und zweiten Generation angehört haben, auch Akteure, die beiden Generationen angehört haben, definiert sind, sollen diese dem Netzwerk wieder hinzugefügt werden. Im Schritt zuvor wurden diese ja mit herausgelöscht, da nur Knoten mit dem Wert generation = 1 behalten wurden, aber wer beiden Generationen angehört hat (generation = 1), muss natürlich auch dem Netzwerk der 1. Generation hinzugefügt werden. !! NOtiz: eigentlich wichtiger Befehl, aber irgendeinwie plottet es damit gerade nicht, deshalb vorübergehend deaktiviert, bis ich eine Lösung gefunden habe
+raf_zwei
+vertex_attr(raf_zwei)
+# um das Netzwerk der ersten Generation anzuzeigen, sollen nun die Knoten, bei denen es sich um Aktionen und nicht um natürliche Personen handelt, gelöscht werden 
+raf_zwei_mem <- delete_vertices(raf_zwei, V(raf_zwei)[type !="1"])
+raf_zwei_mem
+#Entzerrte Darstellung, Anpassung der Visualisierung 
+l <- layout_with_kk(raf_zwei_mem) #legt den Layout-Typ fest
+l <- norm_coords(l, ymin=-0.75, ymax=0.75, xmin=-0.75, xmax=0.75)
+#par(mfrow=c(2,2), mar=c(3,3,3,3)) #Austesten verschiedener Layout-Optionen
+#plot(raf_eins, rescale=F, layout=l*0.4)
+#plot(raf_eins, rescale=F, layout=l*0.8)
+#plot(raf_eins, rescale=F, layout=l*1.2)
+#plot(raf_eins, rescale=F, layout=l*1.6)
+# Beste Visualisierung ist mit Faktor 1.2
+par(mfrow=c(1,1), mar=c(2,2,2,2))
+# Nun wird das Netzwerk der Mitglieder der 1. Generation geplottet:
+plot(raf_zwei_mem, 
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.color="red",
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_zwei_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der zweiten Generation")
+```
+
+```{r Gegenüberstellung der beiden Generationen}
+#Mit diesem Befehl lassen sich zwei Abbildungen in einer Zeile darstellen und so vergleichen:
+par(mfrow=c(1,2), mar=c(0,0,2,1)) 
+#Erste Generation:
+plot(raf_eins_mem, 
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.color="red",
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_eins_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der ersten Generation")
+#Zweite Generation:
+plot(raf_zwei_mem, 
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.color="red",
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_zwei_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der zweiten Generation")
+```
+
+```{r Visualisierung nach Geschlecht}
+# Jetzt wollen wir die Geschlechtsverhätnisse der beiden Generationen nebeneinadnder betrachten.
+#Als erstes wählen wir das Netzwerk der ersten Generation und ordnen den Attribut sex die Farben hellblau (männlich) und rosa (weiblich) zu:
+# definiert die Kantenfarben nach dem Edge-Attribut sex
+V(raf_eins_mem)[V(raf_eins_mem)$sex == 1]$color <- "lightblue" # männlich
+V(raf_eins_mem)[V(raf_eins_mem)$sex == 2]$color <- "pink" # weiblich
+# Visualisierung des Netzwerks nach Geschlechtsmerkmalen
+plot(raf_eins_mem, 
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.size=5,
+# hier keine Farbe mehr angeben, sonst überschreibt das die vorher              programmierten Farbzuweisungen
+     edge.curved=curve_multiple(raf_eins_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der ersten Generation nach Geschlecht",
+     sub= "Männlich = Blau, Weiblich = rosa")
+#Als nächstes wählen wir das Netzwerk der zweiten Generation und ordnen den Attribut sex die Farben hellblau (männlich) und rosa (weiblich) zu:
+# definiert die Kantenfarben nach dem Edge-Attribut sex
+V(raf_zwei_mem)[V(raf_zwei_mem)$sex == 1]$color <- "lightblue" # männlich
+V(raf_zwei_mem)[V(raf_zwei_mem)$sex == 2]$color <- "pink" # weiblich
+# Visualisierung des Netzwerks nach Geschlechtsmerkmalen
+plot(raf_zwei_mem, 
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.size=5,
+# hier keine Farbe mehr angeben, sonst überschreibt das die vorher              programmierten Farbzuweisungen
+     edge.curved=curve_multiple(raf_eins_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der zweiten Generation nach Geschlecht",
+     sub= "Männlich = Blau, Weiblich = rosa")
+#Zum Schluss werden die beiden wieder in einer Zeile angezeigt. Hier müssen wir noch herausfinden, wie wir Überschriften in eine zweite Zeile springen lassen können, damit es bei der Darstellung schöner aussieht.
+par(mfrow=c(1,2), mar=c(0,0,2,1)) 
+#Erste Generation:
+plot(raf_eins_mem, 
+     asp=0,
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.size=5,
+# hier keine Farbe mehr angeben, sonst überschreibt das die vorher              programmierten Farbzuweisungen
+     edge.curved=curve_multiple(raf_eins_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der ersten Generation nach Geschlecht",
+     sub= "Männlich = Blau, Weiblich = rosa")
+#Zweite Generation:
+plot(raf_zwei_mem,
+     asp=0,
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.size=5,
+# hier keine Farbe mehr angeben, sonst überschreibt das die vorher              programmierten Farbzuweisungen
+     edge.curved=curve_multiple(raf_eins_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der zweiten Generation nach Geschlecht",
+     sub= "Männlich = Blau, Weiblich = rosa")
+```
+
+```{r Teilnetzwerk der ersten Generation nach Geschlecht}
+#Jetzt stellen wir die Einzelnetzwerke der Frauen und Männer der ersten Generation ohne das jeweils andere Geschlecht dar
+par(mfrow=c(1,2), mar=c(0,0,2,1)) #Wenn wir die zwei Netzwerke in einzelnen Fenstern wollen, diesen Befehl löschen
+#Wir arbeiten dafür mit den bereits modifizierten Netzwerken raf_eins_mem und selektieren hier zuerst nach den männlichen Personen:
+raf_eins_maskulin <- delete_vertices(raf_eins_mem, V(raf_eins_mem)[sex !="1"])
+#Jetzt wird das Netzwerk mit ausschließlich männlichen Mitgliedern der ersten Generation visualisiert:
+plot(raf_eins_maskulin, 
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.color="lightblue",
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_zwei_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der Männer der ersten Generation")
+#Nach demselben Prinzip wird das Netzwerk mit ausschließlich weiblichen Mitgliedern der ersten Generation  generiert:
+raf_eins_feminin <- delete_vertices(raf_eins_mem, V(raf_eins_mem)[sex !="2"])
+#Und visualisiert:
+plot(raf_eins_feminin, 
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.color="pink",
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_zwei_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der Frauen der ersten Generation")
+```
+
+```{r Teilnetzwerk der zweiten Generation nach Geschlecht}
+#Jetzt stellen wir die Einzelnetzwerke der Frauen und Männer der zweiten Generation ohne das jeweils andere Geschlecht dar
+par(mfrow=c(1,2), mar=c(0,0,2,1)) #Wenn wir die zwei Netzwerke in einzelnen Fenstern wollen, diesen Befehl löschen
+#Wir arbeiten dafür mit den bereits modifizierten Netzwerken raf_zwei_mem und selektieren hier zuerst nach den männlichen Personen:
+raf_zwei_maskulin <- delete_vertices(raf_zwei_mem, V(raf_zwei_mem)[sex !="1"])
+#Jetzt wird das Netzwerk mit ausschließlich männlichen Mitgliedern der zweiten Generation visualisiert:
+plot(raf_zwei_maskulin, 
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.color="lightblue",
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_zwei_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der Männer der zweiten Generation")
+#Nach demselben Prinzip wird das Netzwerk mit ausschließlich weiblichen Mitgliedern der zweiten Generation  generiert:
+raf_zwei_feminin <- delete_vertices(raf_zwei_mem, V(raf_zwei_mem)[sex !="2"])
+#Und visualisiert:
+plot(raf_zwei_feminin, 
+     rescale=F, 
+     layout=l*1.2,
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.color="pink",
+     vertex.size=5,
+     edge.curved=curve_multiple(raf_zwei_mem), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label=NA, #entfernt die Knoten-Beschriftung,
+     main="Netzwerk der Frauen der zweiten Generation")
+```
+
+```{r Visualisierung nach Eintrittsjahren: 1970}
+#Durch die Installation dieser Pakete soll das Netzwerk schöner aussehen
+library (visNetwork)
+library(igraph)
+library(igraphdata)
+library(knitr) 
+library(rmarkdown) 
+# Zunächst werden Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+raf
+#Wir selektieren die Akteure, die 1970 eingetreten sind:
+raf_1970 <- delete_vertices(raf, V(raf) [entry !="1970"])# löscht die Akteure, die nicht 1970 eingetreten sind
+#Löschen die Akteure, die vorher ausgetreten oder gestorben sind (macht im ersten Jahr keinen Sinn, deswegen nur kommentiert)
+#raf_1970 <- delete_vertices(raf_1970, V(raf_1970) [yearofresignation <= "1969"]) 
+#raf_1970 <- delete_vertices(raf_1970, V(raf_1970) [symbolicdeath <="1970"])
+raf_1970 <- subgraph.edges(raf_1970, E(raf_1970)[year==1970]) #selektiert die Beziehungen von 1970
+raf_1970 <- simplify(raf_1970, remove.multiple=TRUE,) #löscht doppelte Beziehungen
+V(raf_1970) [V(raf_1970)$entry == 1970]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+raf_1970
+# Nun wird das Netzwerk der Mitglieder von 1970 visualisiert
+plot(raf_1970,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(raf_1970), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF 1970",
+     sub="Neue Mitglieder sind rot eingefärbt")
+```
+
+
+```{r Visualisierung nach Eintrittsjahren:1971}
+#Nun kommen die von 1971 dazu:
+raf
+raf_1971 <- delete_vertices(raf, V(raf) [entry >="1972"])#löscht alle Akteure, die nach 1971 dazugekommen sind
+raf_1971 <- delete_vertices(raf_1971, V(raf_1971) [yearofresignation <= "1970"])#löscht die Ausgetretenen des Vorjahres
+raf_1971 <- delete_vertices(raf_1971, V(raf_1971) [symbolicdeath <="1970"])#löscht die Gestorbenen des Vorjahres
+#raf_1971 <- subgraph.edges(raf_1971, E(raf_1971)[year=1971]) #selektiert die Beziehungen des entsprechenden 
+raf_1971 <- simplify(raf_1971, remove.multiple=TRUE,) #löscht doppelte Beziehungen
+V(raf_1971) [V(raf_1971)$entry == 1971]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+raf_1971
+# Nun wird das Netzwerk der Mitglieder von 1971 visualisiert
+plot(raf_1971,
+     asp=0, 
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(raf_1971), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF 1971",
+     sub ="Neue Mitglieder sind rot eingefärbt")
+```
+
+```{r RAF 1972}
+#Nun kommen die von 1972 dazu:
+raf_1972 <- delete_vertices(raf, V(raf) [entry >="1973"])
+raf_1972 <- delete_vertices(raf_1972, V(raf_1972) [yearofresignation <= "1971"])#löscht die Ausgetretenen des Vorjahres
+raf_1972 <- delete_vertices(raf_1972, V(raf_1972) [symbolicdeath <="1971"])#löscht die Gestorbenen des Vorjahres
+raf_1972 <- subgraph.edges(raf_1972, E(raf_1972)[year==1972]) #selektiert die Beziehungen von 1972
+raf_1972 <- simplify(raf_1972, remove.multiple=TRUE,) #löscht doppelte Beziehungen
+V(raf_1972) [V(raf_1972)$entry == 1972]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+raf_1972
+# Nun wird das Netzwerk der Mitglieder von 1972 visualisiert
+plot(raf_1972,
+     asp=0,
+     layout=layout_with_kk(raf_1972),
+     edge.curved=curve_multiple(raf_1972), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF 1972",
+     sub ="Neue Mitglieder sind rot eingefärbt")
+```
+
+```{r RAF 1973}
+#Nun kommen die von 1973 dazu:
+raf_1973 <- delete_vertices(raf, V(raf) [entry >="1974"])
+raf_1973 <- delete_vertices(raf_1973, V(raf_1973) [yearofresignation <= "1972"])#löscht die Ausgetretenen des Vorjahres
+raf_1973 <- delete_vertices(raf_1973, V(raf_1973) [symbolicdeath <="1972"])#löscht die Gestorbenen des Vorjahres
+raf_1973 <- subgraph.edges(raf_1973, E(raf_1973)[year==1973]) #selektiert die Beziehungen von 1970
+raf_1973 <- simplify(raf_1973, remove.multiple=TRUE,) #löscht doppelte Beziehungen
+V(raf_1973) [V(raf_1973)$entry == 1973]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+raf_1973
+# Nun wird das Netzwerk der Mitglieder von 1973 visualisiert
+plot(raf_1973,
+     asp=0,
+     layout=layout_with_kk(raf_1973),
+     edge.curved=curve_multiple(raf_1973), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF 1973",
+     sub ="Neue Mitglieder sind rot eingefärbt")
+```
+
+```{r RAF 1974}
+#Nun kommen die von 1974 dazu:
+raf_1974 <- delete_vertices(raf, V(raf) [entry >="1975"])
+raf_1974 <- delete_vertices(raf_1974, V(raf_1974) [yearofresignation <= "1973"])#löscht die Ausgetretenen des Vorjahres
+raf_1974 <- delete_vertices(raf_1974, V(raf_1974) [symbolicdeath <="1973"])#löscht die Gestorbenen des Vorjahres
+#raf_1974 <- subgraph.edges(raf_1974, E(raf_1974)[year==1974]) #selektiert die Beziehungen von 1970
+raf_1974 <- simplify(raf_1974, remove.multiple=TRUE,) #löscht doppelte Beziehungen
+V(raf_1974) [V(raf_1974)$entry == 1974]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+raf_1974
+# Nun wird das Netzwerk der Mitglieder von 1974 visualisiert
+plot(raf_1974,
+     asp=0,
+     layout=layout_with_kk(raf_1974),
+     edge.curved=curve_multiple(raf_1974), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF 1974",
+     sub ="Neue Mitglieder sind rot eingefärbt")
+```
+
+```{r RAF 1975}
+#Nun kommen die von 1975 dazu:
+raf_1975 <- delete_vertices(raf, V(raf) [entry >="1976"])
+raf_1975 <- delete_vertices(raf_1975, V(raf_1975) [yearofresignation <= "1974"])#löscht die Ausgetretenen des Vorjahres
+raf_1975 <- delete_vertices(raf_1975, V(raf_1975) [symbolicdeath <="1974"])#löscht die Gestorbenen des Vorjahres
+#raf_1975 <- subgraph.edges(raf_1975, E(raf_1975)[year==1975]) #selektiert die Beziehungen von 1970
+raf_1975 <- simplify(raf_1975, remove.multiple=TRUE,) #löscht doppelte Beziehungen
+V(raf_1975) [V(raf_1975)$entry == 1975]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+raf_1975
+# Nun wird das Netzwerk der Mitglieder von 1975 visualisiert
+plot(raf_1975,
+    asp=0,
+    layout=layout_with_kk(raf_1975),
+    edge.curved=curve_multiple(raf_1975), # verhindert, dass sich Kanten überlagern
+    vertex.size=10,
+    vertex.label.color = "black",
+    vertex.label.size = .5, # gibt die Größe der Nodes a
+    vertex.label.family = "sans", #gibt die Schriftart an
+    #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+    #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+    vertex.label.cex = .7, #gibt die SChriftartgröße an
+    main="RAF 1975",
+    sub ="Neue Mitglieder sind rot eingefärbt")
+```
+
+```{r RAF 1976}
+#Nun kommen die von 1976 dazu:
+raf_1976 <- delete_vertices(raf, V(raf) [entry >="1977"])
+raf_1976 <- delete_vertices(raf_1976, V(raf_1976) [yearofresignation <= "1975"])#löscht die Ausgetretenen des Vorjahres
+raf_1976 <- delete_vertices(raf_1976, V(raf_1976) [symbolicdeath <="1975"])#löscht die Gestorbenen des Vorjahres
+#raf_1976 <- subgraph.edges(raf_1976, E(raf_1976)[year==1976]) #selektiert die Beziehungen von 1970
+raf_1976 <- simplify(raf_1976, remove.multiple=TRUE,) #löscht doppelte Beziehungen
+V(raf_1976) [V(raf_1976)$entry == 1976]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+raf_1976
+# Nun wird das Netzwerk der Mitglieder von 1976 visualisiert
+plot(raf_1976,
+     asp=0,
+     layout=layout_with_kk(raf_1976),
+     edge.curved=curve_multiple(raf_1976), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF 1976",
+     sub ="Neue Mitglieder sind rot eingefärbt")
+```
+
+```{r RAF 1977}
+#Nun kommen die von 1977 dazu:
+raf_1977 <- delete_vertices(raf, V(raf) [entry >="1978"])
+raf_1977 <- delete_vertices(raf_1977, V(raf_1977) [yearofresignation <= "1976"])#löscht die Ausgetretenen des Vorjahres
+raf_1977 <- delete_vertices(raf_1977, V(raf_1977) [symbolicdeath <="1976"])#löscht die Gestorbenen des Vorjahres
+#raf_1977 <- subgraph.edges(raf_1977, E(raf_1977)[year==1977]) #selektiert die Beziehungen von 1970
+raf_1977 <- simplify(raf_1977, remove.multiple=TRUE,) #löscht doppelte Beziehungen
+V(raf_1977) [V(raf_1977)$entry == 1977]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+raf_1977
+# Nun wird das Netzwerk der Mitglieder von 1977 visualisiert
+plot(raf_1977,
+     asp=0,
+     layout=layout_with_kk(raf_1977),
+     edge.curved=curve_multiple(raf_1977), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF Anfang 1977",
+     sub ="Neue Mitglieder sind rot eingefärbt")
+```
+
+
+```{r Nach 1977}
+#Was 1977 noch passiert ist:
+raf_1977_ende <- delete_vertices(raf, V(raf) [entry >="1978"])
+raf_1977_ende <- delete_vertices(raf_1977_ende, V(raf_1977_ende) [yearofresignation <= "1976"])#löscht die Ausgetretenen des Vorjahres
+raf_1977_ende <- delete_vertices(raf_1977_ende, V(raf_1977_ende) [symbolicdeath <="1976"])#löscht die Gestorbenen des Vorjahres
+#Die Toten und Ausgetretenen von 1977 werden eingefärbt:
+V(raf_1977_ende)[V(raf_1977_ende)$yearofresignation == 1977]$color <-"lightgray" #Ausgetreten
+V(raf_1977_ende)[V(raf_1977_ende)$symbolicdeath == 1977]$color <- "black" #Gestorben
+#raf_1977_ende <- subgraph.edges(raf_1977, E(raf_1977)[year==1977]) #selektiert die Beziehungen von 1970
+raf_1977_ende <- simplify(raf_1977_ende, remove.multiple=TRUE,) #löscht doppelte Beziehungen
+V(raf_1977_ende) [V(raf_1977_ende)$entry == 1977]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+raf_1977_ende
+# Nun wird das Netzwerk der Mitglieder von 1977 visualisiert
+plot(raf_1977_ende,
+     asp=0,
+     layout=layout_with_kk(raf_1977_ende),
+     edge.curved=curve_multiple(raf_1977_ende), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF Ende 1977",
+     sub ="Neue Mitglieder sind rot eingefärbt, Ausgetretene grau und Tote schwarz")
+```
+
+```{r}
+colors()
+```
+
+```{r Plotten des Mitgliedernetzwerkes im Verlauf der Jahre}
+plot(raf_1970,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(raf_1970), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF 1970",
+     sub="Neue Mitglieder sind rot eingefärbt")
+
+plot(raf_1971,
+     asp=0, 
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(raf_1971), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF 1971",
+     sub ="Neue Mitglieder sind rot eingefärbt")
+
+plot(raf_1972,
+     asp=0,
+     layout=layout_with_kk(raf_1972),
+     edge.curved=curve_multiple(raf_1972), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF 1972",
+     sub ="Neue Mitglieder sind rot eingefärbt")
+
+plot(raf_1973,
+     asp=0,
+     layout=layout_with_kk(raf_1973),
+     edge.curved=curve_multiple(raf_1973), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF 1973",
+     sub ="Neue Mitglieder sind rot eingefärbt")
+
+plot(raf_1974,
+     asp=0,
+     layout=layout_with_kk(raf_1974),
+     edge.curved=curve_multiple(raf_1974), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF 1974",
+     sub ="Neue Mitglieder sind rot eingefärbt")
+
+plot(raf_1975,
+    asp=0,
+    layout=layout_with_kk(raf_1975),
+    edge.curved=curve_multiple(raf_1975), # verhindert, dass sich Kanten überlagern
+    vertex.size=10,
+    vertex.label.color = "black",
+    vertex.label.size = .5, # gibt die Größe der Nodes a
+    vertex.label.family = "sans", #gibt die Schriftart an
+    #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+    #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+    vertex.label.cex = .7, #gibt die SChriftartgröße an
+    main="RAF 1975",
+    sub ="Neue Mitglieder sind rot eingefärbt")
+
+plot(raf_1976,
+     asp=0,
+     layout=layout_with_kk(raf_1976),
+     edge.curved=curve_multiple(raf_1976), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF 1976",
+     sub ="Neue Mitglieder sind rot eingefärbt")
+
+plot(raf_1977,
+     asp=0,
+     layout=layout_with_kk(raf_1977),
+     edge.curved=curve_multiple(raf_1977), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF 1977",
+     sub ="Neue Mitglieder sind rot eingefärbt")
+
+plot(raf_1977_ende,
+     asp=0,
+     layout=layout_with_kk(raf_1977_ende),
+     edge.curved=curve_multiple(raf_1977_ende), # verhindert, dass sich Kanten überlagern
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     #vertex.label.degree = pi/3, # verschiebt die Beschriftung nach unten
+     #vertex.label.dist = 1.2, # verschiebt Beschriftung um 1,2 vom Zentrum
+     vertex.label.cex = .7, #gibt die SChriftartgröße an
+     main="RAF Ende 1977",
+     sub ="Neue Mitglieder sind rot eingefärbt, Ausgetretene grau und Tote schwarz")
+```
+
+```{r Egonetzwerk Andreas Baader}
+
+# Da in der allgemeinen Bevölkerung Andreas Baader zu den bekanntesten Mitgliedern der RAF zählt, soll sein Ego-Netzwerk generiert werden. 
+
+# Wir lesen das Netzwerk dazu im Folgenden neu ein
+
+# Zunächst werden Edge - und Nodelist eingelesen:
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+
+raf
+
+# zeigt die Knoten mit den meisten Verbindungen, ähnlich wie der degree Wert.
+ego_size(raf)
+
+# Wir stellen fest, dass Knoten 1 (Andreas Baader) die meisten degrees hat. Deshalb wollen wir ein Ego-Netzwerk aus diesem Graph generieren.
+degree(raf)
+
+# selektiert aus dem Netzwerk raf alle Knoten, die mit Knoten 1 über einen Schritt verbunden sind.
+king <- make_ego_graph(raf, order = 1, nodes = V(raf)$name == "Andreas Baader", mode ="all")
+
+# liefert eine Liste der Verbindungen (in diesem Falle alle out/indgree Beziehungen von Baader)
+king
+
+# liefert einen (nicht besonders aufregenden) Plot des selektierten Ego-Netzwerks "king"
+
+# man braucht diesen Zwischenschrit, damit das igraph-Objekt von king1 hergestellt ist
+king1 <- king[[1]]
+king1
+
+#Grafisch werden Ereignisse/Aktionen  anders dargestellt als Akteure
+V(king1)[V(king1)$type == 1]$shape <- "circle" # Personen als Kreise
+V(king1)[V(king1)$type == 2]$shape <- "square" # Aktionen als Quadrate
+V(king1)[V(king1)$type == 1]$color <- "blue" # Personen blau einfärben
+V(king1)[V(king1)$type == 2]$color <- "orange" # Aktionen orange einfärben
+
+
+V(king1)[V(king1)$name == "Andreas Baader"]$color <- "red" # Baader rot hervorheben
+
+# Nun werden verschiedene Visualisierungsoptionen ausprobiert, um eine möglichst entzerrte Darstellung zu erreichen
+
+l <- layout_with_kk(king1)
+l <- norm_coords(l, ymin=-0.8, ymax=.8, xmin=-.8, xmax=.8)
+
+par(mfrow=c(2,2), mar=c(3,3,3,3))
+plot(king1, rescale=F, layout=l*0.4)
+plot(king1, rescale=F, layout=l*0.8)
+plot(king1, rescale=F, layout=l*1.2)
+plot(king1, rescale=F, layout=l*1.6)
+
+# Beste Visualisierung ist mit Faktor 1.2
+par(mfrow=c(1,1), mar=c(2,2,2,2))
+
+# Nun wird das Egonetzwerk von Baader geplottet
+plot(king1,  
+     edge.curved=curve_multiple(king1), 
+     vertex.label=NA, # Beschriftung der Labels zur besseren Übersicht entfernt
+     vertex.size=8,
+     rescale=F, 
+     layout=l*1.2, 
+     main="Ego-Netzwerk Andreas Baader, erster Grad",
+     sub="Kreis = Person, Aktion = Quadrat, roter Kreis = Andreas Baader")
+
+```
+
+```{r Gesamtnetzwerk nochmal neu einlesen}
+# Skript Erstellung einfaches Netzwerk
+# lädt igraph Bibliothek (ggf. vorher installieren)
+library(igraph)
+# erhöht das limit auf 10000000
+options(max.print=1000000)
+# liest die Edgelist als "el" ein
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+# liest die Nodelist mit den Namen ein
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+# Zwischenschritt verbindet die Edge- und Nodelist zu einer Matrix
+raf_matrix <- as.matrix(el)
+# zeigt die Matrix an
+raf_matrix
+# generiert ein igraph-Objekt (dataframe) aus der Matrix, das ungerichtet ist (directed = false)
+raf <- graph_from_data_frame(d=raf_matrix, vertices=nodes, directed=FALSE)
+# ruft unser neues igraph-Objekt auf
+raf
+# generiert die Standard-Visualisierung des Netzwerks
+#plot(raf)
+#degree <- degree(raf)
+#degree
+#test, ob Anfangsproblem behoben ist (d.h. alle Nodeattribute eingelesen werden und in die Matrix übernommen wurden)
+#list.vertex.attributes(raf)
+#Grafisch werden Ereignisse/Aktionen  anders dargestellt als Akteure
+V(raf)[V(raf)$type == 1]$shape <- "circle" # Personen als Kreise
+V(raf)[V(raf)$type == 2]$shape <- "square" # Aktionen als Quadrate
+# einfacher plot
+plot(raf,
+     layout=layout_nicely,
+     main="RAF-Netzwerk")
+```
+
+```{r Teilnetzwerk nur Personen ohne Aktionen}
+# Gesamtnetzwerk ohne Aktionen
+raf_personen <- delete_vertices(raf, V(raf)[type !="1"]) # löscht alle Knoten, für die der Wert von type nicht 1 beträgt, d.h. die keine Person sind
+raf_personen
+V(raf_personen)[V(raf_personen)$generation == 1]$color <- "blue" #erste Generation blau einfärben
+V(raf_personen)[V(raf_personen)$generation == 2]$color <- "green" # zweite Generation grün einfärben
+V(raf_personen)[V(raf_personen)$generation == 3]$color <- "red" # Mitglieder beider Generationen rot einfärben
+plot(raf_personen,
+    layout=layout_with_kk,
+    edge.arrow.size=.3,
+    vertex.size=5,
+    edge.curved=curve_multiple(raf_personen), #sorgt dafür, dass sich keine Kanten überlagern
+    main="Netzwerk ohne Aktionen",
+    sub="Legende: blau: Mitglieder der ersten Generation, grün: Mitglieder der zweiten Generation, rot: Mitglieder beider Generationen")
+     
+```
+
+```{r Ego-Netzwerk Peter-Jürgen Boock}
+# selektiert aus dem Netzwerk raf_personen alle Knoten, die mit Boock über einen Schritt verbunden sind.
+boock <- make_ego_graph(raf_personen, order=1, nodes = V(raf_personen)$name == "Peter-Juergen Boock", mode = "all")
+# liefert eine Liste der Verbindungen (in diesem Falle alle out/indgree Beziehungen von Boock)
+boock
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+boock1 <- boock[[1]]
+boock1
+plot(boock1, 
+     main="Ego-Netzwerk Peter-Jürgen Boock, erster Grad",
+     edge.arrow.size=.3,
+     sub="nur direkte Beziehungen des ersten Grads")
+```
+
+```{r Ego-Netzwerk Brigitte Mohnhaupt}
+# selektiert aus dem Netzwerk raf_personen alle Knoten, die mit Mohnhaupt über einen Schritt verbunden sind.
+mohnhaupt <- make_ego_graph(raf_personen, order=1, nodes = V(raf_personen)$name == "Brigitte Mohnhaupt", mode = "all")
+# liefert eine Liste der Verbindungen (in diesem Falle alle out/indgree Beziehungen von Mohnhaupt)
+mohnhaupt
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+mohnhaupt1 <- mohnhaupt[[1]]
+mohnhaupt1
+plot(mohnhaupt1, 
+     main="Ego-Netzwerk Brigitte Mohnhaupt, erster Grad",
+     edge.arrow.size=.3,
+     sub="nur direkte Beziehungen des ersten Grads")
+```
+
+```{r Ego-Netzwerk Klaus Croissant}
+# selektiert aus dem Netzwerk raf_personen alle Knoten, die mit Croissant über einen Schritt verbunden sind.
+croissant <- make_ego_graph(raf_personen, order=1, nodes = V(raf_personen)$name == "Klaus Croissant", mode = "all")
+# liefert eine Liste der Verbindungen (in diesem Falle alle out/indgree Beziehungen von Croissant)
+croissant
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+croissant1 <- croissant[[1]]
+croissant1
+plot(croissant1, 
+     main="Ego-Netzwerk Klaus Croissant, erster Grad",
+     edge.arrow.size=.3,
+     sub="nur direkte Beziehungen des ersten Grads")
+```
+ 
+```{r Knoten mit den meisten Edges}
+ego_size(raf_personen)
+degree(raf_personen)
+
+```
+
+```{r Teilnetzwerk Anschläge mit Anschlägern gesamt}
+
+# Erstellen des Gesamtnetzwerkes, falls dieses vorher noch nicht geplottet wurde
+
+# liest die Edgelist als "el" ein
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+# liest die Nodelist mit den Namen ein
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+# Zwischenschritt verbindet die Edge- und Nodelist zu einer Matrix
+raf_matrix <- as.matrix(el)
+# zeigt die Matrix an
+raf_matrix
+# generiert ein igraph-Objekt (dataframe) aus der Matrix, das ungerichtet ist (directed = false)
+raf <- graph_from_data_frame(d=raf_matrix, vertices=nodes, directed=FALSE)
+# ruft unser neues igraph-Objekt auf
+raf
+
+# generiert die Standard-Visualisierung des Netzwerks
+#plot(raf)
+#degree <- degree(raf)
+#degree
+#test, ob Anfangsproblem behoben ist (d.h. alle Nodeattribute eingelesen werden und in die Matrix übernommen wurden)
+#list.vertex.attributes(raf)
+
+#Grafisch werden Ereignisse/Aktionen  anders dargestellt als Akteure
+V(raf)[V(raf)$type == 1]$shape <- "circle" # Personen als Kreise
+V(raf)[V(raf)$type == 2]$shape <- "square" # Aktionen als Quadrate
+# einfacher plot
+plot(raf,
+     layout=layout_nicely,
+     main="RAF-Netzwerk")
+
+# Nun soll ein Teilnetzwerk erstellt werden der Anschläge mit beteiligten Anschlägern 
+#dafür: Seletion nach Edge-Attribut relationship=7, das für eine Anschlagsbeteiligung steht
+
+E(raf)[E(raf)$relationship == 7]$color 
+
+plot(raf,
+     edge.color="yellow",
+     edge.arrow.size=.5,
+     vertex.color="red",
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(raf),
+     main="Anschläge und Anschläger",
+     sub="139")
+```
+
+
+```{r Anschläge der ersten Generation}
+
+# Gesamtnetzwerk einlesen oder alternativ, wenn vorheriger chunk geplottet wurde, reicht es nur raf aufzurufen
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+
+list.vertex.attributes(raf)
+vertex_attr(raf)$generation
+
+anschlaege_erste_gen <- delete_vertices(raf, V(raf)[generation > "1"]) #: Löschen aller Knoten, die nicht zur ersten Generation gehören
+anschlaege_erste_gen
+plot(anschlaege_erste_gen, layout=layout_with_kk,
+     main="Anschläge erste Generation",
+     edge.color="green",
+     edge.arrow.size=.5,
+     vertex.color="red")
+#aber: stimmt das so? Wieso hat Carmen Roll schon wieder keine Beziehung zu irgendwem obwohl in EL angegeben? --> überprüfen
+
+```
+
+```{Anschläge der zweiten Generation}
+# Gesamtnetzwerk wird eingelesen
+library(igraph)
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+
+list.vertex.attributes(raf)
+vertex_attr(raf)$generation
+
+anschlaege_zweite_gen <- delete_vertices(raf, V(raf)[generation !="2"]) # löscht alle Anschläge, die nicht von der zweiten Gen. durchgeführt / geplant wurden
+
+anschlaege_zweite_gen
+plot(anschlaege_zweite_gen, layout=layout_with_kk,
+     main="Anschläge zweite Generation",
+     edge.color="green",
+     edge.arrow.size=.5,
+     vertex.color="red")
+
+#Visualisierung noch optimieren, da noch sehr unübersichtlich
+```
+
+```{r ERSTELLUNG TEILNETZWERK "ANSCHLÄGE"}
+#Selektion Teilnetzwerk Anschläge
+
+# Gesamtnetzwerk einlesen
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+raf
+
+# Wir wollen nun wissen, wie das Teilnetzwerk "Anschläge" aussieht:
+raf_anschlaege <- delete_vertices(raf, V(raf)[type < "2"]) # löscht Personen
+raf_anschlaege
+plot(raf_anschlaege, layout=layout_with_kk,
+     main="Anschläge",
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.color="red",
+     sub="n=29, 110 Kanten")
+
+##Selektion der Anschläge nur aus dem Jahr1977
+#Teilnetzwerk vom Teilnetzwerk "Anschläge"
+
+#Anzeigen Vertex-Attribute des obigen Netzwerks "Anschläge)
+vertex_attr(raf_anschlaege)
+raf_anschlaege_1977 <- delete_vertices(raf_anschlaege, V(raf_anschlaege)[year > "1977"])
+raf_anschlaege_1977 <- delete_vertices(raf_anschlaege, V(raf_anschlaege)[year < "1977"])
+raf_anschlaege_1977
+plot(raf_anschlaege_1977, layout=layout_with_kk,
+     main="Anschläge 1977",
+     edge.color="grey80",
+     edge.arrow.size=.3,
+     vertex.color="pink",
+     sub="n=29, 110 Kanten")
+
+#beim ersten Mal hat es geklappt aber jetzt es aus irgendeinem Grund auch die Jahreszahlen > 1977 an, obwohl Löschbefehl angegeben
+#überprüfen !
+```
+
+```{r Komponenten analysieren}
+# Skript Erstellung einfaches Netzwerk
+# lädt igraph Bibliothek (ggf. vorher installieren)
+library(igraph)
+# erhöht das limit auf 10000000
+options(max.print=1000000)
+# liest die Edgelist als "el" ein
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+# liest die Nodelist mit den Namen ein
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+# Zwischenschritt verbindet die Edge- und Nodelist zu einer Matrix
+raf_matrix <- as.matrix(el)
+# zeigt die Matrix an
+raf_matrix
+# generiert ein igraph-Objekt (dataframe) aus der Matrix, das ungerichtet ist (directed = false)
+raf <- graph_from_data_frame(d=raf_matrix, vertices=nodes, directed=FALSE)
+# ruft unser neues igraph-Objekt auf
+raf
+# generiert die Standard-Visualisierung des Netzwerks
+#plot(raf)
+#degree <- degree(raf)
+#degree
+#test, ob Anfangsproblem behoben ist (d.h. alle Nodeattribute eingelesen werden und in die Matrix übernommen wurden)
+#list.vertex.attributes(raf)
+#Grafisch werden Ereignisse/Aktionen  anders dargestellt als Akteure
+V(raf)[V(raf)$type == 1]$shape <- "circle" # Personen als Kreise
+V(raf)[V(raf)$type == 2]$shape <- "square" # Aktionen als Quadrate
+# einfacher plot
+plot(raf,
+     layout=layout_nicely,
+     main="RAF-Netzwerk")
+
+# 1 Komponenten analysieren
+# Da insbesondere bei großen Netzwerken die Teilkomponenten nicht immer sichtbar sind, ist es hilfreich zu Beginn der Analyse sich alle Komponenten anzeigen zu lassen
+# Der Befehl groups() zeigt an, welche Knoten zu welcher Komponente gehören. 
+
+# Grafik des Gesamtnetzwerks
+plot(raf, layout=layout_with_kk, main="Gesamtnetzwerk")
+
+# Anzahl der Komponenten
+count_components(raf)
+
+# Um genauer zu verstehen, welche Vertices zu welcher Gruppe gehören, lassen sie sich mit dem Befehl groups(g) in Grupppen unterteilten. 
+raf_groups <- groups(components(raf))
+raf_groups
+
+# es gibt also keine abgesonderte Gruppe, die nicht mit dem Hauptteil verbunden ist, überall besteht irgendwie eine Verbindung
+```
+
+```{r Dichte des Gesamtnetzwerkes berechnen}
+# Gesamtnetzwerk neu einlesen
+
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+
+raf_ohne_akt <- delete_vertices(raf, V(raf)[type > "1"]) # löscht alle Nodes, bei denen es sich um Aktionen und nicht um Menschen handelt
+
+raf_ohne_akt
+plot(raf_ohne_akt, layout=layout_with_kk,
+     main="Netzwerk Gesamt",
+     edge.color="green",
+     edge.arrow.size=.5,
+     vertex.color="pink")
+
+## 1 Berechnung der Dichte des Netzwerks raf
+edge_density(raf_ohne_akt)
+
+#Die Dichte des Gesamtnetzwerks beträgt 0.06583418, das bedeutet, dass ca. 6,6% (also rund 7%) von allen möglichen Beziehungen zwischen den Knoten realisiert wurde. Dies bedeutet auch, dass zwischen ca. 93% der Knoten keine Beziehungen bestehen. Im Vergleich zur Dichte des Gesamtnetzwerks ist die Dichte der ersten und zweiten Generation damit erheblich größer. Dies kann wohl auch daran liegen, dass sich die Mitglieder der ersten und zweiten Generation untereinander nicht kannten da zeitlich versetzt aktiv.
+```
+
+```{r Dichte der ersten Generation berechnen}
+
+###Vergleich Dichte Netzwerke erste und zweite Generation
+##Dichte des Netzwerks der ersten Generation
+#Erstellung Netzwerk erste Generation
+
+library(igraph)
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+
+raf_eins <- delete_vertices(raf, V(raf)[generation > "1"]) # löscht alle Nodes, die nicht der ersten Generation angehört haben
+plot(raf_eins, layout=layout_with_kk,
+     main="Netzwerk 1. Generation",
+     edge.color="green",
+     edge.arrow.size=.5,
+     vertex.color="pink")
+
+#Löschen der Aktionen
+raf_eins_final <- delete.vertices(raf_eins, V(raf_eins)[type > "1"])
+raf_eins_final
+plot(raf_eins_final, layout=layout_with_kk,
+     main="Netzwerk 1. Generation ohne Aktionen",
+     edge.color="green",
+     edge.arrow.size=.5,
+     vertex.color="pink")
+
+# Berechnung Dichte Netzwerk erste Generation
+edge_density(raf_eins_final)
+#Die Dichte des Netzwerks der ersten Generation beträgt also 0.1409091, das bedeutet, dass ca. 14% von allen möglichen Beziehungen zwischen den Knoten realisiert wurde. Dies bedeutet auch, dass zwischen ca. 95% der Knoten keine Beziehungen bestehen. Im Vergleich zur Dichte des Gesamtnetzwerks ist die Dichte der ersten Generation damit erheblich größer.
+```
+
+```{r Dichte des Netzwerks der zweiten Generation}
+#Erstellung Netzwerk zweite Generation
+library(igraph)
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+raf_zwei <- delete_vertices(raf, V(raf)[generation <"2"]) 
+#löschen der 1. Generation
+raf_zwei
+plot(raf_zwei, layout=layout_with_kk,
+     main="Netzwerk 2. Generation",
+     edge.color="green",
+     edge.arrow.size=.5,
+     vertex.color="pink")
+
+#Löschen derer, für die generation > 2 gilt
+raf_zwei_fast_final <- delete.vertices(raf_zwei, V(raf_zwei)[generation > "2"])
+raf_zwei_fast_final
+plot(raf_zwei_fast_final, layout=layout_with_kk,
+     main="Netzwerk 2. Generation fast final",
+     edge.color="green",
+     edge.arrow.size=.5,
+     vertex.color="pink")
+
+#Löschen der Aktionen
+raf_zwei_final <- delete.vertices(raf_zwei_fast_final, V(raf_zwei_fast_final)[type > "1"])
+raf_zwei_final
+plot(raf_zwei_final, layout=layout_with_kk,
+     main="Netzwerk 2. Generation final",
+     edge.color="green",
+     edge.arrow.size=.5,
+     vertex.color="pink")
+
+#Berechnung Dichte Netzwerk erste Generation
+edge_density(raf_zwei_final)
+
+#Die Dichte des Netzwerks der zweiten Generation beträgt also 0.1532977, das bedeutet, dass ca. 15% von allen möglichen Beziehungen zwischen den Knoten realisiert wurde. Dies bedeutet auch, dass zwischen ca. 95% der Knoten keine Beziehungen bestehen. Im Vergleich zur Dichte des Gesamtnetzwerks ist die Dichte der zweiten Generation damit erheblich größer. Im Vergleich zur Dichte des Netzwerks der ersten Generation ist sie nur etwa 1% größer.
+
+```
+
+```{r Pfaddistanz berechnen}
+
+# Dazu lesen wir das Netzwerk nochmal neu ein.
+
+# liest die Edgelist als "el" ein
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
+# liest die Nodelist mit den Namen ein
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+# Zwischenschritt verbindet die Edge- und Nodelist zu einer Matrix
+raf_matrix <- as.matrix(el)
+# zeigt die Matrix an
+raf_matrix
+# generiert ein igraph-Objekt (dataframe) aus der Matrix, das ungerichtet ist (directed = false)
+raf <- graph_from_data_frame(d=raf_matrix, vertices=nodes, directed=FALSE)
+# ruft unser neues igraph-Objekt auf
+raf
+# generiert die Standard-Visualisierung des Netzwerks
+#plot(raf)
+#degree <- degree(raf)
+#degree
+#test, ob Anfangsproblem behoben ist (d.h. alle Nodeattribute eingelesen werden und in die Matrix übernommen wurden)
+#list.vertex.attributes(raf)
+#Grafisch werden Ereignisse/Aktionen  anders dargestellt als Akteure
+V(raf)[V(raf)$type == 1]$shape <- "circle" # Personen als Kreise
+V(raf)[V(raf)$type == 2]$shape <- "square" # Aktionen als Quadrate
+# einfacher plot
+plot(raf,
+     layout=layout_with_kk,
+     main="RAF-Netzwerk")
+
+## 2 Berechnung des Durchmessers und der Pfaddistanz
+#Diameter beschreibt den längsten Pfad innerhalb eines Netzwerks, also die maximal mögliche Distanz zwischen zwei Knoten innerhalb des Netzwerks. 
+#Pfadistanz ist ein Maß für die Anzahl der Schritte, dies es braucht, um ein Netzwerk zu "durchschreiten". Dabei sind die kürzesten und längsten Pfaddistanzen wichtige Aussagen.
+# Was ist die maximale Distanz zwischen zwei Knoten im Netzwerk?
+# Achtung: bei Netzwerken mit Kantengewicht müssen die Kantengewichte ausgeschaltet werden! 
+diameter(raf, weights = NA)
+
+# Welche Knoten sind am weitesten voneinander entfernt, also haben die längsten Schritte??
+farthest_vertices(raf) 
+```

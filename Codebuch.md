@@ -110,7 +110,7 @@ definiert bei natürlichen Personen, ob diese Mitglied der RAF waren (oder ob es
 definiert das Jahr, in dem natürliche Personen in die RAF eingetreten sind. Bei dem Wert handelt es sich um eine Jahreszahl. Bei Nicht-Mitgliedern und Aktionen der RAF wurde dieser Wert nicht vergeben.
 
 **founding member**  
-definiert, ob eine natürliche Person ein Gründungsmitglied der RAF war
+definiert, ob eine natürliche Person ein Gründungsmitglied der RAF war.
 Bei Aktionen der RAF wurde dieser Wert nicht vergeben.  
 1 = Ja  
 2 = Nein  

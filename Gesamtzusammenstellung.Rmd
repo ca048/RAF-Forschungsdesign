@@ -1073,7 +1073,7 @@ plot(raf,
      main="Gesamtnetzwerk der RAF")
 ```
 
-```{r Egonetzwerk Befreiung von Andreas Bader 1970, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r Egonetzwerk Befreiung von Andreas Baader 1970, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 
 # Die Baader-Befreiung war eine zentrale Aktion in den Anfangsjahren der RAF, weshalb genauer betrachtet werden soll, wer daran beteiligt war. Dazu wird für den Knoten "Befreiung Andreas Baader 14.05.1970" ein Ego-Netzwerk erstellt.
 

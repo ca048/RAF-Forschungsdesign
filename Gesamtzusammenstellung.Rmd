@@ -99,7 +99,7 @@ raf_1970 <- delete_vertices(raf_year, V(raf_year) [entry !="1970"])# löscht die
 #raf_1970 <- delete_vertices(raf_1970, V(raf_1970) [symbolicdeath <="1970"])
 raf_1970 <- subgraph.edges(raf_1970, E(raf_1970)[year==1970]) #selektiert die Beziehungen von 1970
 raf_1970 <- simplify(raf_1970, remove.multiple=TRUE,) #löscht doppelte Beziehungen
-V(raf_1970) [V(raf_1970)$entry == 1970]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+V(raf_1970) [V(raf_1970)$entry == 1970]$color <- "firebrick" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
 raf_1970
 # Nun wird das Netzwerk der Mitglieder von 1970 visualisiert
 plot(raf_1970,
@@ -125,7 +125,7 @@ raf_1971 <- delete.vertices(raf_1971, V(raf_1971) [yearofresignation <= "1970"])
 raf_1971 <- delete.vertices(raf_1971, V(raf_1971) [symbolicdeath <="1970"])#löscht die Gestorbenen des Vorjahres
 #raf_1971 <- subgraph.edges(raf_1971, E(raf_1971)[year=1971]) #selektiert die Beziehungen des entsprechenden 
 raf_1971 <- simplify(raf_1971, remove.multiple=TRUE,) #löscht doppelte Beziehungen
-V(raf_1971) [V(raf_1971)$entry == 1971]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+V(raf_1971) [V(raf_1971)$entry == 1971]$color <- "firebrick" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
 V(raf_1971) [V(raf_1971)$entry != 1971]$color <- "white"
 raf_1971
 # Nun wird das Netzwerk der Mitglieder von 1971 visualisiert
@@ -154,7 +154,7 @@ raf_1972 <- delete.vertices(raf_1972, V(raf_1972) [symbolicdeath <="1971"])#lös
 
 #raf_1972 <- subgraph.edges(raf_1972, E(raf_1972)[year==1972]) #selektiert die Beziehungen von 1972
 raf_1972 <- simplify(raf_1972, remove.multiple=TRUE,) #löscht doppelte Beziehungen
-V(raf_1972) [V(raf_1972)$entry == 1972]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+V(raf_1972) [V(raf_1972)$entry == 1972]$color <- "firebrick" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
 V(raf_1972) [V(raf_1972)$entry != 1972]$color <- "white"
 raf_1972
 # Nun wird das Netzwerk der Mitglieder von 1972 visualisiert
@@ -182,7 +182,7 @@ raf_1973 <- delete_vertices(raf_1973, V(raf_1973) [yearofresignation <= "1972"])
 raf_1973 <- delete_vertices(raf_1973, V(raf_1973) [symbolicdeath <="1972"])#löscht die Gestorbenen des Vorjahres
 #raf_1973 <- subgraph.edges(raf_1973, E(raf_1973)[year==1973]) #selektiert die Beziehungen von 1970
 raf_1973 <- simplify(raf_1973, remove.multiple=TRUE,) #löscht doppelte Beziehungen
-V(raf_1973) [V(raf_1973)$entry == 1973]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+V(raf_1973) [V(raf_1973)$entry == 1973]$color <- "firebrick" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
 V(raf_1973) [V(raf_1973)$entry != 1973]$color <- "white" #Alle übrigen Mitglieder werden weiß eingefärbt
 
 raf_1973
@@ -210,7 +210,7 @@ raf_1974 <- delete_vertices(raf_1974, V(raf_1974) [yearofresignation <= "1973"])
 raf_1974 <- delete_vertices(raf_1974, V(raf_1974) [symbolicdeath <="1973"])#löscht die Gestorbenen des Vorjahres
 #raf_1974 <- subgraph.edges(raf_1974, E(raf_1974)[year==1974]) #selektiert die Beziehungen von 1970
 raf_1974 <- simplify(raf_1974, remove.multiple=TRUE,) #löscht doppelte Beziehungen
-V(raf_1974) [V(raf_1974)$entry == 1974]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+V(raf_1974) [V(raf_1974)$entry == 1974]$color <- "firebrick" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
 V(raf_1974) [V(raf_1974)$entry != 1974]$color <- "white" #Alle übrigen Mitglieder werden weiß eingefärbt
 raf_1974
 # Nun wird das Netzwerk der Mitglieder von 1974 visualisiert
@@ -241,7 +241,7 @@ raf_1975 <- delete_vertices(raf_1975, V(raf_1975) [symbolicdeath <="1974"])#lös
 
 raf_1975 <- simplify(raf_1975, remove.multiple=TRUE,) #löscht doppelte Beziehungen
 
-V(raf_1975) [V(raf_1975)$entry == 1975]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+V(raf_1975) [V(raf_1975)$entry == 1975]$color <- "firebrick" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
 V(raf_1975) [V(raf_1975)$entry != 1975]$color <- "white" #Alle übrigen Mitglieder werden weiß eingefärbt
 
 raf_1975
@@ -273,7 +273,7 @@ raf_1976 <- delete_vertices(raf_1976, V(raf_1976) [yearofresignation <= "1975"])
 raf_1976 <- delete_vertices(raf_1976, V(raf_1976) [symbolicdeath <="1975"])#löscht die Gestorbenen des Vorjahres
 #raf_1976 <- subgraph.edges(raf_1976, E(raf_1976)[year==1976]) #selektiert die Beziehungen von 1970
 raf_1976 <- simplify(raf_1976, remove.multiple=TRUE,) #löscht doppelte Beziehungen
-V(raf_1976) [V(raf_1976)$entry == 1976]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+V(raf_1976) [V(raf_1976)$entry == 1976]$color <- "firebrick" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
 V(raf_1976) [V(raf_1976)$entry != 1976]$color <- "white" #Alle übrigen Mitglieder werden weiß eingefärbt
 raf_1976
 # Nun wird das Netzwerk der Mitglieder von 1976 visualisiert
@@ -300,7 +300,7 @@ raf_1977 <- delete_vertices(raf_1977, V(raf_1977) [yearofresignation <= "1976"])
 raf_1977 <- delete_vertices(raf_1977, V(raf_1977) [symbolicdeath <="1976"])#löscht die Gestorbenen des Vorjahres
 #raf_1977 <- subgraph.edges(raf_1977, E(raf_1977)[year==1977]) #selektiert die Beziehungen von 1970
 raf_1977 <- simplify(raf_1977, remove.multiple=TRUE,) #löscht doppelte Beziehungen
-V(raf_1977) [V(raf_1977)$entry == 1977]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+V(raf_1977) [V(raf_1977)$entry == 1977]$color <- "firebrick" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
 V(raf_1977) [V(raf_1977)$entry != 1977]$color <- "white" #Alle übrigen Mitglieder werden weiß eingefärbt
 raf_1977
 # Nun wird das Netzwerk der Mitglieder von 1977 visualisiert
@@ -331,7 +331,7 @@ V(raf_1977_ende)[V(raf_1977_ende)$yearofresignation == 1977]$color <-"lightgray"
 V(raf_1977_ende)[V(raf_1977_ende)$symbolicdeath == 1977]$color <- "black" #Gestorben
 #raf_1977_ende <- subgraph.edges(raf_1977, E(raf_1977)[year==1977]) #selektiert die Beziehungen von 1970
 raf_1977_ende <- simplify(raf_1977_ende, remove.multiple=TRUE,) #löscht doppelte Beziehungen
-V(raf_1977_ende) [V(raf_1977_ende)$entry == 1977]$color <- "red" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
+V(raf_1977_ende) [V(raf_1977_ende)$entry == 1977]$color <- "firebrick" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
 #V(raf_1977_ende) [V(raf_1977_ende)$entry != 1977]$color <- "white" #Alle übrigen Mitglieder werden weiß eingefärbt
 raf_1977_ende
 # Nun wird das Netzwerk der Mitglieder von 1977 visualisiert

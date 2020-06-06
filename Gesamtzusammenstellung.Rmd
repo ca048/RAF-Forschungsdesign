@@ -2092,7 +2092,7 @@ diameter(raf, weights = NA)
 
 # Welche Knoten sind am weitesten voneinander entfernt, also haben die längsten Schritte??
 farthest_vertices(raf) 
-# Die zwei Knoten, die am weitesten entfernt sind (7 Schritte) sind Christine Dümlein und Carmen Roll. Dies ist nicht sonderlich verwunderlich, da beide in verschiedenen Generationen aktiv waren (Dümlein in der zweiten, Roll in der ersten Generation). Dies zeigt, dass die RAF zwar sprachlich oft als Gesamtkonstrukt bezeichnet wird ("DIE" Rote-Armee-Fraktion), faktisch aber gerade zwischen den ersten beiden Generationen (die dritte wurde nicht betrachtet) nicht die stärksten Bindungen bestandne.
+# Die zwei Knoten, die am weitesten entfernt sind (7 Schritte) sind Christine Dümlein und Carmen Roll. Dies ist nicht sonderlich verwunderlich, da beide in verschiedenen Generationen aktiv waren (Dümlein in der zweiten, Roll in der ersten Generation). Dies zeigt, dass die RAF zwar sprachlich oft als Gesamtkonstrukt bezeichnet wird ("DIE" Rote-Armee-Fraktion), faktisch aber gerade zwischen den ersten beiden Generationen (die dritte wurde nicht betrachtet) nicht die stärksten Bindungen bestanden.
 
 ```
 

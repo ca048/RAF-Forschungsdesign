@@ -116,6 +116,29 @@ plot(raf_1970,
      main="RAF 1970",
      sub="Neue Mitglieder sind rot eingefärbt")
 ```
+```{r Cluster Walktrap 1970, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+# Clusterberechnung
+plot(raf_1970, vertex.color="grey80", main="1970")
+
+# Wie funktioniert der Befehl?
+?cluster_walktrap()
+
+# Berechnung der Cluster innerhalb der Komponente
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+cl <- cluster_walktrap(raf_1970)
+modularity(cl)
+membership(cl)
+
+plot(cl, raf_1970,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     main="Cluster-Walktrap Analyse von 1970")
+```
+
+
 
 ```{r 1971, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE }
 #Nun kommen die von 1971 dazu:
@@ -144,6 +167,30 @@ plot(raf_1971,
      sub ="Neue Mitglieder sind rot eingefärbt")
 ```
 
+```{r Cluster Walktrap 1971, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+# Clusterberechnung
+plot(raf_1971, vertex.color="grey80", main="1971")
+
+# Wie funktioniert der Befehl?
+?cluster_walktrap()
+
+# Berechnung der Cluster innerhalb der Komponente
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+c2 <- cluster_walktrap(raf_1971)
+modularity(c2)
+membership(c2)
+
+plot(c2, raf_1971,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+      main="Cluster-Walktrap Analyse von 1971")
+```
+
+
+
 ```{r 1972, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 #Nun kommen die von 1972 dazu:
 
@@ -171,6 +218,28 @@ plot(raf_1972,
      vertex.label.cex = 1, #gibt die Schriftartgröße an
      main="RAF 1972",
      sub ="Neue Mitglieder sind rot eingefärbt")
+```
+
+```{r Cluster Walktrap 1972, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+# Clusterberechnung
+plot(raf_1972, vertex.color="grey80", main="1972")
+
+# Wie funktioniert der Befehl?
+?cluster_walktrap()
+
+# Berechnung der Cluster innerhalb der Komponente
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+c3 <- cluster_walktrap(raf_1972)
+modularity(c3)
+membership(c3)
+
+plot(c3, raf_1972,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+      main="Cluster-Walktrap Analyse von 1972")
 ```
 
 ```{r RAF 1973, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
@@ -202,6 +271,28 @@ plot(raf_1973,
      sub ="Neue Mitglieder sind rot eingefärbt")
 ```
 
+```{r Cluster Walktrap 1973, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+# Clusterberechnung
+plot(raf_1973, vertex.color="grey80", main="1973")
+
+# Wie funktioniert der Befehl?
+?cluster_walktrap()
+
+# Berechnung der Cluster innerhalb der Komponente
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+c4 <- cluster_walktrap(raf_1973)
+modularity(c4)
+membership(c4)
+
+plot(c4, raf_1973,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+      main="Cluster-Walktrap Analyse von 1973")
+```
+
 ```{r RAF 1974, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 #Nun kommen die von 1974 dazu:
 raf_year
@@ -227,6 +318,28 @@ plot(raf_1974,
      vertex.label.cex = 1, #gibt die Schriftartgröße an
      main="RAF 1974",
      sub ="Neue Mitglieder sind rot eingefärbt")
+```
+
+```{r Cluster Walktrap 1974, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+# Clusterberechnung
+plot(raf_1974, vertex.color="grey80", main="1974")
+
+# Wie funktioniert der Befehl?
+?cluster_walktrap()
+
+# Berechnung der Cluster innerhalb der Komponente
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+c5 <- cluster_walktrap(raf_1974)
+modularity(c5)
+membership(c5)
+
+plot(c5, raf_1974,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+      main="Cluster-Walktrap Analyse von 1974")
 ```
 
 ```{r RAF 1975, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
@@ -265,6 +378,28 @@ plot(raf_1975,
 
 ```
 
+```{r Cluster Walktrap 1975, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+# Clusterberechnung
+plot(raf_1975, vertex.color="grey80", main="1975")
+
+# Wie funktioniert der Befehl?
+?cluster_walktrap()
+
+# Berechnung der Cluster innerhalb der Komponente
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+c6 <- cluster_walktrap(raf_1975)
+modularity(c6)
+membership(c6)
+
+plot(c6, raf_1975,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+      main="Cluster-Walktrap Analyse von 1975")
+```
+
 ```{r RAF 1976, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 #Nun kommen die von 1976 dazu:
 raf_year
@@ -290,6 +425,28 @@ plot(raf_1976,
      vertex.label.cex = 1, #gibt die Schriftartgröße an
      main="RAF 1976",
      sub ="Neue Mitglieder sind rot eingefärbt")
+```
+
+```{r Cluster Walktrap 1976, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+# Clusterberechnung
+plot(raf_1976, vertex.color="grey80", main="1976")
+
+# Wie funktioniert der Befehl?
+?cluster_walktrap()
+
+# Berechnung der Cluster innerhalb der Komponente
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+c7 <- cluster_walktrap(raf_1976)
+modularity(c7)
+membership(c7)
+
+plot(c7, raf_1976,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+      main="Cluster-Walktrap Analyse von 1976")
 ```
 
 ```{r RAF 1977, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
@@ -319,6 +476,27 @@ plot(raf_1977,
      sub ="Neue Mitglieder sind rot eingefärbt")
 ```
 
+```{r Cluster Walktrap 1977, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+# Clusterberechnung
+plot(raf_1977, vertex.color="grey80", main="1977")
+
+# Wie funktioniert der Befehl?
+?cluster_walktrap()
+
+# Berechnung der Cluster innerhalb der Komponente
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+c8 <- cluster_walktrap(raf_1977)
+modularity(c8)
+membership(c8)
+
+plot(c8, raf_1977,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+      main="Cluster-Walktrap Analyse von 1977")
+```
 
 ```{r Nach 1977, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 #Was 1977 noch passiert ist:
@@ -349,8 +527,6 @@ plot(raf_1977_ende,
      main="RAF Ende 1977",
      sub ="Neue Mitglieder sind rot eingefärbt, Ausgetretene grau und Tote schwarz")
 ```
-
-
 
 
 
@@ -2095,4 +2271,64 @@ farthest_vertices(raf)
 # Die zwei Knoten, die am weitesten entfernt sind (7 Schritte) sind Christine Dümlein und Carmen Roll. Dies ist nicht sonderlich verwunderlich, da beide in verschiedenen Generationen aktiv waren (Dümlein in der zweiten, Roll in der ersten Generation). Dies zeigt, dass die RAF zwar sprachlich oft als Gesamtkonstrukt bezeichnet wird ("DIE" Rote-Armee-Fraktion), faktisch aber gerade zwischen den ersten beiden Generationen (die dritte wurde nicht betrachtet) nicht die stärksten Bindungen bestanden.
 
 ```
+##Berechnungen Jahre
+```{r Berechnungen 1970}
+edge_density(raf_1970)#Dichte
+#Die Dichte beträgt 1970 circa 20%
 
+diameter(raf_1970, weights = NA) #Pfaddistanz
+#Die weiteste Distanz zwischen zwei Knoten beträgt 4 und besteht zwischen Astrid Proll und Manfred Grashof
+
+farthest_vertices(raf_1970) #am weitesten entfernte Knoten
+```
+
+```{r Berechnungen 1971}
+edge_density(raf_1971)#Dichte
+#Die Dichte beträgt 1971 circa 15%, hat also zum Vorjahr um 5 Prozentpunkte abgenommen.
+diameter(raf_1971, weights = NA) #Pfaddistanz
+#Auch die weiteste Pfaddistanz erhöht sich auch 6 und besteht zwischen Ronald Augustin und Rolf Pohle
+farthest_vertices(raf_1971) #am weitesten entfernte Knoten
+```
+
+```{r Berechnungen 1972}
+edge_density(raf_1972)#Dichte
+#1972 beträgt die Distanz noch einmal zwei Prozentpunkte weniger und liegt nun bei 13%, wo sie sich die folgenden Jahre einpendeln soll
+
+diameter(raf_1972, weights = NA) #Pfaddistanz
+#Die weiteste Distanz bleibt bei 6 Knoten und besteht zwischen Angela Luther und Ingrid Siepmann
+farthest_vertices(raf_1972) #am weitesten entfernte Knoten
+```
+
+```{r Berechnungen 1973}
+edge_density(raf_1973)#Dichte
+#Die Dichte liegt weiterhin bei circa 13%
+diameter(raf_1973, weights = NA) #Pfaddistanz
+#Auch die Pfaddistanz bleibt bei 6 zwischen Ingrid Siepmann und Hans-Juergen Becker
+#Dieser Wert und die Personen ändern sich in den Folgejahren nicht mehr. Lediglich die Pfaddistanz fällt im Jahr 1975 einmal auf unter 13%, aber nur auf 12% und erhöht sich im Folgejahr wieder
+farthest_vertices(raf_1973) #am weitesten entfernte Knoten
+```
+
+```{r Berechnungen 1974}
+edge_density(raf_1974)#Dichte
+#Wieder bleibt die Dichte bei ungefähr 13%
+diameter(raf_1974, weights = NA) #Pfaddistanz
+farthest_vertices(raf_1974) #am weitesten entfernte Knoten
+```
+
+```{r Berechnungen 1975}
+edge_density(raf_1975)#Dichte
+diameter(raf_1975, weights = NA) #Pfaddistanz
+farthest_vertices(raf_1975) #am weitesten entfernte Knoten
+```
+
+```{r Berechnungen 1976}
+edge_density(raf_1976)#Dichte
+diameter(raf_1976, weights = NA) #Pfaddistanz
+farthest_vertices(raf_1976) #am weitesten entfernte Knoten
+```
+
+```{r Berechnungen 1977}
+edge_density(raf_1977)#Dichte
+diameter(raf_1977, weights = NA) #Pfaddistanz
+farthest_vertices(raf_1977) #am weitesten entfernte Knoten
+```

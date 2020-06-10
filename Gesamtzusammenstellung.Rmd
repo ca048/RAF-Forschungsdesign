@@ -1168,7 +1168,7 @@ provision <- subgraph.edges(raf, E(raf)[relationship== " 6"]) # erstellt ein neu
 provision <- simplify(provision, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
 provision
 
-V(provision)[V(provision)$generation == 4]$color <- "lightpunk" # Unterstützer*innen werden hellrosa hervorgehoben, um zu sehen, wie viele Externe bzw. Nicht-Mitglieder eine Rolle gespielt haben
+V(provision)[V(provision)$generation == 4]$color <- "lightpink" # Unterstützer*innen werden hellrosa hervorgehoben, um zu sehen, wie viele Externe bzw. Nicht-Mitglieder eine Rolle gespielt haben
 
 # Visualisierung des Netzwerks: 
 plot(provision,
@@ -2141,6 +2141,66 @@ plot(ego_rh1_p,
      asp=0, # definiert, dass der gesamte Platz für die Darstellung genutzt wird
      main="Ego-Netzwerk von Heissler, Bzgh. 1. Grades",
      sub="rot = Heissler, hellgrau = 1. Generation, dunkelgrau = 2. Generation, 
+     weiß = Mitglieder beider Generationen, rosa = Unterstützer*innen",
+     vertex.label.color="black",
+     vertex.size=10,
+     vertex.label.family="sans",
+     edge.color="grey40")
+
+```
+```{r Ego-Netzwerk Hans-Joachim Dellwo, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf # ruft das igraph-Objekt auf
+
+ego_hjd <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Hans-Joachim Dellwo", mode = "all") # selektiert aus dem Netzwerk raf alle Knoten, die mit Dellwo über einen Schritt direkt verbunden sind (Ego-Netzwerk ersten Grades)
+ego_hjd
+
+ego_hjd1 <- ego_hjd[[1]] # notwendiger Zwischenschritt, damit das igraph-Objekt hergestellt wird
+
+ego_hjd1 <- simplify(ego_hjd1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+ego_hjd1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_hjd1)[V(ego_hjd1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_hjd1)[V(ego_hjd1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_hjd1)[V(ego_hjd1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_hjd1)[V(ego_hjd1)$name == "Hans-Joachim Dellwo"]$color <- "firebrick" # Dellwo wird rot hervorgehoben
+V(ego_hjd1)[V(ego_hjd1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
+V(ego_hjd1)[V(ego_hjd1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+
+# Visualisierung des Ego-Netzwerks
+plot(ego_hjd1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0, # legt fest, dass der gesamte Platz für die Darstellung genutzt wird
+     main="Ego-Netzwerk Hans-Joachim Dellwo",
+     sub="nur direkte Beziehungen des ersten Grads; rot = Dellwo, grün = Männer,
+     orange = Frauen, blau = Aktionen",
+     edge.color="grey40",
+     vertex.label.color="black",
+     vertex.label.family="sans",
+     vertex.label.cex=.7, # verkleinert die Labelbeschriftung
+     vertex.size=10)
+
+# nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Dellwo direkt verbunden war
+ego_hjd1_p <- delete_vertices(ego_hjd1, V(ego_hjd1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
+
+ego_hjd1_p
+
+# Nun soll hervorgehoben werden, welcher Generation die direkten Verbindungen H-J Dellwos angehörten
+V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 1]$color <- "grey80" # 1. Generation = hellgrau
+V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 2]$color <- "grey30" # 2. Generation = dunkelgrau
+V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 3]$color <- "white" # Mitglieder beider Generationen = weiß
+V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 3]$vertex.frame.color <- "black" # fügt einen schwarzen Rahmen hinzu, damit weiße Nodes besser sichtbar sind
+V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 4]$color <- "lightpink" # Unterstützer*innen = rosa
+V(ego_hjd1_p)[V(ego_hjd1_p)$name == "Hans-Joachim Dellwo"]$color <- "firebrick"
+
+plot(ego_hjd1_p,
+     layout=layout_with_kk,
+     rescale=TRUE,
+     asp=0, # definiert, dass der gesamte Platz für die Darstellung genutzt wird
+     main="Ego-Netzwerk von Hans-Joachim Dellwo, Bzgh. 1. Grades",
+     sub="rot = Dellwo, hellgrau = 1. Generation, dunkelgrau = 2. Generation, 
      weiß = Mitglieder beider Generationen, rosa = Unterstützer*innen",
      vertex.label.color="black",
      vertex.size=10,

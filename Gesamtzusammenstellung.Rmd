@@ -1278,6 +1278,7 @@ plot(ego_bef1,
      edge.color="grey40", # definiert die Kantenfarbe
      vertex.label.size=2,
      vertex.label.color="black",
+     vertex.label.family="sans",
      vertex.frame.color=NA, # entfernt den Rahmen um die Knoten
      vertex.size=10, # setzt die Knotengröße auf 10
      asp=0, # definiert, dass der gesamte Raum ausgenutzt werden soll,
@@ -1316,6 +1317,7 @@ plot(ego_ent1,
      sub="nur direkte Beziehungen des ersten Grads; grün = Männer; orange = Frauen",
      vertex.label.size=3,
      vertex.size=10, 
+     vertex.label.family="sans",
      vertex.label.color="black",
      edge.color="grey40")
 
@@ -1337,6 +1339,7 @@ plot(ego_ent1,
      main="Ego-Netzwerk der Entführung Hanns Martin-Schleyer 05.09.1977",
      sub=" Beziehungen ersten Grades, hellgrau = 1. Generation, /n dunkelgrau = 2. Generation, weiß = beide Generationen / keine Angabe",
      vertex.label.color="black",
+     vertex.label.family="sans",
      edge.color="grey40")
 
 ```
@@ -1374,6 +1377,7 @@ plot(ego_bbb1,
      hellgrau = Erste Generation",
      edge.color="grey40",
      vertex.label.size=2,
+     vertex.label.family="sans",
      vertex.size=10)
 
 # Da bei dieser Aktion bis dato nicht gesichert bekannt ist, wer daran beteiligt war, ist diese Darstellung vermutlich nicht realistisch und daher nicht wirklich aussagekräftig. Eine alleinige Beteiligung Raspes ist unwahrscheinlich, vielmehr ist davon auszugehen, dass er dafür verantwortlich gemacht wurde, stellvertretend für das gesamte Kommando "Manfred Grashof", das den Anschlag verübt hat.
@@ -1412,6 +1416,7 @@ plot(ego_ejp1,
      edge.color="grey40",
      vertex.label.color="black",
      vertex.label.size=2,
+     vertex.label.family="sans",
      vertex.size=10)
 
 # Farbliche Anpassungen, um zu zeigen: Welche Generation(en) war(en) beteiligt?
@@ -1427,6 +1432,7 @@ plot(ego_ejp1,
      rescale=TRUE,
      vertex.label.color="black",
      vertex.size=10,
+     vertex.label.family="sans",
      edge.color="grey40",
      main="Ego-Netzwerk der Ermordung Jürgen Pontos (30.07.1977)",
      sub="Beziehungen ersten Grades, hellgrau = 1. Geneneration, 
@@ -1465,6 +1471,7 @@ plot(ego_esb1,
      sub="nur direkte Beziehungen des ersten Grads; grün = Männer, orange = Frauen",
      edge.color="grey40",
      vertex.label.color="black",
+     vertex.label.family="sans",
      vertex.size=10)
 
 # Farbliche Anpassungen, um zu zeigen: Welche Generation(en) war(en) beteiligt?
@@ -1484,6 +1491,7 @@ plot(ego_esb1,
      dunkelgrau = 2. Generation, weiß = beide / keine Generation",
      vertex.label.color= "black",
      vertex.size=10,
+     vertex.label.family="sans",
      edge.color="grey40")
 
 ```
@@ -1521,6 +1529,7 @@ plot(ego_lhl1,
      sub="nur direkte Beziehungen des ersten Grads; grün = Männer, orange = Frauen",
      edge.color="grey40",
      vertex.label.color="black",
+     vertex.label.family="sans",
      vertex.size=10)
 
 # Welche Generation(en) war(en) beteiligt?
@@ -1538,6 +1547,7 @@ plot(ego_lhl1,
      sub="nur direkte Beziehungen des ersten Grads, weiß = Mitglieder beider Generationen, rosa = Unterstützer*innen (keine RAF-Mitglieder)",
      vertex.label.color="black",
      vertex.size=10,
+     vertex.label.family="sans",
      edge.color="grey40")
 
 # Generell zeigt die Visualisierung, dass die Landshut-Entführung eher eine Aktion war, bei der die RAF nicht aktiv beteiligt war, sondern zu deren Zwecke (Befreiungsaktion) durchgeführt wurde. Die Aussagekraft der Visualisierung ist jedoch in Frage zu stellen, da wir vermutlich nicht alle Akteure erfasst haben, die die Entführung durchgeführt haben.
@@ -1595,6 +1605,7 @@ plot(ego_ab1,
      orangefarbener Kreis = Frau, blaues Quadrat = Aktion der RAF",
      vertex.size=5,
      vertex.label.color="black",
+     vertex.label.family="sans",
      vertex.label.cex=.75, # Größe der Labelbeschriftung wird halbiert
      edge.color="grey40")
 
@@ -1618,6 +1629,7 @@ plot(ego_ab1_pers,
      vertex.size=5,
      vertex.label.color="black",
      vertex.label.cex=.75,
+     vertex.label.family="sans",
      main="Ego-Netzwerk Andreas Baader 
      (nur direkte Beziehungen zu natürlichen Personen)",
      sub="rot = Andreas Baader, grün = Männer, orange = Frauen")
@@ -1663,6 +1675,7 @@ plot(ego_ge1,
      rescale=TRUE, 
      vertex.size=5,
      vertex.label.cex=0.75,
+     vertex.label.family="sans",
      vertex.label.color="black",
      edge.color="grey40")
 
@@ -1708,6 +1721,7 @@ plot(ego_um1,
      orangefarbener Kreis = Frau, blaues Quadrat = Aktion",
      vertex.size=5,
      vertex.label.color="black",
+     vertex.label.family="sans",
      vertex.label.cex=0.7, # verkleinert die Schriftgröße des Labels der Knoten
      edge.color="grey40")
 ```
@@ -1751,6 +1765,7 @@ plot(ego_jcr1,
      orangefarbener Kreis = Frau, blaues Quadrat = Aktion",
      vertex.size=10,
      vertex.label.color="black",
+     vertex.label.family="sans",
      vertex.label.cex=0.7, # Labelbeschriftungsgröße wird verkleinert, um Überschneidungen der Labels zu vermeiden
      edge.color="grey40")
 
@@ -1786,6 +1801,7 @@ plot(ego_pb1,
      sub="nur direkte Beziehungen des ersten Grads, rot = Boock, 
      grün = Männer, orange = Frauen, blau = Aktionen",
      edge.color="grey40",
+     vertex.label.family="sans",
      vertex.label.color="black",
      vertex.size=10)
 
@@ -1810,6 +1826,7 @@ plot(ego_pb1_p,
      sub="roter Kreis = Boock, hellgrau = 1. Generation, 
      dunkelgrau = 2. Generation, weiß = beide Generationen, rosa = Unterstützer*innen",
      vertex.size=10,
+     vertex.label.family="sans",
      vertex.label.color="black",
      edge.color="grey40")
 ```
@@ -1847,6 +1864,7 @@ plot(ego_vs1,
      main="Ego-Netzwerk von Volker Speitel; Beziehungen ersten Grades",
      sub="pinke Kreise = Männer, blaue Kreise = Frauen, roter Kreis = Volker Speitel",
      vertex.size=10,
+     vertex.label.family="sans",
      vertex.label.color="black",
      edge.color="grey40")
 
@@ -1873,6 +1891,7 @@ plot(ego_vs1,
      sub="rot = Speitel, hellgrau = 1. Generation, dunkelgrau = 2. Generation, 
      weiß = beide Generationen, rosa = Unterstützer*in",
      vertex.size=10,
+     vertex.label.family="sans",
      vertex.label.color="black",
      edge.color="grey40")
 
@@ -1912,6 +1931,7 @@ plot(ego_bm1,
      blau = Aktionen",
      edge.color="grey40",
      vertex.size=5,
+     vertex.label.family="sans",
      vertex.label.color="black")
 
 # nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Mohnhaupt direkt verbunden war
@@ -1936,6 +1956,7 @@ plot(ego_bm1_p,
      sub="rot = Mohnhaupt, hellgrau = 1. Generation, dunkelgrau = 2. Generation,
      weiß = beide / keine Generation, rosa = Unterstützer*innen",
      vertex.size=10, 
+     vertex.label.family="sans",
      vertex.label.color= "black",
      edge.color="grey40")
 ```
@@ -1974,6 +1995,7 @@ plot(ego_kc1,
      grün = Männer, orange = Frauen, blau = Aktionen",
      edge.color="grey40",
      vertex.size=10,
+     vertex.label.family="sans",
      vertex.label.color="black")
 
 # nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Croissant direkt verbunden war
@@ -1999,6 +2021,7 @@ plot(ego_kc1_p,
      weiß = Mitglieder beider Generationen, rosa = Unterstützer*innen",
      vertex.label.color= "black",
      vertex.size=10,
+     vertex.label.family="sans",
      edge.color="grey40")
 ```
 
@@ -2036,6 +2059,7 @@ plot(ego_chk1,
      orange = Frauen, blau = Aktionen",
      edge.color="grey40",
      vertex.label.color="black",
+     vertex.label.family="sans",
      vertex.size=10)
 
 # nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Kuby direkt verbunden war
@@ -2060,6 +2084,7 @@ plot(ego_chk1_p,
      weiß = Mitglieder beider Generationen",
      vertex.label.color="black",
      vertex.size=10,
+     vertex.label.family="sans",
      edge.color="grey40")
 ```
 
@@ -2093,6 +2118,7 @@ plot(ego_rh1,
      orange = Frauen, blau = Aktionen",
      edge.color="grey40",
      vertex.label.color="black",
+     vertex.label.family="sans",
      vertex.label.cex=.7, # verkleinert die Labelbeschriftung
      vertex.size=10)
 
@@ -2118,6 +2144,7 @@ plot(ego_rh1_p,
      weiß = Mitglieder beider Generationen, rosa = Unterstützer*innen",
      vertex.label.color="black",
      vertex.size=10,
+     vertex.label.family="sans",
      edge.color="grey40")
 
 ```

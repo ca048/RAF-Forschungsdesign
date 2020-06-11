@@ -988,11 +988,130 @@ plot(raf_sex_zwei,
 
 ```
 
+## Ausgetretene und verstorbene Mitglieder
+```{r Ausgetretene und Verstorbene eingefärbt, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+raf_mem
+
+raf_out <- delete_vertices(raf_mem, V(raf_mem) [type == 2])#löscht die Anschläge
+V(raf_out)$color <- "white"
+V(raf_out) [V(raf_out)$resignation == 1]$color <- "lavenderblush3" #Knoten grau-violett einfärben
+V(raf_out)[V(raf_out)$symbolicdeath != 99]$color <- "purple4" #Knoten lila einfärben
+
+raf_out <- simplify(raf_out, remove.multiple = TRUE)  
+
+plot (raf_out,
+      layout=layout_with_kk,
+      asp=0, # definiert, dass der ganze Platz ausgenutzt werden soll
+      vertex.size=5,
+      edge.curved=curve_multiple(raf_out), #sorgt dafür, dass sich keine Kanten überlagern
+       vertex.label.family="sans",
+       vertex.label.cex=1,
+       vertex.label.color="black",
+      main="Während der RAF-Zeit gestorbene und ausgetretene Mitglieder",
+      sub="Lila = Tod / Lavender = Ausgetreten")
+
+
+```
+```{r Ausgetretene und Verstorbene 1. Generation, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf_eins_mem
+
+raf_out_eins <- delete_vertices(raf_eins_mem, V(raf_eins_mem) [type == 2])#löscht die Anschläge
+
+V(raf_out_eins)$color <- "white"
+V(raf_out_eins) [V(raf_out_eins)$resignation == 1]$color <- "lavenderblush3" #Knoten grau-violett einfärben
+V(raf_out_eins)[V(raf_out_eins)$symbolicdeath != 99]$color <- "purple4" #Knoten lila einfärben
+
+raf_out_eins <- simplify(raf_out_eins, remove.multiple = TRUE)  
+
+plot (raf_out_eins,
+      layout=layout_with_kk,
+      asp=0, # definiert, dass der ganze Platz ausgenutzt werden soll
+      vertex.size=5,
+      edge.curved=curve_multiple(raf_out_eins), #sorgt dafür, dass sich keine Kanten überlagern
+       vertex.label.family="sans",
+       vertex.label.cex=1,
+       vertex.label.color="black",
+      main="Während der RAF-Zeit gestorbene und ausgetretene Mitglieder, 1. Generation",
+      sub="Lila = Tod / Lavender = Ausgetreten")
+
+```
+
+```{r Ausgetretene und Verstorbene 2. Generation, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf_zwei_mem
+
+raf_out_zwei <- delete_vertices(raf_zwei_mem, V(raf_zwei_mem) [type == 2])#löscht die Anschläge
+
+V(raf_out_zwei)$color <- "white"
+V(raf_out_zwei) [V(raf_out_zwei)$resignation == 1]$color <- "lavenderblush3" #Knoten grau-violett einfärben
+V(raf_out_zwei)[V(raf_out_zwei)$symbolicdeath != 99]$color <- "purple4" #Knoten lila einfärben
+
+raf_out_zwei <- simplify(raf_out_zwei, remove.multiple = TRUE)  
+
+plot (raf_out_zwei,
+      layout=layout_with_kk,
+      asp=0, # definiert, dass der ganze Platz ausgenutzt werden soll
+      vertex.size=5,
+      edge.curved=curve_multiple(raf_out_zwei), #sorgt dafür, dass sich keine Kanten überlagern
+       vertex.label.family="sans",
+       vertex.label.cex=1,
+       vertex.label.color="black",
+      main="Während der RAF-Zeit gestorbene und ausgetretene Mitglieder, 2. Generation",
+      sub="Lila = Tod / Lavender = Ausgetreten")
+
+```
+
+```{r Verstorbene Mitglieder, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf_mem
+
+raf_death <- delete_vertices(raf_mem, V(raf_mem) [symbolicdeath ==99])#löscht die Lebenden
+raf_death <- delete_vertices(raf_death, V(raf_death) [type == 2])#löscht die Anschläge
+
+raf_death <- simplify(raf_death, remove.multiple = TRUE)  
+
+plot (raf_death,
+      layout=layout_with_kk,
+      asp=0, # definiert, dass der ganze Platz ausgenutzt werden soll
+      vertex.size=5,
+      edge.curved=curve_multiple(raf_death), #sorgt dafür, dass sich keine Kanten überlagern
+       vertex.label.family="sans",
+       vertex.label.cex=1,
+       vertex.label.color="black",
+      main="Während der RAF-Zeit gestorbene  Mitglieder",
+      sub="Hellgrau = 1. Generation / Dunkelgrau = 2.Generation")
+
+```
+
+```{r Ausgetretene Mitglieder, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+raf_mem
+
+raf_resignation <- delete_vertices(raf_mem, V(raf_mem) [resignation != 1])#löscht die nicht Ausgetretenen
+raf_death <- delete_vertices(raf_resignation, V(raf_resignation) [type == 2])#löscht die Anschläge
+
+raf_resignation <- simplify(raf_resignation, remove.multiple = TRUE)  
+
+plot (raf_resignation,
+      layout=layout_with_kk,
+      asp=0, # definiert, dass der ganze Platz ausgenutzt werden soll
+      vertex.size=5,
+      edge.curved=curve_multiple(raf_resignation), #sorgt dafür, dass sich keine Kanten überlagern
+       vertex.label.family="sans",
+       vertex.label.cex=1,
+       vertex.label.color="black",
+      main="Während der RAF-Zeit gestorbene  Mitglieder",
+      sub="Hellgrau = 1. Generation / Dunkelgrau = 2.Generation / Weiß = Beide Generationen")
+
+```
 
 
 
 
 
+
+# Teilnetzwerke der verschiedenen Beziehungstypen
 
 ```{r Gesamtnetzwerk mit verschiedenen Kantenfarben, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 # Skript Erstellung einfaches Netzwerk
@@ -1041,18 +1160,15 @@ E(raf)[E(raf)$relationship == "10"]$color <-"springgreen" # Verwandschaften werd
 
 # einfacher plot
 
-edge.attributes(raf)
-
 plot(raf,
      layout=layout_with_kk,
      asp=0,
      vertex.size=5,
      vertex.frame.color=NA,
-     main="RAF-Netzwerk mit Edges")
+     main="RAF-Netzwerk mit eingefärbten Edges",
+     sub= " Rot = Bekanntschaft / Dunkelgrün = Freundschaft / Blau = Liebesbeziehung / Gelb = WG / Lila = Gemeinsame Haft / Pink = Versorgung / Dunkelblau = Anwerben / Hellgrün = Verwandtschaft")
 
 ```
-
-# Teilnetzwerke der verschiedenen Beziehungstypen
 
 ```{r Selektion nach Beziehungen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 
@@ -1060,11 +1176,15 @@ plot(raf,
 
 raf # dazu wird das igraph Objekt raf abgerufen
 
+
+
 V(raf)$color <- "white" # Die Knoten werden weiß eingefärbt
 
 # Da der Beziehungstyp "Beteiligung an der Aktion" (codiert mit relationship = 7) sowohl Knoten des Typs Personen als auch Aktionen umfasst, sollen diese zwei Typen optisch unterschieden werden können:
 
-raf
+#V(raf)[V(raf)$type == 2]$shape <- "square" # Aktionen werden als Quadrate dargestellt
+#V(raf)[V(raf)$type == 1]$shape <- "circle" # 
+
 
 # Nun können die diversen Teilnetzwerke generiert werden: 
 

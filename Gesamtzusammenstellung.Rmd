@@ -1301,13 +1301,14 @@ plot(provision,
      vertex.label.family = "sans", #gibt die Schriftart an
      edge.color="pink", # Kanten werden pink eingefärbt
      main="Versorgungs-Netzwerk")
-
-
+     
 #Aktionsbeteiligungs-Netzwerk
 
 participation <- subgraph.edges(raf, E(raf)[relationship== " 7"]) # erstellt ein neues Teilnetzwerk, in dem nur die Akteure angezeigt werden, die an einer Aktion beteiligt waren
 participation <- simplify(participation, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
 V(participation)[V(participation)$type == 2]$color <- "cornflowerblue" # Aktionen und Anschläge werden blau eingefärbt, um diese besser erkennen zu können)
+V(participation)[V(participation)$sex == 1]$color <- "darkseagreen" #Männer grün einfärben
+V(participation)[V(participation)$sex == 2]$color <- "darkorange3" #Frauen orange einfärben
 participation
 
 # Visualisierung des Teilnetzwerkes
@@ -1319,8 +1320,9 @@ plot(participation,
      vertex.label.color = "black",
      vertex.label.family = "sans", #gibt die Schriftart an
      vertex.label.cex=.5, # halbiert die Größe der Labelbeschriftung
-     edge.color="chartreuse",
-     main="Aktionsbeteiligungs-Netzwerk")
+     edge.color="grey40",
+     main="Aktionsbeteiligungs-Netzwerk",
+     sub="grün = Männer, orange = Frauen, blau = Aktionen")
 
 # Die Teilnetzwerke der im Codebuch definierten Beziehungskategorien 8 und 9 (Anwerber- und gemeinsame Ausbildungs-Netzwerke) sollen hier nicht mehr betrachtet werden, da diese bei der Datenerhebung nicht umfassend erfasst werden konnten und daher keine besondere Aussagekraft hätten.
 

@@ -1101,7 +1101,7 @@ plot (raf_resignation,
        vertex.label.family="sans",
        vertex.label.cex=1,
        vertex.label.color="black",
-      main="Während der RAF-Zeit gestorbene  Mitglieder",
+      main="Ausgetretene Mitglieder",
       sub="Hellgrau = 1. Generation / Dunkelgrau = 2.Generation / Weiß = Beide Generationen")
 
 ```
@@ -1891,7 +1891,7 @@ plot(ego_jcr1,
 
 ```
 
-```{r Ego-Netzwerk Peter-Jürgen Boock, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r Ego-Netzwerk Peter-Jürgen Boock, fig.height=14, fig.width=20, message=FALSE, warning=FALSE, paged.print=FALSE}
 
 raf # das Standard-Netzwerk der RAF wird abgerufen
 

@@ -2480,6 +2480,71 @@ farthest_vertices(raf)
 # Die zwei Knoten, die am weitesten entfernt sind (7 Schritte) sind Christine Dümlein und Carmen Roll. Dies ist nicht sonderlich verwunderlich, da beide in verschiedenen Generationen aktiv waren (Dümlein in der zweiten, Roll in der ersten Generation). Dies zeigt, dass die RAF zwar sprachlich oft als Gesamtkonstrukt bezeichnet wird ("DIE" Rote-Armee-Fraktion), faktisch aber gerade zwischen den ersten beiden Generationen (die dritte wurde nicht betrachtet) nicht die stärksten Bindungen bestanden.
 
 ```
+
+```{r Betweeness-Werte Berechnen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+V(raf_pers)[V(raf_pers)$generation == 1]$color <- "grey80" # Knoten der Mitglieder der 1. Generation werden in Farbe grey80 dargestellt
+V(raf_pers)[V(raf_pers)$generation == 2]$color <- "grey30" # Knoten der Mitglieder der 2. Generation werden in Farbe grey30 dargestellt
+V(raf_pers)[V(raf_pers)$generation == 3]$color <- "white" # Knoten der Mitglieder beider Generation werden weiß eingefärbt
+V(raf_pers)[V(raf_pers)$generation == 4]$color <- "lightpink" # Knoten der Unterstützer*innen werden hellrosa eingefärbt
+V(raf_pers)[V(raf_pers)$generation == 99]$color <- "white" # Knoten, zu denen keine Angabe bzgl. iher Generation vorliegt, werden weiß eingefärbt
+V(raf_pers)[V(raf_pers)$generation == 3]$vertex.frame <- "black" # weiß gefärbte Knoten sollen zur besseren Sichtbarkeit einen schwarzen Rahmen erhalten
+V(raf_pers)[V(raf_pers)$generation == 99]$vertex.frame <- "black" # weiß gefärbte Knoten sollen zur besseren Sichtbarkeit einen schwarzen Rahmen erhalten
+
+V(raf_pers)[V(raf_pers)$name == "Andreas Baader"]$color <- "firebrick" # Baader in rot dargestellt
+V(raf_pers)[V(raf_pers)$name == "Peter-Juergen Boock"]$color <- "firebrick" # Boock in rot dargestellt
+V(raf_pers)[V(raf_pers)$name == "Hans-Joachim Dellwo"]$color <- "firebrick" # Dellwo in rot dargestellt
+
+
+bs <- betweenness(raf_pers, v = V(raf_pers),
+                  directed = FALSE,
+                  weights = NULL,
+                  nobigint = TRUE,
+                  normalized = TRUE)
+
+plot(raf_pers,
+     vertex.size=bs*100,
+     layout=layout_with_kk,
+     asp=0, # definiert, dass der ganze Platz ausgenutzt werden soll
+     edge.curved=curve_multiple(raf_pers), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label.family="sans",
+       vertex.label.cex=1,
+       vertex.label.color="black",
+     main="Verteilung Betweenness im Netzwerk",
+     sub="Hellgrau = 1. Generation / Dunkelgrau = 2. Generation / Weiß = Beide oder unbekannte Generation / Rosa = Unterstützer*in / Broker rot gehighlighted"  )
+
+legend("bottomleft", 
+       c("1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
+       col=c("grey80", "grey20", "white", "lightpink"),
+       pch = 19, border = "black",
+       pt.cex=2, cex=.8, bty="n", ncol=1)
+```
+
+
+
+```{r Dynamische Netzwerke mit Visnetwork erstellen}
+
+library(visNetwork) # Library Visnetwork laden
+# wenn das Paket nicht geladen wird, müssen Sie es vorher installieren!
+
+# igraph nach VisNetwork importieren
+# s bezieht sich hier auf unser vorher erstelltes Netzwerk
+toVisNetworkData(raf_pers, idToLabel = TRUE) 
+
+# degrees berechnen
+degree(raf_pers) 
+
+# statische Visualisierung
+visIgraph(raf_pers) 
+
+```
+
+```{r Dynamische Visualiserung mit visNetwork}
+# Visualisierung dynamisch
+visIgraph(raf_pers, physics = TRUE, smooth = TRUE) # Physik hinzufügen, generiert ein dynamisches Netzwerk
+```
+
+
 ##Berechnungen Jahre
 ```{r Berechnungen 1970}
 edge_density(raf_1970)#Dichte

@@ -966,6 +966,45 @@ plot(raf_sex_eins,
      sub="Grün = Männlich / Orange = Weiblich")
 
 ```
+```{r Frauen und Anschläge 1. Generation, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+#Wir betrachten die Geschlechterverteilung des Gesamtnetzwerks:
+raf_eins_pur
+
+raf_eins_girls <- delete.vertices(raf_eins_pur, V(raf_eins_pur)[sex == 1])#löscht alle Männer
+
+V(raf_eins_girls)[V(raf_eins_girls)$sex == 2]$color <- "darkorange3" #Knoten mit Attribut "weiblich" orange einfärben
+
+plot(raf_eins_girls,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     edge.curved=curve_multiple(raf_eins_girls), # verhindert, dass sich Kanten überlagern
+     vertex.size= 5,
+     vertex.label.color="black",
+     vertex.label.family="sans", #gibt die Schriftart an
+     main="Frauen und Anschläge der ersten Generation")
+
+```
+```{r Männer und Anschläge 1. Generation, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+#Wir betrachten die Geschlechterverteilung des Gesamtnetzwerks:
+raf_eins_pur
+
+raf_eins_boys <- delete.vertices(raf_eins_pur, V(raf_eins_pur)[sex == 2])#löscht alle Frauen
+
+V(raf_eins_boys)[V(raf_eins_boys)$sex == 1]$color <- "darkseagreen" #Knoten mit Attribut "weiblich" orange einfärben
+
+plot(raf_eins_boys,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     edge.curved=curve_multiple(raf_eins_boys), # verhindert, dass sich Kanten überlagern
+     vertex.size= 5,
+     vertex.label.color="black",
+     vertex.label.family="sans", #gibt die Schriftart an
+     main="Männer und Anschläge der ersten Generation")
+
+```
+
 ```{r Geschlechterverteilung 2.Generation, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 
 #Zuletzt schauen wir die Geschlechterverteilung der zweiten Generation an:
@@ -985,6 +1024,46 @@ plot(raf_sex_zwei,
      vertex.label=NA, #entfernt die Knoten-Beschriftung,
      main="2. Generation - Geschlechterverteilung",
      sub="Grün = Männlich / Orange = Weiblich")
+
+```
+
+```{r Frauen und Anschläge 1. Generation, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+#Wir betrachten die Geschlechterverteilung des Gesamtnetzwerks:
+raf_zwei_pur
+
+raf_zwei_girls <- delete.vertices(raf_zwei_pur, V(raf_zwei_pur)[sex == 1])#löscht alle Männer
+
+V(raf_zwei_girls)[V(raf_zwei_girls)$sex == 2]$color <- "darkorange3" #Knoten mit Attribut "weiblich" orange einfärben
+
+plot(raf_zwei_girls,
+     layout=layout_nicely,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     edge.curved=curve_multiple(raf_eins_girls), # verhindert, dass sich Kanten überlagern
+     vertex.size= 5,
+     vertex.label.color="black",
+     vertex.label.family="sans", #gibt die Schriftart an
+     main="Frauen und Anschläge der zweiten Generation")
+
+```
+
+```{r Männer und Anschläge 2. Generation, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+#Wir betrachten die Geschlechterverteilung des Gesamtnetzwerks:
+raf_zwei_pur
+
+raf_zwei_boys <- delete.vertices(raf_zwei_pur, V(raf_zwei_pur)[sex == 2])#löscht alle Frauen
+
+V(raf_zwei_boys)[V(raf_zwei_boys)$sex == 1]$color <- "darkseagreen" #Knoten mit Attribut "weiblich" orange einfärben
+
+plot(raf_zwei_boys,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     edge.curved=curve_multiple(raf_zwei_boys), # verhindert, dass sich Kanten überlagern
+     vertex.size= 5,
+     vertex.label.color="black",
+     vertex.label.family="sans", #gibt die Schriftart an
+     main="Männer und Anschläge der zweiten Generation")
 
 ```
 
@@ -1105,10 +1184,6 @@ plot (raf_resignation,
       sub="Hellgrau = 1. Generation / Dunkelgrau = 2.Generation / Weiß = Beide Generationen")
 
 ```
-
-
-
-
 
 
 # Teilnetzwerke der verschiedenen Beziehungstypen
@@ -2605,4 +2680,28 @@ farthest_vertices(raf_1976) #am weitesten entfernte Knoten
 edge_density(raf_1977)#Dichte
 diameter(raf_1977, weights = NA) #Pfaddistanz
 farthest_vertices(raf_1977) #am weitesten entfernte Knoten
+```
+
+#Berechnungen Geschlechter
+
+```{r Berechnung erste Generation Frauen}
+frauen_eins <- delete.vertices(raf_eins_girls, V(raf_eins_girls)[type == 2])#löscht alle Anschläge
+edge_density(frauen_eins)#Dichte bei circa 14%
+diameter(frauen_eins)#Pfaddistanz bei 5
+```
+```{r Berechnung erste Generation Männer}
+maenner_eins <- delete.vertices(raf_eins_boys, V(raf_eins_boys)[type == 2])#löscht alle Anschläge
+edge_density(maenner_eins)#Dichte bei circa 12% -> überraschend, sieht dichter aus
+diameter(maenner_eins)#Pfaddistanz bei 6
+```
+```{r Berechnung zweite Generation Frauen}
+frauen_zwei <- delete.vertices(raf_zwei_girls, V(raf_zwei_girls)[type == 2])#löscht alle Anschläge
+edge_density(frauen_zwei)#Dichte bei circa 20%
+diameter(frauen_zwei)#Pfaddistanz bei 5
+
+```
+```{r Berechnung zweite Generation Männer}
+maenner_zwei <- delete.vertices(raf_zwei_boys, V(raf_zwei_boys)[type == 2])#löscht alle Anschläge
+edge_density(maenner_zwei)#Dichte bei circa 19%
+diameter(maenner_zwei)#Pfaddistanz bei 4
 ```

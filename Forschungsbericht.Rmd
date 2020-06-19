@@ -30,7 +30,7 @@ plot(pressure)
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 # 1. Einleitung, Forschungsfrage und Motivation
-## Abstract und Keywords_ 
+## Abstract und Keywords
  
 Gegenstand dieser Forschungsarbeit sind die Beziehungen innerhalb der ersten und zweiten Generation der Roten Armee Fraktion (RAF). Dafür wurden mittels eines two-mode-Netzwerkes 139 Knoten erfasst, darunter 109 Mitglieder und Unterstützer*innen sowie Aktionen der RAF. Die Beziehungsdimensionen beschreiben dabei unterschiedliche Arten der Beziehungen zueinander; darunter Wohngemeinschaften, gemeinsame Haft oder Liebschaften. Darüber hinaus wurden Verbindungen zu organisierten Anschlägen der Gruppe gezogen und analysiert, inwiefern sich die jeweiligen Mitglieder an ihnen beteiligten. Im Verlauf der Analyse lag der Fokus explizit auf Unterschieden zwischen der ersten und zweiten Generation. Dabei stellte sich heraus, dass die Vernetzung der Mitglieder in der ersten Generation hierarchischen und terroristischen Strukturen gleicht. Des Weiteren wurde die Annahme bestätigt, dass weniger bekannte Mitglieder durchaus auch Schlüsselrollen inne hatten. 
  
@@ -41,11 +41,16 @@ Keywords: **RAF, Netzwerkanalyse, Terrornetzwerk, Terrorismus, Deutscher Herbst,
 Bis heute sind die Taten der Roten-Armee-Fraktion Teil der deutschen Geschichte. Obwohl die Gründung mittlerweile 50 Jahre zurückliegt, sind weite Teile der Organisation immer noch nicht vollständig erforscht. Ziel dieses Projektes ist es daher, die bisher unergründeten Vernetzungen der Akteur*innen der RAF transparenter und anschaulicher zu gestalten. Daher soll sich diese Arbeit der Analyse und Untersuchung des Netzwerks der RAF widmen. Dabei wird auf die erste und zweite der insgesamt drei Generationen eingegangen. Zudem soll im Verlauf festgestellt werden, inwiefern sich die Netzwerke der ersten und zweiten Generation unterscheiden und inwieweit ein terroristisches Muster innerhalb der Netzwerkstrukturen erkennbar ist. Mit einer Netzwerkanalyse erhoffen wir uns zudem, die Dynamiken, Zusammensetzungen und Beziehungen der Mitglieder nachvollziehen zu können. Insbesondere der journalistische Hintergrund des Gründungsmitglieds Ulrike Meinhof und diverser anderer Mitglieder, sowie der Umstand, dass sich insbesondere junge Studierende der Gruppierung angeschlossen haben, stieß innerhalb der Forschungsgruppe ebenfalls auf ein erhöhtes Interesse. Auch der Bezug zum heutigen vermehrten Vorkommen von neuen Terrornetzwerken war für uns ein Grund, die RAF und den Verlauf des Deutschen Herbstes zu betrachten. Für das Netzwerk wurden insgesamt sechs literarische, sowie einige digitale Quellen zur Datenerhebung hinzugezogen.
 
 # 2. Forschungsstand der empirischen und theoretischen Literatur
-## Terroristische Strukturen im Allgemeinen
+
 
 Die RAF ist und war Gegenstand zahlloser Werke in Literatur, Film und Malerei. Dabei unterscheidet sich der Kontext häufig maßgeblich: Die Betrachtungen reichen von ideologischen Analysen über Chroniken bis hin zu Biografien einzelner Mitglieder. Zudem gibt es viele Stücke, die sich weniger mit dem Gesamtkonstrukt als vielmehr mit einzelnen Teilbereichen – beispielsweise einer der Generationen – beschäftigen. Klar zu unterscheiden und im Rahmen dieser Arbeit auszuklammern sind Werke aus dem Unterhaltungssektor. Sie basieren zwar meist auf wahren Begebenheiten, dennoch werden ebenso Mythen thematisiert und dargestellt. Manchmal werden der Dramaturgie wegen rein fiktive Handlungen beschrieben. Während diese Werke als Quelle für die Netzwerkforschung pauschal ausgeschlossen werden, gilt es bei der großen Menge zunächst nützlich erscheinenden Materials zu differenzieren (dazu mehr im folgenden 3. Kapitel).
+
 Obwohl die RAF aus unterschiedlichen Perspektiven und mit verschiedenen Zielsetzungen und Fokuspunkten untersucht wurde, sind im Bereich der Netzwerkforschung bisher wenig Erkenntnisse beziehungsweise wenig Forschungsarbeiten generell vorhanden. Eine soziale Netzwerkanalyse in unserem Sinne gibt es bisher nicht. Lediglich eine „Analysis of topologies and key players in terrorist networks“ von Fatih Ozgul, welche 2016 erschien, geht in eine ähnliche Richtung; jedoch ist die RAF hier nicht zentral im Fokus. Eine Dissertation von Sylvia Naylor aus dem Jahr 2009 mit dem Titel „Die Rote Armee Fraktion (RAF) als kulturelles Phänomen“ beschäftigt sich mit den „Repräsentationen in literarischen Texten und anderen kulturellen Produkten“ – für uns ebenfalls interessant, jedoch nicht vergleichbar mit dem eigenen Vorhaben und Forschungsinteresse.
+
 Als Ansatzpunkte für diese Forschung können nicht nur Überlegungen zu (Nicht-)Anarchien und Strukturen innerhalb der RAF dienen, sondern auch Arbeiten, die sich mit dem Aufbau von Terrororganisationen allgemein beschäftigen. Die Aufzählung aller, zumindest in Teilen interessanten, Literatur würde den Rahmen dieser Arbeit sprengen. Jedoch sollen im Folgenden die relevantesten Anknüpfungspunkte kurz aufgegriffen werden. Zunächst wird hierbei auf die Strukturen terroristischer Netzwerke generell eingegangen.
+
+## Terroristische Strukturen im Allgemeinen
+
 In der Literatur befassen sich einige Werke mit den Netzwerken geheimer Organisationen oder terroristischer Vereinigungen. So hat Sparrow 1991 bereits typische Merkmale krimineller Netzwerke definiert. Ihm zufolge sind solche geheimen Netzwerke tendenziell größer als offene Netzwerke. Jedoch ist deren Analyse ebenfalls oft unvollständig, da in der Datenerhebung nicht alle Verbindungen erfasst werden können. Die Grenzen können laut Sparrow zudem verschwimmen, wenn Individuen Mitglied mehrerer Gruppen waren und die Netzwerke einem stetigen Wandel unterliegen.
 
 Auch Koschade hat 2006 die Netzwerkstrukturen innerhalb einer geheimen Organisation, der balinesischen Terrorzelle Jemaah Islamiyah, analysiert und gefolgert, dass die Dichte innerhalb eines Netzwerkes ein Indiz für dessen Geheimheits-Grad sein kann. Da bei vielen engen Verbindungen die Gefahr besteht, dass viele Mitglieder gleichzeitig enttarnt werden, geht er davon aus, dass Netzwerke mit geringer Dichte sehr geheim sind. Verlassen zentrale Akteur*innen das Netzwerk, muss dieses laut Koschade nicht unbedingt zerbrechen; dies hängt von der tatsächlichen Zentralität des/ der Akteur*in ab und ob diese*r ersetzt werden kann.
@@ -60,9 +65,11 @@ Rodriguez weicht von dieser Sichtweise leicht ab. Er schreibt, dass schwache Bez
 Um diese Erkenntnisse nun in Relation zur RAF zu setzen, ist auch die Betrachtung des Forschungsstandes hinsichtlich der terroristischen Gruppierung essenziell.
 Als eines der bekanntesten und umfangreichsten Werke, dessen Erstauflage bereits 1977 – also vor der Auflösung der RAF – erschien, ist Stefan Austs „Der Baader-Meinhof-Komplex“ für Grundgedanken und einen Überblick unabdingbar. Der Autor beschreibt darin insbesondere die erste Generation, beziehungsweise deren Entstehungsprozess. Im Fokus stehen die Jahre 1970 bis 1977. Obwohl es auch bei ihm schon um die bis heute polarisierenden Figuren Baader, Meinhof und Ensslin geht, thematisiert er ebenso das „Konzept Stadtguerilla“, dem sich die Gruppe selbst zuordnete. Auch der Stammheimer Prozess ab 1975 und damit der Übergang zur zweiten Generation, nimmt im Buch eine große Rolle ein. Die Struktur- bzw. Wandlungsfrage zwingt sich uns als Netzwerkbetrachter*innen hier auf.
 
+## Terroristische Strukturen innerhalb der RAF
+
 Konkreter und besonders interessant wird es, wenn man zusätzlich Renate Mayntz’ (2004) Aufsatz „[z]u den Organisationsformen des Terrorismus“ liest. Sie spricht bei „alle[n] verdeckt operierenden Terrororganisationen [von] eine[r] Kombination von hierarchischen und Netzwerkmerkmalen“ (S. 251). Aber: Es gebe immer auch „Merkmale […], die weder ins hierarchische Muster passen, noch allgemein netzwerktypisch sind. Dabei handele es sich um einen besonderen Steuerungsmodus und einen besonderen Modus loser Koppelung, die beide auf einer starken ideologischen Identifikation der Mitglieder mit der Organisation und ihren Zielen beruhen“ (ebd.). Dies macht die Netzwerkanalyse der RAF zu einem relevanten, möglicherweise auch überraschenden Projekt. Mayntz geht insofern auf die RAF ein, dass sie als Kennzeichen „oft räumlich konzentrierte[…] und relativ kleine[…] Gruppen beziehungsweise interpersonelle Netzwerke“ (ebd., S. 252) nennt.
 
-## Terroristische Strukturen innerhalb der RAF
+
 Betrachtet man die RAF im Hinblick auf diese Konzepte aus der Selbst- und Fremdwahrnehmung, entstehen für das Ergebnis einer sozialen Netzwerkanalyse ganz unterschiedliche Szenarien.
 
 Als eines der bekanntesten und umfangreichsten Werke, dessen Erstauflage bereits 1977 – also vor der Auflösung der RAF – erschien, ist Stefan Austs „Der Baader-Meinhof-Komplex“ für Grundgedanken und einen Überblick unabdingbar. Der Autor beschreibt darin insbesondere die erste Generation, beziehungsweise deren Entstehungsprozess. Im Fokus stehen die Jahre 1970 bis 1977. Obwohl es auch bei ihm schon um die bis heute polarisierenden Figuren Baader, Meinhof und Ensslin geht, thematisiert er ebenso das „Konzept Stadtguerilla“, dem sich die Gruppe selbst zuordnete. Auch der Stammheimer Prozess ab 1975 und damit der Übergang zur zweiten Generation, nimmt im Buch eine große Rolle ein. Die Struktur- bzw. Wandlungsfrage zwingt sich uns als Netzwerkbetrachter*innen hier auf.
@@ -140,7 +147,7 @@ Unter https://github.com/ca048/RAF-Forschungsdesign/blob/master/Codebuch.md ist 
 
 ### Gesamtnetzwerk
 
-Nun sollen die erstellten Netzwerke und Datensätze interpretiert werden. Das Gesamtnetzwerk umfasst 139 Knoten, davon 30 Ereignisse und 109 Akteur*innen. Die Aufteilung auf die beiden Generationen und Unterstützer*innen gestaltet sich folgendermaßen: 43 Menschen gehören der ersten Generation an, 35 der zweiten und 3 Mitglieder tauchen in beiden Generationen auf. Ferner wurden 27 Unterstützer*innen berücksichtigt; bei einer Person gibt es keine nähere Angaben, da es sich um einen V-Mann handelt.
+Nun sollen die erstellten Netzwerke und Datensätze interpretiert werden. Das Gesamtnetzwerk umfasst 139 Knoten, davon 30 Ereignisse und 109 Akteur:innen. Die Aufteilung auf die beiden Generationen und Unterstützer:innen gestaltet sich folgendermaßen: 43 Menschen gehören der ersten Generation an, 35 der zweiten und 3 Mitglieder tauchen in beiden Generationen auf. Ferner wurden 27 Unterstützer*innen berücksichtigt; bei einer Person gibt es keine nähere Angaben, da es sich um einen V-Mann handelt.
 
 ```{r Wichtigste Packages abrufen, include=FALSE}
 
@@ -154,7 +161,6 @@ library(rmarkdown)
 
 
 ```{r Gesamtnetzwerk einlesen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
-
 # Zunächst soll das Gesamtnetzwerk der RAF generiert werden.
 
 # Dazu werden zuerst Edge - und Nodelist eingelesen:
@@ -165,6 +171,10 @@ nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/
 #Edge- und Nodelist werden zu einer Matrix verknüpft
 edgematrix <-as.matrix(el)
 raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+```
+
+
+```{r Gesamtnetzwerk einlesen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #raf
 
 # Nun wird die Visualisierung der Knoten und Kanten angepasst.
@@ -199,8 +209,8 @@ plot(raf,
      )
 
 legend("bottomleft", 
-       c("1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
-       col=c("grey80", "grey20", "white", "lightpink"), 
+       c("1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen", "Aktionen"),
+       col=c("grey80", "grey20", "white", "lightpink", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
        pt.cex=3, 
@@ -251,8 +261,19 @@ legend("bottomleft",
 
 Insgesamt weisen Frauen allerdings eine niedrigere Beteiligungsrate als Männer auf: Gerade einmal 26 Frauen waren an den untersuchten Aktionen beteiligt, im Vergleich dazu waren es 40 Männer.
  
-```{r Aktionsbeteiligungsnetzwerk, eval=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+```{r Einlesen 1, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
 
+nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
+
+#Edge- und Nodelist werden zu einer Matrix verknüpft
+edgematrix <-as.matrix(el)
+raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
+
+```
+
+
+```{r Aktionsbeteiligungsnetzwerk, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 participation <- subgraph.edges(raf, E(raf)[relationship == " 7"]) # erstellt ein neues Teilnetzwerk, in dem nur die Akteure angezeigt werden, die an einer Aktion beteiligt waren
 participation <- simplify(participation, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
 V(participation)[V(participation)$type == 2]$color <- "cornflowerblue" # Aktionen und Anschläge werden blau eingefärbt, um diese besser erkennen zu können)
@@ -292,13 +313,16 @@ legend("bottomleft",
 
 Kriminelle oder geheime Netzwerke, zu denen man die RAF zählen kann, können gewisse typische Merkmale aufweisen, die sich auch in unseren Untersuchungen zu Teilen gezeigt haben. Tendenziell beschreibt Sparrow geheime Netzwerke in Abgrenzung von offenen Netzwerken als größer und führt an, dass diese auch bis zu tausend Knoten umfassen können (vgl. Sparrow, 1991). In unserem Netzwerk bewegen wir uns eher im  Hunderterbereich. Jedoch wissen wir nicht, wie viele Personen insgesamt involviert oder unterstützend tätig waren, da wir aufgrund des hohen Maßes an Geheimhaltung nicht alle Verbindungen recherchieren konnten. Des Weiteren bemerkt Sparrow (1991), dass es innerhalb von geheimen Netzwerken oft unklare Grenzen gibt. Es scheint also Individuen zu geben, die zu mehreren verschiedenen Netzwerken / Gruppen gehören können. Dieses Merkmal trifft auch auf das Netzwerk der RAF zu, da einige Mitglieder auch anderen Vereinigungen, wie beispielsweise dem Sozialistischen Patientenkollektiv, angehörten. Von dort aus wechselten sie zur RAF. Zudem war es bei einigen Akteuren schwierig herauszulesen, ob diese ein tatsächliches Mitglied oder nur über andere Gruppen mit den Aktionen der RAF verbunden waren (Bommi Baumann, s. Kapitel 6). Generell sind Netzwerke geheimer Gruppen meist dynamisch und unterliegen einem stetigen Wandel, z.B. dem Wechsel von Beziehungen oder Mitgliedern im Laufe der Zeit (vgl. Sparrow, 1991).
 
-```{r 1970,fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
+```{r Einlesen 2, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 # Zunächst werden Edge - und Nodelist eingelesen:
 el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
 nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
 #Edge- und Nodelist werden zu einer Matrix verknüpft
 edgematrix <-as.matrix(el)
+```
 
+
+```{r 1970,fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
 raf_year <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
 V(raf_year)$color <-"white"
 #raf_year
@@ -312,7 +336,7 @@ raf_1970 <- delete_vertices(raf_year, V(raf_year) [entry !="1970"])# löscht die
 raf_1970 <- subgraph.edges(raf_1970, E(raf_1970)[year==1970]) #selektiert die Beziehungen von 1970
 raf_1970 <- simplify(raf_1970, remove.multiple=TRUE,) #löscht doppelte Beziehungen
 V(raf_1970) [V(raf_1970)$entry == 1970]$color <- "firebrick" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
-raf_1970
+#raf_1970
 # Nun wird das Netzwerk der Mitglieder von 1970 visualisiert
 plot(raf_1970,
      asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
@@ -587,7 +611,7 @@ plot(raf_1976,
      #sub ="Neue Mitglieder sind rot eingefärbt"
      )
 
-legend("bottomleft", 
+legend(-1.2,-1.2, 
        c("Neue Mitglieder"),
        col=c("firebrick"), 
        pch = 19, 
@@ -698,14 +722,17 @@ Dabei begann (1970) die RAF mit einer Dichte von ca. 20%, was jedoch an der rela
 
 Die Beziehungen zwischen den einzelnen Akteuren wurden in verschiedene Kategorien aufgeteilt. Dabei war der häufigste Beziehungstyp „Bekanntschaft“ bzw. „Kontakt“, gefolgt von “Freundschaft”.
 
-```{r Freundschaft und Beziehungsnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
-
+```{r Einlesen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
 
 nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
 
 #Edge- und Nodelist werden zu einer Matrix verknüpft
 edgematrix <-as.matrix(el)
+```
+
+
+```{r Freundschaft und Beziehungsnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
 
 V(raf)[V(raf)$type == 1]$shape <- "circle" # Personen werden als Kreise dargestellt
@@ -807,7 +834,7 @@ plot(love,
      vertex.label.family = "sans", #gibt die Schriftart an
      main="Liebesbeziehungs-Netzwerk")
 
-legend("bottomleft", 
+legend(-1.2, -1, 
        c("1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
        col=c("grey80", "grey20", "white", "lightpink"), 
        pch = 19, 
@@ -862,7 +889,7 @@ Es kann davon ausgegangen werden, dass diese Bindungen für ein Zugehörigkeitsg
 Von den 109 beobachteten Akteuren wohnten 43 zu verschiedenen Zeitpunkten in unterschiedlichen Wohngemeinschaften zusammen. Wieder scheint es wichtig zu sein, dass ein hohes Vertrauen zwischen den einzelnen Mitgliedern bestand. Auch konnte auf diese Weise eine bessere Planung von Aktionen und Zusammenarbeit gewährleistet werden. Allerdings könnte man auch zum Schluss kommen, dass dies dazu diente, zu prüfen, dass niemand geheime Pläne an die Polizei weitergeben konnte. Krebs zufolge formen Mitglieder von Terrorgruppen selten neue Verbindungen nach außen, was diese These stützt (vgl. Krebs, 2002).
 Dabei wohnten vor allem Mitglieder innerhalb der einzelnen Generationen zusammen. Zwischen den Generationen bestand bis auf ein paar Ausnahmen (Ingrid Siepmann und Karl-Heinz Dellwo) kein direkter Zusammenhang.
 
-```{r WG-Netzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
+```{r WG-Netzwerk, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 wg <- subgraph.edges(raf, E(raf)[relationship== " 4"]) # erstellt ein Teilnetzwerk, in dem nur Verbindungen zwischen Knoten angezeigt werden, die in einer Wohngemeinschaft miteinander gelebt haben
 wg <- simplify(wg, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
 wg
@@ -881,7 +908,7 @@ plot(wg,
      vertex.label.cex = .7, #gibt die Schriftartgröße an
      main="Wohnungsgemeinschafts-Netzwerk")
 
-legend("bottomleft", 
+legend(-1.26,-0.7, 
        c("1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
        col=c("grey80", "grey20", "white", "lightpink"), 
        pch = 19, 
@@ -1016,7 +1043,7 @@ plot(ego_bm1_p,
      vertex.label.color= "black",
      edge.color="grey40")
 
-legend("bottomleft", 
+legend(-1.2, -0.8,
        c("Mohaupt", "1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
        col=c("firebrick", "grey80", "grey20", "white", "lightpink"), 
        pch = 19, 
@@ -1142,7 +1169,7 @@ plot(ego_kc1_p,
      vertex.label.color = "black",
      edge.color="grey40")
 
-legend("bottomleft", 
+legend(-1.2, -0.8, 
        c("Croissant", "1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
        col=c("firebrick", "grey80", "grey20", "white", "lightpink"), 
        pch = 19, 

@@ -1,44 +1,24 @@
 ---
-title: "Forschungsbericht"
-author: "ja053"
-date: "18 6 2020"
+title: "Netzwerkanalyse Rote Armee Fraktion"
+author: "Jule Ahles, Celina Arnemann, Hannah Bauer, Jan Kraft, Jana Mack, Stefanie Sommer"
+date: "18.6.2020"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 # 1. Einleitung, Forschungsfrage und Motivation
 ## Abstract und Keywords
  
-Gegenstand dieser Forschungsarbeit sind die Beziehungen innerhalb der ersten und zweiten Generation der Roten Armee Fraktion (RAF). Dafür wurden mittels eines two-mode-Netzwerkes 139 Knoten erfasst, darunter 109 Mitglieder und Unterstützer*innen sowie Aktionen der RAF. Die Beziehungsdimensionen beschreiben dabei unterschiedliche Arten der Beziehungen zueinander; darunter Wohngemeinschaften, gemeinsame Haft oder Liebschaften. Darüber hinaus wurden Verbindungen zu organisierten Anschlägen der Gruppe gezogen und analysiert, inwiefern sich die jeweiligen Mitglieder an ihnen beteiligten. Im Verlauf der Analyse lag der Fokus explizit auf Unterschieden zwischen der ersten und zweiten Generation. Dabei stellte sich heraus, dass die Vernetzung der Mitglieder in der ersten Generation hierarchischen und terroristischen Strukturen gleicht. Des Weiteren wurde die Annahme bestätigt, dass weniger bekannte Mitglieder durchaus auch Schlüsselrollen inne hatten. 
+Gegenstand dieser Forschungsarbeit sind die Beziehungen innerhalb der ersten und zweiten Generation der Roten Armee Fraktion (RAF). Dafür wurden mittels eines two-mode-Netzwerkes 139 Knoten erfasst, darunter 109 Mitglieder und Unterstützer:innen sowie Aktionen der RAF. Die Beziehungsdimensionen beschreiben dabei unterschiedliche Arten der Beziehungen zueinander; darunter Wohngemeinschaften, gemeinsame Haft oder Liebschaften. Darüber hinaus wurden Verbindungen zu organisierten Anschlägen der Gruppe gezogen und analysiert, inwiefern sich die jeweiligen Mitglieder an ihnen beteiligten. Im Verlauf der Analyse lag der Fokus explizit auf Unterschieden zwischen der ersten und zweiten Generation. Dabei stellte sich heraus, dass die Vernetzung der Mitglieder in der ersten Generation hierarchischen und terroristischen Strukturen gleicht. Des Weiteren wurde die Annahme bestätigt, dass weniger bekannte Mitglieder durchaus auch Schlüsselrollen inne hatten. 
  
 Keywords: **RAF, Netzwerkanalyse, Terrornetzwerk, Terrorismus, Deutscher Herbst, Baader, Meinhof**
  
 ## Einleitung
  
-Bis heute sind die Taten der Roten-Armee-Fraktion Teil der deutschen Geschichte. Obwohl die Gründung mittlerweile 50 Jahre zurückliegt, sind weite Teile der Organisation immer noch nicht vollständig erforscht. Ziel dieses Projektes ist es daher, die bisher unergründeten Vernetzungen der Akteur*innen der RAF transparenter und anschaulicher zu gestalten. Daher soll sich diese Arbeit der Analyse und Untersuchung des Netzwerks der RAF widmen. Dabei wird auf die erste und zweite der insgesamt drei Generationen eingegangen. Zudem soll im Verlauf festgestellt werden, inwiefern sich die Netzwerke der ersten und zweiten Generation unterscheiden und inwieweit ein terroristisches Muster innerhalb der Netzwerkstrukturen erkennbar ist. Mit einer Netzwerkanalyse erhoffen wir uns zudem, die Dynamiken, Zusammensetzungen und Beziehungen der Mitglieder nachvollziehen zu können. Insbesondere der journalistische Hintergrund des Gründungsmitglieds Ulrike Meinhof und diverser anderer Mitglieder, sowie der Umstand, dass sich insbesondere junge Studierende der Gruppierung angeschlossen haben, stieß innerhalb der Forschungsgruppe ebenfalls auf ein erhöhtes Interesse. Auch der Bezug zum heutigen vermehrten Vorkommen von neuen Terrornetzwerken war für uns ein Grund, die RAF und den Verlauf des Deutschen Herbstes zu betrachten. Für das Netzwerk wurden insgesamt sechs literarische, sowie einige digitale Quellen zur Datenerhebung hinzugezogen.
+Bis heute sind die Taten der Roten-Armee-Fraktion Teil der deutschen Geschichte. Obwohl die Gründung mittlerweile 50 Jahre zurückliegt, sind weite Teile der Organisation immer noch nicht vollständig erforscht. Ziel dieses Projektes ist es daher, die bisher unergründeten Vernetzungen der Akteur:innen der RAF transparenter und anschaulicher zu gestalten. Daher soll sich diese Arbeit der Analyse und Untersuchung des Netzwerks der RAF widmen. Dabei wird auf die erste und zweite der insgesamt drei Generationen eingegangen. Zudem soll im Verlauf festgestellt werden, inwiefern sich die Netzwerke der ersten und zweiten Generation unterscheiden und inwieweit ein terroristisches Muster innerhalb der Netzwerkstrukturen erkennbar ist. Mit einer Netzwerkanalyse erhoffen wir uns zudem, die Dynamiken, Zusammensetzungen und Beziehungen der Mitglieder nachvollziehen zu können. Insbesondere der journalistische Hintergrund des Gründungsmitglieds Ulrike Meinhof und diverser anderer Mitglieder, sowie der Umstand, dass sich insbesondere junge Studierende der Gruppierung angeschlossen haben, stieß innerhalb der Forschungsgruppe ebenfalls auf ein erhöhtes Interesse. Auch der Bezug zum heutigen vermehrten Vorkommen von neuen Terrornetzwerken war für uns ein Grund, die RAF und den Verlauf des Deutschen Herbstes zu betrachten. Für das Netzwerk wurden insgesamt sechs literarische, sowie einige digitale Quellen zur Datenerhebung hinzugezogen.
 
 # 2. Forschungsstand der empirischen und theoretischen Literatur
 
@@ -53,7 +33,7 @@ Als Ansatzpunkte für diese Forschung können nicht nur Überlegungen zu (Nicht-
 
 In der Literatur befassen sich einige Werke mit den Netzwerken geheimer Organisationen oder terroristischer Vereinigungen. So hat Sparrow 1991 bereits typische Merkmale krimineller Netzwerke definiert. Ihm zufolge sind solche geheimen Netzwerke tendenziell größer als offene Netzwerke. Jedoch ist deren Analyse ebenfalls oft unvollständig, da in der Datenerhebung nicht alle Verbindungen erfasst werden können. Die Grenzen können laut Sparrow zudem verschwimmen, wenn Individuen Mitglied mehrerer Gruppen waren und die Netzwerke einem stetigen Wandel unterliegen.
 
-Auch Koschade hat 2006 die Netzwerkstrukturen innerhalb einer geheimen Organisation, der balinesischen Terrorzelle Jemaah Islamiyah, analysiert und gefolgert, dass die Dichte innerhalb eines Netzwerkes ein Indiz für dessen Geheimheits-Grad sein kann. Da bei vielen engen Verbindungen die Gefahr besteht, dass viele Mitglieder gleichzeitig enttarnt werden, geht er davon aus, dass Netzwerke mit geringer Dichte sehr geheim sind. Verlassen zentrale Akteur*innen das Netzwerk, muss dieses laut Koschade nicht unbedingt zerbrechen; dies hängt von der tatsächlichen Zentralität des/ der Akteur*in ab und ob diese*r ersetzt werden kann.
+Auch Koschade hat 2006 die Netzwerkstrukturen innerhalb einer geheimen Organisation, der balinesischen Terrorzelle Jemaah Islamiyah, analysiert und gefolgert, dass die Dichte innerhalb eines Netzwerkes ein Indiz für dessen Geheimheits-Grad sein kann. Da bei vielen engen Verbindungen die Gefahr besteht, dass viele Mitglieder gleichzeitig enttarnt werden, geht er davon aus, dass Netzwerke mit geringer Dichte sehr geheim sind. Verlassen zentrale Akteur:innen das Netzwerk, muss dieses laut Koschade nicht unbedingt zerbrechen; dies hängt von der tatsächlichen Zentralität des/ der Akteur:in ab und ob diese:r ersetzt werden kann.
 Generell kann der Wechsel der Nodes in einem Netzwerk nämlich destabilisierend wirken, wie Borgatti anführt (vgl. Borgatti, 2002). 
 
 Hinsichtlich der Strukturen und Hierarchien in terroristischen Netzwerken haben Carley et al. 2003 festgestellt, dass diese weniger hierarchisch als andere Organisationsnetzwerke und eher zellulärer und verteilter strukturiert sind. 
@@ -61,18 +41,16 @@ Hinsichtlich der Strukturen und Hierarchien in terroristischen Netzwerken haben 
 Krebs hat sich 2002 in “Mapping of Terrorist Cells” konkret mit den Netzwerken der Terroristen vom 11. September beschäftigt und darin vorwiegend starke Beziehungen erkannt - anders als bei typischen Netzwerken, die Granovetter zufolge von der Stärke schwacher Beziehungen leben (vgl. Granovetter, 1973). Das liegt daran, dass Terrorgruppen verhindern wollen durch unzuverlässige “weak links” geheime Informationen nach außen durchsickern zu lassen (vgl. Krebs, 2002). Besonders herausfordernd ist daher der Spagat zwischen notwendiger Kommunikation zur Vorbereitung von Aktionen einerseits und dem Versuch, die Zahl der Kontakte zu begrenzen, um kein Aufsehen zu erregen andererseits (vgl. Baker & Faulkner, 1993). 
 Die Bindungen innerhalb des Netzwerkes sind dafür besonders stark und basieren oft darauf, dass sich Akteur*innen bereits zuvor kannten. Sei es durch gemeinsame Schul- oder Terrorausbildung oder verwandtschaftliche Beziehungen. Die so geschaffene Vertrauensbasis erachtet Krebs als essentiell für eine effiziente Funktionsweise von Netzwerken (vgl. Krebs, 2002.). 
 
-Rodriguez weicht von dieser Sichtweise leicht ab. Er schreibt, dass schwache Beziehungen eine wichtige Rolle für Netzwerke spielen. Breite Verbindungen können helfen, da viele Unterstützer*innen vorhanden sind. Generell sieht Rodriguez indirekte Verbindungen, genau so wie die Broker, als zentral an, die als Mittler*innen zwischen anderen fungieren (vgl. Rodriguez, 2005).
+Rodriguez weicht von dieser Sichtweise leicht ab. Er schreibt, dass schwache Beziehungen eine wichtige Rolle für Netzwerke spielen. Breite Verbindungen können helfen, da viele Unterstützer:innen vorhanden sind. Generell sieht Rodriguez indirekte Verbindungen, genau so wie die Broker, als zentral an, die als Mittlerinnen zwischen anderen fungieren (vgl. Rodriguez, 2005).
+
 Um diese Erkenntnisse nun in Relation zur RAF zu setzen, ist auch die Betrachtung des Forschungsstandes hinsichtlich der terroristischen Gruppierung essenziell.
-Als eines der bekanntesten und umfangreichsten Werke, dessen Erstauflage bereits 1977 – also vor der Auflösung der RAF – erschien, ist Stefan Austs „Der Baader-Meinhof-Komplex“ für Grundgedanken und einen Überblick unabdingbar. Der Autor beschreibt darin insbesondere die erste Generation, beziehungsweise deren Entstehungsprozess. Im Fokus stehen die Jahre 1970 bis 1977. Obwohl es auch bei ihm schon um die bis heute polarisierenden Figuren Baader, Meinhof und Ensslin geht, thematisiert er ebenso das „Konzept Stadtguerilla“, dem sich die Gruppe selbst zuordnete. Auch der Stammheimer Prozess ab 1975 und damit der Übergang zur zweiten Generation, nimmt im Buch eine große Rolle ein. Die Struktur- bzw. Wandlungsfrage zwingt sich uns als Netzwerkbetrachter*innen hier auf.
+
 
 ## Terroristische Strukturen innerhalb der RAF
 
-Konkreter und besonders interessant wird es, wenn man zusätzlich Renate Mayntz’ (2004) Aufsatz „[z]u den Organisationsformen des Terrorismus“ liest. Sie spricht bei „alle[n] verdeckt operierenden Terrororganisationen [von] eine[r] Kombination von hierarchischen und Netzwerkmerkmalen“ (S. 251). Aber: Es gebe immer auch „Merkmale […], die weder ins hierarchische Muster passen, noch allgemein netzwerktypisch sind. Dabei handele es sich um einen besonderen Steuerungsmodus und einen besonderen Modus loser Koppelung, die beide auf einer starken ideologischen Identifikation der Mitglieder mit der Organisation und ihren Zielen beruhen“ (ebd.). Dies macht die Netzwerkanalyse der RAF zu einem relevanten, möglicherweise auch überraschenden Projekt. Mayntz geht insofern auf die RAF ein, dass sie als Kennzeichen „oft räumlich konzentrierte[…] und relativ kleine[…] Gruppen beziehungsweise interpersonelle Netzwerke“ (ebd., S. 252) nennt.
-
-
 Betrachtet man die RAF im Hinblick auf diese Konzepte aus der Selbst- und Fremdwahrnehmung, entstehen für das Ergebnis einer sozialen Netzwerkanalyse ganz unterschiedliche Szenarien.
 
-Als eines der bekanntesten und umfangreichsten Werke, dessen Erstauflage bereits 1977 – also vor der Auflösung der RAF – erschien, ist Stefan Austs „Der Baader-Meinhof-Komplex“ für Grundgedanken und einen Überblick unabdingbar. Der Autor beschreibt darin insbesondere die erste Generation, beziehungsweise deren Entstehungsprozess. Im Fokus stehen die Jahre 1970 bis 1977. Obwohl es auch bei ihm schon um die bis heute polarisierenden Figuren Baader, Meinhof und Ensslin geht, thematisiert er ebenso das „Konzept Stadtguerilla“, dem sich die Gruppe selbst zuordnete. Auch der Stammheimer Prozess ab 1975 und damit der Übergang zur zweiten Generation, nimmt im Buch eine große Rolle ein. Die Struktur- bzw. Wandlungsfrage zwingt sich uns als Netzwerkbetrachter*innen hier auf.
+Als eines der bekanntesten und umfangreichsten Werke, dessen Erstauflage bereits 1977 – also vor der Auflösung der RAF – erschien, ist Stefan Austs „Der Baader-Meinhof-Komplex“ für Grundgedanken und einen Überblick unabdingbar. Der Autor beschreibt darin insbesondere die erste Generation, beziehungsweise deren Entstehungsprozess. Im Fokus stehen die Jahre 1970 bis 1977. Obwohl es auch bei ihm schon um die bis heute polarisierenden Figuren Baader, Meinhof und Ensslin geht, thematisiert er ebenso das „Konzept Stadtguerilla“, dem sich die Gruppe selbst zuordnete. Auch der Stammheimer Prozess ab 1975 und damit der Übergang zur zweiten Generation, nimmt im Buch eine große Rolle ein. Die Struktur- bzw. Wandlungsfrage zwingt sich uns als Netzwerkbetrachter:innen hier auf.
 
 Konkreter und besonders interessant wird es, wenn man zusätzlich Renate Mayntz’ (2004) Aufsatz „[z]u den Organisationsformen des Terrorismus“ liest. Sie spricht bei „alle[n] verdeckt operierenden Terrororganisationen [von] eine[r] Kombination von hierarchischen und Netzwerkmerkmalen“ (S. 251). Aber: Es gebe immer auch „Merkmale […], die weder ins hierarchische Muster passen, noch allgemein netzwerktypisch sind. Dabei handele es sich um einen besonderen Steuerungsmodus und einen besonderen Modus loser Koppelung, die beide auf einer starken ideologischen Identifikation der Mitglieder mit der Organisation und ihren Zielen beruhen“ (ebd.). Dies macht die Netzwerkanalyse der RAF zu einem relevanten, möglicherweise auch überraschenden Projekt. Mayntz geht insofern auf die RAF ein, dass sie als Kennzeichen „oft räumlich konzentrierte[…] und relativ kleine[…] Gruppen beziehungsweise interpersonelle Netzwerke“ (ebd., S. 252) nennt. Betrachtet man die RAF im Hinblick auf diese Konzepte aus der Selbst- und Fremdwahrnehmung, entstehen für das Ergebnis einer sozialen Netzwerkanalyse ganz unterschiedliche Szenarien.
 
@@ -83,26 +61,28 @@ Da der betrachtete Zeitraum sich über insgesamt fast 15 Jahre erstreckt, muss v
 
 Anhand der genannten Konzepte soll die vorliegende Arbeit folgende Frage in aller Tiefe beantworten: Inwiefern unterscheiden sich die Netzwerke der ersten und zweiten Generation der RAF? Dass sich daraus zahlreiche Unterpunkte und Fragen ergeben, ist selbsterklärend. Diese zeichnen sich auch in den folgenden Arbeitshypothesen ab:
 
-(1) Die Mitglieder der ersten Generation haben die Entstehung der zweiten Generation - möglicherweise sogar aus den Justizvollzugsanstalten heraus - beeinflusst. 
-(2) Die erste Generation hatte entgegen ihres selbst ausgerufenen „Stadtguerilla“-Charakters stärkere Hierarchien als die zweite Generation bzw. fungierten die polarisierenden Akteure Baader, Meinhof und Ensslin als Führungspersonen.
+(1) *Die Mitglieder der ersten Generation haben die Entstehung der zweiten Generation - möglicherweise sogar aus den Justizvollzugsanstalten heraus - beeinflusst.* 
 
-Mayntz bestärkt diese Hypothese für Terrororganisationen allgemein: „Hier beruht die Handlungskoordination […] auf der — aus einem hohen (und wahrscheinlich emotional aufgeladenen) ideologischen Konsens resultierenden — bereitwilligen Akzeptanz der von anerkannten, aber über keine formale Autorität verfügenden Führungspersonen ausgehenden Signale.“ (2004, S. 258)
+(2) *Die erste Generation hatte entgegen ihres selbst ausgerufenen „Stadtguerilla“-Charakters stärkere Hierarchien als die zweite Generation, beziehungsweise fungierten die polarisierenden Akteur:innen Baader, Meinhof und Ensslin als Führungspersonen.*
 
-(3) Persönliche Beziehungen wie zum Beispiel gemeinsame Wohnungen, Liebesbeziehungen oder gemeinsame Aktionen (Anschläge, Ausbildungslager) spielten innerhalb der RAF eine große Rolle.
+    Mayntz bestärkt diese Hypothese für Terrororganisationen allgemein: „Hier beruht die Handlungskoordination […] auf der — aus einem hohen (und wahrscheinlich emotional aufgeladenen) ideologischen Konsens resultierenden — bereitwilligen Akzeptanz der von anerkannten, aber über keine formale Autorität verfügenden Führungspersonen ausgehenden Signale.“ (2004, S. 258)
 
-Auch hierfür würde Mayntz’ Aufsatz sprechen: „Gewissermaßen als Nervenstränge sind dabei in die nur locker gekoppelte Struktur persönliche Beziehungsnetze eingelagert, die […] auf Verwandtschaft, gemeinsamer ethnischer Zugehörigkeit und gemeinsamen Erfahrungen (z.B. in Trainingscamps) aufbauen und zur reibungslosen Übermittlung von handlungsleitenden Impulsen beitragen.“ (2004, S. 258)
+(3) *Persönliche Beziehungen wie zum Beispiel gemeinsame Wohnungen, Liebesbeziehungen oder gemeinsame Aktionen (Anschläge, Ausbildungslager) spielten innerhalb der RAF eine große Rolle.*
 
-(4) Neben den festen Mitgliedern spielten auch Unterstützer* innen eine maßgebliche Rolle bei der Umsetzung der Anschläge und Versorgung der Genoss*innen. 
+    Auch hierfür würde Mayntz’ Aufsatz sprechen: „Gewissermaßen als Nervenstränge sind dabei in die nur locker gekoppelte Struktur persönliche Beziehungsnetze eingelagert, die […] auf Verwandtschaft, gemeinsamer ethnischer Zugehörigkeit und gemeinsamen Erfahrungen (zum Beispiel. in Trainingscamps) aufbauen und zur reibungslosen Übermittlung von handlungsleitenden Impulsen beitragen.“ (2004, S. 258)
 
-(5) Die erste Generation war - bedingt durch den Entstehungsprozess und die anfänglich niedrige Mitgliederzahl - besser vernetzt als die zweite Generation.
+(4) *Neben den festen Mitgliedern spielten auch Unterstützer:innen eine maßgebliche Rolle bei der Umsetzung der Anschläge und Versorgung der Genoss:innen.* 
 
-(6) In der RAF nahmen die Frauen eine besondere, von den Männern abweichende, Rolle ein.
+(5) *Die erste Generation war - bedingt durch den Entstehungsprozess und die anfänglich niedrige Mitgliederzahl - besser vernetzt als die zweite Generation.*
 
-Diese Arbeitshypothese soll (trotz großen Potentials) nur in angemessenem Rahmen beantwortet werden. Gerade hier können wir auch auf neue Erkenntnisse hoffen, denn Sylvia Naylor erkannte in der o.g. Dissertation eine Wissenslücke: „Zu den vernachlässigten Aspekten bei der Bearbeitung der RAF gehört meines Erachtens die Beschäftigung mit den weiblichen Terroristen“ (2009, S. 7), schrieb sie und beschäftigte sich daraufhin selbst mit den RAF-Frauen, jedoch thematisch nicht mit uns übereinstimmend.
+(6) *In der RAF nahmen die Frauen eine besondere, von den Männern abweichende, Rolle ein.*
 
-(7) Neben den bekannten Mitgliedern der RAF gab es auch unbekannte Keyplayer*innen (Broker), denen die Aufmerksamkeit der breiten Öffentlichkeit verwehrt blieb.
+    Diese Arbeitshypothese soll (trotz großen Potentials) nur in angemessenem Rahmen beantwortet werden. Gerade hier können wir auch auf neue Erkenntnisse hoffen, denn Sylvia Naylor erkannte in der o.g. Dissertation eine Wissenslücke: „Zu den vernachlässigten Aspekten bei der Bearbeitung der RAF gehört meines Erachtens die Beschäftigung mit den weiblichen Terroristen“ (2009, S. 7), schrieb sie und beschäftigte sich daraufhin selbst mit den RAF-Frauen, jedoch thematisch nicht mit uns übereinstimmend.
 
-(8). Auf Basis des Deutschlandfunk-Artikels “Protestantismus und RAF” (Hollenbach, 2007): Es bestand ein Zusammenhang zwischen einem religiösen Elternhaus und der Mitgliedschaft in der RAF.
+(7) *Neben den bekannten Mitgliedern der RAF gab es auch unbekannte Keyplayer:innen (Broker:innen), denen die Aufmerksamkeit der breiten Öffentlichkeit verwehrt blieb.*
+
+(8) *Auf Basis des Deutschlandfunk-Artikels “Protestantismus und RAF” (Hollenbach, 2007): Es bestand ein Zusammenhang zwischen einem religiösen Elternhaus und der Mitgliedschaft in der RAF.*
+
 
 # 3. Datenerhebung: Zugang, Bereinigung und Codebuch 
 
@@ -122,7 +102,7 @@ Alle verwendeten Daten entstammen öffentlichen Quellen, der Großteil Sekundär
 
 - Terhoeven, Petra (2017): „Die Rote Armee Fraktion - Eine Geschichte Terroristischer Gewalt“. München: C.H.Beck
 
-Um die Erkenntnisse festzuhalten und eine Ergänzung durch jedes Gruppenmitglied zu ermöglichen, wurde eine Tabelle über Google Drive erstellt. In dieser konnte jede*r parallel zur Lektüre relevante Informationen zu den im Codebuch definierten Attributen über die verschiedenen Akteure und Aktionen eintragen. Dadurch wurde eine Dopplung der Notizen verhindert. Des Weiteren wurden in diesem Schritt bereits IDs vergeben. 
+Um die Erkenntnisse festzuhalten und eine Ergänzung durch jedes Gruppenmitglied zu ermöglichen, wurde eine Tabelle über Google Drive erstellt. In dieser konnte jede:r parallel zur Lektüre relevante Informationen zu den im Codebuch definierten Attributen über die verschiedenen Akteure und Aktionen eintragen. Dadurch wurde eine Dopplung der Notizen verhindert. Des Weiteren wurden in diesem Schritt bereits IDs vergeben. 
 
 Besonders bei einem weitverzweigten Thema wie dem Vorliegenden und angesichts des Umstandes, dass die RAF eine Untergrundorganisation war, musste zusätzlich zur Literaturrecherche im Internet nach ergänzenden Informationen gesucht werden. Dabei war es wichtig, auf Qualität und Verlässlichkeit der Quelle zu achten. Ein Anhaltspunkt waren hier Fußnoten unter Wikipedia-Einträgen, auf die auf Grund der mangelnden Informationsmöglichkeiten zurückgegriffen werden musste. Ergänzend wurde sich aber mit einigen Zeitungsartikeln, Fachaufsätzen und Experteninterviews  auseinandergesetzt, die wichtige Hintergrundinformationen lieferten. 
 Eine Herausforderung stellte der Umstand dar, dass sich die gewählte Literatur zumeist nur mit den Hauptpersonen der RAF befasste und kaum Details zu den weniger bekannten oder aktiven Mitgliedern enthielt. Daher war eine tiefergehende Recherche erforderlich, um Lücken innerhalb des Netzwerkes zu schließen, denn es war dem Forschungsteam ein wichtiges Anliegen, zu jedem einzelnen entdeckten Knoten die im Vorhinein im Codebuch definierten Vertex- und edge-Attribute zu erfassen. Im Nachhinein betrachtet stellten sich die Bücher als  weniger ergiebig heraus als erhofft und waren eher dazu geeignet, diverse bis dato noch nicht in der Nodelist festgehaltene RAF-Mitglieder zu erfassen. Zudem wurden durch die  literarische Recherche die Einordnung in den Kontext der deutschen Geschichte sowie Zusammenhänge innerhalb des Netzwerkes klarer.
@@ -138,7 +118,7 @@ https://github.com/ca048/RAF-Forschungsdesign/blob/master/nodes.csv (Nodelist)
 
 ## Codebuch
 
-Vor der „Feldphase“ wurde definiert, welche Daten benötigt werden. Dies musste jedoch im Laufe der Zeit teilweise revidiert werden. Beispielsweise die Annahme, die meisten RAF-Mitglieder stammen aus einem religiös geprägten Elternhaus, stellte sich als  falsch, bzw. haltlos, heraus. Geschuldet war das dem Umstand, dass zu weniger bekannten Personen kaum Informationen vorhanden waren. Eine umfassende Suche nach weiteren Pfarrerskindern, erwies sich daher als unmöglich. Im Verlauf der Recherche kristallisierten sich aber auch weitere interessante Beziehungstypen heraus, weshalb nachträglich weitere Codierungen hinzugefügt wurden. Als Beispiel sind hier die Kategorien Versorgung oder Verwandtschaft für das Edge-Attribut “relation” zu nennen. Beim Blick auf andere Forschungen zu geheimen Netzwerken zeigt sich, dass die Kategorisierung in “two modes” (Akteure und Aktionen) durchaus sinnvoll war. Carley et al. (2003) haben beispielsweise in ihrem Paper zu Destabilisierung geheimer Netzwerke auch in “Akteure”, “tasks” und “Ressourcen” unterteilt.
+Vor der „Feldphase“ wurde definiert, welche Daten benötigt werden. Dies musste jedoch im Laufe der Zeit teilweise revidiert werden. Beispielsweise die Annahme, die meisten RAF-Mitglieder stammen aus einem religiös geprägten Elternhaus, stellte sich als  falsch, bzw. haltlos, heraus. Geschuldet war das dem Umstand, dass zu weniger bekannten Personen kaum Informationen vorhanden waren. Eine umfassende Suche nach weiteren Pfarrerskindern, erwies sich daher als unmöglich. Im Verlauf der Recherche kristallisierten sich aber auch weitere interessante Beziehungstypen heraus, weshalb nachträglich weitere Codierungen hinzugefügt wurden. Als Beispiel sind hier die Kategorien Versorgung oder Verwandtschaft für das Edge-Attribut “relation” zu nennen. Beim Blick auf andere Forschungen zu geheimen Netzwerken zeigt sich, dass die Kategorisierung in “two modes” (Akteur:innen und Aktionen) durchaus sinnvoll war. Carley et al. (2003) haben beispielsweise in ihrem Paper zu Destabilisierung geheimer Netzwerke auch in “Akteure”, “tasks” und “Ressourcen” unterteilt.
 
 Unter https://github.com/ca048/RAF-Forschungsdesign/blob/master/Codebuch.md ist das Codebuch online einsehbar.
 
@@ -147,7 +127,7 @@ Unter https://github.com/ca048/RAF-Forschungsdesign/blob/master/Codebuch.md ist 
 
 ### Gesamtnetzwerk
 
-Nun sollen die erstellten Netzwerke und Datensätze interpretiert werden. Das Gesamtnetzwerk umfasst 139 Knoten, davon 30 Ereignisse und 109 Akteur:innen. Die Aufteilung auf die beiden Generationen und Unterstützer:innen gestaltet sich folgendermaßen: 43 Menschen gehören der ersten Generation an, 35 der zweiten und 3 Mitglieder tauchen in beiden Generationen auf. Ferner wurden 27 Unterstützer*innen berücksichtigt; bei einer Person gibt es keine nähere Angaben, da es sich um einen V-Mann handelt.
+Nun sollen die erstellten Netzwerke und Datensätze interpretiert werden. Das **Gesamtnetzwerk** umfasst 139 Knoten, davon 30 Ereignisse und 109 Akteur:innen. Die Aufteilung auf die beiden Generationen und Unterstützer:innen gestaltet sich folgendermaßen: 43 Menschen gehören der ersten Generation an, 35 der zweiten und 3 Mitglieder tauchen in beiden Generationen auf. Ferner wurden 27 Unterstützer:innen berücksichtigt; bei einer Person gibt es keine nähere Angaben, da es sich um einen V-Mann handelt.
 
 ```{r Wichtigste Packages abrufen, include=FALSE}
 
@@ -160,7 +140,7 @@ library(rmarkdown)
 ```
 
 
-```{r Gesamtnetzwerk einlesen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
+```{r Gesamtnetzwerk einlesen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 # Zunächst soll das Gesamtnetzwerk der RAF generiert werden.
 
 # Dazu werden zuerst Edge - und Nodelist eingelesen:
@@ -174,7 +154,7 @@ raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
 ```
 
 
-```{r Gesamtnetzwerk einlesen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
+```{r Gesamtnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #raf
 
 # Nun wird die Visualisierung der Knoten und Kanten angepasst.
@@ -209,7 +189,7 @@ plot(raf,
      )
 
 legend("bottomleft", 
-       c("1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen", "Aktionen"),
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen", "Aktionen"),
        col=c("grey80", "grey20", "white", "lightpink", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -222,7 +202,9 @@ legend("bottomleft",
        ncol=1, )
 ```
 
-Zur Geschlechterverteilung: Das Gesamtnetzwerk setzt sich aus 64 Männern und 42 Frauen zusammen; ohne die Unterstützer*innen sind es 43 Männer und 36 Frauen. 
+**Geschlechterverteilung**
+
+Das Gesamtnetzwerk setzt sich aus 64 Männern und 42 Frauen zusammen; ohne die Unterstützer:innen sind es 43 Männer und 36 Frauen. 
 
 ```{r Geschlechterverteilung Gesamtnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 
@@ -245,7 +227,7 @@ plot(raf_sex,
      )
 
 legend("bottomleft", 
-       c("Männlich","Weiblich"),
+       c("Männer","Frauen"),
        col=c("darkseagreen", "darkorange3"), 
        pch = 19, 
        border = "black", 
@@ -307,7 +289,7 @@ legend("bottomleft",
        ncol=1, )
 ```
  
- Die Unterstützer*innen der RAF waren vorwiegend männlich  (21 Männer zu sechs weiblichen Unterstützerinnen), jedoch war der Geschlechteranteil innerhalb der RAF insgesamt ansatzweise gleich groß.
+Die Unterstützer*innen der RAF waren vorwiegend männlich  (21 Männer zu sechs weiblichen Unterstützerinnen), jedoch war der Geschlechteranteil innerhalb der RAF insgesamt ansatzweise gleich groß.
  
 ### Merkmale von Terrornetzwerken
 
@@ -320,7 +302,7 @@ nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/
 #Edge- und Nodelist werden zu einer Matrix verknüpft
 edgematrix <-as.matrix(el)
 ```
-
+**Wandel im Laufe der Jahre 1970-1977**
 
 ```{r 1970,fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
 raf_year <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
@@ -420,7 +402,7 @@ raf_1972 <- delete.vertices(raf_1972, V(raf_1972) [symbolicdeath <="1971"])#lös
 raf_1972 <- simplify(raf_1972, remove.multiple=TRUE,) #löscht doppelte Beziehungen
 V(raf_1972) [V(raf_1972)$entry == 1972]$color <- "firebrick" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
 V(raf_1972) [V(raf_1972)$entry != 1972]$color <- "white"
-raf_1972
+#raf_1972
 # Nun wird das Netzwerk der Mitglieder von 1972 visualisiert
 plot(raf_1972,
      asp=0,
@@ -673,8 +655,8 @@ raf_1977_ende <- delete_vertices(raf_year, V(raf_year) [entry >="1978"])
 raf_1977_ende <- delete_vertices(raf_1977_ende, V(raf_1977_ende) [yearofresignation <= "1976"])#löscht die Ausgetretenen des Vorjahres
 raf_1977_ende <- delete_vertices(raf_1977_ende, V(raf_1977_ende) [symbolicdeath <="1976"])#löscht die Gestorbenen des Vorjahres
 #Die Toten und Ausgetretenen von 1977 werden eingefärbt:
-V(raf_1977_ende)[V(raf_1977_ende)$yearofresignation == 1977]$color <-"lightgray" #Ausgetreten
-V(raf_1977_ende)[V(raf_1977_ende)$symbolicdeath == 1977]$color <- "black" #Gestorben
+V(raf_1977_ende)[V(raf_1977_ende)$yearofresignation == 1977]$color <-"lavenderblush3" #Ausgetreten
+V(raf_1977_ende)[V(raf_1977_ende)$symbolicdeath == 1977]$color <- "purple4" #Gestorben
 #raf_1977_ende <- subgraph.edges(raf_1977, E(raf_1977)[year==1977]) #selektiert die Beziehungen von 1970
 raf_1977_ende <- simplify(raf_1977_ende, remove.multiple=TRUE,) #löscht doppelte Beziehungen
 V(raf_1977_ende) [V(raf_1977_ende)$entry == 1977]$color <- "firebrick" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
@@ -698,8 +680,8 @@ plot(raf_1977_ende,
      )
 
 legend("bottomleft", 
-       c("Neue Mitglieder", "Ausgetretene Mitglieder","Verstorbene Mitglieder" ),
-       col=c("firebrick", "lightgrey", "black"), 
+       c("Neue Mitglieder", "Ausgetreten","Verstorben" ),
+       col=c("firebrick", "lavenderblush3", "purple4"), 
        pch = 19, 
        border = "black", 
        pt.cex=3, 
@@ -722,7 +704,7 @@ Dabei begann (1970) die RAF mit einer Dichte von ca. 20%, was jedoch an der rela
 
 Die Beziehungen zwischen den einzelnen Akteuren wurden in verschiedene Kategorien aufgeteilt. Dabei war der häufigste Beziehungstyp „Bekanntschaft“ bzw. „Kontakt“, gefolgt von “Freundschaft”.
 
-```{r Einlesen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
+```{r Einlesen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
 
 nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/nodes.csv", header=T, as.is=T, sep = ",")
@@ -731,6 +713,7 @@ nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/
 edgematrix <-as.matrix(el)
 ```
 
+**Freundschaft und Bekanntschaft**
 
 ```{r Freundschaft und Beziehungsnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
@@ -766,8 +749,8 @@ plot(contact,
      vertex.label.family="sans", #gibt die Schriftart an
      main="Bekanntschafts-Netzwerk")
 
-legend("bottomleft", 
-       c("1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
+legend("topleft", 
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
        col=c("grey80", "grey20", "white", "lightpink"), 
        pch = 19, 
        border = "black", 
@@ -797,7 +780,7 @@ plot(friendship,
      main="Freundschafts-Netzwerk")
 
 legend("bottomleft", 
-       c("1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
        col=c("grey80", "grey20", "white", "lightpink"), 
        pch = 19, 
        border = "black", 
@@ -815,7 +798,11 @@ legend("bottomleft",
 Es überrascht kaum, dass die meisten Akteure zumindest Kontakt miteinander hatten, da sie schließlich Mitglieder der gleichen Organisation waren. In der Literatur gehen die Meinungen hinsichtlich der Stärke von Beziehungen innerhalb von Terrornetzwerken auseinander. Rodriguez (2005) zufolge gibt es oft viele schwache Beziehungen, dabei bezieht er sich auf das Netzwerk der Zug-Attentate in Spanien vom 11. März 2004. 88% der Beziehungen in diesem Netzwerk sind schwache Beziehungen und prägen so maßgeblich Form und Dynamik des Netzwerkes. Rodriguez schließt daher darauf, dass Wissen und Ressourcen oft durch Mittelspersonen weitergetragen wird. Dies deckt sich mit der Existenz von Brokern (Analyse folgt) in unserem Netzwerk, die in der Öffentlichkeit weniger bekannt sind, aber wichtige Rollen gespielt haben (vgl. Rodriguez, 2005). Krebs hingegen erklärt, dass im Netzwerk der 9/11-Attentäter kaum schwache Beziehungen bestanden haben, um zu verhindern, dass Informationen nach außen sickern (vgl. Krebs, 2002). Diese beiden Sichtweisen könnte man jedoch so verbinden, dass es innerhalb des Netzwerkes einen harten, engen Kern gab, sowie auch Unterstützer*innen, die aber durchaus mit der RAF verbunden und keine vollkommen Außenstehenden waren, weshalb die Gefahr aufzufliegen, weniger groß war. 
 
 Das Freundschaftsnetzwerk innerhalb der RAF zeigt auf, dass die meisten Akteure viel Kontakt untereinander hatten, wobei Einzelne nur mit wenigen Akteuren befreundet waren.
+
+**Liebesbeziehungen**
+
 Das Beziehungsnetzwerk verdeutlicht, dass es insgesamt (mindestens) 17 Paare innerhalb der RAF gab. Dabei bestanden die meisten Liebesbeziehungen innerhalb der ersten Generation, aber auch teilweise zwischen beiden Generationen. Es gibt kaum Auffälligkeiten zwischen den Akteuren außer einigen Dreiecksbeziehungen, die im Laufe der Jahre entstanden sind. So war z.B. Gudrun Ensslin vor der „Gründung“ der RAF noch mit ihrem Verlobten Bernward Vesper zusammen, von dem sie sich  jedoch für Andreas Baader trennte. Hier ist anzumerken, dass Ensslin dabei auch ihren Sohn hinter sich ließ, der nach Vespers Selbstmord von Pflegeeltern großgezogen wurde. 
+
 Brigitte Mohnhaupt und Peter-Jürgen Boock hatten, bevor sie zusammen kamen, ebenfalls andere Beziehungen. Nach ihrem Beitritt zur RAF verließ auch Ulrike Meinhof ihre Zwillingstöchter. 
 
 ```{r Liebesnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
@@ -834,8 +821,8 @@ plot(love,
      vertex.label.family = "sans", #gibt die Schriftart an
      main="Liebesbeziehungs-Netzwerk")
 
-legend(-1.2, -1, 
-       c("1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
+legend(-1.2, -0.8, 
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
        col=c("grey80", "grey20", "white", "lightpink"), 
        pch = 19, 
        border = "black", 
@@ -848,12 +835,17 @@ legend(-1.2, -1,
        ncol=1, )
 ```
 
-Dies zeigt, dass sich die Beziehungen der Mitglieder im Verlauf der Zeit stark auf die RAF konzentriert haben, sodass viele Liebesbeziehungen innerhalb der Gruppe bestanden. Dies liegt vermutlich daran, dass es einfacher ist, eine Beziehung mit einem Gleichgesinnten aufrechtzuerhalten, zumal so die Geheimhaltung erleichtert werden kann, da man nicht aufpassen muss, wie viel man Externen anvertraut. Daraus lässt sich ableiten, dass die innere Verbindung unter den einzelnen Akteuren so stark war, dass Menschen außerhalb der RAF auf Dauer unwichtig wurden. Dies sieht man auch daran, dass verschiedene RAF Mitglieder mit ihren Geschwistern zusammen der RAF beigetreten sind, bzw. diese an Bord geholt haben. Insgesamt gab es in den ersten beiden Generationen vier Geschwisterpaare.
+Dies zeigt, dass sich die Beziehungen der Mitglieder im Verlauf der Zeit stark auf die RAF konzentriert haben, sodass viele Liebesbeziehungen innerhalb der Gruppe bestanden. Dies liegt vermutlich daran, dass es einfacher ist, eine Beziehung mit einem Gleichgesinnten aufrechtzuerhalten, zumal so die Geheimhaltung erleichtert werden kann, da man nicht aufpassen muss, wie viel man Externen anvertraut. Daraus lässt sich ableiten, dass die innere Verbindung unter den einzelnen Akteuren so stark war, dass Menschen außerhalb der RAF auf Dauer unwichtig wurden.
+
+**Verwandtschaft**
+
+Dies sieht man auch daran, dass verschiedene RAF Mitglieder mit ihren Geschwistern zusammen der RAF beigetreten sind, bzw. diese an Bord geholt haben. Insgesamt gab es in den ersten beiden Generationen vier Geschwisterpaare.
+
 
 ```{r Verwandtschaftsnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 kinship <- subgraph.edges(raf, E(raf)[relationship== "10"]) # Erstellt ein neues Teilnetzwerk in dem nur Akteure mit Verwandschaftsbeziehungen dargestellt werden 
 kinship <- simplify(kinship, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
-kinship
+#kinship
 
 # Visualisierung des Teilnetzwerks
 plot(kinship,
@@ -866,7 +858,7 @@ plot(kinship,
      main="Verwandtschafts-Netzwerk")
 
 legend("bottomleft", 
-       c("1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
        col=c("grey80", "grey20", "white", "lightpink"), 
        pch = 19, 
        border = "black", 
@@ -892,7 +884,7 @@ Dabei wohnten vor allem Mitglieder innerhalb der einzelnen Generationen zusammen
 ```{r WG-Netzwerk, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 wg <- subgraph.edges(raf, E(raf)[relationship== " 4"]) # erstellt ein Teilnetzwerk, in dem nur Verbindungen zwischen Knoten angezeigt werden, die in einer Wohngemeinschaft miteinander gelebt haben
 wg <- simplify(wg, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
-wg
+#wg
 
 # Visualisierung des Teilnetzwerks
 plot(wg,
@@ -908,11 +900,11 @@ plot(wg,
      vertex.label.cex = .7, #gibt die Schriftartgröße an
      main="Wohnungsgemeinschafts-Netzwerk")
 
-legend(-1.26,-0.7, 
-       c("1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
+legend(-1.2,-0.9, 
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
        col=c("grey80", "grey20", "white", "lightpink"), 
        pch = 19, 
-       border = "black", 
+       border = "black",
        pt.cex=3, 
        cex=1.5,
        x.intersp = 1.5,
@@ -932,7 +924,7 @@ Beim Netzwerk zur gemeinsamen Haft lassen sich drei Cluster ausmachen. Das erste
 
 prison <- subgraph.edges(raf, E(raf)[relationship== " 5"]) # erstellt ein neues Teilnetzwerk in dem nur Verbindungen zwischen Knoten angezeigt werden, die gemeinsam inhaftiert waren
 prison <- simplify(prison, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
-prison
+#prison
 
 # Visualisierung des Teilnetzwerkes
 plot(prison,
@@ -949,8 +941,9 @@ plot(prison,
      main="Gemeinsame Haft Netzwerk")
 
 
+
 legend("bottomleft", 
-       c("1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
        col=c("grey80", "grey20", "white", "lightpink"), 
        pch = 19, 
        border = "black", 
@@ -969,6 +962,697 @@ Interessanterweise waren 10 der 17 Akteure bis zu ihrem Tod Mitglieder der RAF, 
 Mittlerweile ist geklärt, dass die in Stammheim Inhaftierten engen Kontakt miteinander hatten, in dem sie Gegensprechanlagen umbauten und sich so heimlich in ihren Zellen unterhielten (vgl. Lörchner, 2017). Die Mitgefangene Brigitte Mohnhaupt rekrutierte nach ihrer Entlassung viele Mitglieder der zweiten Generation. Sie wurde während der gemeinsamen Zeit in der JVA Stammheim von den Führungspersönlichkeiten der ersten Generation instruiert. In einem heimlichen Schreiben schrieb Baader an andere Mitglieder der RAF, “dass die Mohnhaupt jetzt 'ne Art Befehlsgewalt hat” (Holl, 2007).
 
 
+
+
+**Versorgung**
+
+Im Versorgungsnetzwerk spielten Anwälte eine klare Rolle: Unter den 27 Unterstützer*innen waren acht (männliche) Anwälte. Dies liegt unter anderem an den verschiedenen Gerichtsverfahren. Dabei hatten Andreas Baader und Horst Mahler besonders viel Kontakt zu anderen Anwälten, was aber an verschiedenen gerichtlichen Prozessen liegen sollte, an denen beide beteiligt waren (Baader als Angeklagter, Mahler als Anwalt).
+
+```{r Versorgungsnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
+
+provision <- subgraph.edges(raf, E(raf)[relationship== " 6"]) # erstellt ein neues Teilnetzwerk, in dem nur Versorgungsbeziehungen dargestellt werden
+provision <- simplify(provision, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+#provision
+
+V(provision)[V(provision)$generation == 4]$color <- "lightpink" # Unterstützer*innen werden hellrosa hervorgehoben, um zu sehen, wie viele Externe bzw. Nicht-Mitglieder eine Rolle gespielt haben
+
+# Visualisierung des Netzwerks: 
+plot(provision,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     layout=layout_with_kk,
+     edge.curved=curve_multiple(provision), # verhindert, dass sich Kanten überlagern
+     vertex.size=10, # setzt die Größe der Knoten auf 10
+     vertex.label.color = "black",
+     vertex.label.family = "sans", #gibt die Schriftart an
+     main="Versorgungs-Netzwerk")
+
+
+legend("bottomleft", 
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
+       col=c("grey80", "grey20", "white", "lightpink"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+```
+
+Das Versorgungsnetzwerk zeigt deutlich, dass es einen Broker gab, der in der breiten Öffentlichkeit wenig Beachtung erfahren hat. Der Hauptakteur für externe Unterstützung war **Hans-Joachim Dellwo**, von Beruf Anwalt (Verbindung zu ca. 15 Knoten). Durch seine Beschäftigung in der Anwaltskanzlei von **Klaus Croissant** kam er in Kontakt mit der RAF und war während der Inhaftierung der Spitze der ersten Generation in Stammheim der zentrale Kurier zwischen den Inhaftierten und den Mitgliedern der zweiten Generation. Zusammen mit Volker Speitel schmuggelte er die Waffen, die in der Todesnacht von Stammheim benutzt wurden, in das Gefängnis. Dellwo sagte sich jedoch nach der Todesnacht von der RAF los, was ein Indiz dafür sein kann, dass er nicht sonderlich gut in die Gruppe eingebunden war, sondern nur als Kurier fungierte. Allerdings unterstütze er so indirekt die Transition hin zur zweiten Generation, da er den Kontakt herstellte.
+
+```{r Ego-Netzwerk Klaus Croissant, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo= FALSE}
+
+# Da Croissant als Anwalt Kontakte zu vielen RAF-Mitgliedern hatte, die teils auch in seiner Kanzlei tätig waren und so zur RAF kamen, soll nun sein Ego-Netzwerk betrachtet werden.
+
+ego_kc<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Klaus Croissant", mode = "all") # selektiert aus dem Netzwerk raf alle Knoten, die mit Croissant über einen Schritt direkt verbunden sind.
+
+# liefert eine Liste der Verbindungen 
+#ego_kc
+#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_kc1 <- ego_kc[[1]]
+
+ego_kc1 <- simplify(ego_kc1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+#ego_kc1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_kc1)[V(ego_kc1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_kc1)[V(ego_kc1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_kc1)[V(ego_kc1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_kc1)[V(ego_kc1)$name == "Klaus Croissant"]$color <- "firebrick" # Croissant wird rot hervorgehoben
+V(ego_kc1)[V(ego_kc1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
+V(ego_kc1)[V(ego_kc1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+
+# Visualisierung des Ego-Netzwerks:
+plot(ego_kc1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0, # legt fest, dass der gesamte Raum für die Darstellung genutzt wird
+     main="Ego-Netzwerk Klaus Croissant",
+     sub="Nur direkte Beziehungen 1. Grades",
+     edge.color="grey40",
+     vertex.size=10,
+     vertex.label.family="sans",
+     vertex.label.color="black")
+
+legend("bottomleft", 
+       c("Männer","Frauen"),
+       col=c("darkseagreen", "darkorange3"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+
+# nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Croissant direkt verbunden war
+ego_kc1_p <- delete_vertices(ego_kc1, V(ego_kc1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
+
+#ego_kc1_p
+
+# da Croissant als Anwalt viele seiner Angestellten zur RAF gebracht und gewissermaßen als Broker gesehen werden könnte, soll nun hervorgehoben werden, welcher Generation seine direkten Verbindungen angehörten, um herauszufinden, ob er auch als Verbindung zwischen den Generationen fungierte
+V(ego_kc1_p)[V(ego_kc1_p)$generation == 1]$color <- "grey80" # erste Generation = hellgrau
+V(ego_kc1_p)[V(ego_kc1_p)$generation == 2]$color <- "grey30" # zweite Generation = dunkelgrau
+V(ego_kc1_p)[V(ego_kc1_p)$generation == 3]$vertex.frame.color <- "black" # weiße Knoten schwarz umranden, damit sie besser zu erkennen sind 
+V(ego_kc1_p)[V(ego_kc1_p)$generation == 3]$color <- "white" # Mitglieder beider Generationen = weiß
+V(ego_kc1_p)[V(ego_kc1_p)$generation == 4]$color <- "lightpink" # Unterstützer*innen = hellrosa
+V(ego_kc1_p)[V(ego_kc1_p)$name == "Klaus Croissant"]$color <- "firebrick" # Croissant rot hervorheben
+
+plot(ego_kc1_p,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
+     rescale=TRUE, 
+     main="Ego-Netzwerk von Croissant",
+     sub="Nur Beziehungen 1. Grades",
+     vertex.size=10,
+     vertex.label.family="sans",
+     vertex.label.color = "black",
+     edge.color="grey40")
+
+legend(-1.2, -0.8, 
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
+       col=c("grey80", "grey20", "white", "lightpink"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+```
+
+```{r Ego-Netzwerk Hans-Joachim Dellwo, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
+
+
+ego_hjd <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Hans-Joachim Dellwo", mode = "all") # selektiert aus dem Netzwerk raf alle Knoten, die mit Dellwo über einen Schritt direkt verbunden sind (Ego-Netzwerk ersten Grades)
+#ego_hjd
+
+ego_hjd1 <- ego_hjd[[1]] # notwendiger Zwischenschritt, damit das igraph-Objekt hergestellt wird
+
+ego_hjd1 <- simplify(ego_hjd1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+#ego_hjd1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_hjd1)[V(ego_hjd1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_hjd1)[V(ego_hjd1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_hjd1)[V(ego_hjd1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_hjd1)[V(ego_hjd1)$name == "Hans-Joachim Dellwo"]$color <- "firebrick" # Dellwo wird rot hervorgehoben
+V(ego_hjd1)[V(ego_hjd1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
+V(ego_hjd1)[V(ego_hjd1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+
+# Visualisierung des Ego-Netzwerks
+plot(ego_hjd1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0, # legt fest, dass der gesamte Platz für die Darstellung genutzt wird
+     main="Ego-Netzwerk Hans-Joachim Dellwo",
+     sub="Nur direkte Beziehungen des 1. Grades",
+     edge.color="grey40",
+     vertex.label.color="black",
+     vertex.label.family="sans",
+     #vertex.label.cex=.7, # verkleinert die Labelbeschriftung
+     vertex.size=10)
+
+legend("bottomleft", 
+       c("Männer","Frauen"),
+       col=c("darkseagreen", "darkorange3"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+
+# nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Dellwo direkt verbunden war
+ego_hjd1_p <- delete_vertices(ego_hjd1, V(ego_hjd1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
+
+#ego_hjd1_p
+
+# Nun soll hervorgehoben werden, welcher Generation die direkten Verbindungen H-J Dellwos angehörten
+V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 1]$color <- "grey80" # 1. Generation = hellgrau
+V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 2]$color <- "grey30" # 2. Generation = dunkelgrau
+V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 3]$color <- "white" # Mitglieder beider Generationen = weiß
+V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 99]$color <- "white" # Mitglieder beider Generationen = weiß
+V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 3]$vertex.frame.color <- "black" # fügt einen schwarzen Rahmen hinzu, damit weiße Nodes besser sichtbar sind
+V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 4]$color <- "lightpink" # Unterstützer*innen = rosa
+V(ego_hjd1_p)[V(ego_hjd1_p)$name == "Hans-Joachim Dellwo"]$color <- "firebrick"
+
+plot(ego_hjd1_p,
+     layout=layout_with_kk,
+     rescale=TRUE,
+     asp=0, # definiert, dass der gesamte Platz für die Darstellung genutzt wird
+     main="Ego-Netzwerk von Hans-Joachim Dellwo",
+     sub="Nur Beziehungen 1. Grades",
+     vertex.label.color="black",
+     vertex.size=10,
+     vertex.label.family="sans",
+     edge.color="grey40")
+
+legend("bottomleft", 
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
+       col=c( "grey80", "grey20", "white", "lightpink"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+
+```
+
+**Unbedingt Broker Analyse einfügen!!!**
+
+**Anschläge**
+
+Die Untersuchung der Anschlagsbeteiligung zeigt, dass es einen Zusammenhang zwischen größeren, bzw. bekannteren Aktionen der RAF und Ausbildungsmissionen gibt. Anders als bei medial präsenten Ereignissen wie der Schleyer-Entführung waren bei kleineren Aktionen, wie z.B. Banküberfällen und Polizistenmorden, teilweise wenige Mitglieder oder auch Unterstützer*innen beteiligt. Allerdings ist auch nicht auszuschließen, dass bei Aktionen, die medial (und damit gesellschaftlich) bekannt waren, die Aufklärung sorgfältiger begangen wurde und deshalb mehr beteiligte Mitglieder bekannt sind.
+
+```{r Anschlagsnetzwerk,fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
+
+participation <- subgraph.edges(raf, E(raf)[relationship== " 7"]) # erstellt ein neues Teilnetzwerk, in dem nur die Akteure angezeigt werden, die an einer Aktion beteiligt waren
+participation <- simplify(participation, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+
+#participation
+
+# Visualisierung des Teilnetzwerkes
+plot(participation,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     edge.curved=curve_multiple(participation), # verhindert, dass sich Kanten überlagern
+     vertex.size=5,
+     vertex.label.color = "black",
+     vertex.label.family = "sans", #gibt die Schriftart an
+     vertex.label.cex=.5, # halbiert die Größe der Labelbeschriftung
+     edge.color="grey40",
+     main="Aktionsbeteiligungs-Netzwerk")
+
+legend("bottomleft", 
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen", "Anschläge"),
+       col=c("grey80", "grey20", "white", "lightpink", "cornflowerblue"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+```
+
+### Ego-Netzwerke der Anschläge
+Nun sollen einzelne Ego-Netzwerke verschiedener Anschläge betrachtet werden. Um den Umfang zu reduzieren, wurden hierbei nur Aktionen ausgewählt, die relevant für diese Forschungsarbeit sind. 
+
+**Baader-Befreiung**
+
+An der Baader-Befreiung 1970, die den Grundstein für die Gründung der RAF legte, waren acht Frauen und drei Männer beteiligt (einer davon Baader selbst). Die Identität einer der anderen Männer wurde nie geklärt, jedoch wurde später Hans-Jürgen Bäcker dafür angeklagt. Auffällig bei diesem Netzwerk ist, dass alle außer Bäcker untereinander Verbindungen aufweisen, woraus sich schließen lässt, dass bereits vor der Gründung der RAF ein hohes Vertrauensverhältnis zwischen den Mitgliedern bestand. Dies könnte auch ein Indiz dafür sein, dass Bäcker womöglich wirklich nicht beteiligt war, da ihm die Tat nie vollends nachgewiesen wurde und seine mangelnden Verbindung zum Rest durchaus auffällig sind. Auch ist interessant, dass zunächst fast nur Frauen beteiligt waren, nach der Gründung der RAF kamen jedoch mehr Männer hinzu.
+
+```{r Egonetzwerk Befreiung von Andreas Baader 1970, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
+
+# Die Baader-Befreiung war eine zentrale Aktion in den Anfangsjahren der RAF, weshalb genauer betrachtet werden soll, wer daran beteiligt war. Dazu wird für den Knoten "Befreiung Andreas Baader 14.05.1970" ein Ego-Netzwerk erstellt.
+
+#raf # das Standard-Netzwerk der RAF wird abgerufen
+ego_bef<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Befreiung Andreas Baader 14.05.1970", mode = "all") # erstellt ein Ego-Netzwerk der Baader-Befreiung inklusive der beteiligten RAF-Mitglieder
+
+# notwendiger Zwischenschritt für die Erstellung des igraph-Objekts
+ego_bef1 <- ego_bef[[1]]
+#ego_bef1
+
+ego_bef1 <- simplify(ego_bef1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+#ego_bef1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_bef1)[V(ego_bef1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_bef1)[V(ego_bef1)$type == 2]$shape <- "square" # Anschläge werden als Quadrat dargestellt
+V(ego_bef1)[V(ego_bef1)$name == "Befreiung Andreas Baader 14.05.1970"]$color <- "cornflowerblue" # der betrachtete Anschlag wird rot hervorgehoben
+V(ego_bef1)[V(ego_bef1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_bef1)[V(ego_bef1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+
+# Visualisierung des Netzwerks:
+plot(ego_bef1, 
+     layout=layout_with_kk,
+     main="Befreiung von Andreas Baader (14.05.1970)",
+     sub="nur direkte Beziehungen 1. Grades",
+     edge.color="grey40", # definiert die Kantenfarbe
+     vertex.label.size=2,
+     vertex.label.color="black",
+     vertex.label.family="sans",
+     vertex.frame.color=NA, # entfernt den Rahmen um die Knoten
+     vertex.size=10, # setzt die Knotengröße auf 10
+     asp=0, # definiert, dass der gesamte Raum ausgenutzt werden soll,
+     rescale=T)
+
+legend("bottomleft", 
+       c("Männer","Frauen", "Anschlag"),
+       col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+    
+```
+
+**Schleyer-Entführung**
+
+Auch die Schleyer-Entführung von 1977 ist ein gutes Beispiel dafür, dass alle Beteiligten sehr gut untereinander vernetzt waren. Dabei spielte Peter-Jürgen Boock eine klare Schlüsselrolle. Er war der einzige der Beteiligten, der bereits in der ersten Generation aktiv war.
+
+```{r Egonetzwerk Entführung Hanns Martin-Schleyer 05.09.1977, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+#raf # ruft das igraph-Objekt raf auf
+
+ego_ent<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977", mode = "all") # erstellt ein Ego-Netzwerk der Schleyer-Entführung inklusive der daran beteiligten RAF-Mitglieder, Selektion aller Nodes, die mit der Aktion direkt verbunden sind (Beziehung ersten Grades)
+
+# Alle zusammenhängenden Edges werden aufgelistet 
+#ego_ent
+
+# notwendiger Zwischenschritt für die Erstellung des igraph-Objekts
+ego_ent1 <- ego_ent[[1]]
+ego_ent1 <- simplify(ego_ent1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass eine Verbindung zwischen den Knoten besteht
+#ego_ent1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_ent1)[V(ego_ent1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_ent1)[V(ego_ent1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+V(ego_ent1)[V(ego_ent1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_ent1)[V(ego_ent1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_ent1)[V(ego_ent1)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977"]$color <- "cornflowerblue" # die betrachtete Aktion wird rot hervorgehoben
+
+# Visualisierung des Netzwerkes:
+plot(ego_ent1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0, # definiert, dass der gesamte Platz ausgenutzt werden soll
+     main="Ego-Netzwerk Entführung Hanns Martin-Schleyer 
+     05.09.1977",
+     sub="nur direkte Beziehungen des ersten Grads; grün = Männer; orange = Frauen",
+     vertex.label.size=3,
+     vertex.size=10, 
+     vertex.label.family="sans",
+     vertex.label.color="black",
+     edge.color="grey40")
+
+legend("bottomleft", 
+       c("Männer","Frauen", "Anschlag"),
+       col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+    
+
+# Farbliche Hervorhebung der Generations-Zugehörigkeiten:
+
+# Die Schleyer-Entführung war sehr bedeutend für die RAF und stellt einen Schnittpunkt zwischen den ersten beiden Generationen dar. Daher sollen die beiden Generationen in unterschiedenen Farben dargestellt werden, um diese erkennen und unterscheiden zu können.
+V(ego_ent1)[V(ego_ent1)$generation == 1]$color <- "grey80" # Mitglieder der ersten Generation werden hellgrau dargestellt
+V(ego_ent1)[V(ego_ent1)$generation == 2]$color <- "grey30" # Mitglieder der zweiten Generation werden dunkelgrau dargestellt
+V(ego_ent1)[V(ego_ent1)$generation == 3]$color <- "white" # Mitglieder der ersten und zweiten Generation werden weiß dargestellt
+V(ego_ent1)[V(ego_ent1)$generation == 99]$color <- "white" # Mitglieder, zu denen es keine Angabe bezüglich ihrer Generationszugehörigkeit gibt, werden weiß dargestellt
+V(ego_ent1)[V(ego_ent1)$generation == 3]$vertex.frame.color <- "black" # setzt Rahmenfarbe auf schwarz
+V(ego_ent1)[V(ego_ent1)$generation == 99]$vertex.frame.color <- "black" # setzt Rahmenfarbe auf schwarz
+V(ego_ent1)[V(ego_ent1)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977"]$color <- "cornflowerblue" # Anschlag wird rot hervorgehoben
+
+plot(ego_ent1,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
+     rescale=TRUE,
+     main="Ego-Netzwerk der Entführung Hanns Martin-Schleyer 05.09.1977",
+     sub=" Beziehungen ersten Grades",
+     vertex.label.color="black",
+     vertex.label.family="sans",
+     edge.color="grey40")
+
+legend("bottomleft", 
+       c("1. Generation","2. Generation", "Beide Generationen", "Anschlag"),
+       col=c("grey80", "grey30", "white", "cornflowerblue"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+    
+
+```
+
+Es kann also davon ausgegangen werden, dass er als eine Art „Mentor“ fungierte und vermutlich die Aktion plante. Mit seiner Erfahrung und guten Vernetzung stand er in der sozialen Hierarchie über neueren Mitgliedern. Besonders interessant ist das unter dem Gesichtspunkt, dass Boock selbst seine Rolle in der RAF des Öfteren kleingeredet hat. (vgl. Kellerhoff, 2007)
+
+Auch an der Entführung der Lufthansa-Maschine „Landshut“ war Peter-Jürgen Boock beteiligt, obwohl diese nicht von RAF-Mitgliedern durchgeführt wurde.
+
+**Mord an Jürgen Ponto**
+
+Ähnlich sieht es bei der Ermordung von Jürgen Ponto von 1977 aus.
+
+```{r Egonetzwerk Ermordung Jürgen Ponto 30.07.1977, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
+#raf # igraph-Objekt wird geladen
+
+# Erstellen eines Ego-Netzwerks des Ponto-Mordes inklusive der daran beteiligten RAF-Mitglieder
+ego_ejp<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Ermordung Juergen Ponto 30.07.1977", mode = "all")
+
+# Alle zusammenhängenden Edges werden aufgelistet 
+#ego_ejp
+
+# Notwendiger Zwischenschrit für die Erstellung des igraph-Objekts
+ego_ejp1 <- ego_ejp[[1]]
+
+ego_ejp1 <- simplify(ego_ejp1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+#ego_ejp1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit der Knotentypen und des Geschlechts
+V(ego_ejp1)[V(ego_ejp1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_ejp1)[V(ego_ejp1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+V(ego_ejp1)[V(ego_ejp1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_ejp1)[V(ego_ejp1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_ejp1)[V(ego_ejp1)$name == "Ermordung Juergen Ponto 30.07.1977"]$color <- "cornflowerblue" # Aktion wird rot hervorgehoben
+
+# Visualisierung des Egonetzwerks:
+plot(ego_ejp1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0,
+     main="Ego-Netzwerk Ermordung Jürgen Ponto (30.07.1977)",
+     sub="nur direkte Beziehungen ersten Grades",
+     edge.color="grey40",
+     vertex.label.color="black",
+     vertex.label.size=2,
+     vertex.label.family="sans",
+     vertex.size=10)
+
+legend(-1.2, -1, 
+       c("Männer","Frauen", "Anschlag"),
+       col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+    
+
+# Farbliche Anpassungen, um zu zeigen: Welche Generation(en) war(en) beteiligt?
+V(ego_ejp1)[V(ego_ejp1)$generation == 1]$color <- "grey80" # erste Generation wird hellgrau gefärbt
+V(ego_ejp1)[V(ego_ejp1)$generation == 2]$color <- "grey30" # zweite Generation wird dunkelgrau gefärbt
+V(ego_ejp1)[V(ego_ejp1)$generation == 3]$color <- "white" # Mitglieder beider Generationen werden weiß gefärbt und erhalten einen schwarzen Rahmen:
+V(ego_ejp1)[V(ego_ejp1)$generation == 3]$vertex.frame.color <- "black"
+V(ego_ejp1)[V(ego_ejp1)$name == "Ermordung Juergen Ponto 30.07.1977"]$color <- "cornflowerblue" # Anschlag wird rot hervorgehoben
+
+plot(ego_ejp1,
+     layout=layout_with_kk,
+     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
+     rescale=TRUE,
+     vertex.label.color="black",
+     vertex.size=10,
+     vertex.label.family="sans",
+     edge.color="grey40",
+     main="Ego-Netzwerk der Ermordung Jürgen Pontos (30.07.1977)",
+     sub="Beziehungen ersten Grades")
+
+legend(-1.2, -1, 
+       c("1. Generation","2. Generation", "Beide Generationen", "Anschlag"),
+       col=c("grey80", "grey30", "white", "cornflowerblue"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+
+```
+
+
+ Hier steht Brigitte Mohnhaupt (ebenfalls in beiden Generationen aktiv) im Mittelpunkt. Sie stand mit verschiedenen, an der Aktion beteiligten, Mitgliedern in Kontakt. Es lässt sich also ableiten, dass Mitglieder der ersten Generation Aktionen der zweiten Generation planten beziehungsweise eine zentrale Rolle bei der Durchführung dieser spielten.
+
+### Zentralität von Akteur:innen
+
+Je geringer das Zentralitätsmaß eines/einer Akteur:in ist, desto weiter am Rand befindet sich diese:r im Netzwerk. Das heißt, dass solche “Randfiguren” eher bei Bedarf zu Hilfe gerufen werden, aber keine zentralen oder Schlüsselfiguren darstellen. Dennoch sind diese wichtig für das Netzwerk, da sie ein Bestandteil sind und so optisch zu dessen Form, sowie funktional zu den Abläufen beitragen (vgl. Koschade, S. 24).
+
+```{r Betweeness-Werte Berechnen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+raf_pers <- delete_vertices(raf, V(raf)[type > "1"]) # löscht alle Nodes, bei denen es sich um 
+
+V(raf_pers)[V(raf_pers)$generation == 1]$color <- "grey80" # Knoten der Mitglieder der 1. Generation werden in Farbe grey80 dargestellt
+V(raf_pers)[V(raf_pers)$generation == 2]$color <- "grey30" # Knoten der Mitglieder der 2. Generation werden in Farbe grey30 dargestellt
+V(raf_pers)[V(raf_pers)$generation == 3]$color <- "white" # Knoten der Mitglieder beider Generation werden weiß eingefärbt
+V(raf_pers)[V(raf_pers)$generation == 4]$color <- "lightpink" # Knoten der Unterstützer*innen werden hellrosa eingefärbt
+V(raf_pers)[V(raf_pers)$generation == 99]$color <- "white" # Knoten, zu denen keine Angabe bzgl. iher Generation vorliegt, werden weiß eingefärbt
+V(raf_pers)[V(raf_pers)$generation == 3]$vertex.frame <- "black" # weiß gefärbte Knoten sollen zur besseren Sichtbarkeit einen schwarzen Rahmen erhalten
+V(raf_pers)[V(raf_pers)$generation == 99]$vertex.frame <- "black" # weiß gefärbte Knoten sollen zur besseren Sichtbarkeit einen schwarzen Rahmen erhalten
+
+#V(raf_pers)[V(raf_pers)$name == "Andreas Baader"]$color <- "firebrick" # Baader in rot dargestellt
+#V(raf_pers)[V(raf_pers)$name == "Peter-Juergen Boock"]$color <- "firebrick" # Boock in rot dargestellt
+#V(raf_pers)[V(raf_pers)$name == "Hans-Joachim Dellwo"]$color <- "firebrick" # Dellwo in rot dargestellt
+
+
+bs <- betweenness(raf_pers, v = V(raf_pers),
+                  directed = FALSE,
+                  weights = NULL,
+                  nobigint = TRUE,
+                  normalized = TRUE)
+
+plot(raf_pers,
+     vertex.size=bs*100,
+     layout=layout_with_kk,
+     asp=0, # definiert, dass der ganze Platz ausgenutzt werden soll
+     edge.curved=curve_multiple(raf_pers), #sorgt dafür, dass sich keine Kanten überlagern
+     vertex.label.family="sans",
+       vertex.label.cex=1,
+       vertex.label.color="black",
+     main="Verteilung Betweenness im Netzwerk",
+     sub="Je größer der Knoten, desto mehr Verbindungen weist er auf")
+
+legend("bottomleft", 
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
+       col=c("grey80", "grey30", "white", "lightpink"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+```
+
+**Ego-Netzwerk Andreas Baader**
+
+Das Ego-Netzwerk von Andreas Baader zeigt auf, dass dieser eine zentrale Rolle innerhalb der RAF gespielt hat. Vergleicht man sein Netzwerk mit den Netzwerken von anderen Gründungsmitgliedern der RAF, wird deutlich, dass er am meisten Kontakt zu anderen Mitgliedern hatte (über 50%). Dies ist nicht weiter verwunderlich, war er doch der Kopf hinter der Organisation. Interessant ist hierbei jedoch, dass außer den Frauen, die an seiner Befreiung 1970 beteiligt waren, kaum andere Frauen in seinen „engeren Kreis“ dazugekommen sind.
+
+```{r Ego-Netzwerk von Andreas Baader, ersten Grades, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
+
+#raf # das Standard-Netzwerk der RAF wird abgerufen
+
+# Baader hat die meisten Knoten, wie der obige Befehl nochmals bestätigt. Daher soll im folgenden sein Egonetzwerk erstellt werden.
+
+# erzeugt ein Egonetzwerk
+ego_ab <- make_ego_graph(raf, order = 1, nodes = V(raf)$name == "Andreas Baader", mode ="all")
+#ego_ab
+ego_ab1 <- ego_ab[[1]] # notwendiger Schritt für Erstellen des igraph-Objekts
+
+ego_ab1 <- simplify(ego_ab1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Verbindung zu sehen, um zu wissen, dass die Akteure etwas miteinander zu tun hatten
+
+#ego_ab1
+
+#Nun wird die Visualisierung des Netzwerkes angepasst
+V(ego_ab1)[V(ego_ab1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_ab1)[V(ego_ab1)$sex == 1]$color <- "darkseagreen" # Männer werden grün eingefärbt
+V(ego_ab1)[V(ego_ab1)$sex == 2]$color <- "darkorange3" # Frauen werden orange eingefärbt
+V(ego_ab1)[V(ego_ab1)$name == "Andreas Baader"]$color <- "firebrick" # Baader wird rot hervorgehoben
+V(ego_ab1)[V(ego_ab1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
+V(ego_ab1)[V(ego_ab1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+
+#ego_ab1
+
+# Nun wird das Egonetzwerk von Baader geplottet:
+plot(ego_ab1,
+     layout=layout_with_kk,
+     asp=0,
+     rescale=TRUE, 
+     main="Ego-Netzwerk von Andreas Baader",
+     sub="Beziehungen ersten Grades",
+     vertex.size=5,
+     vertex.label.color="black",
+     vertex.label.family="sans",
+     vertex.label.cex=.75, # Größe der Labelbeschriftung wird halbiert
+     edge.color="grey40")
+
+legend("bottomleft", 
+       c("Männer","Frauen", "Anschlag"),
+       col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+
+```
+
+Vergleicht man Andreas Baaders Ego-Netzwerk nun mit dem Ego-Netzwerk von Peter-Jürgen Boock, so fällt auf, dass dieser deutlich weniger Kontakt zu anderen Akteur:innen hatte.
+
+**Ego-Netzwerk Peter-Jürgen Boock**
+
+```{r Ego-Netzwerk Peter-Jürgen Boock, fig.height=14, fig.width=20, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
+
+#raf # das Standard-Netzwerk der RAF wird abgerufen
+
+# selektiert aus dem Netzwerk der RAF alle Knoten, die mit Boock über einen Schritt verbunden sind und erstellt ein Ego-Netzwerk ersten Grades
+ego_pb <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Peter-Juergen Boock", mode = "all")
+# liefert eine Liste der Verbindungen von Boock
+#ego_pb
+
+ego_pb1 <- ego_pb[[1]] # notwendiger Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_pb1 <- simplify(ego_pb1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+#ego_pb1
+
+# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
+V(ego_pb1)[V(ego_pb1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
+V(ego_pb1)[V(ego_pb1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
+V(ego_pb1)[V(ego_pb1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
+V(ego_pb1)[V(ego_pb1)$name == "Peter-Juergen Boock"]$color <- "firebrick" # Boock wird rot hervorgehoben
+V(ego_pb1)[V(ego_pb1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
+V(ego_pb1)[V(ego_pb1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+
+# Visualisierung von Boocks Ego-Netzwerk
+plot(ego_pb1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0, # der ganze Raum wird für die Darstellung ausgenutzt
+     main="Ego-Netzwerk Peter-Jürgen Boock",
+     sub="nur direkte Beziehungen ersten Grades",
+     edge.color="grey40",
+     vertex.label.family="sans",
+     vertex.label.color="black",
+     vertex.size=10)
+
+legend("bottomleft", 
+       c("Männer","Frauen","Anschlag"),
+       col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+
+# nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Boock direkt verbunden war
+ego_pb1_p <- delete_vertices(ego_pb1, V(ego_pb1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
+
+#ego_pb1_p
+
+# da Boock als Broker gesehen werden könnte, soll nun hervorgehoben werden, welcher Generation seine direkten Verbindungen angehörten
+V(ego_pb1_p)[V(ego_pb1_p)$generation == 1]$color <- "grey80" # erste Generation = hellgrau
+V(ego_pb1_p)[V(ego_pb1_p)$generation == 2]$color <- "grey30" # zweite Generation = dunkelgrau
+V(ego_pb1_p)[V(ego_pb1_p)$generation == 3]$color <- "white" # beide Generationen = weiß
+V(ego_pb1_p)[V(ego_pb1_p)$generation == 4]$color <- "lightpink" # Unterstützer*innen = hellrosa
+V(ego_pb1_p)[V(ego_pb1_p)$name == "Peter-Juergen Boock"]$color <- "firebrick"
+
+
+plot(ego_pb1_p,
+     layout=layout_with_kk,
+     rescale=TRUE, 
+     asp=0, #legt fest, dass der ganze Raum ausgenutzt werden soll
+     main="Ego-Netzwerk von Boock",
+     sub="Beziehungen ersten Grades",
+     vertex.size=10,
+     vertex.label.family="sans",
+     vertex.label.color="black",
+     edge.color="grey40")
+
+
+legend("bottomleft", 
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
+       col=c("grey80", "grey20", "white", "lightpink"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+```
+Wenn man jedoch davon ausgeht, dass Boock eine zentrale Rolle innerhalb der zweiten Generation gespielt hat (zumindest was die Durchführung verschiedener Aktionen angeht), scheint es, dass die allgemeine Verbindung einzelner Akteur:innen in der ersten Generation deutlich wichtiger war, als in der zweiten. 
+
+Ähnliches gilt auch für das **Ego-Netzwerk von Brigitte Mohnhaupt**. Beide nehmen eine Broker-Position ein und lassen sich als Mentor:innen der zweiten Generation sehen.
+
 ```{r Ego-Netzwerk Brigitte Mohnhaupt, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 
 #raf
@@ -979,10 +1663,10 @@ ego_bm <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Brigitte Mohnhaup
 #ego_bm
 #man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
 ego_bm1 <- ego_bm[[1]]
-ego_bm1
+#ego_bm1
 
 ego_bm1 <- simplify(ego_bm1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
-ego_bm1
+#ego_bm1
 
 # Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
 V(ego_bm1)[V(ego_bm1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
@@ -991,7 +1675,7 @@ V(ego_bm1)[V(ego_bm1)$sex == 2]$color <- "darkorange3" # Frauen werden orange da
 V(ego_bm1)[V(ego_bm1)$name == "Brigitte Mohnhaupt"]$color <- "firebrick" # Mohnhaupt wird rot hervorgehoben
 V(ego_bm1)[V(ego_bm1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
 V(ego_bm1)[V(ego_bm1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
-ego_bm1
+#ego_bm1
 
 # Visualisierung des Ego-Netzwerks:
 plot(ego_bm1, 
@@ -1022,7 +1706,7 @@ legend("bottomleft",
 # nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Mohnhaupt direkt verbunden war
 ego_bm1_p <- delete_vertices(ego_bm1, V(ego_bm1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
 
-ego_bm1_p
+#ego_bm1_p
 
 # da Mohnhaupt als Schlüsselfigur der 2. Generation gesehen werden könnte, soll nun hervorgehoben werden, welcher Generation ihre direkten Verbindungen angehörten und herauszufinden, ob sie eine Brokerin war
 V(ego_bm1_p)[V(ego_bm1_p)$generation == 1]$color <- "grey80" # Mitglieder der ersten Generation werden hellgrau gefärbt
@@ -1044,46 +1728,7 @@ plot(ego_bm1_p,
      edge.color="grey40")
 
 legend(-1.2, -0.8,
-       c("Mohaupt", "1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
-       col=c("firebrick", "grey80", "grey20", "white", "lightpink"), 
-       pch = 19, 
-       border = "black", 
-       pt.cex=3, 
-       cex=1.5,
-       x.intersp = 1.5,
-       bty="o", 
-       bg = "grey90",
-       box.col = "grey50", 
-       ncol=1, )
-
-```
-
-
-**Versorgungsnetzwerk**
-
-Im Versorgungsnetzwerk spielten Anwälte eine klare Rolle: Unter den 27 Unterstützer*innen waren acht (männliche) Anwälte. Dies liegt unter anderem an den verschiedenen Gerichtsverfahren. Dabei hatten Andreas Baader und Horst Mahler besonders viel Kontakt zu anderen Anwälten, was aber an verschiedenen gerichtlichen Prozessen liegen sollte, an denen beide beteiligt waren (Baader als Angeklagter, Mahler als Anwalt).
-
-```{r Versorgungsnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
-
-provision <- subgraph.edges(raf, E(raf)[relationship== " 6"]) # erstellt ein neues Teilnetzwerk, in dem nur Versorgungsbeziehungen dargestellt werden
-provision <- simplify(provision, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
-#provision
-
-V(provision)[V(provision)$generation == 4]$color <- "lightpink" # Unterstützer*innen werden hellrosa hervorgehoben, um zu sehen, wie viele Externe bzw. Nicht-Mitglieder eine Rolle gespielt haben
-
-# Visualisierung des Netzwerks: 
-plot(provision,
-     layout=layout_with_kk,
-     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
-     layout=layout_with_kk,
-     edge.curved=curve_multiple(provision), # verhindert, dass sich Kanten überlagern
-     vertex.size=10, # setzt die Größe der Knoten auf 10
-     vertex.label.color = "black",
-     vertex.label.family = "sans", #gibt die Schriftart an
-     main="Versorgungs-Netzwerk")
-
-legend("bottomleft", 
-       c("1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
        col=c("grey80", "grey20", "white", "lightpink"), 
        pch = 19, 
        border = "black", 
@@ -1094,218 +1739,71 @@ legend("bottomleft",
        bg = "grey90",
        box.col = "grey50", 
        ncol=1, )
-```
-
-Das Versorgungsnetzwerk zeigt deutlich, dass es einen Broker gab, der in der breiten Öffentlichkeit wenig Beachtung erfahren hat. Der Hauptakteur für externe Unterstützung war Hans-Joachim Dellwo, von Beruf Anwalt (Verbindung zu ca. 15 Knoten). Durch seine Beschäftigung in der Anwaltskanzlei von Klaus Croissant kam er in Kontakt mit der RAF und war während der Inhaftierung der Spitze der ersten Generation in Stammheim der zentrale Kurier zwischen den Inhaftierten und den Mitgliedern der zweiten Generation. Zusammen mit Volker Speitel schmuggelte er die Waffen, die in der Todesnacht von Stammheim benutzt wurden, in das Gefängnis. Dellwo sagte sich jedoch nach der Todesnacht von der RAF los, was ein Indiz dafür sein kann, dass er nicht sonderlich gut in die Gruppe eingebunden war, sondern nur als Kurier fungierte. Allerdings unterstütze er so indirekt die Transition hin zur zweiten Generation, da er den Kontakt herstellte.
-
-```{r Ego-Netzwerk Klaus Croissant, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo= FALSE}
-
-# Da Croissant als Anwalt Kontakte zu vielen RAF-Mitgliedern hatte, die teils auch in seiner Kanzlei tätig waren und so zur RAF kamen, soll nun sein Ego-Netzwerk betrachtet werden.
-
-ego_kc<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Klaus Croissant", mode = "all") # selektiert aus dem Netzwerk raf alle Knoten, die mit Croissant über einen Schritt direkt verbunden sind.
-
-# liefert eine Liste der Verbindungen 
-ego_kc
-#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
-ego_kc1 <- ego_kc[[1]]
-
-ego_kc1 <- simplify(ego_kc1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
-ego_kc1
-
-# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
-V(ego_kc1)[V(ego_kc1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
-V(ego_kc1)[V(ego_kc1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
-V(ego_kc1)[V(ego_kc1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
-V(ego_kc1)[V(ego_kc1)$name == "Klaus Croissant"]$color <- "firebrick" # Croissant wird rot hervorgehoben
-V(ego_kc1)[V(ego_kc1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
-V(ego_kc1)[V(ego_kc1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
-
-# Visualisierung des Ego-Netzwerks:
-plot(ego_kc1, 
-     layout=layout_with_kk,
-     rescale=T,
-     asp=0, # legt fest, dass der gesamte Raum für die Darstellung genutzt wird
-     main="Ego-Netzwerk Klaus Croissant",
-     sub="Nur direkte Beziehungen 1. Grades",
-     edge.color="grey40",
-     vertex.size=10,
-     vertex.label.family="sans",
-     vertex.label.color="black")
-
-legend("bottomleft", 
-       c("Männer","Frauen", "Aktionen"),
-       col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
-       pch = 19, 
-       border = "black", 
-       pt.cex=3, 
-       cex=1.5,
-       x.intersp = 1.5,
-       bty="o", 
-       bg = "grey90",
-       box.col = "grey50", 
-       ncol=1, )
-
-# nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Croissant direkt verbunden war
-ego_kc1_p <- delete_vertices(ego_kc1, V(ego_kc1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
-
-ego_kc1_p
-
-# da Croissant als Anwalt viele seiner Angestellten zur RAF gebracht und gewissermaßen als Broker gesehen werden könnte, soll nun hervorgehoben werden, welcher Generation seine direkten Verbindungen angehörten, um herauszufinden, ob er auch als Verbindung zwischen den Generationen fungierte
-V(ego_kc1_p)[V(ego_kc1_p)$generation == 1]$color <- "grey80" # erste Generation = hellgrau
-V(ego_kc1_p)[V(ego_kc1_p)$generation == 2]$color <- "grey30" # zweite Generation = dunkelgrau
-V(ego_kc1_p)[V(ego_kc1_p)$generation == 3]$vertex.frame.color <- "black" # weiße Knoten schwarz umranden, damit sie besser zu erkennen sind 
-V(ego_kc1_p)[V(ego_kc1_p)$generation == 3]$color <- "white" # Mitglieder beider Generationen = weiß
-V(ego_kc1_p)[V(ego_kc1_p)$generation == 4]$color <- "lightpink" # Unterstützer*innen = hellrosa
-V(ego_kc1_p)[V(ego_kc1_p)$name == "Klaus Croissant"]$color <- "firebrick" # Croissant rot hervorheben
-
-plot(ego_kc1_p,
-     layout=layout_with_kk,
-     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
-     rescale=TRUE, 
-     main="Ego-Netzwerk von Croissant",
-     sub="Nur Beziehungen 1. Grades",
-     vertex.size=10,
-     vertex.label.family="sans",
-     vertex.label.color = "black",
-     edge.color="grey40")
-
-legend(-1.2, -0.8, 
-       c("Croissant", "1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
-       col=c("firebrick", "grey80", "grey20", "white", "lightpink"), 
-       pch = 19, 
-       border = "black", 
-       pt.cex=3, 
-       cex=1.5,
-       x.intersp = 1.5,
-       bty="o", 
-       bg = "grey90",
-       box.col = "grey50", 
-       ncol=1, )
-```
-
-```{r Ego-Netzwerk Hans-Joachim Dellwo, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
-
-
-ego_hjd <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Hans-Joachim Dellwo", mode = "all") # selektiert aus dem Netzwerk raf alle Knoten, die mit Dellwo über einen Schritt direkt verbunden sind (Ego-Netzwerk ersten Grades)
-ego_hjd
-
-ego_hjd1 <- ego_hjd[[1]] # notwendiger Zwischenschritt, damit das igraph-Objekt hergestellt wird
-
-ego_hjd1 <- simplify(ego_hjd1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
-ego_hjd1
-
-# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
-V(ego_hjd1)[V(ego_hjd1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
-V(ego_hjd1)[V(ego_hjd1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
-V(ego_hjd1)[V(ego_hjd1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
-V(ego_hjd1)[V(ego_hjd1)$name == "Hans-Joachim Dellwo"]$color <- "firebrick" # Dellwo wird rot hervorgehoben
-V(ego_hjd1)[V(ego_hjd1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
-V(ego_hjd1)[V(ego_hjd1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
-
-# Visualisierung des Ego-Netzwerks
-plot(ego_hjd1, 
-     layout=layout_with_kk,
-     rescale=T,
-     asp=0, # legt fest, dass der gesamte Platz für die Darstellung genutzt wird
-     main="Ego-Netzwerk Hans-Joachim Dellwo",
-     sub="Nur direkte Beziehungen des 1. Grades",
-     edge.color="grey40",
-     vertex.label.color="black",
-     vertex.label.family="sans",
-     #vertex.label.cex=.7, # verkleinert die Labelbeschriftung
-     vertex.size=10)
-
-legend("bottomleft", 
-       c("Männer","Frauen", "Aktionen"),
-       col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
-       pch = 19, 
-       border = "black", 
-       pt.cex=3, 
-       cex=1.5,
-       x.intersp = 1.5,
-       bty="o", 
-       bg = "grey90",
-       box.col = "grey50", 
-       ncol=1, )
-
-# nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Dellwo direkt verbunden war
-ego_hjd1_p <- delete_vertices(ego_hjd1, V(ego_hjd1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
-
-ego_hjd1_p
-
-# Nun soll hervorgehoben werden, welcher Generation die direkten Verbindungen H-J Dellwos angehörten
-V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 1]$color <- "grey80" # 1. Generation = hellgrau
-V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 2]$color <- "grey30" # 2. Generation = dunkelgrau
-V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 3]$color <- "white" # Mitglieder beider Generationen = weiß
-V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 99]$color <- "white" # Mitglieder beider Generationen = weiß
-V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 3]$vertex.frame.color <- "black" # fügt einen schwarzen Rahmen hinzu, damit weiße Nodes besser sichtbar sind
-V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 4]$color <- "lightpink" # Unterstützer*innen = rosa
-V(ego_hjd1_p)[V(ego_hjd1_p)$name == "Hans-Joachim Dellwo"]$color <- "firebrick"
-
-plot(ego_hjd1_p,
-     layout=layout_with_kk,
-     rescale=TRUE,
-     asp=0, # definiert, dass der gesamte Platz für die Darstellung genutzt wird
-     main="Ego-Netzwerk von Hans-Joachim Dellwo",
-     sub="Nur Beziehungen 1. Grades",
-     vertex.label.color="black",
-     vertex.size=10,
-     vertex.label.family="sans",
-     edge.color="grey40")
-
-legend("bottomleft", 
-       c("Dellwo", "1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen"),
-       col=c("firebrick", "grey80", "grey20", "white", "lightpink"), 
-       pch = 19, 
-       border = "black", 
-       pt.cex=3, 
-       cex=1.5,
-       x.intersp = 1.5,
-       bty="o", 
-       bg = "grey90",
-       box.col = "grey50", 
-       ncol=1, )
 
 ```
 
-**Unbedingt Broker Analyse einfügen!!!**
+Dies könnte so interpretiert werden, dass es in der ersten Generation noch viel um den Kult um Baader, Ensslin und den anderen Gründungsmitgliedern ging. Bei der Entstehung der zweiten Generation war die RAF hingegen schon als Institution etabliert und wurde dann durch den Märtyrertod der in Stammheim Inhaftierten noch weiter in die Öffentlichkeit hinausgetragen. Den Mitgliedern der zweiten Generation ging es vermutlich mehr um die Sache, an der sie sich beteiligen, während die erste Generation sich um Einzelne scharte. 
 
-**Anschlagsnetzwerk**
+#Diskussion: Fazit, Limitationen und Ausblick
 
-Die Untersuchung der Anschlagsbeteiligung zeigt, dass es einen Zusammenhang zwischen größeren, bzw. bekannteren Aktionen der RAF und Ausbildungsmissionen gibt. Anders als bei medial präsenten Ereignissen wie der Schleyer-Entführung waren bei kleineren Aktionen, wie z.B. Banküberfällen und Polizistenmorden, teilweise wenige Mitglieder oder auch Unterstützer*innen beteiligt. Allerdings ist auch nicht auszuschließen, dass bei Aktionen, die medial (und damit gesellschaftlich) bekannt waren, die Aufklärung sorgfältiger begangen wurde und deshalb mehr beteiligte Mitglieder bekannt sind.
+Um ein Fazit ziehen zu können, sollen abschließend die anfangs aufgestellten Forschungshypothesen erneut betrachtet und geklärt werden, ob und inwiefern sich diese bestätigt haben.
 
-```{r Anschlagsnetzwerk,fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
+(1) *Die Mitglieder der ersten Generation haben die Entstehung der zweiten Generation - möglicherweise sogar aus den Justizvollzugsanstalten heraus - beeinflusst.*
 
-participation <- subgraph.edges(raf, E(raf)[relationship== " 7"]) # erstellt ein neues Teilnetzwerk, in dem nur die Akteure angezeigt werden, die an einer Aktion beteiligt waren
-participation <- simplify(participation, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+    Diese Hypothese lässt sich aus unseren Ergebnissen klar bestätigen: Die Hauptakteur:innen der ersten Generation nutzten ihren Aufenthalt in der JVA Stammheim, um die mit inhaftierte Mohnhaupt zu instruieren, die nach ihrer Entlassung maßgeblich die Entstehung der zweiten Generation voran trieb.
+Außerdem nutzten die Inhaftierten ihr Unterstützer:innen-Netzwerk - beziehungsweise ihre Kontakte zu Anwälten – um Nachrichten nach außen zu schicken. Über Hans-Joachim Dellwo wurden so Anweisungen zu Mitgliedern und Sympathisant:innen der RAF geschickt, welche später zur  zweiten Generation werden sollten. So sorgten die Hauptakteur:innen auch indirekt für die Entstehung der zweiten Generation.
 
-#participation
+(2) *Die erste Generation hatte entgegen ihres selbst ausgerufenen „Stadtguerilla“-Charakters stärkere Hierarchien als die zweite Generation beziehungsweise fungierten die polarisierenden Akteur:innen Baader, Meinhof und Ensslin als Führungspersonen.*
 
-# Visualisierung des Teilnetzwerkes
-plot(participation,
-     layout=layout_with_kk,
-     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
-     edge.curved=curve_multiple(participation), # verhindert, dass sich Kanten überlagern
-     vertex.size=5,
-     vertex.label.color = "black",
-     vertex.label.family = "sans", #gibt die Schriftart an
-     vertex.label.cex=.5, # halbiert die Größe der Labelbeschriftung
-     edge.color="grey40",
-     main="Aktionsbeteiligungs-Netzwerk")
+    Es zeigt sich, dass vor allem rund um Baader ein gewisser Personenkult entstand, welcher auch nach seinem Tod erhalten blieb. Seine Befreiung 1970 legte den Grundstein für die RAF. Allein aus diesem Gesichtspunkt ist somit Bader eine Schlüsselfigur der RAF. Auch die Texte von Meinhof und Ensslin machten die RAF bekannter, somit ist anzunehmen, dass eine Art „soziale Hierarchie“ zwischen den bekannten, medial besprochenen Akteur:innen und den unbekannten Mitgliedern der RAF bestand. Dies lässt sich mitunter auch aus dem Ego-Netzwerken der Gründungsmitglieder ableiten. Die zweite Generation hingegen ist bis heute eher unbekannt. Im Laufe unserer Forschungen fiel uns auf, dass Peter-Jürgen Boock eine zentrale Rolle innerhalb der zweiten Generation innegehabt haben musste, dies war zu anfänglicher Recherche noch nicht zu erkennen.
 
-legend("bottomleft", 
-       c("1. Generation","2.Generation", "Beide Generationen", "Unterstützer*innen", "Anschläge"),
-       col=c("grey80", "grey20", "white", "lightpink", "cornflowerblue"), 
-       pch = 19, 
-       border = "black", 
-       pt.cex=3, 
-       cex=1.5,
-       x.intersp = 1.5,
-       bty="o", 
-       bg = "grey90",
-       box.col = "grey50", 
-       ncol=1, )
-```
+    Auch ist bis heute noch nicht wirklich geklärt, welche Schlüsselakteur:innen die zweite Generation tatsächlich hatte. Zwar wird der berühmte Satz um die „Befehlsgewalt“ (Holl, 2007), die Baader Mohnhaupt zusprach, oft zitiert, aber auch hier war uns vor unseren Forschungen noch nicht bewusst, inwiefern Mohnhaupt tatsächlich die zweite Generation prägte.
+    Dies spricht dafür, dass die zweite Generation weniger starke (und damit weniger offensichtliche) Hierarchien als die erste Generation aufwies. 
 
+(3) *Persönliche Beziehungen, wie zum Beispiel gemeinsame Wohnungen, Liebesbeziehungen oder gemeinsame Aktionen (Anschläge, Ausbildungslager), spielten innerhalb der RAF eine große Rolle.*
 
+    Diese Hypothese lässt sich klar bestätigen. Dies zeigt sich mitunter an den vielen Wohngemeinschaften innerhalb der RAF, aber auch an verschiedenen Liebesbeziehungen, für die nicht nur Partner:innen, sondern teilweise auch Kinder verlassen wurden. Somit weist die RAF viele starke Verbindungen unter den Mitgliedern auf beziehungsweise bestand unter vielen reger Kontakt. Dies könnte verschiedene Gründe haben: Zum einem war es deutlich einfacher, Aktionen und Anschläge zu planen, wenn sich die teilnehmenden Akteur*innen am selben Ort aufhielten. Zum anderen war es somit schwieriger, Informationen an Außenstehende weiterzugeben. Die RAF überwachte sich auf diese Weise möglicherweise von innen. Auch konnten sich einzelne Akteur:innen so besser verstecken, da wenige Wohnungen mit mehreren Mitgliedern schwieriger zu finden sind als viele Wohnungen mit wenigen Mitgliedern. Zugleich bestand jedoch die Gefahr der Massenenttarnung.
 
+    Zudem lässt sich vermuten, dass die RAF zu einem wichtigen Lebensbestandteil für viele Beteiligte wurde. Sobald diese in den Untergrund gingen, blieben ihnen nur noch die Unterstützer:innen und die anderen Mitglieder der RAF als soziale Kontakte.
+
+(4) *Neben den festen Mitgliedern spielten auch Unterstützer:innen eine maßgebliche Rolle bei der Umsetzung der Anschläge und Versorgung der Genoss:innen.*
+
+    Diese Hypothese lässt sich nur schwer bestätigen oder widerlegen. Fakt ist, dass Unterstützer:innen allgemein eine wichtige Rolle für die RAF spielten - zum Beispiel bei der Bereitstellung von Wohnungen und Verstecken für einzelne Mitglieder. Allerdings ist nicht ganz nachvollziehbar, wie viele Personen der RAF im Laufe der Jahre insgesamt geholfen haben. Noch am meisten Klarheit herrscht bei den Anwälten, weswegen sie bei unserer Forschung eine wichtige Rolle einnehmen. Diese fungierten während der Inhaftierung der Hauptakteure der ersten Generation als Kuriere zwischen diesen und den anderen Mitgliedern. Somit hatten die Anwälte – allen voran Hans-Joachim Dellwo – eine zentrale Rolle bei der Entstehung der zweiten Generation inne. Auch ermöglichten sie durch das Schmuggeln der Waffen die Selbstmorde in Stammheim.
+
+    Zwar nahmen einige Unterstützer:innen an Anschlägen teil, jedoch handelte es sich dabei um kleinere Aktionen (Polizistenmorde oder Banküberfälle). Bis auf wenige Ausnahmen waren sie dabei vor allem für die Vorbereitung zuständig.
+
+(5) *Die erste Generation war - bedingt durch den Entstehungsprozess und die anfänglich niedrige Mitgliederzahl - besser vernetzt als die zweite Generation.*
+
+    Insgesamt gehörten der ersten Generation mehr Mitglieder an. Die Dichte des Netzwerks war von 1970 (20%) bis 1971 (15%) am höchsten, allerdings flachte dieser Wert ab 1972 ab und blieb in den darauffolgenden Jahren relativ konstant bei 13%. Beim direkten Vergleich über die Jahre hinweg fällt auf, dass die zweite Generation im Gesamtnetzwerk einen minimal höheren Dichtewert aufweist als die erste (31% zu 28%). Allerdings ist dieser Unterschied von geringer Signifikanz und lässt uns daher nicht auf eine bessere Vernetzung der ersten Generation schließen.
+
+(6) *In der RAF nahmen die Frauen eine besondere, von den Männern abweichende, Rolle ein.*
+
+    Dies ließ sich anhand der Ergebnisse nicht bestätigen. Auffällig ist, dass an der Baader-Befreiung (1970) besonders viele Frauen beteiligt waren. Auch ist bemerkenswert, dass in beiden Generationen Frauen in Führungspositionen vertreten waren und somit die RAF maßgeblich beeinflussten. Jedoch waren sie an weniger Anschlägen beteiligt als Männer, wobei generell etwas weniger Frauen in der RAF vertreten waren (45,6%). Allerdings ist diese Beobachtung in den zeitlichen Kontext zu setzen. So betrug beispielsweise der Anteil weiblicher Abgeordneter zwischen 1969 und 1976 nur 6%. 
+    Zwar ist der Bundestag nicht mit einer Organisation wie der RAF gleichzusetzen, jedoch weist dieses Beispiel auf eine strukturelle Unterrepräsentation von Frauen hin, die viele gesellschaftliche Bereiche umfasste.
+
+    Das heißt, Frauen nahmen rein prozentual innerhalb der RAF keine abweichende, besondere Rolle ein und standen mit den männlichen Mitgliedern auf einer Stufe. Ob sie im täglichen Umgang eine andere Behandlung erfahren haben, lässt sich anhand unseres Forschungsansatzes nicht beantworten.
+
+(7) *Neben den bekannten Mitgliedern der RAF gab es auch unbekannte Keyplayer:innen (Broker:innen), denen die Aufmerksamkeit der breiten Öffentlichkeit verwehrt blieb.*
+
+    Hier sollte vor allem Peter-Jürgen Boock genannt werden. Er bezeichnete sich selbst als „kleines Licht“ innerhalb der RAF (Wagener, 2017) und erhielt vergleichsweise milde Gefängnisstrafen. Allerdings zeigte sich bei unserer Forschung, dass Boock an den größeren Anschlägen der zweiten Generation beteiligt war und vermutlich eine Art Mentor- oder Broker-Funktion innehatte. Diese lässt sich auch den Anwälten der RAF zuschreiben. Vor allem Hans-Joachim Dellwo und Klaus Croissant weisen viele Verbindungen zwischen erster und zweiter Generation auf. Daraus lässt sich folgern, dass die Fortführung der RAF wesentlich von diesen Personen gestützt wurde. Nicht zu vergessen ist an dieser Stelle außerdem Brigitte Mohnhaupt, die als Schnittstelle der beiden Generationen fungierte.
+
+(8)  *Auf Basis des Deutschlandfunk-Artikels “Protestantismus und RAF” (Hollenbach, 2007): Es bestand ein Zusammenhang zwischen einem religiösen Elternhaus und der Mitgliedschaft in der RAF.*
+
+    Diese Hypothese erschien am Anfang sehr spannend, ließ sich durch unsere Literatur jedoch nicht bestätigen und wurde daher im Laufe unserer Recherche verworfen. Zwar weisen einige Hauptakteure ein religiöses Elternhaus auf, allerdings ließ sich dies nicht auf die gesamte RAF übertragen. Die Faktenlage ist an dieser Stelle so dünn, dass keine abschließende Bewertung getroffen werden kann.
+    
+
+## Fazit
+
+Die dem Projekt zugrunde liegende Forschungsfrage „Inwiefern unterscheiden sich die Netzwerke der ersten und zweiten Generation der RAF?“ lässt sich wie folgt beantworten:
+
+Die erste Generation wurde durch die „Baader-Meinhof-Bande“ (bestehend aus Gudrun Ensslin, Ulrike Meinhof, Holger Meins, Jan-Carl Raspe, Ingrid Schubert und Andreas Baader) geprägt. Sie waren die zentralen Figuren, die das Gesamtnetzwerk ausmachten und für die Entstehung der ersten Generation verantwortlich waren. Anhand der Netzwerkanalyse lässt sich schlussfolgern, dass die erste Generation von den genannten Mitgliedern abhängig war. Ohne diese konnten Aktionen nicht stattfinden, sie wendeten sich teilweise direkt an die Öffentlichkeit und hatten die meisten Kontakte zu anderen Akteur:innen. Es ergab sich eine gewisse „soziale Hierarchie“. Zudem waren sie indirekt, jedoch maßgeblich, an der Entstehung der zweiten Generation beteiligt.
+
+Dort lässt sich diese Hierarchie nicht direkt erkennen. Boock und Mohnhaupt, die bereits in der ersten Generation aktiv waren, agierten zwar als Broker:innen, waren jedoch nicht so gut vernetzt wie zum Beispiel Andreas Baader. Jedoch ist erkennbar, dass sie trotzdem als Keyplayer:innen innerhalb der zweiten Generation agierten. So nutzten sie ihre vielen Kontakte zu anderen Akteur:innen, um Aktionen zu planen.
+
+Nicht nur die Ideologie der beiden Generationen unterschied sich, sondern auch deren Aufbau. Während die erste Generation vor allem auf die Hauptakteur:innen fokussiert war, war die zweite Generation weniger zentralisiert. Die Mitglieder scheinen weniger einer Hierarchie anzugehören. Abschließend ist zu sagen, dass die RAF also mehr war als der “Baader-Meinhof-Komplex”.
+
+## Limitationen
+
+## Ausblick
+
+## Literatur

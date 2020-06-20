@@ -19,15 +19,15 @@ Das Netzwerk ist ein *ungerichtetes two-mode Akteursnetzwerk*.
 Die Edgelist darf pro Spalte immer nur einen Wert enthalten. Bis auf die ID und den Namen ist dieser idealerweise numerisch codiert (als Zahl).
 
 **from**
-Die Werte in der Spalte "from" definieren den Sender in gerichteten Netzwerken, beziehungsweise generell einen Ausgangspunkt einer Beziehung. Da wir ein ungerichtetes Netzwerk erhoben haben, ist die Richtung der Beziehung nicht relevant. Der eingetragene Wert entspricht einer ID in der Nodelist und enthält keine Sonderzeichen, sondern nur ein Wort.
+Die Werte in der Spalte "from" definieren Sender:innen in gerichteten Netzwerken, beziehungsweise generell einen Ausgangspunkt einer Beziehung. Da wir ein ungerichtetes Netzwerk erhoben haben, ist die Richtung der Beziehung nicht relevant. Der eingetragene Wert entspricht einer ID in der Nodelist und enthält keine Sonderzeichen, sondern nur ein Wort.
 
 **to**
-Die Werte in der Spalte "to" definieren den Empfänger in ungerichteten Netzwerken. Der eingetragene Wert entspricht einer ID in der Nodelist und enthält keine Sonderzeichen, sondern nur ein Wort.
+Die Werte in der Spalte "to" definieren Empfänger:innen in ungerichteten Netzwerken. Der eingetragene Wert entspricht einer ID in der Nodelist und enthält keine Sonderzeichen, sondern nur ein Wort.
 
 **relation**  
 Das Edge-Attribut "relationship" definiert die Art der Beziehung zwischen den Knoten, da es sich um ein multiplexes Netzwerk mit verschiedenen Beziehungsarten handelt. 
 
-1 = Bekanntschaft *(Bekanntschaft meint, dass zwei Akteure in Kontakt waren, jedoch nur einmalig oder wenige Male, sodass von keiner Freundschaft gesprochen werden kann.)*  
+1 = Bekanntschaft *(Bekanntschaft meint, dass zwei Akteur:innen in Kontakt waren, jedoch nur einmalig oder wenige Male, sodass von keiner Freundschaft gesprochen werden kann.)*  
 2 = Freundschaft *(Freundschaft setzt einen mehrmaligen Kontakt voraus oder wurde dann erhoben, wenn in den verwendeten Quellen explizit davon gesprochen wurde.)*  
 3 = Liebesbeziehung  
 4 = Wohngemeinschaft  
@@ -39,15 +39,15 @@ Das Edge-Attribut "relationship" definiert die Art der Beziehung zwischen den Kn
 10 = Verwandschaft  
 
 **year**   
-Das Edge-Attribut "year" definiert das Jahr, in dem die jeweilige Beziehung bestand, beispielsweise wenn zwei Akteure in einem spezifischen Jahr zusammengewohnt haben. Bei mehrjährigen Beziehungen wurde entsprechend für jedes separate Jahr eine Beziehung angelegt. Die Jahreszahlen reichen von 1961 bis 1998, ergo von den Anfangsjahren der RAF bis zum Ende der 90er Jahre, da einige Mitglieder zu diesem Zeitpunkt noch gemeinsam inhaftiert waren. Bei Beziehungen, bei denen das Jahr nicht bekannt war oder bei Verwandtschaftsbeziehungen, die beständig sind, wurde statt einer Jahreszahl der Wert "99" vergeben.
+Das Edge-Attribut "year" definiert das Jahr, in dem die jeweilige Beziehung bestand, beispielsweise wenn zwei Akteur:innen in einem spezifischen Jahr zusammengewohnt haben. Bei mehrjährigen Beziehungen wurde entsprechend für jedes separate Jahr eine Beziehung angelegt. Die Jahreszahlen reichen von 1961 bis 1998, ergo von den Anfangsjahren der RAF bis zum Ende der 90er Jahre, da einige Mitglieder zu diesem Zeitpunkt noch gemeinsam inhaftiert waren. Bei Beziehungen, bei denen das Jahr nicht bekannt war oder bei Verwandtschaftsbeziehungen, die beständig sind, wurde statt einer Jahreszahl der Wert "99" vergeben.
 
 # NODE-Attribute  
 
-Da es sich um eine two mode - Akteursnetzwerk handelt, in dem sowohl natürliche Personen der RAF und aus deren Umfeld, sowie Aktionen der RAF erfasst wurden, gibt es sowohl Node-Attribute, die sich auf alle Knoten beziehen als auch solche, die nur natürliche Personen oder nur Aktionen der RAF näher definieren. Bei diesen Attributen wurde für die Knoten, die davon nicht betroffen sind, der Wert "99" vergeben.
+Da es sich um eine two mode - Akteur:innennetzwerk handelt, in dem sowohl natürliche Personen der RAF und aus deren Umfeld, sowie Aktionen der RAF erfasst wurden, gibt es sowohl Node-Attribute, die sich auf alle Knoten beziehen als auch solche, die nur natürliche Personen oder nur Aktionen der RAF näher definieren. Bei diesen Attributen wurde für die Knoten, die davon nicht betroffen sind, der Wert "99" vergeben.
   
 **id**  
 (eindeutige Codierung des Knoten)   
-codiert anhand der Initialen des Akteurs ("ab" für Andreas Baader) oder einer selbstgewählten Abkürzung für die Aktionen (z.B. "ent" - Schleyer-Entführung), jede ID entspricht einer natürlichen Person oder einer Aktion der RAF.
+codiert anhand der Initialen der Akteur:innen ("ab" für Andreas Baader) oder einer selbstgewählten Abkürzung für die Aktionen (z.B. "ent" - Schleyer-Entführung), jede ID entspricht einer natürlichen Person oder einer Aktion der RAF.
 
 **name**  
 gibt den Namen oder die Bezeichnung des Knotens an. Bei Personen wurde hier der Vor- und Nachname angegeben, bei Aktionen deren Bezeichnung, sowie das Datum der Durchführung.
@@ -72,7 +72,7 @@ definiert die Religionszugehörigkeit der natürlichen Personen
 3 = andere  
 
 **upbringing**   
-definiert, ob im Elternhaus der Person eine Pfarrer/in oder Pastor/in war, beispielsweise ein Elternteil, der ein kirchliches Amt inne hatte  
+definiert, ob im Elternhaus der Person ein:e Pfarrer:in oder Pastor:in war, beispielsweise ein Elternteil, der ein kirchliches Amt inne hatte  
 1 = ja  
 2 = nein  
 
@@ -86,12 +86,12 @@ definiert den höchsten Bildungsabschluss der natürlichen Personen
 
 **job**  
 definiert, welcher Berufsgruppe die natürlichen Personen angehört haben  
-1 = Journalist/in  
+1 = Journalist:in  
 2 = Lehramt / Pädagogik  
-3 = Jurist/in  
+3 = Jurist:in  
 4 = Sonstige  
-5 = Student/in  
-6 = Künstler/in  
+5 = Student:in  
+6 = Künstler:in  
 
 **generation**  
 definiert, welcher der beiden ersten Generationen die natürlichen Personen angehört haben  
@@ -99,10 +99,10 @@ Die dritte Generation der RAF wurde außen vor gelassen, da hinsichtlich deren M
 1 = 1. Generation  
 2 = 2. Generation  
 3 = beide Generationen  
-4 = Unterstützer*in (kein offizielles / aktives Mitglied einer der beiden Generationen)  
+4 = Unterstützer:in (kein offizielles / aktives Mitglied einer der beiden Generationen)  
 
 **membership**  
-definiert bei natürlichen Personen, ob diese Mitglied der RAF waren (oder ob es sich nur um Unterstützer*innen handelt). So können beispielsweise reine Mitgliedernetzwerke erstellt werden. Bei Knoten des Typs 2 (Aktion) wurde dies nicht definiert.  
+definiert bei natürlichen Personen, ob diese Mitglied der RAF waren (oder ob es sich nur um Unterstützer:innen handelt). So können beispielsweise reine Mitgliedernetzwerke erstellt werden. Bei Knoten des Typs 2 (Aktion) wurde dies nicht definiert.  
 1 = ja  
 2 = nein  
 

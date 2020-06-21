@@ -1925,11 +1925,11 @@ https://www.welt.de/politik/article1168652/Peter-Juergen-Boock-der-Talkshow-Terr
 
 - Wagener, V (2017). Späte Bekenntnisse - Die RAF und die Reue. DW. Abgerufen am 17.06.2020 von https://www.dw.com/de/sp%C3%A4te-bekenntnisse-die-raf-und-die-reue/a-41612044
 
-# Datensatz
+## Datensatz
 
 Der gesamte Datensatz inklusive aller Visualisierungen, die teilweise nicht in diesem Forschungsbericht besprochen werden konnten, kann über github abgerufen werden: https://github.com/ca048/RAF-Forschungsdesign/blob/master/Gesamtskript.Rmd
 
-# Team, Arbeitsaufwand und Lessons Learned
+## Team, Arbeitsaufwand und Lessons Learned
 
 **Teammitglieder:**
 

@@ -252,7 +252,7 @@ legend("bottomleft",
 ```
 
 Insgesamt weisen Frauen allerdings eine niedrigere Beteiligungsrate als Männer auf: Gerade einmal 26 Frauen waren an den untersuchten Aktionen beteiligt, im Vergleich dazu waren es 40 Männer.
-Die Unterstützer*innen der RAF waren vorwiegend männlich  (21 Männer zu sechs weiblichen Unterstützerinnen), jedoch war der Geschlechteranteil innerhalb der RAF insgesamt ansatzweise gleich groß.
+Die Unterstützer:innen der RAF waren vorwiegend männlich  (21 Männer zu sechs weiblichen Unterstützerinnen), jedoch war der Geschlechteranteil innerhalb der RAF insgesamt ansatzweise gleich groß.
  
 ```{r Einlesen 1, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
@@ -302,7 +302,7 @@ legend("bottomleft",
  
 ## Entwicklung der RAF seit der Gründung
 
-Kriminelle oder geheime Netzwerke, zu denen man die RAF zählen kann, können gewisse typische Merkmale aufweisen, die sich auch in unseren Untersuchungen zu Teilen gezeigt haben. Tendenziell beschreibt Sparrow geheime Netzwerke in Abgrenzung von offenen Netzwerken als größer und führt an, dass diese auch bis zu tausend Knoten umfassen können (vgl. Sparrow, 1991). In unserem Netzwerk bewegen wir uns eher im  Hunderterbereich. Jedoch wissen wir nicht, wie viele Personen insgesamt involviert oder unterstützend tätig waren, da wir aufgrund des hohen Maßes an Geheimhaltung nicht alle Verbindungen recherchieren konnten. Des Weiteren bemerkt Sparrow (1991), dass es innerhalb von geheimen Netzwerken oft unklare Grenzen gibt. Es scheint also Individuen zu geben, die zu mehreren verschiedenen Netzwerken / Gruppen gehören können. Dieses Merkmal trifft auch auf das Netzwerk der RAF zu, da einige Mitglieder auch anderen Vereinigungen, wie beispielsweise dem Sozialistischen Patientenkollektiv, angehörten. Von dort aus wechselten sie zur RAF. Zudem war es bei einigen Akteuren schwierig herauszulesen, ob diese ein tatsächliches Mitglied oder nur über andere Gruppen mit den Aktionen der RAF verbunden waren. Generell sind Netzwerke geheimer Gruppen meist dynamisch und unterliegen einem stetigen Wandel, z.B. dem Wechsel von Beziehungen oder Mitgliedern im Laufe der Zeit (vgl. Sparrow, 1991).
+Kriminelle oder geheime Netzwerke, zu denen man die RAF zählen kann, können gewisse typische Merkmale aufweisen, die sich auch in unseren Untersuchungen zu Teilen gezeigt haben. Tendenziell beschreibt Sparrow geheime Netzwerke in Abgrenzung von offenen Netzwerken als größer und führt an, dass diese auch bis zu tausend Knoten umfassen können (vgl. Sparrow, 1991). In unserem Netzwerk bewegen wir uns eher im  Hunderterbereich. Jedoch wissen wir nicht, wie viele Personen insgesamt involviert oder unterstützend tätig waren, da wir aufgrund des hohen Maßes an Geheimhaltung nicht alle Verbindungen recherchieren konnten. Des Weiteren bemerkt Sparrow (1991), dass es innerhalb von geheimen Netzwerken oft unklare Grenzen gibt. Es scheint also Individuen zu geben, die zu mehreren verschiedenen Netzwerken / Gruppen gehören können. Dieses Merkmal trifft auch auf das Netzwerk der RAF zu, da einige Mitglieder auch anderen Vereinigungen, wie beispielsweise dem Sozialistischen Patientenkollektiv, angehörten. Von dort aus wechselten sie zur RAF. Zudem war es bei einigen Akteur:innen schwierig herauszulesen, ob diese ein tatsächliches Mitglied oder nur über andere Gruppen mit den Aktionen der RAF verbunden waren. Generell sind Netzwerke geheimer Gruppen meist dynamisch und unterliegen einem stetigen Wandel, zum Beispiel dem Wechsel von Beziehungen oder Mitgliedern im Laufe der Zeit (vgl. Sparrow, 1991).
 
 Auch bei der RAF lässt sich dies beobachten. Während das Netzwerk 1970 noch recht überschaubar ist (wenig Knoten, offensichtlich zentralere Personen), wird es über die Jahre hinweg komplexer. Es gibt viele neue Mitglieder; andere sterben (unter anderem auch bei Anschlägen) oder treten aus. In den folgenden Visualisierungen sind neben den Mitgliedern auch Unterstützer:innen abgebildet.
 
@@ -316,7 +316,7 @@ edgematrix <-as.matrix(el)
 ```
 ### Wandel im Laufe der Jahre 1970-1977
 
-Im Jahr **1970** besteht das Netzwerk aus 24 Knoten, darunter die Gründungsmitglieder: Bereits hier zeichnet sich ab, dass Meinhof, Baader, Raspe und Ensslin zentral im Netzwerk vertreten sind und viele Verbindungen aufweisen. Schubert, Proll, Mahler, Georgens und Homann sind weniger zentralisiert, weisen aber noch einige Verbindungen auf. Brigitte Asdonk und Monika Berberich haben deutlich weniger Verbindungen zu anderen Mitgliedern. Untereinander sind die Gründungsmitglieder mit einer maximalen Pfaddistanz von vier voneinander entfernt. Dabei stehen Baader, Meinhof und Ensslin klar in der Mitte und weisen die meisten Verbindungen auf (8). Georgens ist dort ebenfalls zu verorten und weist sieben Verbindungen zu den anderen Gründungsmitgliedern auf. Von zehn Gründungsmitgliedern sind drei männlich und sieben weiblich.
+Im Jahr **1970** besteht das Netzwerk aus 24 Knoten, darunter die Gründungsmitglieder: Bereits hier zeichnet sich ab, dass Meinhof, Baader, Raspe und Ensslin zentral im Netzwerk vertreten sind und viele Verbindungen aufweisen. Schubert, Proll, Mahler, Georgens und Homann sind weniger zentralisiert, weisen aber noch einige Verbindungen auf. Brigitte Asdonk und Monika Berberich haben deutlich weniger Verbindungen zu anderen Mitgliedern. Untereinander sind diese Gründungsmitglieder mit einer maximalen Pfaddistanz von vier voneinander entfernt. Dabei stehen Baader, Meinhof und Ensslin klar in der Mitte und weisen die meisten Verbindungen auf (8). Georgens ist dort ebenfalls zu verorten und weist sieben Verbindungen zu den anderen Gründungsmitgliedern auf. Von zehn Gründungsmitgliedern sind drei männlich und sieben weiblich.
 
 ```{r 1970,fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
 raf_year <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
@@ -363,7 +363,7 @@ legend("bottomleft",
        ncol=1, )
 ```
 
-Betrachtet man zusätzlich die Clusteraufteilung, lassen sich fünf Cluster ausmachen. Die Gründungsmitglieder “teilen” sich anscheinend in zwei Große auf. Im einen befinden sich Berberich, Asdonk, Mahler, Georgens und Schubert. In einem weiteren Baader, Meinhof, Ensslin, Proll, Homann und Meins und  Raspe mit zwei weiteren Mitgliedern (Stachiowak und Herzog). Horst Söhnlein scheint isoliert vom Rest zu sein.
+Betrachtet man zusätzlich die Clusteraufteilung, lassen sich vier Cluster ausmachen. Die Gründungsmitglieder “teilen” sich anscheinend in zwei von ihnen auf. Im einen befinden sich Berberich, Asdonk, Mahler, Georgens und Schubert. In einem weiteren Baader, Meinhof, Ensslin, Proll, Homann und Meins und Raspe mit zwei weiteren Mitgliedern (Stachiowak und Herzog).
 
 ```{r Cluster Walktrap 1970, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 
@@ -382,7 +382,7 @@ plot(cl, raf_1970,
      main="Cluster-Walktrap Analyse von 1970")
 ```
 
-Ein Jahr später, **1971**, sind bereits elf neue Akteur:innen hinzugekommen. Es gibt weiterhin fünf Hauptcluster und drei kleinere mit wenigen Beziehungen. Der Isolate aus 1970 taucht nicht mehr auf, ist also ausgetreten oder gestorben. 
+Ein Jahr später, **1971**, sind bereits elf neue Akteur:innen hinzugekommen, unter ihnen Brigitte Mohnhaupt, die später noch sehr relevant wird.
 
 ```{r 1971, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
 #Nun kommen die von 1971 dazu:
@@ -424,7 +424,7 @@ legend("bottomleft",
        box.col = "grey50", 
        ncol=1, )
 ```
-Die Cluster der Gründungsmitglieder erweitern sich, Mohnhaupt scheint ein eigenes Cluster zu bilden, das aber eng mit dem um die Gründungsmitglieder Baader, Meinhof und Ensslin in Kontakt steht. Die meisten neuen Mitglieder der Unterstützer:innen scheinen noch etwas isoliert zu sein, außer von Dyck, Juenschke, Mohnhaupt und Moeller. Luther und Barz finden durch Grundmann Kontakt zum Rest der Gruppe. Die Pfaddistanz erhöht sich auf 6 Schritte zwischen Augustin und Pohle.
+Die Cluster der Gründungsmitglieder erweitern sich. Mohnhaupt scheint ein eigenes Cluster zu bilden, das aber eng mit dem um die Gründungsmitglieder Baader, Meinhof und Ensslin in Kontakt steht. Einige der neuen Mitglieder oder Unterstützer:innen scheinen noch etwas isoliert zu sein.
 
 ```{r Cluster Walktrap 1971, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 
@@ -486,7 +486,7 @@ legend("bottomleft",
        ncol=1, )
 ```
 
-Betrachtet man die Cluster, so entsteht der Eindruck, dass sich die größeren Cluster immer mehr zu verdichten und zu vermischen scheinen. Es gibt allerdings drei Einzelcluster: Carmen Roll, Lutz Taufer und Katharina Hammerschmidt. Am weitesten entfernt sind Angela Luther und Ingrid Siepmann über 6 Knotenpunkte.
+Betrachtet man die Cluster, so entsteht der Eindruck, dass sich die größeren Cluster immer mehr zu verdichten und zu vermischen scheinen. Es gibt allerdings vier Einzelcluster: Carmen Roll, Lutz Taufer, Rolf Heissler und Katharina Hammerschmidt. Am weitesten entfernt sind Angela Luther und Ingrid Siepmann über 6 Knotenpunkte.
 
 
 ```{r Cluster Walktrap 1972, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
@@ -565,7 +565,7 @@ plot(c4, raf_1973,
       main="Cluster-Walktrap Analyse von 1973")
 ```
 
-**1974** stoßen fünf neue Akteur:innen zur Gruppe. Bezüglich der Cluster gibt es kaum Änderungen: Weiterhin sind es vor allem fünf größere Cluster und einige Einzelpersonen, unter ihnen weiterhin Hammerschmidt, Roll, Siepmann und Pohle. Waltraud Boock scheint vor allem durch ihren Ehemann Peter-Jürgen Boock Anschluss zu finden, obwohl dieser erst neu eingetreten war. Auch die anderen neuen Mitglieder scheinen sogleich Anschluss zu finden, so sind auch Speitel, Hausner, Helbig und Eckes gleich gut integriert. Die höchste Pfaddistanz beträgt weiterhin 6 Knoten zwischen Siepmann und Bäcker.
+**1974** stoßen fünf neue Akteur:innen zur Gruppe. Bezüglich der Cluster gibt es wieder vermehrt größere Cluster. Dazu kommen wenige Kleinst- und Einzelcluster, darin weiterhin Hammerschmidt, Roll, Siepmann und Pohle. Waltraud Boock scheint vor allem durch ihren Ehemann Peter-Jürgen Boock Anschluss zu finden, obwohl dieser erst neu eingetreten war. Auch die anderen neuen Mitglieder scheinen sogleich Anschluss zu finden, so sind auch Speitel, Hausner, Helbig und Eckes gleich gut integriert. Die höchste Pfaddistanz beträgt weiterhin 6 Knoten zwischen Siepmann und Bäcker.
 
 ```{r RAF 1974, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #Nun kommen die von 1974 dazu:

@@ -862,7 +862,7 @@ legend("bottomleft",
        ncol=1, )
 ```
 
-## Dichtewerte über die Jahre
+### Dichtewerte über die Jahre
 
 Die Dichte innerhalb eines Netzwerks gibt Aufschluss darüber, wie effektiv oder geheim ein Netzwerk war. Laut Koschade ist ein Netzwerk umso geheimer, je niedriger die Dichte ist (vgl. Koschade, 2006, S. 22). Dies liegt daran, dass die Gefahr einer Massen-Enttarnung der Mitglieder tendenziell höher sein kann, wenn viele enge Verbindungen bestehen (ebd.). Generell liegt die Herausforderung in der Balance zwischen dem Versuch, unauffällig zu bleiben einerseits und dem Bedarf eines gewissen Maßes an Kommunikation und Verbindung (z.B. zur Planung von Aktionen) andererseits(vgl. Baker & Faulkner, 1993).
 

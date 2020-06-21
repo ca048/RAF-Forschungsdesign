@@ -2452,7 +2452,7 @@ plot(raf_pers, layout=layout_with_kk,
 ## 1 Berechnung der Dichte des Netzwerks raf
 edge_density(raf_pers)
 
-#Die Dichte des Gesamtnetzwerks beträgt 0.1320082, das bedeutet, dass ca. 13,2% von allen möglichen Beziehungen zwischen den Knoten realisiert wurde. Dies bedeutet auch, dass zwischen ca. 87% der Knoten keine Beziehungen bestehen. Im Vergleich zur Dichte des Gesamtnetzwerks ist die Dichte der ersten und zweiten Generation damit erheblich größer. Dies kann wohl auch daran liegen, dass sich die Mitglieder der ersten und zweiten Generation teils untereinander nicht direkt kannten, da sie zeitlich versetzt aktiv waren.
+#Die Dichte des Gesamtnetzwerks beträgt 0.1314985, das bedeutet, dass ca. 13,1% von allen möglichen Beziehungen zwischen den Knoten realisiert wurde. Dies bedeutet auch, dass zwischen ca. 87% der Knoten keine Beziehungen bestehen. Im Vergleich zur Dichte des Gesamtnetzwerks ist die Dichte der ersten und zweiten Generation damit erheblich größer. Dies kann wohl auch daran liegen, dass sich die Mitglieder der ersten und zweiten Generation teils untereinander nicht direkt kannten, da sie zeitlich versetzt aktiv waren.
 
 ```
 
@@ -2476,7 +2476,7 @@ plot(raf_eins,
 
 # Berechnung Dichte Netzwerk erste Generation
 edge_density(raf_eins)
-#Die Dichte des Netzwerks der ersten Generation beträgt also 0.2828283, das bedeutet, dass ca. 28% von allen möglichen Beziehungen zwischen den Knoten realisiert wurde. Dies bedeutet auch, dass zwischen ca. 72% der Knoten keine Beziehungen bestehen. Im Vergleich zur Dichte des Gesamtnetzwerks ist die Dichte der ersten Generation damit erheblich größer.
+#Die Dichte des Netzwerks der ersten Generation beträgt also 0.3, das bedeutet, dass 30% von allen möglichen Beziehungen zwischen den Knoten realisiert wurden. Dies bedeutet auch, dass zwischen 70% der Knoten keine Beziehungen bestehen. Im Vergleich zur Dichte des Gesamtnetzwerks ist die Dichte der ersten Generation damit erheblich größer.
 ```
 
 ```{r Dichte des Netzwerks der zweiten Generation, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
@@ -2522,7 +2522,7 @@ plot(raf_zwei_final,
 #Berechnung der Dichte des Netzwerks der zweiten Generation
 edge_density(raf_zwei_final)
 
-#Die Dichte des Netzwerks der zweiten Generation beträgt also 0.3083779, das bedeutet, dass ca. 30,8% (gerundet knapp 31%) von allen möglichen Beziehungen zwischen den Knoten realisiert wurde. Dies bedeutet auch, dass zwischen ca. 69% der Knoten keine Beziehungen bestehen. Im Vergleich zur Dichte des Gesamtnetzwerks ist die Dichte der zweiten Generation damit erheblich größer. Im Vergleich zur Dichte des Netzwerks der ersten Generation ist sie nur etwa 2-3% größer.
+#Die Dichte des Netzwerks der zweiten Generation beträgt also 0.2987988, das bedeutet, dass ca. 29,88% (gerundet fast 30%) von allen möglichen Beziehungen zwischen den Knoten realisiert wurde. Dies bedeutet auch, dass zwischen ca. 71% der Knoten keine Beziehungen bestehen. Im Vergleich zur Dichte des Gesamtnetzwerks ist die Dichte der zweiten Generation damit erheblich größer. Im Vergleich zur Dichte des Netzwerks der ersten Generation ist sie fast identisch.
 
 ```
 
@@ -2623,7 +2623,7 @@ visIgraph(raf_pers, physics = TRUE, smooth = TRUE) # Physik hinzufügen, generie
 ##Berechnungen Jahre
 ```{r Berechnungen 1970}
 edge_density(raf_1970)#Dichte
-#Die Dichte beträgt 1970 circa 20%
+#Die Dichte beträgt 1970 circa 23,8%
 
 diameter(raf_1970, weights = NA) #Pfaddistanz
 #Die weiteste Distanz zwischen zwei Knoten beträgt 4 und besteht zwischen Astrid Proll und Manfred Grashof
@@ -2633,15 +2633,15 @@ farthest_vertices(raf_1970) #am weitesten entfernte Knoten
 
 ```{r Berechnungen 1971}
 edge_density(raf_1971)#Dichte
-#Die Dichte beträgt 1971 circa 15%, hat also zum Vorjahr um 5 Prozentpunkte abgenommen.
+#Die Dichte beträgt 1971 circa 15,7%, hat also zum Vorjahr um etwa 8 Prozentpunkte abgenommen.
 diameter(raf_1971, weights = NA) #Pfaddistanz
-#Auch die weiteste Pfaddistanz erhöht sich auch 6 und besteht zwischen Ronald Augustin und Rolf Pohle
+#Auch die weiteste Pfaddistanz erhöht sich auf 6 und besteht zwischen Ronald Augustin und Rolf Pohle
 farthest_vertices(raf_1971) #am weitesten entfernte Knoten
 ```
 
 ```{r Berechnungen 1972}
 edge_density(raf_1972)#Dichte
-#1972 beträgt die Distanz noch einmal zwei Prozentpunkte weniger und liegt nun bei 13%, wo sie sich die folgenden Jahre einpendeln soll
+#1972 beträgt die Distanz noch einmal etwa zwei Prozentpunkte weniger und liegt nun bei 13,97%, wo sie sich die folgenden Jahre einpendeln soll
 
 diameter(raf_1972, weights = NA) #Pfaddistanz
 #Die weiteste Distanz bleibt bei 6 Knoten und besteht zwischen Angela Luther und Ingrid Siepmann
@@ -2650,34 +2650,34 @@ farthest_vertices(raf_1972) #am weitesten entfernte Knoten
 
 ```{r Berechnungen 1973}
 edge_density(raf_1973)#Dichte
-#Die Dichte liegt weiterhin bei circa 13%
+#Die Dichte liegt weiterhin bei circa 13,6%; allein im Jahr 1975 fällt der Wert einmal auf unter 13%, aber nur knapp darunter auf 12,86% und erhöht sich im Folgejahr wieder
 diameter(raf_1973, weights = NA) #Pfaddistanz
-#Auch die Pfaddistanz bleibt bei 6 zwischen Ingrid Siepmann und Hans-Juergen Becker
-#Dieser Wert und die Personen ändern sich in den Folgejahren nicht mehr. Lediglich die Pfaddistanz fällt im Jahr 1975 einmal auf unter 13%, aber nur auf 12% und erhöht sich im Folgejahr wieder
+#Auch die Pfaddistanz bleibt bei 6 zwischen Ingrid Siepmann und Hans-Juergen Baecker
+#Dieser Wert und die Personen ändern sich in den Folgejahren nicht mehr. Lediglich 1975 liegt die Pfaddistanz zwischen Hans-Joachim Klein und Monika Haas bei 4.
 farthest_vertices(raf_1973) #am weitesten entfernte Knoten
 ```
 
 ```{r Berechnungen 1974}
 edge_density(raf_1974)#Dichte
-#Wieder bleibt die Dichte bei ungefähr 13%
+#Wieder bleibt die Dichte bei ungefähr 13,3%
 diameter(raf_1974, weights = NA) #Pfaddistanz
 farthest_vertices(raf_1974) #am weitesten entfernte Knoten
 ```
 
 ```{r Berechnungen 1975}
-edge_density(raf_1975)#Dichte
-diameter(raf_1975, weights = NA) #Pfaddistanz
+edge_density(raf_1975)#Dichte liegt knapp unter 13%, bei 12,86%
+diameter(raf_1975, weights = NA) #Pfaddistanz: 1975 liegt die Pfaddistanz zwischen Hans-Joachim Klein und Monika Haas bei 4.
 farthest_vertices(raf_1975) #am weitesten entfernte Knoten
 ```
 
 ```{r Berechnungen 1976}
-edge_density(raf_1976)#Dichte
+edge_density(raf_1976)#Dichte; liegt bei 13,2%
 diameter(raf_1976, weights = NA) #Pfaddistanz
 farthest_vertices(raf_1976) #am weitesten entfernte Knoten
 ```
 
 ```{r Berechnungen 1977}
-edge_density(raf_1977)#Dichte
+edge_density(raf_1977)#Dichte; liegt bei 13,1%
 diameter(raf_1977, weights = NA) #Pfaddistanz
 farthest_vertices(raf_1977) #am weitesten entfernte Knoten
 ```
@@ -2686,13 +2686,14 @@ farthest_vertices(raf_1977) #am weitesten entfernte Knoten
 
 ```{r Berechnung erste Generation Frauen}
 frauen_eins <- delete.vertices(raf_eins_girls, V(raf_eins_girls)[type == 2])#löscht alle Anschläge
-edge_density(frauen_eins)#Dichte bei circa 14%
+edge_density(frauen_eins)#Dichte bei circa 14,3%
 diameter(frauen_eins)#Pfaddistanz bei 5
+farthest_vertices(raf_1977) #am weitesten entfernte weibliche Knoten: Brigitte Asdonk & Verena Becker 
 ```
 ```{r Berechnung erste Generation Männer}
 maenner_eins <- delete.vertices(raf_eins_boys, V(raf_eins_boys)[type == 2])#löscht alle Anschläge
-edge_density(maenner_eins)#Dichte bei circa 12% -> überraschend, sieht dichter aus
-diameter(maenner_eins)#Pfaddistanz bei 6
+edge_density(maenner_eins)#Dichte bei circa 12,3% -> überraschend, sieht dichter aus
+diameter(maenner_eins)#Pfaddistanz bei 5
 ```
 ```{r Berechnung zweite Generation Frauen}
 frauen_zwei <- delete.vertices(raf_zwei_girls, V(raf_zwei_girls)[type == 2])#löscht alle Anschläge
@@ -2702,6 +2703,6 @@ diameter(frauen_zwei)#Pfaddistanz bei 5
 ```
 ```{r Berechnung zweite Generation Männer}
 maenner_zwei <- delete.vertices(raf_zwei_boys, V(raf_zwei_boys)[type == 2])#löscht alle Anschläge
-edge_density(maenner_zwei)#Dichte bei circa 19%
+edge_density(maenner_zwei)#Dichte bei circa 18,8%
 diameter(maenner_zwei)#Pfaddistanz bei 4
 ```

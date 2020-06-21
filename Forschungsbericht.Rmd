@@ -633,8 +633,6 @@ raf_1975 <- delete_vertices(raf_year, V(raf_year) [entry >="1976"])
 raf_1975 <- delete_vertices(raf_1975, V(raf_1975) [yearofresignation <= "1974"])#löscht die Ausgetretenen des Vorjahres
 raf_1975 <- delete_vertices(raf_1975, V(raf_1975) [symbolicdeath <="1974"])#löscht die Gestorbenen des Vorjahres
 
-raf_1975 <- subgraph.edges(raf_1975, E(raf_1975)[year==1975]) #selektiert die Beziehungen von 1970
-
 raf_1975 <- simplify(raf_1975, remove.multiple=TRUE,) #löscht doppelte Beziehungen
 
 V(raf_1975) [V(raf_1975)$entry == 1975]$color <- "firebrick" #Mitglieder, die im angegebenen Jahr hinzukommen, werden rot eingefärbt
@@ -864,9 +862,9 @@ legend("bottomleft",
 
 ### Dichtewerte über die Jahre
 
-Die Dichte innerhalb eines Netzwerks gibt Aufschluss darüber, wie effektiv oder geheim ein Netzwerk war. Laut Koschade ist ein Netzwerk umso geheimer, je niedriger die Dichte ist (vgl. Koschade, 2006, S. 22). Dies liegt daran, dass die Gefahr einer Massen-Enttarnung der Mitglieder tendenziell höher sein kann, wenn viele enge Verbindungen bestehen (ebd.). Generell liegt die Herausforderung in der Balance zwischen dem Versuch, unauffällig zu bleiben einerseits und dem Bedarf eines gewissen Maßes an Kommunikation und Verbindung (z.B. zur Planung von Aktionen) andererseits(vgl. Baker & Faulkner, 1993).
+Die Dichte innerhalb eines Netzwerkes gibt Aufschluss darüber, wie effektiv oder geheim ein Netzwerk war. Laut Koschade ist ein Netzwerk umso geheimer, je niedriger die Dichte ist (vgl. Koschade, 2006, S. 22). Dies liegt daran, dass die Gefahr einer Massen-Enttarnung der Mitglieder tendenziell höher sein kann, wenn viele enge Verbindungen bestehen (ebd.). Generell liegt die Herausforderung in der Balance zwischen dem Versuch, unauffällig zu bleiben einerseits und dem Bedarf eines gewissen Maßes an Kommunikation und Verbindung (z.B. zur Planung von Aktionen) andererseits (vgl. Baker & Faulkner, 1993).
 
-Das Gesamtnetzwerk der RAF weist einen relativ geringen Dichtewert von 13,1% auf. Dies liegt jedoch auch daran, dass hier viele Akteure betrachtet werden, die sich aufgrund des zeitlichen Abstands der ersten und der zweiten Generation niemals kannten, weshalb die Dichtewerte der einzelnen Generationen relevanter sind: der Wert der ersten Generation beträgt hier ca. 30%, der der zweiten Generation etwa 29,8%.
+Das Gesamtnetzwerk der RAF weist einen relativ geringen Dichtewert von 13,1% auf. Dies liegt jedoch auch daran, dass hier viele Akteur:innen betrachtet werden, die sich aufgrund des zeitlichen Abstands der ersten und der zweiten Generation niemals kannten, weshalb die Dichtewerte der einzelnen Generationen relevanter sind: Der Wert der ersten Generation beträgt hier ca. 30%, der der zweiten Generation etwa 29,8%.
 Dabei begann (1970) die RAF mit einer Dichte von ca. 23,8%, was jedoch an der relativ geringen Menge an Akteuren liegt (22) - im gesamten Beobachtungszeitraum ist der Dichtewert in diesem Jahr jedoch am höchsten. Dies kann daran liegen, dass die Gründungsmitglieder sich untereinander gut kannten und daher noch enger vernetzt ware. Die weiteste Distanz innerhalb des Netzwerkes bestand aus gerade einmal 4 Knoten (zwischen Astrid Proll und Manfred Grashof). 1971 beträgt der Dichtewert nur noch 15,7%, jedoch kamen auch 15 neue Akteure hinzu, sodass der enge Kreis um die Gründungsmitglieder von 1970 etwas vergrößert und die Beziehungen weniger dicht wurden. Ab 1972 liegt der Dichtewert relativ konstant bei circa 13% mit einer maximalen Pfaddistanz von 6, dieser Wert ändert sich kaum im beobachteten Zeitraum. Nur im Jahr 1975 sinkt die Dichte auf unter 13%, allerdings nur minimal darunter auf 12,8%. In diesem Jahr ist die Pfaddistanz jedoch auch geringer und beträgt nur 4 Schritte zwischen Hans-Joachim Klein und Monika Haas. Bezogen auf den direkten Kontakt der Mitglieder lässt sich also kein Unterschied zwischen der ersten und der zweiten Generation erkennen. Betrachtet man die jeweilige Gesamtdichte der beiden Generationen, ist ebenfalls kein erheblicher Unterschied zu erkennen, in beiden Generationen beträgt diese circa 30%. 
 
 ## Beziehungen

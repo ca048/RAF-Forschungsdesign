@@ -1927,7 +1927,7 @@ https://www.welt.de/politik/article1168652/Peter-Juergen-Boock-der-Talkshow-Terr
 
 # Datensatz
 
-Der gesamte Datensatz inklusive aller Visualisierungen, die teilweise nicht in diesem Forschungsbericht besprochen werden konnten, kann über github abgerufen werden: 
+Der gesamte Datensatz inklusive aller Visualisierungen, die teilweise nicht in diesem Forschungsbericht besprochen werden konnten, kann über github abgerufen werden: https://github.com/ca048/RAF-Forschungsdesign/blob/master/Gesamtskript.Rmd
 
 # Team, Arbeitsaufwand und Lessons Learned
 

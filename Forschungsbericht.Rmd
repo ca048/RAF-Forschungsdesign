@@ -866,8 +866,8 @@ legend("bottomleft",
 
 Die Dichte innerhalb eines Netzwerks gibt Aufschluss darüber, wie effektiv oder geheim ein Netzwerk war. Laut Koschade ist ein Netzwerk umso geheimer, je niedriger die Dichte ist (vgl. Koschade, 2006, S. 22). Dies liegt daran, dass die Gefahr einer Massen-Enttarnung der Mitglieder tendenziell höher sein kann, wenn viele enge Verbindungen bestehen (ebd.). Generell liegt die Herausforderung in der Balance zwischen dem Versuch, unauffällig zu bleiben einerseits und dem Bedarf eines gewissen Maßes an Kommunikation und Verbindung (z.B. zur Planung von Aktionen) andererseits(vgl. Baker & Faulkner, 1993).
 
-Das Gesamtnetzwerk der RAF weist einen relativ geringen Dichtewert von 13% auf. Dies liegt jedoch auch daran, dass hier viele Akteure betrachtet werden, die sich aufgrund des zeitlichen Abstands der ersten und der zweiten Generation niemals kannten, weshalb die Dichtewerte der einzelnen Generationen relevanter sind: der Wert der ersten Generation beträgt hier ca. 28%, der der zweiten Generation etwa 31%.
-Dabei begann (1970) die RAF mit einer Dichte von ca. 20%, was jedoch an der relativ geringen Menge an Akteuren liegt (24). Die weiteste Distanz innerhalb des Netzwerkes bestand aus gerade einmal 4 Knoten (zwischen Astrid Proll und Manfred Grashof). 1971 beträgt der Dichtewert nur noch 15 %, jedoch kamen auch 11 neue Akteure hinzu. Ab 1972 liegt der Dichtewert relativ konstant bei 13% mit einer maximalen Pfaddistanz von 6, dieser Wert ändert sich kaum im beobachteten Zeitraum. Bezogen auf den direkten Kontakt der Mitglieder lässt sich also kein Unterschied zwischen der ersten und der zweiten Generation erkennen. Betrachtet man die Gesamtdichte der beiden Generationen, ist die zweite jedoch enger vernetzt als die erste.  
+Das Gesamtnetzwerk der RAF weist einen relativ geringen Dichtewert von 13,1% auf. Dies liegt jedoch auch daran, dass hier viele Akteure betrachtet werden, die sich aufgrund des zeitlichen Abstands der ersten und der zweiten Generation niemals kannten, weshalb die Dichtewerte der einzelnen Generationen relevanter sind: der Wert der ersten Generation beträgt hier ca. 30%, der der zweiten Generation etwa 29,8%.
+Dabei begann (1970) die RAF mit einer Dichte von ca. 23,8%, was jedoch an der relativ geringen Menge an Akteuren liegt (22) - im gesamten Beobachtungszeitraum ist der Dichtewert in diesem Jahr jedoch am höchsten. Dies kann daran liegen, dass die Gründungsmitglieder sich untereinander gut kannten und daher noch enger vernetzt ware. Die weiteste Distanz innerhalb des Netzwerkes bestand aus gerade einmal 4 Knoten (zwischen Astrid Proll und Manfred Grashof). 1971 beträgt der Dichtewert nur noch 15,7%, jedoch kamen auch 15 neue Akteure hinzu, sodass der enge Kreis um die Gründungsmitglieder von 1970 etwas vergrößert und die Beziehungen weniger dicht wurden. Ab 1972 liegt der Dichtewert relativ konstant bei circa 13% mit einer maximalen Pfaddistanz von 6, dieser Wert ändert sich kaum im beobachteten Zeitraum. Nur im Jahr 1975 sinkt die Dichte auf unter 13%, allerdings nur minimal darunter auf 12,8%. In diesem Jahr ist die Pfaddistanz jedoch auch geringer und beträgt nur 4 Schritte zwischen Hans-Joachim Klein und Monika Haas. Bezogen auf den direkten Kontakt der Mitglieder lässt sich also kein Unterschied zwischen der ersten und der zweiten Generation erkennen. Betrachtet man die jeweilige Gesamtdichte der beiden Generationen, ist ebenfalls kein erheblicher Unterschied zu erkennen, in beiden Generationen beträgt diese circa 30%. 
 
 ## Beziehungen
 
@@ -1217,7 +1217,7 @@ legend("bottomleft",
 Es kann davon ausgegangen werden, dass alle vorher betrachteten Bindungen für ein Zugehörigkeitsgefühl zu einer “exklusiven Gemeinschaft” sorgten. Folglich besteht durch Vertrauen und Zuverlässigkeit weniger Bedarf für Hierarchien und weniger Gefahr, dass das Netzwerk zerbricht, wenn der “Kopf” wegfällt (vgl. Rodriguez, 2004). Selbst die Mitglieder, die vor ihrer RAF-Zeit noch keine Verbindung hatten, waren spätestens ab ihrem Eintritt ideologisch miteinander verbunden. Die RAF ist daher auch nicht zugrunde gegangen, nachdem die Hauptakteure der ersten Generation inhaftiert waren und sich in Stammheim umgebracht haben.
 
 ## Ego-Netzwerke der Anschläge
-Nun sollen einzelne Ego-Netzwerke verschiedener Anschläge betrachtet werden. Um den Umfang zu reduzieren, wurden hierbei nur Aktionen ausgewählt, die relevant für diese Forschungsarbeit sind. 
+Nun sollen einzelne Ego-Netzwerke verschiedener Aktionen betrachtet werden. Um den Umfang zu reduzieren, wurden hierbei nur Aktionen ausgewählt, die relevant für diese Forschungsarbeit sind. 
 
 ### Baader-Befreiung
 
@@ -1240,7 +1240,7 @@ ego_bef1 <- simplify(ego_bef1, remove.multiple = TRUE)# entfernt alle doppelten 
 # Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
 V(ego_bef1)[V(ego_bef1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
 V(ego_bef1)[V(ego_bef1)$type == 2]$shape <- "square" # Anschläge werden als Quadrat dargestellt
-V(ego_bef1)[V(ego_bef1)$name == "Befreiung Andreas Baader 14.05.1970"]$color <- "cornflowerblue" # der betrachtete Anschlag wird rot hervorgehoben
+V(ego_bef1)[V(ego_bef1)$name == "Befreiung Andreas Baader 14.05.1970"]$color <- "cornflowerblue" # die betrachtete Aktion wird blau hervorgehoben
 V(ego_bef1)[V(ego_bef1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
 V(ego_bef1)[V(ego_bef1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
 
@@ -1248,7 +1248,7 @@ V(ego_bef1)[V(ego_bef1)$sex == 2]$color <- "darkorange3" # Frauen werden orange 
 plot(ego_bef1, 
      layout=layout_with_kk,
      main="Befreiung von Andreas Baader (14.05.1970)",
-     sub="nur direkte Beziehungen 1. Grades",
+     sub="nur direkte Beteiligung an der Aktion (Beziehungen 1. Grades)",
      edge.color="grey40", # definiert die Kantenfarbe
      vertex.label.size=2,
      vertex.label.color="black",
@@ -1296,7 +1296,7 @@ V(ego_ent1)[V(ego_ent1)$type == 1]$shape <- "circle" # Personen werden als Kreis
 V(ego_ent1)[V(ego_ent1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
 V(ego_ent1)[V(ego_ent1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
 V(ego_ent1)[V(ego_ent1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
-V(ego_ent1)[V(ego_ent1)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977"]$color <- "cornflowerblue" # die betrachtete Aktion wird rot hervorgehoben
+V(ego_ent1)[V(ego_ent1)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977"]$color <- "cornflowerblue" # die betrachtete Aktion wird blau hervorgehoben
 
 # Visualisierung des Netzwerkes:
 plot(ego_ent1, 
@@ -1305,7 +1305,7 @@ plot(ego_ent1,
      asp=0, # definiert, dass der gesamte Platz ausgenutzt werden soll
      main="Ego-Netzwerk Entführung Hanns Martin-Schleyer 
      05.09.1977",
-     sub="nur direkte Beziehungen des ersten Grads; grün = Männer; orange = Frauen",
+     sub="nur direkte Beteiligung an der Aktion (Beziehungen 1. Grades)",
      vertex.label.size=3,
      vertex.size=10, 
      vertex.label.family="sans",
@@ -1335,7 +1335,7 @@ V(ego_ent1)[V(ego_ent1)$generation == 3]$color <- "white" # Mitglieder der erste
 V(ego_ent1)[V(ego_ent1)$generation == 99]$color <- "white" # Mitglieder, zu denen es keine Angabe bezüglich ihrer Generationszugehörigkeit gibt, werden weiß dargestellt
 V(ego_ent1)[V(ego_ent1)$generation == 3]$vertex.frame.color <- "black" # setzt Rahmenfarbe auf schwarz
 V(ego_ent1)[V(ego_ent1)$generation == 99]$vertex.frame.color <- "black" # setzt Rahmenfarbe auf schwarz
-V(ego_ent1)[V(ego_ent1)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977"]$color <- "cornflowerblue" # Anschlag wird rot hervorgehoben
+V(ego_ent1)[V(ego_ent1)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977"]$color <- "cornflowerblue" # Anschlag wird blau hervorgehoben
 
 plot(ego_ent1,
      layout=layout_with_kk,
@@ -1343,7 +1343,7 @@ plot(ego_ent1,
      rescale=TRUE,
      vertex.size=10,
      main="Ego-Netzwerk der Entführung Hanns Martin-Schleyer 05.09.1977",
-     sub=" Beziehungen ersten Grades",
+     sub="nur direkte Beteiligung an der Aktion (Beziehungen 1. Grades)",
      vertex.label.color="black",
      vertex.label.family="sans",
      edge.color="grey40")
@@ -1370,7 +1370,7 @@ Auch an der Entführung der Lufthansa-Maschine „Landshut“ war Peter-Jürgen 
 
 ### Mord an Jürgen Ponto
 
-Ähnlich sieht es bei der Ermordung von Jürgen Ponto von 1977 aus. Hier steht Brigitte Mohnhaupt (ebenfalls in beiden Generationen aktiv) im Mittelpunkt. Sie stand mit verschiedenen, an der Aktion beteiligten, Mitgliedern in Kontakt. Es lässt sich also ableiten, dass Mitglieder der ersten Generation Aktionen der zweiten Generation planten beziehungsweise eine zentrale Rolle bei der Durchführung dieser spielten.
+Ähnlich sieht es bei der Ermordung von Jürgen Ponto von 1977 aus. Hier steht Brigitte Mohnhaupt (ebenfalls in beiden Generationen aktiv) im Mittelpunkt. Sie stand mit verschiedenen, an der Aktion beteiligten, Mitgliedern in Kontakt. Es lässt sich also ableiten, dass Mitglieder der ersten Generation Aktionen der zweiten Generation planten beziehungsweise eine zentrale Rolle bei deren Durchführung spielten.
 
 ```{r Egonetzwerk Ermordung Jürgen Ponto 30.07.1977, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #raf # igraph-Objekt wird geladen
@@ -1392,7 +1392,7 @@ V(ego_ejp1)[V(ego_ejp1)$type == 1]$shape <- "circle" # Personen werden als Kreis
 V(ego_ejp1)[V(ego_ejp1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
 V(ego_ejp1)[V(ego_ejp1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
 V(ego_ejp1)[V(ego_ejp1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
-V(ego_ejp1)[V(ego_ejp1)$name == "Ermordung Juergen Ponto 30.07.1977"]$color <- "cornflowerblue" # Aktion wird rot hervorgehoben
+V(ego_ejp1)[V(ego_ejp1)$name == "Ermordung Juergen Ponto 30.07.1977"]$color <- "cornflowerblue" # Aktion wird blau hervorgehoben
 
 # Visualisierung des Egonetzwerks:
 plot(ego_ejp1, 
@@ -1400,7 +1400,7 @@ plot(ego_ejp1,
      rescale=T,
      asp=0,
      main="Ego-Netzwerk Ermordung Jürgen Ponto (30.07.1977)",
-     sub="nur direkte Beziehungen ersten Grades",
+     sub="nur direkte Beteiligung an der Aktion (Beziehungen 1. Grades)",
      edge.color="grey40",
      vertex.label.color="black",
      vertex.label.size=2,
@@ -1426,7 +1426,7 @@ V(ego_ejp1)[V(ego_ejp1)$generation == 1]$color <- "grey80" # erste Generation wi
 V(ego_ejp1)[V(ego_ejp1)$generation == 2]$color <- "grey30" # zweite Generation wird dunkelgrau gefärbt
 V(ego_ejp1)[V(ego_ejp1)$generation == 3]$color <- "white" # Mitglieder beider Generationen werden weiß gefärbt und erhalten einen schwarzen Rahmen:
 V(ego_ejp1)[V(ego_ejp1)$generation == 3]$vertex.frame.color <- "black"
-V(ego_ejp1)[V(ego_ejp1)$name == "Ermordung Juergen Ponto 30.07.1977"]$color <- "cornflowerblue" # Anschlag wird rot hervorgehoben
+V(ego_ejp1)[V(ego_ejp1)$name == "Ermordung Juergen Ponto 30.07.1977"]$color <- "cornflowerblue" # Aktion wird blau hervorgehoben
 
 plot(ego_ejp1,
      layout=layout_with_kk,
@@ -1437,7 +1437,7 @@ plot(ego_ejp1,
      vertex.label.family="sans",
      edge.color="grey40",
      main="Ego-Netzwerk der Ermordung Jürgen Pontos (30.07.1977)",
-     sub="Beziehungen ersten Grades")
+     sub="nur direkte Beteiligung an der Aktion (Beziehungen 1. Grades)")
 
 legend(-1.2, -1, 
        c("1. Generation","2. Generation", "Beide Generationen", "Anschlag"),
@@ -1460,7 +1460,7 @@ Durch die Vernetzung der beiden Akteur:innen Mohnaupt und Boock mit beiden Gener
 
 Die Betweenness ist ein Zentralitätsmaß, das Aufschluss über die Zentralität der Knoten des Netzwerks liefert. Konkret misst die Betweenness eine Art “Broker-Status”, Knoten mit hohen Betweenness-Werten haben einen privilegierten Informationszugang und können entscheiden, ob andere Knoten diese Informationen erhalten oder nicht (Fuhse, 2018, S. 61). Broker nehmen daher eine Art Vermittlerposition ein und können Kontakt zwischen verschiedenen Gruppen und Akteuren herstellen. Bezogen auf die RAF ist die Betweenness sehr relevant und interessant, da sie Antworten auf zwei Hypothesen dieser Forschungsarbeit liefern könnte. Zum einen wurde die Annahme aufgestellt, dass die Mitglieder der ersten Generation die Entstehung der zweiten bedingten - hier wäre es denkbar, dass es Broker:innen gab, die die Transition zwischen den Generationen förderten. Diese Annahme deckt sich mit der 7. Hypothese, die besagt, dass es im Netzwerk der RAF unbekanntere Akteur:innen oder Broker:innen gab, die im Schatten der berühmten Führungspersonen wie Baader, Meinhof oder Ensslin standen und somit weniger von der breiten Öffentlichkeit registriert wurden.
 
-Je geringer das Zentralitätsmaß eines/einer Akteur:in ist, desto weiter am Rand befindet sich diese:r im Netzwerk. Das heißt, dass solche “Randfiguren” eher bei Bedarf zu Hilfe gerufen werden, aber keine zentralen oder Schlüsselfiguren darstellen. Dennoch sind diese wichtig für das Netzwerk, da sie ein Bestandteil sind und so optisch zu dessen Form, sowie funktional zu den Abläufen beitragen (vgl. Koschade, S. 24).
+Je geringer das Zentralitätsmaß eines/einer Akteur:in ist, desto weiter am Rand befindet sich diese:r im Netzwerk. Das heißt, dass solche "Randfiguren” eher bei Bedarf zu Hilfe gerufen werden, aber keine zentralen oder Schlüsselfiguren darstellen. Dennoch sind diese wichtig für das Netzwerk, da sie ein Bestandteil sind und so optisch zu dessen Form und Struktur, sowie funktional zu den Abläufen beitragen (vgl. Koschade, S. 24).
 
 ```{r Betweeness-Netzwerk, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 raf_pers <- delete_vertices(raf, V(raf)[type > "1"]) # löscht alle Nodes, bei denen es sich um 
@@ -1493,7 +1493,7 @@ plot(raf_pers,
        vertex.label.cex=1,
        vertex.label.color="black",
      main="Verteilung Betweenness im Netzwerk",
-     sub="Je größer der Knoten, desto mehr Verbindungen weist er auf")
+     sub="Je größer der Knoten, desto mehr Verbindungen weist dieser auf")
 
 legend("bottomleft", 
        c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
@@ -1565,7 +1565,7 @@ plot(ego_ab1,
      asp=0,
      rescale=TRUE, 
      main="Ego-Netzwerk von Andreas Baader",
-     sub="Beziehungen ersten Grades",
+     sub="nur direkte Beziehungen ersten Grades",
      vertex.size=5,
      vertex.label.color="black",
      vertex.label.family="sans",
@@ -1660,7 +1660,7 @@ plot(ego_pb1_p,
      rescale=TRUE, 
      asp=0, #legt fest, dass der ganze Raum ausgenutzt werden soll
      main="Ego-Netzwerk von Boock",
-     sub="Beziehungen ersten Grades",
+     sub="nur direkte Beziehungen ersten Grades",
      vertex.size=10,
      vertex.label.family="sans",
      vertex.label.color="black",
@@ -1688,7 +1688,7 @@ Wenn man jedoch davon ausgeht, dass Boock eine zentrale Rolle innerhalb der zwei
 
 ### Brigitte Mohnhaupt
 
-Ähnliches gilt für das Ego-Netzwerk von Brigitte Mohnhaupt. Auch sie nimmt eine Brokerin-Position ein und lassen sich als Mentorin der zweiten Generation sehen.
+Ähnliches gilt für das Ego-Netzwerk von Brigitte Mohnhaupt. Auch sie nimmt eine Brokerin-Position ein und lässt sich als Mentorin der zweiten Generation sehen.
 
 ```{r Ego-Netzwerk Brigitte Mohnhaupt, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #raf
@@ -1719,7 +1719,7 @@ plot(ego_bm1,
      rescale=T,
      asp=0, # definiert, dass der gesamte Platz für die Darstellung genutzt wird
      main="Ego-Netzwerk Brigitte Mohnhaupt",
-     sub="Nur direkte Beziehungen des ersten Grades",
+     sub="nur direkte Beziehungen ersten Grades",
      edge.color="grey40",
      vertex.size=5,
      vertex.label.family="sans",
@@ -1761,7 +1761,7 @@ plot(ego_bm1_p,
      rescale=TRUE,
      asp=0, # gesamter Raum wird für die Darstellung genutzt,
      main="Ego-Netzwerk von Mohnhaupt",
-     sub="Nur Beziehungen 1. Grades",
+     sub="nur direkte Beziehungen ersten Grades",
      vertex.size=10, 
      vertex.label.family="sans",
      vertex.label.color= "black",
@@ -1818,7 +1818,7 @@ Außerdem nutzten die Inhaftierten ihr Unterstützer:innen-Netzwerk – beziehun
 
 (5) *Die erste Generation war - bedingt durch den Entstehungsprozess und die anfänglich niedrige Mitgliederzahl - besser vernetzt als die zweite Generation.*
 
-    Insgesamt gehörten der ersten Generation mehr Mitglieder an. Die Dichte des Netzwerks war von 1970 (20%) bis 1971 (15%) am höchsten, allerdings flachte dieser Wert ab 1972 ab und blieb in den darauffolgenden Jahren relativ konstant bei 13%. Beim direkten Vergleich über die Jahre hinweg fällt auf, dass die zweite Generation im Gesamtnetzwerk einen minimal höheren Dichtewert aufweist als die erste (31% zu 28%). Allerdings ist dieser Unterschied von geringer Signifikanz und lässt uns daher nicht auf eine bessere Vernetzung der ersten Generation schließen.
+    Insgesamt gehörten der ersten Generation mehr Mitglieder an. Die Dichte des Netzwerks war von 1970 (23,8%) bis 1971 (15,7%) am höchsten, allerdings flachte dieser Wert ab 1972 ab und blieb in den darauffolgenden Jahren relativ konstant bei 13%. Dies zeigt, dass vor allem im Gründungsjahr die dichteste Vernetzung bestand, da sich die Gründungsmitglieder vermutlich noch sehr direkt kannten und eine enge Bindung bestand. Während im weiteren zeitlichen Verlauf zunehmend Mitglieder dazukamen, wurde dieser kleine Kreis immer größer und die Vernetzung dementsprechend weniger dicht und eng. Beim direkten Vergleich über die Jahre hinweg fällt auf, dass die erste und die zweite Generation einen fast identischen Dichtewert aufwiesen (30% zu 29,8%). Der Unterschied beläuft sich auf minimale Prozentwerte und ist nicht signifikant, weshalb nicht auf eine bessere durchschnittliche Vernetzung der ersten Generation geschlossen werden kann.
 
 (6) *In der RAF nahmen die Frauen eine besondere, von den Männern abweichende, Rolle ein.*
 
@@ -1867,7 +1867,7 @@ Als letzte Limitation müssen Grenzfälle benannt werden: Immer wieder gab es ni
 
 Ein erster, wohl offensichtlicher Ansatz für künftige Forschungsarbeiten zur RAF ist der Vergleich der hier gesammelten Ergebnisse mit dem Netzwerk der dritten Generation, die in diesem Projekt außen vor gelassen wurde. Da über diese noch weniger bekannt ist als über die anderen beiden und die RAF sich offiziell am 20. April 1998 aufgelöst hat, ist die Datenerhebung noch schwieriger. Nichtsdestotrotz wäre es interessant, herauszufinden, inwieweit Akteur:innen der zweiten Generation an der Entstehung der dritten beteiligt waren und wie gut vernetzt diese war. Es ist anzunehmen, dass ihre Strukturen bis heute erhalten sind, da seit einigen Jahren immer wieder Hinweise auf drei, noch im Untergrund lebende, Mitglieder der dritten Generation auftauchen, diese aber bisher nicht aufzufinden waren. Daraus ist zu schließen, dass die RAF wahrscheinlich bis heute noch Unterstützer:innen hat. (vgl. Schlosser, 2019)
 
-„Es gibt viele Parallelen zwischen dem Terror der RAF und dem des IS”, sagte Stefan Aust, ehemaliger SPIEGEL-Chefredakteur und Autor einer der hier verwendeten Lektüren, 2017 bei einem Vortrag in Göttingen. Es ist daher sicherlich spannend, einen Vergleich mit anderen Terrornetzwerken, wie neben dem Islamischen Staat zum Beispiel auch der NSU, zu ziehen. Hier könnte man einen ähnlichen Aufbau oder die Dichte der Vernetzung untersuchen.
+„Es gibt viele Parallelen zwischen dem Terror der RAF und dem des IS”, sagte Stefan Aust, ehemaliger SPIEGEL-Chefredakteur und Autor einer der hier verwendeten Lektüren, 2017 bei einem Vortrag in Göttingen (Bielefeld, 2017). Es ist daher sicherlich spannend, einen Vergleich mit anderen Terrornetzwerken, wie neben dem Islamischen Staat zum Beispiel auch der NSU, zu ziehen. Hier könnte man einen ähnlichen Aufbau oder die Dichte der Vernetzung untersuchen.
 
 In diesem Kontext ist des Weiteren anzumerken, dass die RAF Kontakt zu mehreren ausländischen Terrorgruppierungen pflegte. So ließen sie sich 1970 in Jordanien von der palästinensischen Al-Fatah, 1975 in Jemen von der PFLP und 1977 in Bagdad von der PLO ausbilden. Auch an der Entführung der Landshut waren Angehörige dieser Organisationen beteiligt. Bis auf Wadi Haddad und Zaki Helou wurden diese Personen(-Gruppen) zu Begrenzungszwecken nicht in dieses Projekt aufgenommen. Hier bietet sich deshalb ein guter Ansatz, um die globale Vernetzung der Roten Armee Fraktion zu erforschen.
 
@@ -1882,11 +1882,13 @@ Ergänzend zur vorliegenden Netzwerkanalyse ergeben sich also viele offene Frage
 
 - Baker, W.E. and R.R. Faulkner (1993). The social organization of conspiracy: Illegal networks in the heavy electrical equipment industry. American Sociological Review, 58(6) 837-860.
 
+- Bielefeld, B. (2017). Da wird etwas verheimlicht. Stefan Aust zum Baader-Meinhof-Komplex. Göttinger Tageblatt. Abgerufen am 21.06.2020 von https://www.goettinger-tageblatt.de/Die-Region/Goettingen/Stefan-Aust-spricht-in-Goettingen-ueber-RAF#aoh=15927566800903&referrer=https%3A%2F%2Fwww.google.com&amp_tf=Von%20%251%24s&ampshare=https%3A%2F%2Fwww.goettinger-tageblatt.de%2FDie-Region%2FGoettingen%2FStefan-Aust-spricht-in-Goettingen-ueber-RAF
+
 - Carley, K., Dombroski, M., Tsvetovat, M., Reminga, J., & Kamneva, N. (2003). Destabilizing dynamic covert networks. Conference held at the National Defense War College, Washington DC. Abgerufen am 06.06.2020 von http://www.casos.cs.cmu.edu/publications/papers/carley_2003_networks.pdf
 
 - dpa (2011). RAF-Prozess: Gericht verhängt Beugehaft gegen Ex-Terroristen. Der SPIEGEL. Abgerufen am 20.06.2020 von https://www.spiegel.de/politik/deutschland/raf-prozess-gericht-verhaengt-beugehaft-gegen-ex-terroristen-a-754367.html
 
-- Erickson, B. B. (1981). Secret societies and social structure. Social Forces, 60(1): 188-210.
+- Erickson, B. B. (1981). Secret societies and social structure. Social Forces, 60(1), 188-210.
 
 - Granovetter, M. (1973). The strength of weak ties. The American Journal of Sociology, 78(6), 1360-1380.
 
@@ -1914,7 +1916,7 @@ https://www.welt.de/politik/article1168652/Peter-Juergen-Boock-der-Talkshow-Terr
 
 - Rodríguez, J. A. (2005). The March 11th Terrorist Network: In its weakness lies its strength. Abgerufen am 06.06.2020 von http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.98.4408
 
-- Schlosser, P. (2019). Im Untergrund - Der Arsch von Franz Josef Strauß, die RAF, mein Vater und ich. Hamburg: Hoffmann und Campe Verlag
+- Schlosser, P. (2019). Im Untergrund - Der Arsch von Franz Josef Strauß, die RAF, mein Vater und ich. Hamburg: Hoffmann und Campe Verlag.
 
 - Schweizer, S. (2017). RAF 1.0-3.0: Ideologie - Strategie - Attentate. Waiblingen: smp, SWB Media Publishing.
 

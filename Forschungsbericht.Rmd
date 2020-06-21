@@ -12,20 +12,19 @@ knitr::opts_chunk$set(echo = FALSE)
 # 1. Einleitung, Forschungsfrage und Motivation
 ## Abstract und Keywords
  
-Gegenstand dieser Forschungsarbeit sind die Beziehungen innerhalb der ersten und zweiten Generation der Roten Armee Fraktion (RAF). Dafür wurden mittels eines two-mode-Netzwerkes 139 Knoten erfasst, darunter 109 Mitglieder und Unterstützer:innen sowie Aktionen der RAF. Die Beziehungsdimensionen beschreiben dabei unterschiedliche Arten der Beziehungen zueinander; darunter Wohngemeinschaften, gemeinsame Haft oder Liebschaften. Darüber hinaus wurden Verbindungen zu organisierten Anschlägen der Gruppe gezogen und analysiert, inwiefern sich die jeweiligen Mitglieder an ihnen beteiligten. Im Verlauf der Analyse lag der Fokus explizit auf Unterschieden zwischen der ersten und zweiten Generation. Dabei stellte sich heraus, dass die Vernetzung der Mitglieder in der ersten Generation hierarchischen und terroristischen Strukturen gleicht. Des Weiteren wurde die Annahme bestätigt, dass weniger bekannte Mitglieder durchaus auch Schlüsselrollen inne hatten. 
+Gegenstand dieser Forschungsarbeit sind die Beziehungen innerhalb der ersten und zweiten Generation der Roten Armee Fraktion (RAF). Dafür wurden mittels eines two-mode-Netzwerkes 139 Knoten erfasst, darunter 109 Mitglieder und Unterstützer:innen, sowie Aktionen der RAF. Die Beziehungsdimensionen beschreiben dabei unterschiedliche Arten der Beziehungen zueinander; darunter Wohngemeinschaften, gemeinsame Haft oder Liebschaften. Darüber hinaus wurden Verbindungen zu organisierten Anschlägen der Gruppe gezogen und analysiert, inwiefern sich die jeweiligen Mitglieder an ihnen beteiligten. Im Verlauf der Analyse lag der Fokus explizit auf Unterschieden zwischen der ersten und zweiten Generation. Dabei stellte sich heraus, dass die Vernetzung der Mitglieder in der ersten Generation hierarchischen und terroristischen Strukturen gleicht. Des Weiteren wurde die Annahme bestätigt, dass weniger bekannte Mitglieder durchaus auch Schlüsselrollen inne hatten. 
  
 Keywords: **RAF, Netzwerkanalyse, Terrornetzwerk, Terrorismus, Deutscher Herbst, Baader, Meinhof**
  
 ## Einleitung
  
-Bis heute sind die Taten der Roten-Armee-Fraktion Teil der deutschen Geschichte. Obwohl die Gründung mittlerweile 50 Jahre zurückliegt, sind weite Teile der Organisation immer noch nicht vollständig erforscht. Ziel dieses Projektes ist es daher, die bisher unergründeten Vernetzungen der Akteur:innen der RAF transparenter und anschaulicher zu gestalten. Daher soll sich diese Arbeit der Analyse und Untersuchung des Netzwerks der RAF widmen. Dabei wird auf die erste und zweite der insgesamt drei Generationen eingegangen. Zudem soll im Verlauf festgestellt werden, inwiefern sich die Netzwerke der ersten und zweiten Generation unterscheiden und inwieweit ein terroristisches Muster innerhalb der Netzwerkstrukturen erkennbar ist. Mit einer Netzwerkanalyse erhoffen wir uns zudem, die Dynamiken, Zusammensetzungen und Beziehungen der Mitglieder nachvollziehen zu können. Insbesondere der journalistische Hintergrund des Gründungsmitglieds Ulrike Meinhof und diverser anderer Mitglieder, sowie der Umstand, dass sich insbesondere junge Studierende der Gruppierung angeschlossen haben, stieß innerhalb der Forschungsgruppe ebenfalls auf ein erhöhtes Interesse. Auch der Bezug zum heutigen vermehrten Vorkommen von neuen Terrornetzwerken war für uns ein Grund, die RAF und den Verlauf des Deutschen Herbstes zu betrachten. Für das Netzwerk wurden insgesamt sechs literarische, sowie einige digitale Quellen zur Datenerhebung hinzugezogen.
+Bis heute sind die Taten der Roten-Armee-Fraktion Teil der deutschen Geschichte. Obwohl die Gründung mittlerweile 50 Jahre zurückliegt, sind weite Teile der Organisation immer noch nicht vollständig erforscht. Ziel dieses Projektes ist es daher, die bisher unergründeten Vernetzungen der Akteur:innen der RAF transparenter und anschaulicher zu gestalten. Daher soll sich diese Arbeit der Analyse und Untersuchung des Netzwerks der RAF widmen. Dabei wird auf die erste und zweite der insgesamt drei Generationen eingegangen. Zudem soll im Verlauf festgestellt werden, inwiefern sich die Netzwerke der ersten und zweiten Generation unterscheiden und inwieweit ein terroristisches Muster innerhalb der Netzwerkstrukturen erkennbar ist. Mit einer Netzwerkanalyse erhoffen wir uns zudem, die Dynamiken, Zusammensetzungen und Beziehungen der Mitglieder nachvollziehen zu können. Insbesondere der journalistische Hintergrund des Gründungsmitglieds Ulrike Meinhof und diverser anderer Mitglieder, sowie der Umstand, dass sich insbesondere junge Studierende der Gruppierung angeschlossen haben, stieß innerhalb der Forschungsgruppe ebenfalls auf ein erhöhtes Interesse. Auch der Bezug zum heute vermehrten Vorkommen von neuen Terrornetzwerken war für uns ein Grund, die RAF und den Verlauf des Deutschen Herbstes zu betrachten. Für das Netzwerk wurden insgesamt sechs literarische, sowie einige digitale Quellen zur Datenerhebung hinzugezogen.
 
-# 2. Forschungsstand der empirischen und theoretischen Literatur
+# 2. Forschungsstand 
 
+Die RAF ist und war Gegenstand zahlloser Werke in Literatur, Film und Malerei. Dabei unterscheidet sich der Kontext häufig maßgeblich: Die Betrachtungen reichen von ideologischen Analysen über Chroniken bis hin zu Biografien einzelner Mitglieder. Zudem gibt es viele Stücke, die sich weniger mit dem Gesamtkonstrukt als vielmehr mit einzelnen Teilbereichen – beispielsweise einer der Generationen – beschäftigen. Klar zu unterscheiden und im Rahmen dieser Arbeit auszuklammern sind Werke aus dem Unterhaltungssektor. Sie basieren zwar meist auf wahren Begebenheiten, dennoch werden ebenso Mythen thematisiert und dargestellt. Manchmal werden der Dramaturgie wegen rein fiktive Handlungen beschrieben. Während diese Werke als Quelle für die Netzwerkforschung pauschal ausgeschlossen werden, gilt es, bei der großen Menge zunächst nützlich erscheinenden Materials zu differenzieren (dazu mehr im folgenden 3. Kapitel).
 
-Die RAF ist und war Gegenstand zahlloser Werke in Literatur, Film und Malerei. Dabei unterscheidet sich der Kontext häufig maßgeblich: Die Betrachtungen reichen von ideologischen Analysen über Chroniken bis hin zu Biografien einzelner Mitglieder. Zudem gibt es viele Stücke, die sich weniger mit dem Gesamtkonstrukt als vielmehr mit einzelnen Teilbereichen – beispielsweise einer der Generationen – beschäftigen. Klar zu unterscheiden und im Rahmen dieser Arbeit auszuklammern sind Werke aus dem Unterhaltungssektor. Sie basieren zwar meist auf wahren Begebenheiten, dennoch werden ebenso Mythen thematisiert und dargestellt. Manchmal werden der Dramaturgie wegen rein fiktive Handlungen beschrieben. Während diese Werke als Quelle für die Netzwerkforschung pauschal ausgeschlossen werden, gilt es bei der großen Menge zunächst nützlich erscheinenden Materials zu differenzieren (dazu mehr im folgenden 3. Kapitel).
-
-Obwohl die RAF aus unterschiedlichen Perspektiven und mit verschiedenen Zielsetzungen und Fokuspunkten untersucht wurde, sind im Bereich der Netzwerkforschung bisher wenig Erkenntnisse beziehungsweise wenig Forschungsarbeiten generell vorhanden. Eine soziale Netzwerkanalyse in unserem Sinne gibt es bisher nicht. Lediglich eine „Analysis of topologies and key players in terrorist networks“ von Fatih Ozgul, welche 2016 erschien, geht in eine ähnliche Richtung; jedoch ist die RAF hier nicht zentral im Fokus. Eine Dissertation von Sylvia Naylor aus dem Jahr 2009 mit dem Titel „Die Rote Armee Fraktion (RAF) als kulturelles Phänomen“ beschäftigt sich mit den „Repräsentationen in literarischen Texten und anderen kulturellen Produkten“ – für uns ebenfalls interessant, jedoch nicht vergleichbar mit dem eigenen Vorhaben und Forschungsinteresse.
+Obwohl die RAF aus unterschiedlichen Perspektiven und mit verschiedenen Zielsetzungen und Fokuspunkten untersucht wurde, sind im Bereich der Netzwerkforschung bisher wenig Erkenntnisse beziehungsweise generell wenig Forschungsarbeiten vorhanden. Eine soziale Netzwerkanalyse in unserem Sinne gibt es bisher nicht. Lediglich eine „Analysis of topologies and key players in terrorist networks“ von Fatih Ozgul, welche 2016 erschien, geht in eine ähnliche Richtung; jedoch ist die RAF hier nicht zentral im Fokus. Eine Dissertation von Sylvia Naylor aus dem Jahr 2009 mit dem Titel „Die Rote Armee Fraktion (RAF) als kulturelles Phänomen“ beschäftigt sich mit den „Repräsentationen in literarischen Texten und anderen kulturellen Produkten“ – für uns ebenfalls interessant, jedoch nicht vergleichbar mit dem eigenen Vorhaben und Forschungsinteresse.
 
 Als Ansatzpunkte für diese Forschung können nicht nur Überlegungen zu (Nicht-)Anarchien und Strukturen innerhalb der RAF dienen, sondern auch Arbeiten, die sich mit dem Aufbau von Terrororganisationen allgemein beschäftigen. Die Aufzählung aller, zumindest in Teilen interessanten, Literatur würde den Rahmen dieser Arbeit sprengen. Jedoch sollen im Folgenden die relevantesten Anknüpfungspunkte kurz aufgegriffen werden. Zunächst wird hierbei auf die Strukturen terroristischer Netzwerke generell eingegangen.
 
@@ -33,13 +32,13 @@ Als Ansatzpunkte für diese Forschung können nicht nur Überlegungen zu (Nicht-
 
 In der Literatur befassen sich einige Werke mit den Netzwerken geheimer Organisationen oder terroristischer Vereinigungen. So hat Sparrow 1991 bereits typische Merkmale krimineller Netzwerke definiert. Ihm zufolge sind solche geheimen Netzwerke tendenziell größer als offene Netzwerke. Jedoch ist deren Analyse ebenfalls oft unvollständig, da in der Datenerhebung nicht alle Verbindungen erfasst werden können. Die Grenzen können laut Sparrow zudem verschwimmen, wenn Individuen Mitglied mehrerer Gruppen waren und die Netzwerke einem stetigen Wandel unterliegen.
 
-Auch Koschade hat 2006 die Netzwerkstrukturen innerhalb einer geheimen Organisation, der balinesischen Terrorzelle Jemaah Islamiyah, analysiert und gefolgert, dass die Dichte innerhalb eines Netzwerkes ein Indiz für dessen Geheimheits-Grad sein kann. Da bei vielen engen Verbindungen die Gefahr besteht, dass viele Mitglieder gleichzeitig enttarnt werden, geht er davon aus, dass Netzwerke mit geringer Dichte sehr geheim sind. Verlassen zentrale Akteur:innen das Netzwerk, muss dieses laut Koschade nicht unbedingt zerbrechen; dies hängt von der tatsächlichen Zentralität des/ der Akteur:in ab und ob diese:r ersetzt werden kann.
+Auch Koschade hat 2006 die Netzwerkstrukturen innerhalb einer geheimen Organisation, der balinesischen Terrorzelle Jemaah Islamiyah, analysiert und gefolgert, dass die Dichte innerhalb eines Netzwerkes ein Indiz für dessen Geheimheits-Grad sein kann. Da bei vielen engen Verbindungen die Gefahr besteht, dass viele Mitglieder gleichzeitig enttarnt werden, geht er davon aus, dass Netzwerke mit geringer Dichte sehr geheim sind. Verlassen zentrale Akteur:innen das Netzwerk, muss dieses laut Koschade nicht unbedingt zerbrechen. Dies hängt von der tatsächlichen Zentralität des/ der Akteur:in ab und ob diese:r ersetzt werden kann.
 Generell kann der Wechsel der Nodes in einem Netzwerk nämlich destabilisierend wirken, wie Borgatti anführt (vgl. Borgatti, 2002). 
 
 Hinsichtlich der Strukturen und Hierarchien in terroristischen Netzwerken haben Carley et al. 2003 festgestellt, dass diese weniger hierarchisch als andere Organisationsnetzwerke und eher zellulärer und verteilter strukturiert sind. 
 
-Krebs hat sich 2002 in “Mapping of Terrorist Cells” konkret mit den Netzwerken der Terroristen vom 11. September beschäftigt und darin vorwiegend starke Beziehungen erkannt - anders als bei typischen Netzwerken, die Granovetter zufolge von der Stärke schwacher Beziehungen leben (vgl. Granovetter, 1973). Das liegt daran, dass Terrorgruppen verhindern wollen durch unzuverlässige “weak links” geheime Informationen nach außen durchsickern zu lassen (vgl. Krebs, 2002). Besonders herausfordernd ist daher der Spagat zwischen notwendiger Kommunikation zur Vorbereitung von Aktionen einerseits und dem Versuch, die Zahl der Kontakte zu begrenzen, um kein Aufsehen zu erregen andererseits (vgl. Baker & Faulkner, 1993). 
-Die Bindungen innerhalb des Netzwerkes sind dafür besonders stark und basieren oft darauf, dass sich Akteur*innen bereits zuvor kannten. Sei es durch gemeinsame Schul- oder Terrorausbildung oder verwandtschaftliche Beziehungen. Die so geschaffene Vertrauensbasis erachtet Krebs als essentiell für eine effiziente Funktionsweise von Netzwerken (vgl. Krebs, 2002.). 
+Krebs hat sich 2002 in “Mapping of Terrorist Cells” konkret mit den Netzwerken der Terroristen vom 11. September beschäftigt und darin vorwiegend starke Beziehungen erkannt - anders als bei typischen Netzwerken, die Granovetter zufolge von der Stärke schwacher Beziehungen leben (vgl. Granovetter, 1973). Das liegt daran, dass Terrorgruppen verhindern wollen, durch unzuverlässige “weak links” geheime Informationen nach außen durchsickern zu lassen (vgl. Krebs, 2002). Besonders herausfordernd ist daher der Spagat zwischen notwendiger Kommunikation zur Vorbereitung von Aktionen einerseits und dem Versuch, die Zahl der Kontakte zu begrenzen, um kein Aufsehen zu erregen andererseits (vgl. Baker & Faulkner, 1993). 
+Die Bindungen innerhalb des Netzwerkes sind dafür besonders stark und basieren oft darauf, dass sich Akteur:innen bereits zuvor kannten. Sei es durch gemeinsame Schul- oder Terrorausbildung oder verwandtschaftliche Beziehungen. Die so geschaffene Vertrauensbasis erachtet Krebs als essentiell für eine effiziente Funktionsweise von Netzwerken (vgl. Krebs, 2002.). 
 
 Rodriguez weicht von dieser Sichtweise leicht ab. Er schreibt, dass schwache Beziehungen eine wichtige Rolle für Netzwerke spielen. Breite Verbindungen können helfen, da viele Unterstützer:innen vorhanden sind. Generell sieht Rodriguez indirekte Verbindungen, genau so wie die Broker, als zentral an, die als Mittlerinnen zwischen anderen fungieren (vgl. Rodriguez, 2005).
 
@@ -48,18 +47,16 @@ Um diese Erkenntnisse nun in Relation zur RAF zu setzen, ist auch die Betrachtun
 
 ## Terroristische Strukturen innerhalb der RAF
 
-Betrachtet man die RAF im Hinblick auf diese Konzepte aus der Selbst- und Fremdwahrnehmung, entstehen für das Ergebnis einer sozialen Netzwerkanalyse ganz unterschiedliche Szenarien.
-
 Als eines der bekanntesten und umfangreichsten Werke, dessen Erstauflage bereits 1977 – also vor der Auflösung der RAF – erschien, ist Stefan Austs „Der Baader-Meinhof-Komplex“ für Grundgedanken und einen Überblick unabdingbar. Der Autor beschreibt darin insbesondere die erste Generation, beziehungsweise deren Entstehungsprozess. Im Fokus stehen die Jahre 1970 bis 1977. Obwohl es auch bei ihm schon um die bis heute polarisierenden Figuren Baader, Meinhof und Ensslin geht, thematisiert er ebenso das „Konzept Stadtguerilla“, dem sich die Gruppe selbst zuordnete. Auch der Stammheimer Prozess ab 1975 und damit der Übergang zur zweiten Generation, nimmt im Buch eine große Rolle ein. Die Struktur- bzw. Wandlungsfrage zwingt sich uns als Netzwerkbetrachter:innen hier auf.
 
 Konkreter und besonders interessant wird es, wenn man zusätzlich Renate Mayntz’ (2004) Aufsatz „[z]u den Organisationsformen des Terrorismus“ liest. Sie spricht bei „alle[n] verdeckt operierenden Terrororganisationen [von] eine[r] Kombination von hierarchischen und Netzwerkmerkmalen“ (S. 251). Aber: Es gebe immer auch „Merkmale […], die weder ins hierarchische Muster passen, noch allgemein netzwerktypisch sind. Dabei handele es sich um einen besonderen Steuerungsmodus und einen besonderen Modus loser Koppelung, die beide auf einer starken ideologischen Identifikation der Mitglieder mit der Organisation und ihren Zielen beruhen“ (ebd.). Dies macht die Netzwerkanalyse der RAF zu einem relevanten, möglicherweise auch überraschenden Projekt. Mayntz geht insofern auf die RAF ein, dass sie als Kennzeichen „oft räumlich konzentrierte[…] und relativ kleine[…] Gruppen beziehungsweise interpersonelle Netzwerke“ (ebd., S. 252) nennt. Betrachtet man die RAF im Hinblick auf diese Konzepte aus der Selbst- und Fremdwahrnehmung, entstehen für das Ergebnis einer sozialen Netzwerkanalyse ganz unterschiedliche Szenarien.
 
-Da der betrachtete Zeitraum sich über insgesamt fast 15 Jahre erstreckt, muss von erheblichen Veränderungen in der Struktur und den möglicherweise vorhandenen Hierarchien ausgegangen werden. Mit dem Konzept der Unterteilung in drei Generationen lassen sich sowohl nach außen als auch innen Trennstriche ziehen. Dadurch können Veränderungen deutlich sichtbarer gemacht werden und auf mögliche Rückschlüsse hoffen. Stefan Schweizer (2017) begründet dieses Konzept mit den erheblichen Unterschieden in Zielsetzung und Vorgehensweise. Wo genau eine Generation jedoch in die nächste überging ist nicht immer klar. Während der ersten Generation die Jahre 1970 bis etwa 1975 zugeordnet werden, ist das Ende der zweiten Generation umstrittener. „1985 erfolgte sozusagen das erste Attentat der dritten RAF-Generation“ (ebd., S. 80), schreibt beispielsweise Schweizer. Andere nennen 1982 als Beginn dieser Generation. Fest steht hingegen ihr Ende, denn 1998 löste sich die RAF auf.
+Da der betrachtete Zeitraum sich über insgesamt fast 15 Jahre erstreckt, muss von erheblichen Veränderungen in der Struktur und den möglicherweise vorhandenen Hierarchien ausgegangen werden. Mit dem Konzept der Unterteilung in drei Generationen lassen sich sowohl nach außen als auch innen Trennstriche ziehen. Dadurch können Veränderungen deutlich sichtbarer gemacht werden und auf mögliche Rückschlüsse hoffen. Stefan Schweizer (2017) begründet dieses Konzept mit den erheblichen Unterschieden in Zielsetzung und Vorgehensweise. Wo genau eine Generation jedoch in die nächste überging, ist nicht immer klar. Während der ersten Generation die Jahre 1970 bis etwa 1975 zugeordnet werden, ist das Ende der zweiten Generation umstrittener. „1985 erfolgte sozusagen das erste Attentat der dritten RAF-Generation“ (ebd., S. 80), schreibt beispielsweise Schweizer. Andere nennen 1982 als Beginn dieser Generation. Fest steht hingegen ihr Ende, denn 1998 löste sich die RAF auf.
 „Um die dritte Generation der Rote-Armee-Fraktion ranken sich viele Mythen und gefährliches Halbwissen“ (ebd., S. 73), erklärt Schweizer. Dass „bis heute weitgehend im Dunkeln [bleibt], wer genau zur Kommandoebene der RAF der dritten Generation gehört hat“ (ebd., S. 76) ist für unsere Arbeit besonders problematisch, zumal die Quellenlage zu einer Untergrundorganisation generell schwierig ist. Um Unsauberkeit und verzerrte Vergleiche zu vermeiden, haben wir uns deshalb entschieden, uns im Rahmen der sozialen Netzwerkanalyse auf die beiden ersten, besser belegbaren Generationen zu konzentrieren. Die Aktivität der zweiten Generation nehmen wir an Schweizer anknüpfend bis 1984 auf.
 
-## Arbeitshypothesen
+# 3. Arbeitshypothesen
 
-Anhand der genannten Konzepte soll die vorliegende Arbeit folgende Frage in aller Tiefe beantworten: Inwiefern unterscheiden sich die Netzwerke der ersten und zweiten Generation der RAF? Dass sich daraus zahlreiche Unterpunkte und Fragen ergeben, ist selbsterklärend. Diese zeichnen sich auch in den folgenden Arbeitshypothesen ab:
+Anhand der genannten Konzepte soll die vorliegende Arbeit folgende Frage in aller Tiefe beantworten: Inwiefern unterscheiden sich die Netzwerke der ersten und zweiten Generation der RAF? Dass sich daraus zahlreiche Unterpunkte und Fragen ergeben, ist selbsterklärend. Diese zeichnen sich in den folgenden Arbeitshypothesen ab:
 
 (1) *Die Mitglieder der ersten Generation haben die Entstehung der zweiten Generation - möglicherweise sogar aus den Justizvollzugsanstalten heraus - beeinflusst.* 
 
@@ -69,7 +66,7 @@ Anhand der genannten Konzepte soll die vorliegende Arbeit folgende Frage in alle
 
 (3) *Persönliche Beziehungen wie zum Beispiel gemeinsame Wohnungen, Liebesbeziehungen oder gemeinsame Aktionen (Anschläge, Ausbildungslager) spielten innerhalb der RAF eine große Rolle.*
 
-    Auch hierfür würde Mayntz’ Aufsatz sprechen: „Gewissermaßen als Nervenstränge sind dabei in die nur locker gekoppelte Struktur persönliche Beziehungsnetze eingelagert, die […] auf Verwandtschaft, gemeinsamer ethnischer Zugehörigkeit und gemeinsamen Erfahrungen (zum Beispiel. in Trainingscamps) aufbauen und zur reibungslosen Übermittlung von handlungsleitenden Impulsen beitragen.“ (2004, S. 258)
+    Auch hierfür würde Mayntz’ Aufsatz sprechen: „Gewissermaßen als Nervenstränge sind dabei in die nur locker gekoppelte Struktur persönliche Beziehungsnetze eingelagert, die […] auf Verwandtschaft, gemeinsamer ethnischer Zugehörigkeit und gemeinsamen Erfahrungen (zum Beispiel in Trainingscamps) aufbauen und zur reibungslosen Übermittlung von handlungsleitenden Impulsen beitragen.“ (2004, S. 258)
 
 (4) *Neben den festen Mitgliedern spielten auch Unterstützer:innen eine maßgebliche Rolle bei der Umsetzung der Anschläge und Versorgung der Genoss:innen.* 
 
@@ -84,7 +81,7 @@ Anhand der genannten Konzepte soll die vorliegende Arbeit folgende Frage in alle
 (8) *Auf Basis des Deutschlandfunk-Artikels “Protestantismus und RAF” (Hollenbach, 2007): Es bestand ein Zusammenhang zwischen einem religiösen Elternhaus und der Mitgliedschaft in der RAF.*
 
 
-# 3. Datenerhebung: Zugang, Bereinigung und Codebuch 
+# 4. Datenerhebung
 
 ## Zugang
 
@@ -105,12 +102,12 @@ Alle verwendeten Daten entstammen öffentlichen Quellen, der Großteil Sekundär
 Um die Erkenntnisse festzuhalten und eine Ergänzung durch jedes Gruppenmitglied zu ermöglichen, wurde eine Tabelle über Google Drive erstellt. In dieser konnte jede:r parallel zur Lektüre relevante Informationen zu den im Codebuch definierten Attributen über die verschiedenen Akteure und Aktionen eintragen. Dadurch wurde eine Dopplung der Notizen verhindert. Des Weiteren wurden in diesem Schritt bereits IDs vergeben. 
 
 Besonders bei einem weitverzweigten Thema wie dem Vorliegenden und angesichts des Umstandes, dass die RAF eine Untergrundorganisation war, musste zusätzlich zur Literaturrecherche im Internet nach ergänzenden Informationen gesucht werden. Dabei war es wichtig, auf Qualität und Verlässlichkeit der Quelle zu achten. Ein Anhaltspunkt waren hier Fußnoten unter Wikipedia-Einträgen, auf die auf Grund der mangelnden Informationsmöglichkeiten zurückgegriffen werden musste. Ergänzend wurde sich aber mit einigen Zeitungsartikeln, Fachaufsätzen und Experteninterviews  auseinandergesetzt, die wichtige Hintergrundinformationen lieferten. 
-Eine Herausforderung stellte der Umstand dar, dass sich die gewählte Literatur zumeist nur mit den Hauptpersonen der RAF befasste und kaum Details zu den weniger bekannten oder aktiven Mitgliedern enthielt. Daher war eine tiefergehende Recherche erforderlich, um Lücken innerhalb des Netzwerkes zu schließen, denn es war dem Forschungsteam ein wichtiges Anliegen, zu jedem einzelnen entdeckten Knoten die im Vorhinein im Codebuch definierten Vertex- und edge-Attribute zu erfassen. Im Nachhinein betrachtet stellten sich die Bücher als  weniger ergiebig heraus als erhofft und waren eher dazu geeignet, diverse bis dato noch nicht in der Nodelist festgehaltene RAF-Mitglieder zu erfassen. Zudem wurden durch die  literarische Recherche die Einordnung in den Kontext der deutschen Geschichte sowie Zusammenhänge innerhalb des Netzwerkes klarer.
+Eine Herausforderung stellte der Umstand dar, dass sich die gewählte Literatur zumeist nur mit den Hauptpersonen der RAF befasste und kaum Details zu den weniger bekannten oder aktiven Mitgliedern enthielt. Daher war eine tiefergehende Recherche erforderlich, um Lücken innerhalb des Netzwerkes zu schließen.Es war dem Forschungsteam ein wichtiges Anliegen, zu jedem einzelnen Knoten die im  Codebuch definierten Vertex- und Edge-Attribute zu erfassen. Im Nachhinein betrachtet stellten sich die Bücher als  weniger ergiebig heraus als erhofft und waren eher dazu geeignet, diverse bis dato noch nicht in der Nodelist festgehaltene RAF-Mitglieder zu erfassen. Zudem wurden durch die  literarische Recherche die Einordnung in den Kontext der deutschen Geschichte sowie Zusammenhänge innerhalb des Netzwerkes klarer.
 Zuletzt wurden die gesammelten Daten in die Node- und Edgelist übertragen. 
 
 ## Datenbereinigung
 
-Aufgrund der großen Menge an gesammelten Daten gab es eine erhöhte Anfälligkeit für Fehler und Ungenauigkeiten. Um diese zu bereinigen, wurden die Edge- und Nodelist mehrfach überarbeitet und aktualisiert. Der beim Arbeiten mit Google Tabellen häufig auftretende Fehler von überflüssigen Leerzeichen im Datensatz, wurde frühzeitig erkannt und entfernt und sollte nicht das Hauptproblem während der Bereinigung darstellen. Denn im weiteren Projektverlauf, bei der Erstellung erster Skripte in R , traten immer wieder Fehlermeldungen auf: So wiesen bei der Visualisierung der Netzwerke einige Knoten auf einmal keine Verbindungen mehr zu anderen auf, ungeachtet der Tatsache, dass diese in der Edgelist angegeben waren. Es stellte sich bei näherer Betrachtung heraus, dass das Edge-Attribut “relation” Werte bis 10 annehmen kann, wodurch einstellige Zahlen automatisch eine Leerstelle erhalten. Diese mussten allerdings im Skript angegeben werden, um entsprechende Beziehungsarten zu selektieren. Durch gründliche Überarbeitung des Skripts konnten schlussendlich alle aufgekommenen Probleme beseitigt werden. Abschließend bleibt anzumerken, dass es aufgrund der Datenlage unmöglich ist, die Gesamtheit aller Knoten und Kanten vollständig zu erfassen. Dies ist der Tatsache geschuldet, dass das weitläufige und undurchsichtige Netzwerk der RAF als Untergrundorganisation in den meisten Bereichen nie vollständig aufgedeckt wurde. Mittels intensiver Literaturrecherche konnten viele Akteure identifiziert werden, jedoch musste ab einem gewissen Punkt ein Schlussstrich gezogen und Abstriche in puncto Vollständigkeit gemacht werden, da dies in der Realität nicht umsetzbar war.
+Aufgrund der großen Menge an gesammelten Daten gab es eine erhöhte Anfälligkeit für Fehler und Ungenauigkeiten. Um diese zu bereinigen, wurden die Edge- und Nodelist mehrfach überarbeitet und aktualisiert. Der beim Arbeiten mit Google Tabellen häufig auftretende Fehler von überflüssigen Leerzeichen im Datensatz wurde frühzeitig erkannt und entfernt und sollte nicht das Hauptproblem während der Bereinigung darstellen. Denn im weiteren Projektverlauf, bei der Erstellung erster Skripte in R , traten immer wieder Fehlermeldungen auf: So wiesen bei der Visualisierung der Netzwerke einige Knoten auf einmal keine Verbindungen mehr zu anderen auf, ungeachtet der Tatsache, dass diese in der Edgelist angegeben waren. Es stellte sich bei näherer Betrachtung heraus, dass das Edge-Attribut “relation” Werte bis 10 annehmen kann, wodurch einstellige Zahlen automatisch eine Leerstelle erhalten. Diese mussten allerdings im Skript angegeben werden, um entsprechende Beziehungsarten zu selektieren. Durch gründliche Überarbeitung des Skripts konnten schlussendlich alle aufgekommenen Probleme beseitigt werden. Abschließend bleibt anzumerken, dass es aufgrund der Datenlage unmöglich ist, die Gesamtheit aller Knoten und Kanten vollständig zu erfassen. Dies ist der Tatsache geschuldet, dass das weitläufige und undurchsichtige Netzwerk der RAF als Untergrundorganisation in den meisten Bereichen nie vollständig aufgedeckt wurde. Mittels intensiver Literaturrecherche konnten viele Akteure identifiziert werden, jedoch musste ab einem gewissen Punkt ein Schlussstrich gezogen und Abstriche in puncto Vollständigkeit gemacht werden.
 
 Der Datensatz ist online abrufbar unter:
 https://github.com/ca048/RAF-Forschungsdesign/blob/master/edges.csv (Edgelist)
@@ -123,7 +120,7 @@ Vor der „Feldphase“ wurde definiert, welche Daten benötigt werden. Dies mus
 Unter https://github.com/ca048/RAF-Forschungsdesign/blob/master/Codebuch.md ist das Codebuch online einsehbar.
 
 
-# 4. Analyse und Interpretation
+# 5. Analyse und Interpretation
 
 ### Gesamtnetzwerk
 
@@ -242,6 +239,7 @@ legend("bottomleft",
 ```
 
 Insgesamt weisen Frauen allerdings eine niedrigere Beteiligungsrate als Männer auf: Gerade einmal 26 Frauen waren an den untersuchten Aktionen beteiligt, im Vergleich dazu waren es 40 Männer.
+Die Unterstützer*innen der RAF waren vorwiegend männlich  (21 Männer zu sechs weiblichen Unterstützerinnen), jedoch war der Geschlechteranteil innerhalb der RAF insgesamt ansatzweise gleich groß.
  
 ```{r Einlesen 1, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
@@ -289,11 +287,12 @@ legend("bottomleft",
        ncol=1, )
 ```
  
-Die Unterstützer*innen der RAF waren vorwiegend männlich  (21 Männer zu sechs weiblichen Unterstützerinnen), jedoch war der Geschlechteranteil innerhalb der RAF insgesamt ansatzweise gleich groß.
- 
-### Merkmale von Terrornetzwerken
+### Entwicklung der RAF seit der Gründung
 
-Kriminelle oder geheime Netzwerke, zu denen man die RAF zählen kann, können gewisse typische Merkmale aufweisen, die sich auch in unseren Untersuchungen zu Teilen gezeigt haben. Tendenziell beschreibt Sparrow geheime Netzwerke in Abgrenzung von offenen Netzwerken als größer und führt an, dass diese auch bis zu tausend Knoten umfassen können (vgl. Sparrow, 1991). In unserem Netzwerk bewegen wir uns eher im  Hunderterbereich. Jedoch wissen wir nicht, wie viele Personen insgesamt involviert oder unterstützend tätig waren, da wir aufgrund des hohen Maßes an Geheimhaltung nicht alle Verbindungen recherchieren konnten. Des Weiteren bemerkt Sparrow (1991), dass es innerhalb von geheimen Netzwerken oft unklare Grenzen gibt. Es scheint also Individuen zu geben, die zu mehreren verschiedenen Netzwerken / Gruppen gehören können. Dieses Merkmal trifft auch auf das Netzwerk der RAF zu, da einige Mitglieder auch anderen Vereinigungen, wie beispielsweise dem Sozialistischen Patientenkollektiv, angehörten. Von dort aus wechselten sie zur RAF. Zudem war es bei einigen Akteuren schwierig herauszulesen, ob diese ein tatsächliches Mitglied oder nur über andere Gruppen mit den Aktionen der RAF verbunden waren (Bommi Baumann, s. Kapitel 6). Generell sind Netzwerke geheimer Gruppen meist dynamisch und unterliegen einem stetigen Wandel, z.B. dem Wechsel von Beziehungen oder Mitgliedern im Laufe der Zeit (vgl. Sparrow, 1991).
+Kriminelle oder geheime Netzwerke, zu denen man die RAF zählen kann, können gewisse typische Merkmale aufweisen, die sich auch in unseren Untersuchungen zu Teilen gezeigt haben. Tendenziell beschreibt Sparrow geheime Netzwerke in Abgrenzung von offenen Netzwerken als größer und führt an, dass diese auch bis zu tausend Knoten umfassen können (vgl. Sparrow, 1991). In unserem Netzwerk bewegen wir uns eher im  Hunderterbereich. Jedoch wissen wir nicht, wie viele Personen insgesamt involviert oder unterstützend tätig waren, da wir aufgrund des hohen Maßes an Geheimhaltung nicht alle Verbindungen recherchieren konnten. Des Weiteren bemerkt Sparrow (1991), dass es innerhalb von geheimen Netzwerken oft unklare Grenzen gibt. Es scheint also Individuen zu geben, die zu mehreren verschiedenen Netzwerken / Gruppen gehören können. Dieses Merkmal trifft auch auf das Netzwerk der RAF zu, da einige Mitglieder auch anderen Vereinigungen, wie beispielsweise dem Sozialistischen Patientenkollektiv, angehörten. Von dort aus wechselten sie zur RAF. Zudem war es bei einigen Akteuren schwierig herauszulesen, ob diese ein tatsächliches Mitglied oder nur über andere Gruppen mit den Aktionen der RAF verbunden waren. Generell sind Netzwerke geheimer Gruppen meist dynamisch und unterliegen einem stetigen Wandel, z.B. dem Wechsel von Beziehungen oder Mitgliedern im Laufe der Zeit (vgl. Sparrow, 1991).
+
+Auch bei der RAF lässt sich dies beobachten. Während das Netzwerk 1970 noch recht überschaubar ist (wenig Knoten, offensichtlich zentralere Personen), wird es über die Jahre hinweg komplexer. Es gibt viele neue Mitglieder; andere sterben (unter anderem auch bei Anschlägen) oder treten aus. In den folgenden Visualisierungen sind neben den Mitgliedern auch Unterstützer:innen abgebildet.
+
 
 ```{r Einlesen 2, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 # Zunächst werden Edge - und Nodelist eingelesen:
@@ -302,7 +301,9 @@ nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/
 #Edge- und Nodelist werden zu einer Matrix verknüpft
 edgematrix <-as.matrix(el)
 ```
-**Wandel im Laufe der Jahre 1970-1977**
+#### Wandel im Laufe der Jahre 1970-1977
+
+Im Jahr **1970** besteht das Netzwerk aus 24 Knoten, darunter die Gründungsmitglieder: Bereits hier zeichnet sich ab, dass Meinhof, Baader, Raspe und Ensslin zentral im Netzwerk vertreten sind und viele Verbindungen aufweisen. Schubert, Proll, Mahler, Georgens und Homann sind weniger zentralisiert, weisen aber noch einige Verbindungen auf. Brigitte Asdonk und Monika Berberich haben deutlich weniger Verbindungen zu anderen Mitgliedern. Untereinander sind die Gründungsmitglieder mit einer maximalen Pfaddistanz von vier voneinander entfernt. Dabei stehen Baader, Meinhof und Ensslin klar in der Mitte und weisen die meisten Verbindungen auf (8). Georgens steht auch in der Mitte und weist sieben Verbindungen zu den anderen Gründungsmitgliedern auf. Von zehn Gründungsmitgliedern sind drei männlich und sieben weiblich.
 
 ```{r 1970,fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
 raf_year <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
@@ -349,6 +350,27 @@ legend("bottomleft",
        ncol=1, )
 ```
 
+Betrachtet man zusätzlich die Clusteraufteilung, lassen sich fünf Cluster ausmachen. Die Gründungsmitglieder “teilen” sich anscheinend in zwei Große auf. Im einen befinden sich Berberich, Asdonk, Mahler, Georgens und Schubert. In einem weiteren Baader, Meinhof, Ensslin, Proll, Homann und Meins und  Raspe mit zwei weiteren Mitgliedern (Stachiowak und Herzog). Horst Söhnlein scheint isoliert vom Rest zu sein. Die Dichte liegt bei circa 20%.
+
+```{r Cluster Walktrap 1970, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# Berechnung der Cluster innerhalb der Komponente
+# erstellt die Berechnung für die Modularität und deren Teilgruppen
+cl <- cluster_walktrap(raf_1970)
+#modularity(cl)
+#membership(cl)
+
+plot(cl, raf_1970,
+     asp=0, #definiert, dass der ganze Raum ausgenutzt werden soll
+     vertex.size=10,
+     vertex.label.color = "black",
+     vertex.label.size = .5, # gibt die Größe der Nodes a
+     vertex.label.family = "sans", #gibt die Schriftart an
+     main="Cluster-Walktrap Analyse von 1970")
+```
+
+Ein Jahr später, **1971**, sind bereits elf neue Akteur:innen hinzugekommen. Es gibt weiterhin fünf Hauptcluster und drei kleinere mit wenigen Beziehungen. Der Isolate aus 1970 taucht nicht mehr auf, ist also ausgetreten oder gestorben. Die Cluster der Gründungsmitglieder erweitern sich, Mohnhaupt scheint ein eigenes Cluster zu bilden, das aber eng mit dem um die Gründungsmitglieder Baader, Meinhof und Ensslin in Kontakt steht. Die meisten neuen Mitglieder der Unterstützer:innen scheinen noch etwas isoliert zu sein, außer von Dyck, Juenschke, Mohnhaupt und Moeller. Luther und Barz finden durch Grundmann Kontakt zum Rest der Gruppe. Die Dichte verringert sich auf circa 16% (15,77%), die Pfaddistanz erhöht sich auf 6 Schritte zwischen Augustin und Pohle.
+
 ```{r 1971, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
 #Nun kommen die von 1971 dazu:
 #raf_year
@@ -389,6 +411,8 @@ legend("bottomleft",
        box.col = "grey50", 
        ncol=1, )
 ```
+
+Im Jahr **1972** gibt es lediglich fünf neue Akteur:innen und damit einen geringeren Zuwachs als im Vorjahr. Es ist auffällig, dass einige Personen kaum vernetzt sind und nur ein bis zwei direkte Kontakte haben. Vor allem die neu dazu gewonnenen Akteur:innen haben weniger Kontakte, beispielsweise Ingrid Siepmann, Hanna Krabbe (jeweils nur eine Verbindung) und Emiliane M. (nur zwei). Darauf basiert die Vermutung, dass es den Gründungsmitgliedern nicht um schnelle Neurekrutierungen ging, sondern stets auf Zuverlässigkeit geachtet wurde beziehungsweise, dass die Gruppe möglicherweise auch teils sehr mit sich selbst beschäftigt war und Neumitgliedschaften nur aus einzelnen Kontakten oder Gesprächen entstanden. Betrachtet man die Cluster, so entsteht der Eindruck, dass sich die größeren Cluster immer mehr zu verdichten und zu vermischen scheinen. Es gibt allerdings drei Einzelcluster: Carmen Roll, Lutz Taufer und Katharina Hammerschmidt. Die Gesamtdichte verringert sich um zwei Prozentpunkte auf circa 14% (13,97%), am weitesten entfernt sind Angela Luther und Ingrid Siepmann über 6 Knotenpunkte.
 
 ```{r 1972, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #Nun kommen die von 1972 dazu:
@@ -433,6 +457,8 @@ legend("bottomleft",
        ncol=1, )
 ```
 
+Wieder etwas mehr, sieben neue Personen gibt es im Netzwerk von **1973**. Die Dichte der (Haupt-) RAF-Anhänger erhöht sich, jedoch bleiben einzelne Akteur:innen weiterhin unvernetzt. Immer noch haben die neuen Mitglieder Schwierigkeiten, Anschluss zu finden. Weiterhin unter ihnen: Taufer, Roll, Hammerschmidt, Pohle, Siepmann. Neu dabei sind: Wisniewski, Croissant, Pohl, Klein und Boock. Während Croissant, Beer und Pohl gleich integriert sind, dümpeln Klein, Boock und Wisniewski noch etwas verloren am Rand. Die Dichte verringert sich auf circa 13,6%, die weiteste Pfaddistanz zwischen Hans-Jürgen Bäcker und Ingrid Siepmann beträgt 6. Sowohl der Wert und die Pfaddistanz mit exakt diesen zwei Personen wird sich hier einpendeln.
+
 ```{r RAF 1973, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #Nun kommen die von 1973 dazu:
 
@@ -476,6 +502,8 @@ legend("bottomleft",
        ncol=1, )
 ```
 
+**1974** stoßen fünf neue Akteur:innen zur Gruppe. Bezüglich der Cluster gibt es kaum Änderungen: Weiterhin sind es vor allem fünf größere Cluster und einige Einzelpersonen, unter ihnen weiterhin Hammerschmidt, Roll, Siepmann und Pohle. Waltraud Boock scheint vor allem durch ihren Ehemann Peter-Jürgen Boock Anschluss zu finden, obwohl dieser erst neu eingetreten war. Auch die anderen neuen Mitglieder scheinen sogleich Anschluss zu finden, so sind auch Speitel, Hausner, Helbig und Eckes gleich gut integriert. Die Dichte nimmt leicht ab, liegt nun bei circa 13,3% (13,32%), die höchste Pfaddistanz beträgt weiterhin 6 Knoten zwischen Siepmann und Bäcker.
+
 ```{r RAF 1974, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #Nun kommen die von 1974 dazu:
 #raf_year
@@ -516,6 +544,8 @@ legend("bottomleft",
        box.col = "grey50", 
        ncol=1, )
 ```
+
+Unter den neun neuen Akteur:innen im Jahr **1975** fällt Siegfried Haag besonders auf. Er nimmt sofort eine Broker-Rolle ein: Monika Haas, Verena Becker, Ulrich Wessel, Bernhard Roessner und Roland Mayer sind direkt mit ihm verbunden und ebenfalls neu – es liegt also nahe, dass er sie zum Eintritt bewegt hat und vielleicht auch ihr Mentor war. Das Hauptcluster scheint sich weiter zu verdichten und zu einem größeren zu verschmelzen. Weiterhin isoliert sind Hammerschmidt, Roll und Siepmann. Die Dichte fällt leicht unter 13% bei circa 12,2%. Das ist überraschend, weil die Dichte auf den ersten Blick hoch scheint. Vermutlich wollten Bäcker und Siepmann einfach nicht integriert werden oder andere Mitglieder waren ihnen gegenüber sehr skeptisch, erneut liegt mit 6 Knoten die höchste Pfaddistanz zwischen ihnen.
 
 ```{r RAF 1975, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #Nun kommen die von 1975 dazu:
@@ -566,6 +596,8 @@ legend("bottomleft",
 
 ```
 
+**1976** stießen lediglich fünf neue Mitglieder oder Unterstützer:innen zur Gruppe: Dümlein, Klar, Albrecht, Hofmann und Lotze. Die Cluster scheinen wieder definierter zu sein, weiterhin etwas außerhalb sind Roll, Siepmann und auch Lotze. Alle anderen neuen Akteur:innen sind sofort integriert. Die vorher scheinbar ständige Außenseiterin Hammerschmidt tritt im Jahr 1975 aus. Die Dichte steigt wieder auf die zuvor beständigen 13%, Siepmann und Bäcker verzeichnen die längste Pfaddistanz mit 6.
+
 ```{r RAF 1976, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #Nun kommen die von 1976 dazu:
 #raf_year
@@ -608,6 +640,8 @@ legend(-1.2,-1.2,
 
 ```
 
+13 neue Akteur:innen konnte die RAF **Anfang 1977** verzeichnen. Unter ihnen scheint viel Kontakt zu herrschen und sie sind in die allgemeine Gruppe integriert. Trotz dieser großen Zahl an Neulingen sind noch immer lediglich fünf Hauptcluster auszumachen. Siepmann hat inzwischen Kontakt zu Kuby, ist sonst aber immer noch recht einsam, zusammen mit Pohle. Lotze, Roll und Bäcker sind gleichbleibend außerhalb des Hauptnetzwerkes. Die Dichte beträgt erneut 13% und auch die höchste Pfaddistanz zwischen Bäcker und Siepmann (6 Knoten) ist unverändert.
+
 ```{r RAF 1977, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #Nun kommen die von 1977 dazu:
 #raf_year
@@ -647,6 +681,8 @@ legend("bottomleft",
        box.col = "grey50", 
        ncol=1, )
 ```
+
+**Später im Jahr 1977** zeigt sich hingegen ein großer Schwund: Drei Akteure treten aus (Klein, Speitel, Dellwo), fünf sterben (Todesnacht von Stammheim, Ensslin, Baader, Meinhof, Raspe und Schubert).
 
 ```{r Nach 1977, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #Was 1977 noch passiert ist:
@@ -713,9 +749,9 @@ nodes <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/
 edgematrix <-as.matrix(el)
 ```
 
-**Freundschaft und Bekanntschaft**
+#### Freundschaft und Bekanntschaft
 
-```{r Freundschaft und Beziehungsnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
+```{r Bekanntschaftsnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 raf <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
 
 V(raf)[V(raf)$type == 1]$shape <- "circle" # Personen werden als Kreise dargestellt
@@ -731,7 +767,6 @@ V(raf)[V(raf)$type == 2]$color <- "cornflowerblue" # Knoten der Aktionen werden 
 
 # definiert die Farbe aller Kanten
 E(raf)$color <- "grey40"
-
 
 #Bekanntschaftsnetzwerk:
 contact <- subgraph.edges(raf, E(raf)[relationship== " 1"]) # erstellt ein neues Teilnetzwerk indem nur die Beziehungen selektiert werden, bei denen es sich um Bekanntschaften handelt
@@ -761,9 +796,14 @@ legend("topleft",
        bg = "grey90",
        box.col = "grey50", 
        ncol=1, )
+```
 
+Es überrascht kaum, dass die meisten Akteure zumindest Kontakt miteinander hatten, da sie schließlich Mitglieder der gleichen Organisation waren. In der Literatur gehen die Meinungen hinsichtlich der Stärke von Beziehungen innerhalb von Terrornetzwerken auseinander. Rodriguez (2005) zufolge gibt es oft viele schwache Beziehungen, dabei bezieht er sich auf das Netzwerk der Zug-Attentate in Spanien vom 11. März 2004. 88% der Beziehungen in diesem Netzwerk sind schwache Beziehungen und prägen so maßgeblich Form und Dynamik des Netzwerkes. Rodriguez schließt daher darauf, dass Wissen und Ressourcen oft durch Mittelspersonen weitergetragen wird. Dies deckt sich mit der Existenz von Brokern (Analyse folgt) in unserem Netzwerk, die in der Öffentlichkeit weniger bekannt sind, aber wichtige Rollen gespielt haben (vgl. Rodriguez, 2005). Krebs hingegen erklärt, dass im Netzwerk der 9/11-Attentäter kaum schwache Beziehungen bestanden haben, um zu verhindern, dass Informationen nach außen sickern (vgl. Krebs, 2002). Diese beiden Sichtweisen könnte man jedoch so verbinden, dass es innerhalb des Netzwerkes einen harten, engen Kern gab, sowie auch Unterstützer*innen, die aber durchaus mit der RAF verbunden und keine vollkommen Außenstehenden waren, weshalb die Gefahr aufzufliegen, weniger groß war. 
 
-#Freundschaftsnetzwerk:
+Das Freundschaftsnetzwerk innerhalb der RAF zeigt auf, dass die meisten Akteure viel Kontakt untereinander hatten, wobei Einzelne nur mit wenigen Akteuren befreundet waren.
+
+```{r Freundschaftsnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
+
 
 friendship <- subgraph.edges(raf, E(raf)[relationship== " 2"]) # erstellt ein neues Teilnetzwerk, in dem nur Freundschaftsbeziehungen dargestellt werden
 friendship <- simplify(friendship, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
@@ -794,12 +834,7 @@ legend("bottomleft",
 
 ```
 
-
-Es überrascht kaum, dass die meisten Akteure zumindest Kontakt miteinander hatten, da sie schließlich Mitglieder der gleichen Organisation waren. In der Literatur gehen die Meinungen hinsichtlich der Stärke von Beziehungen innerhalb von Terrornetzwerken auseinander. Rodriguez (2005) zufolge gibt es oft viele schwache Beziehungen, dabei bezieht er sich auf das Netzwerk der Zug-Attentate in Spanien vom 11. März 2004. 88% der Beziehungen in diesem Netzwerk sind schwache Beziehungen und prägen so maßgeblich Form und Dynamik des Netzwerkes. Rodriguez schließt daher darauf, dass Wissen und Ressourcen oft durch Mittelspersonen weitergetragen wird. Dies deckt sich mit der Existenz von Brokern (Analyse folgt) in unserem Netzwerk, die in der Öffentlichkeit weniger bekannt sind, aber wichtige Rollen gespielt haben (vgl. Rodriguez, 2005). Krebs hingegen erklärt, dass im Netzwerk der 9/11-Attentäter kaum schwache Beziehungen bestanden haben, um zu verhindern, dass Informationen nach außen sickern (vgl. Krebs, 2002). Diese beiden Sichtweisen könnte man jedoch so verbinden, dass es innerhalb des Netzwerkes einen harten, engen Kern gab, sowie auch Unterstützer*innen, die aber durchaus mit der RAF verbunden und keine vollkommen Außenstehenden waren, weshalb die Gefahr aufzufliegen, weniger groß war. 
-
-Das Freundschaftsnetzwerk innerhalb der RAF zeigt auf, dass die meisten Akteure viel Kontakt untereinander hatten, wobei Einzelne nur mit wenigen Akteuren befreundet waren.
-
-**Liebesbeziehungen**
+#### Liebesbeziehungen
 
 Das Beziehungsnetzwerk verdeutlicht, dass es insgesamt (mindestens) 17 Paare innerhalb der RAF gab. Dabei bestanden die meisten Liebesbeziehungen innerhalb der ersten Generation, aber auch teilweise zwischen beiden Generationen. Es gibt kaum Auffälligkeiten zwischen den Akteuren außer einigen Dreiecksbeziehungen, die im Laufe der Jahre entstanden sind. So war z.B. Gudrun Ensslin vor der „Gründung“ der RAF noch mit ihrem Verlobten Bernward Vesper zusammen, von dem sie sich  jedoch für Andreas Baader trennte. Hier ist anzumerken, dass Ensslin dabei auch ihren Sohn hinter sich ließ, der nach Vespers Selbstmord von Pflegeeltern großgezogen wurde. 
 
@@ -837,10 +872,11 @@ legend(-1.2, -0.8,
 
 Dies zeigt, dass sich die Beziehungen der Mitglieder im Verlauf der Zeit stark auf die RAF konzentriert haben, sodass viele Liebesbeziehungen innerhalb der Gruppe bestanden. Dies liegt vermutlich daran, dass es einfacher ist, eine Beziehung mit einem Gleichgesinnten aufrechtzuerhalten, zumal so die Geheimhaltung erleichtert werden kann, da man nicht aufpassen muss, wie viel man Externen anvertraut. Daraus lässt sich ableiten, dass die innere Verbindung unter den einzelnen Akteuren so stark war, dass Menschen außerhalb der RAF auf Dauer unwichtig wurden.
 
-**Verwandtschaft**
+#### Verwandtschaft
 
-Dies sieht man auch daran, dass verschiedene RAF Mitglieder mit ihren Geschwistern zusammen der RAF beigetreten sind, bzw. diese an Bord geholt haben. Insgesamt gab es in den ersten beiden Generationen vier Geschwisterpaare.
+Dieselbe Schlussfolgerung lässt sich auf das Verwandtschaftsnetzwerk anwenden. Auffällig ist, dass verschiedene RAF Mitglieder mit ihren Geschwistern zusammen der RAF beigetreten sind, beziehungsweise diese an Bord geholt haben. Insgesamt gab es in den ersten beiden Generationen vier Geschwisterpaare.
 
+ Andere Verwandtschaftsbeziehungen wurden nicht erfasst. Diese existierten innerhalb der RAF entweder nicht oder sie wurden in den zugrundeliegenden Quellen nicht erwähnt. Ersteres ist jedoch plausibel, wenn auch nicht belegbar, da sich Mitglieder öfters von bestehenden Beziehungen entfernt haben, anstatt diese mit in die Terrorgruppe zu integrieren. So beispielsweise Ulrike Meinhof, die ihre Töchter für die Gruppe zurückließ. Geschwisterpaare stellen daher möglicherweise einen Sonderfall dar, da sie durch die gemeinsame Herkunft und Sozialisierung vermutlich ähnliche Motive hatten, sich der RAF anzuschließen. Im Folgenden soll dies jedoch noch genauer betrachtet werden.
 
 ```{r Verwandtschaftsnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 kinship <- subgraph.edges(raf, E(raf)[relationship== "10"]) # Erstellt ein neues Teilnetzwerk in dem nur Akteure mit Verwandschaftsbeziehungen dargestellt werden 
@@ -872,11 +908,18 @@ legend("bottomleft",
 
 ```
 
-Dieser Beziehungstyp ist relevant, da Geschwister meist ein vertrautes Verhältnis haben. Das ist sehr wichtig für ein Terrornetzwerk, da es für eine erhöhte Effektivität in der „Arbeit“ sorgt (vgl. Erickson, 1981). Erickson bezieht sich hier auf die Terroristen, die an den Anschlägen des 11. September 2001 beteiligt waren, da diese sich schon durch eine gemeinsame Schulzeit oder Terrorausbildung kannten oder über Verwandtschaft oder eine Wohngemeinschaft verbunden waren (vgl. Erickson, 1981). Mit Blick auf die RAF sind diese Basisbeziehungen stark vertreten und sorgen dafür, dass es viele Vertrauensverbindungen gab, auf denen aufgebaut werden konnte. Als Beispiele für gemeinsame Aktionen vor der RAF-Zeit lassen sich hier die Aktivität von Karl-Heinz Dellwo und Susanne Albrecht in der Hausbesetzerszene oder bei der Besetzung des Hamburger Büros von Amnesty International 1974, an der nebst letztere genannter auch Christian Klar beteiligt war.
+Auffällig ist die Generationszugehörigkeit innerhalb der Verwandtschaftsbeziehungen. Alle erfassten Geschwisterpaare waren jeweils in derselben Generation aktiv. Dieser Umstand ist bemerkenswert, da es ebenso denkbar gewesen wäre, dass Geschwister in unterschiedlichen Generationen tätig gewesen sind  und sich ihre Mitgliedschaft gewissermaßen vererbt haben. Daher sollen an dieser Stelle die einzelnen Geschwisterpaare genauer betrachtet werden, um mögliche Gründe für deren gemeinsame RAF-Mitgliedschaft zu finden.
 
-Es kann davon ausgegangen werden, dass diese Bindungen für ein Zugehörigkeitsgefühl zu einer “exklusiven Gemeinschaft” sorgen. Folglich besteht durch Vertrauen und Zuverlässigkeit weniger Bedarf für Hierarchien und weniger Gefahr, dass das Netzwerk zerbricht, wenn der “Kopf” wegfällt (vgl. Rodriguez, 2004). Selbst die Mitglieder, die vor ihrer RAF-Zeit noch keine Verbindung hatten, waren spätestens ab ihrem Eintritt ideologisch miteinander verbunden. Die RAF ist daher auch nicht zugrunde gegangen, nachdem die Hauptakteure der ersten Generation inhaftiert waren und sich in Stammheim umgebracht haben.
+Generell lässt sich feststellen, dass die Geschwisterpaare vorwiegend in der zweiten Generation zu finden waren. Astrid und Thorwald Proll sind das einzige Geschwisterpaar der ersten Generation und deren Umfeld. Die beiden fallen zudem dadurch auf, dass Thorwald nie offiziell in der RAF war, während in den anderen Geschwisterpaaren stets beide Mitglieder waren.
+Die gemeinsame Mitgliedschaft von Geschwistern deutet darauf hin, dass deren Radikalisierung auf einer bestimmten Sozialisation oder Prägung im Elternhaus beruhen kann, die beide Geschwister erfahren haben. Ein Beispiel hierfür sind die Beer-Brüder, die eine alkoholabhängige Mutter und ein eher zerrüttetes Zuhause hatten. Solche instabilen Familienverhältnisse in Familien könnten erklären, warum sich die Kinder radikalisieren. 
 
-**Wohngemeinschaften**
+Der Weg der Geschwisterpaare in die RAF gleicht sich daher häufig. Henning und Wolfgang Beer radikalisierten sich früh und traten schließlich zeitgleich in die RAF ein. Auch die Krabbe-Schwestern waren zuvor beide Mitglied im Sozialistischen Patientenkollektiv, bevor sie sich der RAF angeschlossen haben. 
+
+Dennoch bestanden auch Unterschiede zwischen den Geschwistern hinsichtlich ihres weiteren Engagements in der RAF: Wie bereits erwähnt, wurde Thorwald Proll nie Mitglied der RAF, seine Schwester hingegen war eines der Gründungsmitglieder. Eine Begründung für die unterschiedlichen Wege der Geschwister Proll konnte auf Basis der Netzwerkanalyse nicht gefunden werden, hier haben womöglich andere, persönlichkeitspsychologische Faktoren eine Rolle gespielt. Auch bei Karl-Heinz und Hans-Joachim Dellwo unterschied sich der Weg in die RAF: Karl-Heinz war bereits zwei Jahre vor seinem Bruder in der Hausbesetzerszene und RAF-Kreisen aktiv. Somit war Karl-Heinz bereits früh in den Strukturen involviert und nachhaltig durch sie geprägt, was dazu passt, dass er sich nie offiziell von der RAF distanziert hat. Das war bei Hans-Joachim weniger der Fall. Auch wenn er während der Inhaftierung der Gründungsmitglieder in Stammheim eine wichtige Funktion als Kurier hatte, sagte er sich nur kurze Zeit später von der RAF los. Er geriet - anders als sein Bruder - eher zufällig durch seinen Job in Croissants Anwaltskanzlei in die RAF-Strukturen, weshalb seine Mitgliedschaft womöglich weniger von Dauer war.
+
+Unabhängig davon ist der Beziehungstyp "Verwandt" relevant für die Struktur, weil Geschwister meist ein vertrautes Verhältnis haben. Das ist sehr wichtig für ein Terrornetzwerk, da es für eine erhöhte Effektivität in der „Arbeit“ sorgt (vgl. Erickson, 1981). Erickson bezieht sich hier auf die Terroristen, die an den Anschlägen des 11. September 2001 beteiligt waren, da diese sich schon durch eine gemeinsame Schulzeit oder Terrorausbildung kannten oder über Verwandtschaft oder eine Wohngemeinschaft verbunden waren (vgl. Erickson, 1981). Mit Blick auf die RAF sind diese Basisbeziehungen stark vertreten und sorgen dafür, dass es viele Vertrauensverbindungen gab, auf denen aufgebaut werden konnte. Als Beispiele für gemeinsame Aktionen vor der RAF-Zeit lassen sich hier die Aktivität von Karl-Heinz Dellwo und Susanne Albrecht in der Hausbesetzerszene oder bei der Besetzung des Hamburger Büros von Amnesty International 1974.
+
+#### Wohngemeinschaften
 
 Von den 109 beobachteten Akteuren wohnten 43 zu verschiedenen Zeitpunkten in unterschiedlichen Wohngemeinschaften zusammen. Wieder scheint es wichtig zu sein, dass ein hohes Vertrauen zwischen den einzelnen Mitgliedern bestand. Auch konnte auf diese Weise eine bessere Planung von Aktionen und Zusammenarbeit gewährleistet werden. Allerdings könnte man auch zum Schluss kommen, dass dies dazu diente, zu prüfen, dass niemand geheime Pläne an die Polizei weitergeben konnte. Krebs zufolge formen Mitglieder von Terrorgruppen selten neue Verbindungen nach außen, was diese These stützt (vgl. Krebs, 2002).
 Dabei wohnten vor allem Mitglieder innerhalb der einzelnen Generationen zusammen. Zwischen den Generationen bestand bis auf ein paar Ausnahmen (Ingrid Siepmann und Karl-Heinz Dellwo) kein direkter Zusammenhang.
@@ -916,7 +959,7 @@ legend(-1.2,-0.9,
 
 Interessant ist hierbei, dass im Cluster der ersten Generation noch einige Unterstützer*innen zu finden sind, während die zweite Generation in sich geschlossen ist.
 
-**Gemeinsame Haft**
+#### Gemeinsame Haft
 
 Beim Netzwerk zur gemeinsamen Haft lassen sich drei Cluster ausmachen. Das erste bilden drei Frauen (Monika Berberich, Juliane Plambeck und Inge Viett), die zusammen in einem Frauengefängnis inhaftiert waren. Ein zweites besteht aus Hans-Joachim Dellwo und Volker Speitel, die nicht nur zusammen arrestiert, sondern auch gemeinsam angeklagt wurden. Das größte Cluster (17 Akteure) besteht aus den Hauptakteuren der ersten Generation rund um Andreas Baader. Es basiert vor allem auf der gemeinsamen Inhaftierung in Stammheim
 
@@ -961,12 +1004,9 @@ Interessanterweise waren 10 der 17 Akteure bis zu ihrem Tod Mitglieder der RAF, 
 
 Mittlerweile ist geklärt, dass die in Stammheim Inhaftierten engen Kontakt miteinander hatten, in dem sie Gegensprechanlagen umbauten und sich so heimlich in ihren Zellen unterhielten (vgl. Lörchner, 2017). Die Mitgefangene Brigitte Mohnhaupt rekrutierte nach ihrer Entlassung viele Mitglieder der zweiten Generation. Sie wurde während der gemeinsamen Zeit in der JVA Stammheim von den Führungspersönlichkeiten der ersten Generation instruiert. In einem heimlichen Schreiben schrieb Baader an andere Mitglieder der RAF, “dass die Mohnhaupt jetzt 'ne Art Befehlsgewalt hat” (Holl, 2007).
 
+#### Versorgung
 
-
-
-**Versorgung**
-
-Im Versorgungsnetzwerk spielten Anwälte eine klare Rolle: Unter den 27 Unterstützer*innen waren acht (männliche) Anwälte. Dies liegt unter anderem an den verschiedenen Gerichtsverfahren. Dabei hatten Andreas Baader und Horst Mahler besonders viel Kontakt zu anderen Anwälten, was aber an verschiedenen gerichtlichen Prozessen liegen sollte, an denen beide beteiligt waren (Baader als Angeklagter, Mahler als Anwalt).
+Im Versorgungsnetzwerk spielten Anwälte eine klare Rolle: Unter den 27 Unterstützer*innen waren acht (männliche) Anwälte. Dies liegt unter anderem an den verschiedenen Gerichtsverfahren. Dabei hatten Andreas Baader und sein Verteidiger Horst Mahler besonders viel Kontakt zu anderen Anwälten, was aber an verschiedenen gerichtlichen Prozessen liegen sollte, an denen beide beteiligt waren (Baader als Angeklagter, Mahler als Anwalt).
 
 ```{r Versorgungsnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 
@@ -1002,183 +1042,11 @@ legend("bottomleft",
        ncol=1, )
 ```
 
-Das Versorgungsnetzwerk zeigt deutlich, dass es einen Broker gab, der in der breiten Öffentlichkeit wenig Beachtung erfahren hat. Der Hauptakteur für externe Unterstützung war **Hans-Joachim Dellwo**, von Beruf Anwalt (Verbindung zu ca. 15 Knoten). Durch seine Beschäftigung in der Anwaltskanzlei von **Klaus Croissant** kam er in Kontakt mit der RAF und war während der Inhaftierung der Spitze der ersten Generation in Stammheim der zentrale Kurier zwischen den Inhaftierten und den Mitgliedern der zweiten Generation. Zusammen mit Volker Speitel schmuggelte er die Waffen, die in der Todesnacht von Stammheim benutzt wurden, in das Gefängnis. Dellwo sagte sich jedoch nach der Todesnacht von der RAF los, was ein Indiz dafür sein kann, dass er nicht sonderlich gut in die Gruppe eingebunden war, sondern nur als Kurier fungierte. Allerdings unterstütze er so indirekt die Transition hin zur zweiten Generation, da er den Kontakt herstellte.
+Das Versorgungsnetzwerk zeigt deutlich, dass es einen Broker gab, der in der breiten Öffentlichkeit wenig Beachtung erfahren hat. Der Hauptakteur für externe Unterstützung war **Hans-Joachim Dellwo**, von Beruf Anwalt (Verbindung zu ca. 15 Knoten). Durch seine Beschäftigung in der Anwaltskanzlei von **Klaus Croissant** kam er in Kontakt mit der RAF und war während der Inhaftierung der Spitze der ersten Generation in Stammheim der zentrale Kurier zwischen den Inhaftierten und den Mitgliedern der zweiten Generation. Zusammen mit Volker Speitel schmuggelte er die Waffen, die in der Todesnacht von Stammheim benutzt wurden, in das Gefängnis. Dellwo sagte sich jedoch nach der Todesnacht von der RAF los, was ein Indiz dafür sein kann, dass er nicht sonderlich gut in die Gruppe eingebunden war, sondern nur als Kurier fungierte. Allerdings unterstütze er so indirekt die Transition hin zur zweiten Generation, zu der er den Kontakt herstellte.
 
-```{r Ego-Netzwerk Klaus Croissant, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo= FALSE}
+#### Anschläge
 
-# Da Croissant als Anwalt Kontakte zu vielen RAF-Mitgliedern hatte, die teils auch in seiner Kanzlei tätig waren und so zur RAF kamen, soll nun sein Ego-Netzwerk betrachtet werden.
-
-ego_kc<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Klaus Croissant", mode = "all") # selektiert aus dem Netzwerk raf alle Knoten, die mit Croissant über einen Schritt direkt verbunden sind.
-
-# liefert eine Liste der Verbindungen 
-#ego_kc
-#man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
-ego_kc1 <- ego_kc[[1]]
-
-ego_kc1 <- simplify(ego_kc1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
-#ego_kc1
-
-# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
-V(ego_kc1)[V(ego_kc1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
-V(ego_kc1)[V(ego_kc1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
-V(ego_kc1)[V(ego_kc1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
-V(ego_kc1)[V(ego_kc1)$name == "Klaus Croissant"]$color <- "firebrick" # Croissant wird rot hervorgehoben
-V(ego_kc1)[V(ego_kc1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
-V(ego_kc1)[V(ego_kc1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
-
-# Visualisierung des Ego-Netzwerks:
-plot(ego_kc1, 
-     layout=layout_with_kk,
-     rescale=T,
-     asp=0, # legt fest, dass der gesamte Raum für die Darstellung genutzt wird
-     main="Ego-Netzwerk Klaus Croissant",
-     sub="Nur direkte Beziehungen 1. Grades",
-     edge.color="grey40",
-     vertex.size=10,
-     vertex.label.family="sans",
-     vertex.label.color="black")
-
-legend("bottomleft", 
-       c("Männer","Frauen"),
-       col=c("darkseagreen", "darkorange3"), 
-       pch = 19, 
-       border = "black", 
-       pt.cex=3, 
-       cex=1.5,
-       x.intersp = 1.5,
-       bty="o", 
-       bg = "grey90",
-       box.col = "grey50", 
-       ncol=1, )
-
-# nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Croissant direkt verbunden war
-ego_kc1_p <- delete_vertices(ego_kc1, V(ego_kc1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
-
-#ego_kc1_p
-
-# da Croissant als Anwalt viele seiner Angestellten zur RAF gebracht und gewissermaßen als Broker gesehen werden könnte, soll nun hervorgehoben werden, welcher Generation seine direkten Verbindungen angehörten, um herauszufinden, ob er auch als Verbindung zwischen den Generationen fungierte
-V(ego_kc1_p)[V(ego_kc1_p)$generation == 1]$color <- "grey80" # erste Generation = hellgrau
-V(ego_kc1_p)[V(ego_kc1_p)$generation == 2]$color <- "grey30" # zweite Generation = dunkelgrau
-V(ego_kc1_p)[V(ego_kc1_p)$generation == 3]$vertex.frame.color <- "black" # weiße Knoten schwarz umranden, damit sie besser zu erkennen sind 
-V(ego_kc1_p)[V(ego_kc1_p)$generation == 3]$color <- "white" # Mitglieder beider Generationen = weiß
-V(ego_kc1_p)[V(ego_kc1_p)$generation == 4]$color <- "lightpink" # Unterstützer*innen = hellrosa
-V(ego_kc1_p)[V(ego_kc1_p)$name == "Klaus Croissant"]$color <- "firebrick" # Croissant rot hervorheben
-
-plot(ego_kc1_p,
-     layout=layout_with_kk,
-     asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
-     rescale=TRUE, 
-     main="Ego-Netzwerk von Croissant",
-     sub="Nur Beziehungen 1. Grades",
-     vertex.size=10,
-     vertex.label.family="sans",
-     vertex.label.color = "black",
-     edge.color="grey40")
-
-legend(-1.2, -0.8, 
-       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
-       col=c("grey80", "grey20", "white", "lightpink"), 
-       pch = 19, 
-       border = "black", 
-       pt.cex=3, 
-       cex=1.5,
-       x.intersp = 1.5,
-       bty="o", 
-       bg = "grey90",
-       box.col = "grey50", 
-       ncol=1, )
-```
-
-```{r Ego-Netzwerk Hans-Joachim Dellwo, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
-
-
-ego_hjd <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Hans-Joachim Dellwo", mode = "all") # selektiert aus dem Netzwerk raf alle Knoten, die mit Dellwo über einen Schritt direkt verbunden sind (Ego-Netzwerk ersten Grades)
-#ego_hjd
-
-ego_hjd1 <- ego_hjd[[1]] # notwendiger Zwischenschritt, damit das igraph-Objekt hergestellt wird
-
-ego_hjd1 <- simplify(ego_hjd1, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
-#ego_hjd1
-
-# Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
-V(ego_hjd1)[V(ego_hjd1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
-V(ego_hjd1)[V(ego_hjd1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
-V(ego_hjd1)[V(ego_hjd1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
-V(ego_hjd1)[V(ego_hjd1)$name == "Hans-Joachim Dellwo"]$color <- "firebrick" # Dellwo wird rot hervorgehoben
-V(ego_hjd1)[V(ego_hjd1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
-V(ego_hjd1)[V(ego_hjd1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
-
-# Visualisierung des Ego-Netzwerks
-plot(ego_hjd1, 
-     layout=layout_with_kk,
-     rescale=T,
-     asp=0, # legt fest, dass der gesamte Platz für die Darstellung genutzt wird
-     main="Ego-Netzwerk Hans-Joachim Dellwo",
-     sub="Nur direkte Beziehungen des 1. Grades",
-     edge.color="grey40",
-     vertex.label.color="black",
-     vertex.label.family="sans",
-     #vertex.label.cex=.7, # verkleinert die Labelbeschriftung
-     vertex.size=10)
-
-legend("bottomleft", 
-       c("Männer","Frauen"),
-       col=c("darkseagreen", "darkorange3"), 
-       pch = 19, 
-       border = "black", 
-       pt.cex=3, 
-       cex=1.5,
-       x.intersp = 1.5,
-       bty="o", 
-       bg = "grey90",
-       box.col = "grey50", 
-       ncol=1, )
-
-# nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Dellwo direkt verbunden war
-ego_hjd1_p <- delete_vertices(ego_hjd1, V(ego_hjd1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
-
-#ego_hjd1_p
-
-# Nun soll hervorgehoben werden, welcher Generation die direkten Verbindungen H-J Dellwos angehörten
-V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 1]$color <- "grey80" # 1. Generation = hellgrau
-V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 2]$color <- "grey30" # 2. Generation = dunkelgrau
-V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 3]$color <- "white" # Mitglieder beider Generationen = weiß
-V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 99]$color <- "white" # Mitglieder beider Generationen = weiß
-V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 3]$vertex.frame.color <- "black" # fügt einen schwarzen Rahmen hinzu, damit weiße Nodes besser sichtbar sind
-V(ego_hjd1_p)[V(ego_hjd1_p)$generation == 4]$color <- "lightpink" # Unterstützer*innen = rosa
-V(ego_hjd1_p)[V(ego_hjd1_p)$name == "Hans-Joachim Dellwo"]$color <- "firebrick"
-
-plot(ego_hjd1_p,
-     layout=layout_with_kk,
-     rescale=TRUE,
-     asp=0, # definiert, dass der gesamte Platz für die Darstellung genutzt wird
-     main="Ego-Netzwerk von Hans-Joachim Dellwo",
-     sub="Nur Beziehungen 1. Grades",
-     vertex.label.color="black",
-     vertex.size=10,
-     vertex.label.family="sans",
-     edge.color="grey40")
-
-legend("bottomleft", 
-       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen"),
-       col=c( "grey80", "grey20", "white", "lightpink"), 
-       pch = 19, 
-       border = "black", 
-       pt.cex=3, 
-       cex=1.5,
-       x.intersp = 1.5,
-       bty="o", 
-       bg = "grey90",
-       box.col = "grey50", 
-       ncol=1, )
-
-```
-
-**Unbedingt Broker Analyse einfügen!!!**
-
-**Anschläge**
-
-Die Untersuchung der Anschlagsbeteiligung zeigt, dass es einen Zusammenhang zwischen größeren, bzw. bekannteren Aktionen der RAF und Ausbildungsmissionen gibt. Anders als bei medial präsenten Ereignissen wie der Schleyer-Entführung waren bei kleineren Aktionen, wie z.B. Banküberfällen und Polizistenmorden, teilweise wenige Mitglieder oder auch Unterstützer*innen beteiligt. Allerdings ist auch nicht auszuschließen, dass bei Aktionen, die medial (und damit gesellschaftlich) bekannt waren, die Aufklärung sorgfältiger begangen wurde und deshalb mehr beteiligte Mitglieder bekannt sind.
+Die Untersuchung der Anschlagsbeteiligung zeigt, dass es einen Zusammenhang zwischen größeren, bzw. bekannteren Aktionen der RAF und Ausbildungsmissionen gibt. Anders als bei medial präsenten Ereignissen wie der Schleyer-Entführung waren bei kleineren Aktionen, wie z.B. Banküberfällen und Polizistenmorden, teilweise wenige Mitglieder oder auch Unterstützer*innen beteiligt. Allerdings ist auch nicht auszuschließen, dass bei Aktionen, die medial (und damit gesellschaftlich) bekannt waren, die Aufklärung sorgfältiger begangen wurde und deshalb mehr Mittäter bekannt sind.
 
 ```{r Anschlagsnetzwerk,fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
 
@@ -1213,10 +1081,12 @@ legend("bottomleft",
        ncol=1, )
 ```
 
+Es kann davon ausgegangen werden, dass alle vorher betrachteten Bindungen für ein Zugehörigkeitsgefühl zu einer “exklusiven Gemeinschaft” sorgten. Folglich besteht durch Vertrauen und Zuverlässigkeit weniger Bedarf für Hierarchien und weniger Gefahr, dass das Netzwerk zerbricht, wenn der “Kopf” wegfällt (vgl. Rodriguez, 2004). Selbst die Mitglieder, die vor ihrer RAF-Zeit noch keine Verbindung hatten, waren spätestens ab ihrem Eintritt ideologisch miteinander verbunden. Die RAF ist daher auch nicht zugrunde gegangen, nachdem die Hauptakteure der ersten Generation inhaftiert waren und sich in Stammheim umgebracht haben.
+
 ### Ego-Netzwerke der Anschläge
 Nun sollen einzelne Ego-Netzwerke verschiedener Anschläge betrachtet werden. Um den Umfang zu reduzieren, wurden hierbei nur Aktionen ausgewählt, die relevant für diese Forschungsarbeit sind. 
 
-**Baader-Befreiung**
+#### Baader-Befreiung
 
 An der Baader-Befreiung 1970, die den Grundstein für die Gründung der RAF legte, waren acht Frauen und drei Männer beteiligt (einer davon Baader selbst). Die Identität einer der anderen Männer wurde nie geklärt, jedoch wurde später Hans-Jürgen Bäcker dafür angeklagt. Auffällig bei diesem Netzwerk ist, dass alle außer Bäcker untereinander Verbindungen aufweisen, woraus sich schließen lässt, dass bereits vor der Gründung der RAF ein hohes Vertrauensverhältnis zwischen den Mitgliedern bestand. Dies könnte auch ein Indiz dafür sein, dass Bäcker womöglich wirklich nicht beteiligt war, da ihm die Tat nie vollends nachgewiesen wurde und seine mangelnden Verbindung zum Rest durchaus auffällig sind. Auch ist interessant, dass zunächst fast nur Frauen beteiligt waren, nach der Gründung der RAF kamen jedoch mehr Männer hinzu.
 
@@ -1270,7 +1140,7 @@ legend("bottomleft",
     
 ```
 
-**Schleyer-Entführung**
+#### Schleyer-Entführung
 
 Auch die Schleyer-Entführung von 1977 ist ein gutes Beispiel dafür, dass alle Beteiligten sehr gut untereinander vernetzt waren. Dabei spielte Peter-Jürgen Boock eine klare Schlüsselrolle. Er war der einzige der Beteiligten, der bereits in der ersten Generation aktiv war.
 
@@ -1338,6 +1208,7 @@ plot(ego_ent1,
      layout=layout_with_kk,
      asp=0, #definiert, dass der gesamte Raum ausgenutzt werden soll
      rescale=TRUE,
+     vertex.size=10,
      main="Ego-Netzwerk der Entführung Hanns Martin-Schleyer 05.09.1977",
      sub=" Beziehungen ersten Grades",
      vertex.label.color="black",
@@ -1364,9 +1235,9 @@ Es kann also davon ausgegangen werden, dass er als eine Art „Mentor“ fungier
 
 Auch an der Entführung der Lufthansa-Maschine „Landshut“ war Peter-Jürgen Boock beteiligt, obwohl diese nicht von RAF-Mitgliedern durchgeführt wurde.
 
-**Mord an Jürgen Ponto**
+#### Mord an Jürgen Ponto
 
-Ähnlich sieht es bei der Ermordung von Jürgen Ponto von 1977 aus.
+Ähnlich sieht es bei der Ermordung von Jürgen Ponto von 1977 aus. Hier steht Brigitte Mohnhaupt (ebenfalls in beiden Generationen aktiv) im Mittelpunkt. Sie stand mit verschiedenen, an der Aktion beteiligten, Mitgliedern in Kontakt. Es lässt sich also ableiten, dass Mitglieder der ersten Generation Aktionen der zweiten Generation planten beziehungsweise eine zentrale Rolle bei der Durchführung dieser spielten.
 
 ```{r Egonetzwerk Ermordung Jürgen Ponto 30.07.1977, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #raf # igraph-Objekt wird geladen
@@ -1450,14 +1321,15 @@ legend(-1.2, -1,
 
 ```
 
-
- Hier steht Brigitte Mohnhaupt (ebenfalls in beiden Generationen aktiv) im Mittelpunkt. Sie stand mit verschiedenen, an der Aktion beteiligten, Mitgliedern in Kontakt. Es lässt sich also ableiten, dass Mitglieder der ersten Generation Aktionen der zweiten Generation planten beziehungsweise eine zentrale Rolle bei der Durchführung dieser spielten.
-
 ### Zentralität von Akteur:innen
+
+Durch die Vernetzung der beiden Akteur:innen Mohnaupt und Boock mit beiden Generationen lässt sich auf ihre Rolle als Broker:innen schließen. Um diese These zu untersuchen, wurde ein Netzwerk generiert, das die Betweenness der einzelnen Mitglieder darstellt.
+
+Die Betweenness ist ein Zentralitätsmaß, das Aufschluss über die Zentralität der Knoten des Netzwerks liefert. Konkret misst die Betweenness eine Art “Broker-Status”, Knoten mit hohen Betweenness-Werten haben einen privilegierten Informationszugang und können entscheiden, ob andere Knoten diese Informationen erhalten oder nicht (Fuhse, 2018, S. 61). Broker nehmen daher eine Art Vermittlerposition ein und können Kontakt zwischen verschiedenen Gruppen und Akteuren herstellen. Bezogen auf die RAF ist die Betweenness sehr relevant und interessant, da sie Antworten auf zwei Hypothesen dieser Forschungsarbeit liefern könnte. Zum einen wurde die Annahme aufgestellt, dass die Mitglieder der ersten Generation die Entstehung der zweiten bedingten - hier wäre es denkbar, dass es Broker:innen gab, die die Transition zwischen den Generationen förderten. Diese Annahme deckt sich mit der 7. Hypothese, die besagt, dass es im Netzwerk der RAF unbekanntere Akteur:innen oder Broker:innen gab, die im Schatten der berühmten Führungspersonen wie Baader, Meinhof oder Ensslin standen und somit weniger von der breiten Öffentlichkeit registriert wurden.
 
 Je geringer das Zentralitätsmaß eines/einer Akteur:in ist, desto weiter am Rand befindet sich diese:r im Netzwerk. Das heißt, dass solche “Randfiguren” eher bei Bedarf zu Hilfe gerufen werden, aber keine zentralen oder Schlüsselfiguren darstellen. Dennoch sind diese wichtig für das Netzwerk, da sie ein Bestandteil sind und so optisch zu dessen Form, sowie funktional zu den Abläufen beitragen (vgl. Koschade, S. 24).
 
-```{r Betweeness-Werte Berechnen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+```{r Betweeness-Netzwerk, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 raf_pers <- delete_vertices(raf, V(raf)[type > "1"]) # löscht alle Nodes, bei denen es sich um 
 
 V(raf_pers)[V(raf_pers)$generation == 1]$color <- "grey80" # Knoten der Mitglieder der 1. Generation werden in Farbe grey80 dargestellt
@@ -1504,7 +1376,28 @@ legend("bottomleft",
        ncol=1, )
 ```
 
-**Ego-Netzwerk Andreas Baader**
+Die obige Visualisierung zeigt auf den ersten Blick, dass der Großteil der RAF-Mitglieder eher “kleine Lichter” waren und bezüglich ihrer Zentralität nicht auffallen. Diese sind dadurch nicht unwichtig, da sie maßgeblich die Struktur, Größe und das Gesamtbild der RAF prägten und zusammenhielten, aber es gab einige Akteur:innen, die in der obigen Darstellung durch ihre Betweenness herausstechen. 
+
+#### Erste Generation
+
+In der ersten Generation waren dies Baader, Meinhof, Ensslin und Mahler. Dass drei der Führungspersonen dieser Generation sehr zentral waren, überrascht wenig. Vor allem Andreas Baader weist einen hohen Betweenness-Wert auf, was darauf zurückgeführt werden könnte, dass zu seinen Beziehungen viele Informationen in der Literatur zu finden waren. 
+Horst Mahler ist ebenfalls kein unbekannter Akteur, schließlich gehörte er zu den Gründungsmitgliedern der RAF. Seine zentrale Rolle ist darauf zurückzuführen, dass er Anwalt war und viele Aktivist:innen der Studentenbewegung vertrat, wovon einige später Teil der RAF wurden. Des Weiteren war er an zentralen Aktionen wie der Baader-Befreiung maßgeblich beteiligt, sowie an Banküberfällen und der Ausbildungsmission in Jordanien. Als er selbst vor Gericht stand, wurde er von Anwaltskollegen wie Ströbele oder Schily vertreten, die auch später noch juristisch für RAF-Mitglieder tätig waren. Seine hohe Betweenness deutet bereits darauf hin, dass vor allem Anwälte eine wichtige Rolle in der RAF gespielt haben. In der ersten Generation handelte es sich bei den zentralen Akteur:innen folglich um solche, die allgemein bekannt sind und durch ihre gute Vernetzung und hohe Aktionsbeteiligung die Fäden gezogen haben. 
+
+#### Zweite Generation
+
+Die zweite Generation hingegen weist zahlenmäßig mehr Akteur:innen mit hoher Betweenness auf: Brigitte Mohnhaupt und Peter-Jürgen Boock haben eine besondere Rolle, da sie in beiden Generationen aktiv waren und somit den Wechsel von erster zur zweiten Generation miterlebt und womöglich auch gefördert haben. Sie waren bei fast allen Aktionen der zweiten Generation beteiligt, sei es in der Vorbereitung oder in der Durchführung, was ihre hohe Betweenness erklären könnte. Weitere Akteur:innen, die aufgrund ihrer Betweenness hervorgehoben wurden, sind Siegfried Haag, Wolfgang Beer, Hans-Joachim Dellwo, das Ehepaar Speitel, Christian Klar, Christine Kuby, sowie Susanne Albrecht. Siegfried Haag kann hierbei auch beachtet werden, da er nachweislich mehrere Mitglieder für die zweite Generation angeworben hatte, weshalb zeitweise von der “Haag-Meyer-Bande” die Rede war. Er galt zudem als früherer Anführer der zweiten Generation und wurde erst nach seiner Festnahme von Brigitte Mohnhaupt gewissermaßen abgelöst (vgl. dpa, 2011). 
+
+#### Unterstützer:innen
+
+Neben aktiven Mitgliedern gibt es auch einige Unterstützer:innen, die durch ihren Betweenness-Wert optisch herausstechen. Dabei handelt es sich vorwiegend um Anwälte, was sich bereits mit der vorherigen Beobachtung deckt, dass diese zentrale Rollen gespielt haben, wie beispielsweise Horst Mahler. Unter den Unterstützer:innen hebt sich besonders Klaus Croissant ab, weitere Akteur:innen sind Otto Schily (Anwalt), Rudolf Augustin (Anwalt), Monika Haas, Bommi Baumann, Georg von Rauch und Thomas Weisbecker. Klaus Croissant war vor allem deshalb sehr zentral, da in seiner Anwaltskanzlei viele spätere RAF-Mitglieder tätig waren, weshalb vermutet werden kann, dass er gewissermaßen als Rekrutierer fungierte. Des Weiteren wird vermutet, dass er während der Inhaftierung der Terrorist:innen in Stammheim deren Kommunikation untereinander ermöglichte und somit eine klare Broker-Funktion besaß, da er die Informationsflüsse förderte. Zahlenmäßig bilden die Unterstützer:innen die größte Gruppe unter den Akteur:innen, die einen relevanten Betweenness-Wert hatten. Diese Tatsache verdeutlicht, dass neben den festen Mitgliedern auch Unterstützer:innen wichtig für die RAF und deren Aktivitäten waren, um beispielsweise Informationen auszutauschen. Dies kann als Bestätigung der vierten Forschungshypothese gewertet werden, welche von einer hohen Relevanz der Unterstützer:innen ausging. 
+
+Die als Unterstützer markierten Knoten Bommi Baumann, Georg von Rauch und Thomas Weisbecker waren keine aktiven RAF-Mitglieder, aber sehr aktiv im linksextremen Spektrum, beispielsweise in der Hausbesetzerszene, im Zentralrat der umherschweifenden Haschrebellen oder in der Bewegung 2. Juni. Ihre Betweenness scheint nicht sonderlich hoch zu sein, fällt aber dennoch minimal auf. Dieses Beispiel zeigt daher generell, dass es auch vielfältige Bezüge zwischen der RAF und anderen radikalen Gruppierungen gab, wobei gegebenenfalls die Grenzen etwas verschwommen waren, was in der Literatur oft als typisch für geheime oder kriminelle Organisationen beschrieben wird (vgl. Sparrow, 1991). 
+
+Die Visualisierung des Netzwerks und der Betweenness der Akteur:innen zeigt zusammengefasst, dass es in der zweiten Generation mehr zentrale Akteur:innen als in der ersten Generation gegeben zu haben scheint. Somit orientierte sich die zweite Generation nicht mehr so stark an Führungspersonen und hatte möglicherweise einen weniger hierarchischen Aufbau. Es gab beispielsweise keine:n vergleichbare:n Akteur:in, der oder die eine so hohe Betweenness hatte wie Andreas Baader. Mit Blick auf die Geschlechterverteilung fällt außerdem auf, dass hier vorwiegend Männer zentral zu sein schienen: etwa 12 Männer und nur 5 Frauen werden in der Visualisierung aufgrund ihres Betweenness-Werts hervorgehoben. Hinsichtlich der sechsten Forschungshypothese (In der RAF nahmen die Frauen eine besondere, von den Männern abweichende, Rolle ein), könnte daher darauf geschlossen werden, dass trotz des generell hohen Frauenanteils in der RAF allgemein noch in mancher Hinsicht Männer im Vordergrund standen. 
+
+### Analyse zentraler Akteur:innen des Betweenness-Netzwerkes
+
+#### Andreas Baader
 
 Das Ego-Netzwerk von Andreas Baader zeigt auf, dass dieser eine zentrale Rolle innerhalb der RAF gespielt hat. Vergleicht man sein Netzwerk mit den Netzwerken von anderen Gründungsmitgliedern der RAF, wird deutlich, dass er am meisten Kontakt zu anderen Mitgliedern hatte (über 50%). Dies ist nicht weiter verwunderlich, war er doch der Kopf hinter der Organisation. Interessant ist hierbei jedoch, dass außer den Frauen, die an seiner Befreiung 1970 beteiligt waren, kaum andere Frauen in seinen „engeren Kreis“ dazugekommen sind.
 
@@ -1563,12 +1456,14 @@ legend("bottomleft",
 
 Vergleicht man Andreas Baaders Ego-Netzwerk nun mit dem Ego-Netzwerk von Peter-Jürgen Boock, so fällt auf, dass dieser deutlich weniger Kontakt zu anderen Akteur:innen hatte.
 
-**Ego-Netzwerk Peter-Jürgen Boock**
+#### Peter-Jürgen Boock
 
-```{r Ego-Netzwerk Peter-Jürgen Boock, fig.height=14, fig.width=20, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
+Peter-Jürgen Boock war wie Brigitte Mohnhaupt auch in den ersten beiden Generationen involviert. Das sieht man sehr anschaulich in seinem Ego-Netzwerk. Es scheint fast, als gäbe es eine klare Trennung zwischen der ersten und der zweiten Generation, da es wenige Berührungspunkte dazwischen gibt. Boocks Rolle als Broker zwischen den Generationen wird dadurch veranschaulicht. 
 
-#raf # das Standard-Netzwerk der RAF wird abgerufen
+Da er bereits mit 17 Jahren Baader, Ensslin und Astrid Proll in einem Erziehungsheim kennenlernte, wurde er schon in jungen Jahren in die Strukturen eingefügt. Er war zwischenzeitlich zwar nicht aktiv, stieß aber während den Stammheimprozessen wieder dazu und wurde gemeinsam mit seiner späteren Partnerin Mohnhaupt zu einer zentralen Figur der zweiten Generation. Somit konnte er möglicherweise auf seinen Verbindungen zu den Gründungsmitgliedern der ersten Generation auf- und seine eigene Rolle in der RAF ausbauen. Seine vielen direkten Kontakte zu Mitgliedern der zweiten Generation sind darauf zurückzuführen, dass er an der Mehrheit der Aktionen beteiligt war, sowohl vorbereitend als auch in deren Ausführung, wie sein Ego-Netzwerk inklusive der Aktionen belegt:
 
+
+```{r Ego-Netzwerk Peter-Jürgen Boock, fig.height=14, fig.width=20, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 # selektiert aus dem Netzwerk der RAF alle Knoten, die mit Boock über einen Schritt verbunden sind und erstellt ein Ego-Netzwerk ersten Grades
 ego_pb <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Peter-Juergen Boock", mode = "all")
 # liefert eine Liste der Verbindungen von Boock
@@ -1610,7 +1505,10 @@ legend("bottomleft",
        bg = "grey90",
        box.col = "grey50", 
        ncol=1, )
+```
 
+
+```{r Ego-Netzwerk Peter-Jürgen Boock nach Generation, fig.height=14, fig.width=20, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 # nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Boock direkt verbunden war
 ego_pb1_p <- delete_vertices(ego_pb1, V(ego_pb1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
 
@@ -1649,12 +1547,17 @@ legend("bottomleft",
        box.col = "grey50", 
        ncol=1, )
 ```
+
+Zudem hatte Boock auch Kontakt zu Monika Haas und Wadi Haddad, die bei der Entführung der Landshut eine Rolle spielten. Generell war die Flugzeugentführung zwar eher eine Aktion für die RAF (zur Befreiung inhaftierter Mitglieder) und wurde vorwiegend von palästinensischen Terrorist:innen durchgeführt. Boock jedoch war auch an der Vorbereitung beteiligt, was seine Kontakte zu Haas und Waddad verdeutlichen. 
+
 Wenn man jedoch davon ausgeht, dass Boock eine zentrale Rolle innerhalb der zweiten Generation gespielt hat (zumindest was die Durchführung verschiedener Aktionen angeht), scheint es, dass die allgemeine Verbindung einzelner Akteur:innen in der ersten Generation deutlich wichtiger war, als in der zweiten. 
 
-Ähnliches gilt auch für das **Ego-Netzwerk von Brigitte Mohnhaupt**. Beide nehmen eine Broker-Position ein und lassen sich als Mentor:innen der zweiten Generation sehen.
+
+#### Brigitte Mohnhaupt
+
+Ähnliches gilt für das Ego-Netzwerk von Brigitte Mohnhaupt. Auch sie nimmt eine Brokerin-Position ein und lassen sich als Mentorin der zweiten Generation sehen.
 
 ```{r Ego-Netzwerk Brigitte Mohnhaupt, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
-
 #raf
 
 ego_bm <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Brigitte Mohnhaupt", mode = "all") # selektiert aus dem Netzwerk raf alle Knoten, die mit Mohnhaupt über einen Schritt verbunden sind.
@@ -1701,8 +1604,12 @@ legend("bottomleft",
        bg = "grey90",
        box.col = "grey50", 
        ncol=1, )
+```
 
+Wie bereits erwähnt, war Brigitte Mohnhaupt zu großen Teilen am Aufbau der zweiten Generation beteiligt. Der RAF schloss sie sich bereits 1971 an, war aber vorerst hauptsächlich in der Organisation tätig. Hier lernte sie einige Mitglieder der ersten Generation (wie zum Beispiel Ingrid Schubert oder Irmgard Möller) kennen. Während ihrer Haft in Stammheim wurde sie von ihren Mitgefangenen Baader, Ensslin und Raspe auf ihre Führungsrolle vorbereitet. Aus dem Gefängnis entlassen, nahm sie Kontakt zu den Anwälten Croissant und Dellwo auf.
+Es fällt ins Auge, dass Mohnhaupt zu fast genauso vielen Frauen (elf) wie Männern (zwölf) Kontakt hatte; ihr engstes Umfeld war also geschlechtermäßig ausgeglichen.
 
+```{r Ego-Netzwerk Brigitte Mohnhaupt Generationen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 # nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Mohnhaupt direkt verbunden war
 ego_bm1_p <- delete_vertices(ego_bm1, V(ego_bm1)[type > "1"]) # löscht alle Knoten, die keine natürlichen Personen sind (im Codebuch ist dafür das Attribut type definiert, das die Werte 1 = natürliche Person und 2 = Aktion besitzt)
 
@@ -1742,16 +1649,20 @@ legend(-1.2, -0.8,
 
 ```
 
-Dies könnte so interpretiert werden, dass es in der ersten Generation noch viel um den Kult um Baader, Ensslin und den anderen Gründungsmitgliedern ging. Bei der Entstehung der zweiten Generation war die RAF hingegen schon als Institution etabliert und wurde dann durch den Märtyrertod der in Stammheim Inhaftierten noch weiter in die Öffentlichkeit hinausgetragen. Den Mitgliedern der zweiten Generation ging es vermutlich mehr um die Sache, an der sie sich beteiligen, während die erste Generation sich um Einzelne scharte. 
+Aufgrund ihrer Broker-Position gehören ihrem Ego-Netzwerk sowohl sieben Mitglieder der ersten, als auch elf der zweiten Generation an. Die Visualisierung zeigt eine fast genaue Trennung der Generationen, ihre Kontakte aus der ersten wirken isoliert von denen der zweiten Generation. Dies deutet an, dass Mohnhaupt eine Brokerin war und dazu beigetragen hat, die Transition hin zur zweiten Generation zu vollziehen. Mit Klaus Croissant, Monika Haas und Wadi Haddad hielt sie zudem direkten Kontakt zu drei Unterstützer:innen sowie zu Peter-Jürgen Boock als weiteren Broker. Die Zahl der Verbindungen zur zweiten Generation ist höher, da sie in dieser viel aktiver und zentraler war als in der ersten. 
 
-#Diskussion: Fazit, Limitationen und Ausblick
+Insgesamt könnte dies so interpretiert werden, dass es in der ersten Generation noch viel um den Kult um Baader, Ensslin und den anderen Gründungsmitgliedern ging. Bei der Entstehung der zweiten Generation war die RAF hingegen schon als Institution etabliert und wurde dann durch den Märtyrertod der in Stammheim Inhaftierten noch weiter in die Öffentlichkeit hinausgetragen. Den Mitgliedern der zweiten Generation ging es vermutlich mehr um die Sache, an der sie sich beteiligen, während die erste Generation sich um Einzelne scharte. 
+
+# 5. Diskussion
 
 Um ein Fazit ziehen zu können, sollen abschließend die anfangs aufgestellten Forschungshypothesen erneut betrachtet und geklärt werden, ob und inwiefern sich diese bestätigt haben.
+
+## Erörterung der Forschungsergebnisse
 
 (1) *Die Mitglieder der ersten Generation haben die Entstehung der zweiten Generation - möglicherweise sogar aus den Justizvollzugsanstalten heraus - beeinflusst.*
 
     Diese Hypothese lässt sich aus unseren Ergebnissen klar bestätigen: Die Hauptakteur:innen der ersten Generation nutzten ihren Aufenthalt in der JVA Stammheim, um die mit inhaftierte Mohnhaupt zu instruieren, die nach ihrer Entlassung maßgeblich die Entstehung der zweiten Generation voran trieb.
-Außerdem nutzten die Inhaftierten ihr Unterstützer:innen-Netzwerk - beziehungsweise ihre Kontakte zu Anwälten – um Nachrichten nach außen zu schicken. Über Hans-Joachim Dellwo wurden so Anweisungen zu Mitgliedern und Sympathisant:innen der RAF geschickt, welche später zur  zweiten Generation werden sollten. So sorgten die Hauptakteur:innen auch indirekt für die Entstehung der zweiten Generation.
+Außerdem nutzten die Inhaftierten ihr Unterstützer:innen-Netzwerk – beziehungsweise ihre Kontakte zu Anwälten – um Nachrichten nach außen zu schicken. Über Hans-Joachim Dellwo wurden so Anweisungen zu Mitgliedern und Sympathisant:innen der RAF geschickt, welche später zur  zweiten Generation werden sollten. So sorgten die Hauptakteur:innen auch indirekt für die Entstehung der zweiten Generation.
 
 (2) *Die erste Generation hatte entgegen ihres selbst ausgerufenen „Stadtguerilla“-Charakters stärkere Hierarchien als die zweite Generation beziehungsweise fungierten die polarisierenden Akteur:innen Baader, Meinhof und Ensslin als Führungspersonen.*
 
@@ -1804,6 +1715,99 @@ Nicht nur die Ideologie der beiden Generationen unterschied sich, sondern auch d
 
 ## Limitationen
 
+Der Aussagekraft dieser Sozialen Netzwerkanalyse sind Grenzen gesetzt, sowohl auf inhaltlicher Ebene als auch hinsichtlich des Datenzugangs.
+
+Die Daten selbst können insofern keine Vollständigkeit bieten, da über die RAF als Untergrundorganisation ganz grundsätzlich nicht alles bekannt ist. Angefangen bei polizeilichen Ermittlungen über Gerichtsverfahren bis hin zu Forschungsarbeiten in neuester Zeit weisen sämtliche Dokumente große Lücken auf – insbesondere wenn es um einzelne, teilweise auf den ersten Blick vielleicht nicht besonders relevante, Beziehungen und Akteur*innen geht, welche im Kontext unserer Arbeit jedoch äußerst wichtig und in der Gesamtbetrachtung eben doch relevant sind. Zudem ist – was für uns tatsächlich auch überraschend war – bis heute nicht klar, wer an welchem Anschlag beteiligt war. Zwar sind die bekanntesten Anschläge (zum Beispiel Schleyer-Entführung, Landshut-Entführung), welche die größten Auswirkungen und medial die meiste Aufmerksamkeit bekamen, relativ umfassend beleuchtet und aufgeklärt. Geht es jedoch um kleinere Aktionen (zum Beispiel Banküberfälle), die in der Öffentlichkeit und den Medien weniger thematisiert wurden, sind teilweise weder Personenanzahl noch Namen in vollem Umfang bekannt. Dies deckt sich mit den Erkenntnissen von Krebs, der bei der Recherche zu geheimen Organisationen gemerkt hat, dass die Datenerhebung wesentlich schwieriger sei als bei Organisationsnetzwerken, weil zu geheimen Gruppierungen eben nicht alle Informationen publik sind. Teilweise könne es vielleicht sogar Falschinformationen geben, um eine falsche Fährte zu legen (vgl. Krebs, 2002, S. 44). Während dies bei der dritten Generation ein solch erhebliches Ausmaß hat, dass wir sie für die Forschungsarbeit ausgeschlossen haben (s. Kapitel 2), sind für die ersten beiden Generationen aus unserer Sicht ausreichend Informationen zur Verfügung, um diese aus der Perspektive der Netzwerkforschung zu betrachten und zu interpretieren, wenn auch unter Vorbehalt.
+Dass auf Grundlage dieser Wissenslücken Mythen entstehen können, war für uns als Gruppe – besonders beim Hinzuziehen weiterer Online-Quellen – Grund, ganz besonders auf die Verlässlichkeit von Quellen zu achten. Dieser Zusatzaufwand in Kombination mit der umfangreichen Literaturrecherche, die bei dem Thema unerlässlich war und ist, brauchte nicht nur viel Zeit, sondern hatte auch zur Folge, dass der Datenumfang am Ende bei Weitem unsere anfänglichen Vorstellungen übertraf. Die Motivation und das große Interesse führten dazu, dass dennoch immer wieder neue Informationen und interessante Randaspekte, die untersucht werden könnten, entdeckt wurden. Den Moment nicht zu verpassen, in dem die Datenerhebung beendet werden sollte, fiel uns daher nicht leicht. Weil die Kapazitäten insgesamt natürlich begrenzt waren, war uns von Anfang an bewusst, dass eine klare Eingrenzung die Voraussetzung für eine gute Arbeit darstellt. Diese dann jedoch tatsächlich zu vollziehen und vor allem auch bei dieser Eingrenzung zu bleiben, kann als einer der größten Lerneffekte und zugleich auch als größte Herausforderung für uns genannt werden. Als Beispiele sind hierbei die Untersuchung von Politiker:innen aus dem Umfeld oder der RAF selbst sowie die möglichen Einflüsse von Religiosität (s. These 8) zu nennen. Erforderlich dafür ist neben dem Austausch – und damit verbundener Diskussionsfähigkeit und -offenheit – auch der Blick fürs große Ganze, das immer und immer wieder Bezug nehmen auf die Forschungsfrage und den Grundgedanken der Arbeit. Davon, dass wir dies als Gruppe und auch als Einzelne verinnerlicht haben und verinnerlichen mussten, können wir bei zukünftigen Netzwerkanalysen und anderen Forschungsarbeiten enorm profitieren.
+
+Als erschwerender Faktor kann bei einem historischen und nicht vollständig erforschten Thema wie diesem außerdem genannt werden, dass manche Eingrenzungen zu Beginn der Arbeit gar nicht getroffen werden können – trotz gründlicher Vorrecherche. Hier ist es wichtig, ständig im Austausch zu bleiben und auch während der Recherche über vermeintliche Kleinigkeiten zu sprechen, die im Gesamten jedoch einen großen Einfluss haben können und zur Verbesserung der Arbeit beitragen. Als weitere Limitation in Bezug auf die Lektüre beziehungsweise Recherche ist zu benennen, dass über Hauptakteur:innen wie Andreas Baader, von dem wohl auch eine gewisse Faszination ausging, mehr geschrieben wurde und wir als Gruppe hier dementsprechend auch mehr gelesen und erfasst haben. Auch dies muss beim Lesen der Forschungsarbeit berücksichtigt werden.
+
+Die oben thematisierte Eingrenzung ist zwar notwendig, hat jedoch auch ihre Auswirkungen auf die Arbeit: Beispielsweise haben wir uns aus verschiedenen Gründen dazu entschieden, die Mitglieder ausländischer Terrororganisationen, welche (zum Beispiel als Ausbilder:innen bei Trainingscamps oder als Mittäter:innen bei Anschlägen) Beziehungen zu RAF-Mitgliedern hatten, nicht zu erfassen. Dies hätte den Umfang um ein Vielfaches erhöht, weitere Nachforschungen innerhalb dieser anderen Organisationen erfordert und letztendlich sehr wahrscheinlich die Qualität der Forschung innerhalb der RAF verschlechtert. Dennoch muss davon ausgegangen werden, dass deshalb einzelne Kontakte nicht dargestellt wurden, die über solche Akteur:innen durchaus vorhanden waren.
+
+Als letzte Limitation müssen Grenzfälle benannt werden: Immer wieder gab es nicht geklärte Sachverhalte in verschiedenen Bereichen. Konkret konnte bei manchen Akteur:innen beispielsweise nicht oder nur sehr schwer geklärt werden, ob diese nun Mitglied oder nur Unterstützer:in der RAF waren; oder welcher Generation sie nun angehörten, da es auch hier Unterschiede und Grenzfälle bei der Zuordnung gab. Wir haben diese nach bestem Gewissen zugeordnet, können jedoch auch hier keine Garantie für die Richtigkeit geben.
+
+
 ## Ausblick
 
+Ein erster, wohl offensichtlicher Ansatz für künftige Forschungsarbeiten zur RAF ist der Vergleich der hier gesammelten Ergebnisse mit dem Netzwerk der dritten Generation, die in diesem Projekt außen vor gelassen wurde. Da über diese noch weniger bekannt ist als über die anderen beiden und die RAF sich offiziell am 20. April 1998 aufgelöst hat, ist die Datenerhebung noch schwieriger. Nichtsdestotrotz wäre es interessant, herauszufinden, inwieweit Akteur:innen der zweiten Generation an der Entstehung der dritten beteiligt waren und wie gut vernetzt diese war. Es ist anzunehmen, dass ihre Strukturen bis heute erhalten sind, da seit einigen Jahren immer wieder Hinweise auf drei, noch im Untergrund lebende, Mitglieder der dritten Generation auftauchen, diese aber bisher nicht aufzufinden waren. Daraus ist zu schließen, dass die RAF wahrscheinlich bis heute noch Unterstützer:innen hat. (Schlosser, 2019)
+
+„Es gibt viele Parallelen zwischen dem Terror der RAF und dem des IS”, sagte Stefan Aust, ehemaliger SPIEGEL-Chefredakteur und Autor einer der hier verwendeten Lektüren, 2017 bei einem Vortrag in Göttingen. Es ist daher sicherlich spannend, einen Vergleich mit anderen Terrornetzwerken, wie neben dem Islamischen Staat zum Beispiel auch der NSU, zu ziehen. Hier könnte man einen ähnlichen Aufbau oder die Dichte der Vernetzung untersuchen.
+
+In diesem Kontext ist des Weiteren anzumerken, dass die RAF Kontakt zu mehreren ausländischen Terrorgruppierungen pflegte. So ließen sie sich 1970 in Jordanien von der palästinensischen Al-Fatah, 1975 in Jemen von der PFLP und 1977 in Bagdad von der PLO ausbilden. Auch an der Entführung der Landshut waren Angehörige dieser Organisationen beteiligt. Bis auf Wadi Haddad und Zaki Helou wurden diese Personen(-Gruppen) zu Begrenzungszwecken nicht in dieses Projekt aufgenommen. Hier bietet sich deshalb ein guter Ansatz, um die globale Vernetzung der Roten Armee Fraktion zu erforschen.
+
+Zuletzt: Zwischen 1977 bis 1993 tötete die RAF insgesamt 34 Personen. Etwa 230 weitere wurden dauerhaft in ihrer Gesundheit und Lebensfreude geschädigt. Die meisten Opfer stammten aus Politik, Wirtschaft und Verwaltung. Doch gab es noch andere, weniger offensichtliche, Gemeinsamkeiten zwischen ihnen? Ebenfalls in diesem Kontext interessant: Der 1977 ermordete Jürgen Ponto, Vorstandssprecher der Dresdner Bank, war der Onkel von Mitglied Susanne Albrecht. Existierte auch in anderen Fällen eine Verbindung zur RAF?
+
+Ergänzend zur vorliegenden Netzwerkanalyse ergeben sich also viele offene Fragen. Der Mythos um die RAF bietet auch zukünftig Nährboden für weitere Forschungen.
+
+
 ## Literatur
+
+- Aust, S. (2008). Der Baader-Meinhof-Komplex. München: Goldmann Verlag.
+
+- Baker, W.E. and R.R. Faulkner (1993). The social organization of conspiracy: Illegal networks in the heavy electrical equipment industry. American Sociological Review, 58(6) 837-860.
+
+- Carley, K., Dombroski, M., Tsvetovat, M., Reminga, J., & Kamneva, N. (2003). Destabilizing dynamic covert networks. Conference held at the National Defense War College, Washington DC. Abgerufen am 06.06.2020 von http://www.casos.cs.cmu.edu/publications/papers/carley_2003_networks.pdf
+
+- dpa (2011). RAF-Prozess: Gericht verhängt Beugehaft gegen Ex-Terroristen. Der SPIEGEL. Abgerufen am 20.06.2020 von https://www.spiegel.de/politik/deutschland/raf-prozess-gericht-verhaengt-beugehaft-gegen-ex-terroristen-a-754367.html
+
+- Erickson, B. B. (1981). Secret societies and social structure. Social Forces, 60(1): 188-210.
+
+- Granovetter, M. (1973). The strength of weak ties. The American Journal of Sociology, 78(6), 1360-1380.
+
+- Fuhse, J. A. (2018). Soziale Netzwerke. Konzepte und Forschungsmethoden. 2. Auflage. Stuttgart: utb.
+
+- Holl, T. (2007). Baaders Bevollmächtigte. Frankfurter Allgemeine Zeitung. Abgerufen am 17.06.2020 von https://www.faz.net/aktuell/politik/inland/brigitte-mohnhaupt-baaders-bevollmaechtigte-1405723.html
+
+- Hollenbach, M. (2007). Protestantismus und RAF. Warum etliche RAF-Leute protestantische Wurzeln hatte. Deutschlandfunk Kultur. Abgerufen am 17.06.2020 von 
+https://www.deutschlandfunkkultur.de/protestantismus-und-raf.1278.de.html?dram:article_id=192026
+
+- Koschade, S. (2006). A Social Network Analysis of Jemaah Islamiyah: The Applications to Counterterrorism and Intelligence. Abgerufen am 20.06.2020 von https://eprints.qut.edu.au/6074/1/6074.pdf
+
+- Lörchner, J. (2017). Die Todesnacht von Stammheim. Der SPIEGEL. Abgerufen am 17.06.2020 von https://www.spiegel.de/geschichte/raf-haeftlinge-in-jva-stuttgart-die-todesnacht-in-stammheim-a-1172566.html
+
+- Kellerhoff,S (2007). Peter-Jürgen Boock, der Talkshowterrorist. Die WELT. Abgerufen am 19.06.2020 von
+https://www.welt.de/politik/article1168652/Peter-Juergen-Boock-der-Talkshow-Terrorist.html
+
+- Krebs, V. (2002). Mapping Networks of Terrorist Cells. Connections, 24(3), 43–52.
+
+- Mayntz, R. (2004). Hierarchie oder Netzwerk? Zu den Organisationsformen des Terrorismus. Berliner Journal für Soziologie, 14, 251-262.
+
+- Naylor, S. (2009). Die Rote Armee Fraktion (RAF) als kulturelles Phänomen: Repräsentationen in literarischen Texten und anderen kulturellen Produkten (Nicht veröffentlichte Dissertation). University of Maryland, College Park, USA.
+
+- Peters, B (2007). Die verschwundenen Terroristen. Die WELT. Abgerufen am 19.06.2020 von https://www.welt.de/print-welt/article716577/Die-verschwundenen-Terroristen.html
+
+- Rodríguez, J. A. (2005). The March 11th Terrorist Network: In its weakness lies its strength. Abgerufen am 06.06.2020 von http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.98.4408
+
+- Schlosser, P. (2019). Im Untergrund - Der Arsch von Franz Josef Strauß, die RAF, mein Vater und ich. Hamburg: Hoffmann und Campe Verlag
+
+- Schweizer, S. (2017). RAF 1.0-3.0: Ideologie - Strategie - Attentate. Waiblingen: smp, SWB Media Publishing.
+
+- Sparrow, M. (1991). The Application of Network Analysis to Criminal Intelligence: An Assessment of the Prospects. Social Networks, 13, 251-252.
+
+- Wagener, V (2017). Späte Bekenntnisse - Die RAF und die Reue. DW. Abgerufen am 17.06.2020 von https://www.dw.com/de/sp%C3%A4te-bekenntnisse-die-raf-und-die-reue/a-41612044
+
+# 6. Team, Arbeitsaufwand und Lessons Learned
+
+**Teammitglieder:**
+
+Jule Ahles, Celina Arnemann, Hannah Bauer, Jan Kraft, Jana Mack, Stefanie Sommer
+
+**Arbeitsaufwand und Rollen im Team:**
+
+- Jule Ahles: Literaturrecherche & Auswertung, Coding, Forschungsbericht, ca. 200 Stunden
+
+- Celina Arnemann: Projektleitung, Literaturrecherche & Auswertung, Forschungsbericht, ca. XX Stunden
+
+- Hannah Bauer: Literaturrecherche & Auswertung, Coding, Forschungsbericht, ca. XX Stunden
+
+- Jan Kraft: Literaturrecherche & Auswertung , Forschungsbericht, ca. XX Stunden
+
+- Jana Mack: Literaturrecherche & Auswertung, Forschungsbericht, ca. XX Stunden
+
+- Stefanie Sommer: Literaturrecherche & Auswertung, Forschungsbericht, ca. XX Stunden
+
+## Lessons learned und Reflexion der Teamarbeit
+
+Die größte Herausforderung unseres Teams war es, zu Beginn eine gemeinsame Richtung zu finden, die wir in unserem Projekt verfolgen wollen. Da wir uns alle dem Team angeschlossen haben, da wir uns für das Thema interessieren, wussten wir anfangs nicht genau, in welche Richtung wir (nicht) gehen wollen. Diese Eingrenzung eines Forschungsthemas ist jedoch enorm wichtig, was wir definitiv als Learning aus diesem Projekt mitnehmen werden und bei der Arbeit an unseren Bachelorarbeiten sicher im Hinterkopf haben werden. Zum einen hilft es, einen klaren Fokus zu behalten und nur relevante Informationen zu erfassen, zum anderen erspart man sich dadurch auch viele Diskussionen darüber, ob man einen bestimmten Aspekt mit aufnehmen soll oder nicht. Auch die Corona-Krise war gewissermaßen eine Herausforderung, da man sich nicht einfach zusammensetzen konnte und viele Absprachen über WhatsApp oder GoogleDocs in der direkten Kommunikation vielleicht einfacher gewesen wären. Dennoch ließ sich an der Situation ja nichts ändern und rückblickend betrachtet, haben wir die virtuelle Gruppenarbeit gut bewältigt. Klare Absprachen, Deadlines und regelmäßige Videokonferenzen waren dabei essentiell. Das Projekt auch virtuell vollendet zu haben, werten wir daher auch ein Stück weit als persönlichen Erfolg.
+
+Unser größter Meilenstein war es jedoch, letztlich eine gemeinsame Linie gefunden zu haben, auch wenn wir anfangs nicht genau wussten, wo wir mit unserem Projekt hinwollen und eine Vielzahl an breiten, diversen Ideen hatten. Schlussendlich haben wir eine Eingrenzung vorgenommen und uns etwas wehmütig von anderen spannenden Aspekten verabschiedet. Dennoch haben wir viele für uns interessante Schlüsse ziehen können, unser Wissen über die RAF erweitert und ein anschauliches Verständnis der Terrororganisation gewonnen. Auf diesem Weg hat uns stets das gemeinsame Interesse an der Materie angetrieben und dafür gesorgt, dass wir über ein halbes Jahr hinweg am Ball geblieben sind. Unser gemeinsamer Antrieb hat uns durch herausfordernde Phasen gebracht und während der Projektarbeit zusammengeschweißt. Die Teamarbeit hat überwiegend sehr gut funktioniert, was sicherlich auch daran lag, dass wir vorab klare Regeln besprochen hatten und aufkommende Probleme immer offen angesprochen und gelöst haben. Unseren anfänglichen Plan, dass jede:r ein Protokoll über den eigenen Workload führt und monatlich besprochen wird, ob Aufgaben ausgewogen aufgeteilt  sind, haben wir letztlich nicht umgesetzt. Dadurch fiel es uns nun zwar nicht ganz leicht, den eigenen Workload einzuschätzen, dies lag aber auch einfach daran, dass wir so großes Interesse an dem Thema hatten, dass das in den Hintergrund geriet. Wenn man sich beispielsweise einmal in R Studio eingearbeitet hatte oder der Lösung für ein Problem auf den Grund gehen wollte, waren ohne es zu bemerken einige Stunden vergangen. Insgesamt hatten wir aber ein gutes Gespür dafür, ob unsere Aufgaben gleichwertig verteilt waren und haben viele Aufgaben auch gemeinsam bearbeitet, so hat jede:r ein Buch zur Datenerhebung gelesen oder an der Erstellung des Forschungsberichts mitgewirkt.

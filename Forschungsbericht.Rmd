@@ -221,7 +221,7 @@ Das Gesamtnetzwerk setzt sich aus 64 Männern und 42 Frauen zusammen; ohne die U
 #Wir betrachten die Geschlechterverteilung des Gesamtnetzwerks:
 #raf
 
-raf_sex <- delete.vertices(raf, V(raf)[type == 2])#löscht alle Anschläge
+raf_sex <- delete.vertices(raf, V(raf)[type == 2])#löscht alle Anschläge bzw. Aktionen
 
 V(raf_sex) [V(raf_sex)$sex == 1]$color <- "darkseagreen" #Knoten mit Attribut "männlich" grün einfärben
 V(raf_sex)[V(raf_sex)$sex == 2]$color <- "darkorange3" #Knoten mit Attribut "weiblich" orange einfärben
@@ -1175,11 +1175,11 @@ legend("bottomleft",
 
 Das Versorgungsnetzwerk zeigt deutlich, dass es einen Broker gab, der in der breiten Öffentlichkeit wenig Beachtung erfahren hat. Der Hauptakteur für externe Unterstützung war **Hans-Joachim Dellwo**, von Beruf Anwalt (Verbindung zu ca. 15 Knoten). Durch seine Beschäftigung in der Anwaltskanzlei von **Klaus Croissant** kam er in Kontakt mit der RAF und war während der Inhaftierung der Spitze der ersten Generation in Stammheim der zentrale Kurier zwischen den Inhaftierten und den Mitgliedern der zweiten Generation. Zusammen mit Volker Speitel schmuggelte er die Waffen, die in der Todesnacht von Stammheim benutzt wurden, in das Gefängnis. Dellwo sagte sich jedoch nach der Todesnacht von der RAF los, was ein Indiz dafür sein kann, dass er nicht sonderlich gut in die Gruppe eingebunden war, sondern nur als Kurier fungierte. Allerdings unterstütze er so indirekt die Transition hin zur zweiten Generation, zu der er den Kontakt herstellte.
 
-### Anschläge
+### Anschläge und Aktionen
 
-Die Untersuchung der Anschlagsbeteiligung zeigt, dass es einen Zusammenhang zwischen größeren, bzw. bekannteren Aktionen der RAF und Ausbildungsmissionen gibt. Anders als bei medial präsenten Ereignissen wie der Schleyer-Entführung waren bei kleineren Aktionen, wie z.B. Banküberfällen und Polizistenmorden, teilweise wenige Mitglieder oder auch Unterstützer*innen beteiligt. Allerdings ist auch nicht auszuschließen, dass bei Aktionen, die medial (und damit gesellschaftlich) bekannt waren, die Aufklärung sorgfältiger begangen wurde und deshalb mehr Mittäter bekannt sind.
+Die Untersuchung der Anschlags-/Aktionsbeteiligung zeigt, dass es einen Zusammenhang zwischen größeren, bzw. bekannteren Aktionen der RAF und Ausbildungsmissionen gibt. Anders als bei medial präsenten Ereignissen wie der Schleyer-Entführung waren bei kleineren Aktionen, wie z.B. Banküberfällen und Polizistenmorden, teilweise wenige Mitglieder oder auch Unterstützer*innen beteiligt. Allerdings ist auch nicht auszuschließen, dass bei Aktionen, die medial (und damit gesellschaftlich) bekannt waren, die Aufklärung sorgfältiger begangen wurde und deshalb mehr Mittäter bekannt sind.
 
-```{r Anschlagsnetzwerk,fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
+```{r Aktionsbeteiligungsnetzwerk,fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
 
 participation <- subgraph.edges(raf, E(raf)[relationship== " 7"]) # erstellt ein neues Teilnetzwerk, in dem nur die Akteure angezeigt werden, die an einer Aktion beteiligt waren
 participation <- simplify(participation, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
@@ -1237,7 +1237,7 @@ ego_bef1 <- simplify(ego_bef1, remove.multiple = TRUE)# entfernt alle doppelten 
 
 # Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
 V(ego_bef1)[V(ego_bef1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
-V(ego_bef1)[V(ego_bef1)$type == 2]$shape <- "square" # Anschläge werden als Quadrat dargestellt
+V(ego_bef1)[V(ego_bef1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
 V(ego_bef1)[V(ego_bef1)$name == "Befreiung Andreas Baader 14.05.1970"]$color <- "cornflowerblue" # die betrachtete Aktion wird blau hervorgehoben
 V(ego_bef1)[V(ego_bef1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
 V(ego_bef1)[V(ego_bef1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
@@ -1257,7 +1257,7 @@ plot(ego_bef1,
      rescale=T)
 
 legend("bottomleft", 
-       c("Männer","Frauen", "Anschlag"),
+       c("Männer","Frauen", "Aktion"),
        col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1311,7 +1311,7 @@ plot(ego_ent1,
      edge.color="grey40")
 
 legend("bottomleft", 
-       c("Männer","Frauen", "Anschlag"),
+       c("Männer","Frauen", "Aktion"),
        col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1333,7 +1333,7 @@ V(ego_ent1)[V(ego_ent1)$generation == 3]$color <- "white" # Mitglieder der erste
 V(ego_ent1)[V(ego_ent1)$generation == 99]$color <- "white" # Mitglieder, zu denen es keine Angabe bezüglich ihrer Generationszugehörigkeit gibt, werden weiß dargestellt
 V(ego_ent1)[V(ego_ent1)$generation == 3]$vertex.frame.color <- "black" # setzt Rahmenfarbe auf schwarz
 V(ego_ent1)[V(ego_ent1)$generation == 99]$vertex.frame.color <- "black" # setzt Rahmenfarbe auf schwarz
-V(ego_ent1)[V(ego_ent1)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977"]$color <- "cornflowerblue" # Anschlag wird blau hervorgehoben
+V(ego_ent1)[V(ego_ent1)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977"]$color <- "cornflowerblue" # Aktion wird blau hervorgehoben
 
 plot(ego_ent1,
      layout=layout_with_kk,
@@ -1347,7 +1347,7 @@ plot(ego_ent1,
      edge.color="grey40")
 
 legend("bottomleft", 
-       c("1. Generation","2. Generation", "Beide Generationen", "Anschlag"),
+       c("1. Generation","2. Generation", "Beide Generationen", "Aktion"),
        col=c("grey80", "grey30", "white", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1406,7 +1406,7 @@ plot(ego_ejp1,
      vertex.size=10)
 
 legend(-1.2, -1, 
-       c("Männer","Frauen", "Anschlag"),
+       c("Männer","Frauen", "Aktion"),
        col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1438,7 +1438,7 @@ plot(ego_ejp1,
      sub="nur direkte Beteiligung an der Aktion (Beziehungen 1. Grades)")
 
 legend(-1.2, -1, 
-       c("1. Generation","2. Generation", "Beide Generationen", "Anschlag"),
+       c("1. Generation","2. Generation", "Beide Generationen", "Aktion"),
        col=c("grey80", "grey30", "white", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1571,7 +1571,7 @@ plot(ego_ab1,
      edge.color="grey40")
 
 legend("bottomleft", 
-       c("Männer","Frauen", "Anschlag"),
+       c("Männer","Frauen", "Aktionen"),
        col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1625,7 +1625,7 @@ plot(ego_pb1,
      vertex.size=10)
 
 legend("bottomleft", 
-       c("Männer","Frauen","Anschlag"),
+       c("Männer","Frauen","Aktionen"),
        col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
        pch = 19, 
        border = "black", 

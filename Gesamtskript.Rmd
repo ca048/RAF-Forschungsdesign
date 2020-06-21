@@ -1,7 +1,7 @@
 ---
-title: "Gesamtzusammenstellung"
-author: "ja053"
-date: "1 6 2020"
+title: "Gesamtskript"
+author: "Jule Ahles, Celina Arnemann, Hannah Bauer, Jan Kraft, Jana Mack, Stefanie Sommer"
+date: "21.6.2020"
 output: html_document
 ---
 

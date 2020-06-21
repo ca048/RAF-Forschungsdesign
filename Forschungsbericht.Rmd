@@ -1875,6 +1875,7 @@ Zuletzt: Zwischen 1977 bis 1993 tötete die RAF insgesamt 34 Personen. Etwa 230 
 
 Ergänzend zur vorliegenden Netzwerkanalyse ergeben sich also viele offene Fragen. Der Mythos um die RAF bietet auch zukünftig Nährboden für weitere Forschungen.
 
+# Anlage
 
 ## Literatur
 
@@ -1923,6 +1924,10 @@ https://www.welt.de/politik/article1168652/Peter-Juergen-Boock-der-Talkshow-Terr
 - Sparrow, M. (1991). The Application of Network Analysis to Criminal Intelligence: An Assessment of the Prospects. Social Networks, 13, 251-252.
 
 - Wagener, V (2017). Späte Bekenntnisse - Die RAF und die Reue. DW. Abgerufen am 17.06.2020 von https://www.dw.com/de/sp%C3%A4te-bekenntnisse-die-raf-und-die-reue/a-41612044
+
+# Datensatz
+
+Der gesamte Datensatz inklusive aller Visualisierungen, die teilweise nicht in diesem Forschungsbericht besprochen werden konnten, kann über github abgerufen werden: 
 
 # Team, Arbeitsaufwand und Lessons Learned
 

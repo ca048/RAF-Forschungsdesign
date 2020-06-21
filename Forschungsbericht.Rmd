@@ -53,7 +53,7 @@ Hinsichtlich der Strukturen und Hierarchien in terroristischen Netzwerken haben 
 Krebs hat sich 2002 in “Mapping of Terrorist Cells” konkret mit den Netzwerken der Terroristen vom 11. September beschäftigt und darin vorwiegend starke Beziehungen erkannt - anders als bei typischen Netzwerken, die Granovetter zufolge von der Stärke schwacher Beziehungen leben (vgl. Granovetter, 1973). Das liegt daran, dass Terrorgruppen verhindern wollen, durch unzuverlässige “weak links” geheime Informationen nach außen durchsickern zu lassen (vgl. Krebs, 2002). Besonders herausfordernd ist daher der Spagat zwischen notwendiger Kommunikation zur Vorbereitung von Aktionen einerseits und dem Versuch, die Zahl der Kontakte zu begrenzen, um kein Aufsehen zu erregen andererseits (vgl. Baker & Faulkner, 1993). 
 Die Bindungen innerhalb des Netzwerkes sind dafür besonders stark und basieren oft darauf, dass sich Akteur:innen bereits zuvor kannten. Sei es durch gemeinsame Schul- oder Terrorausbildung oder verwandtschaftliche Beziehungen. Die so geschaffene Vertrauensbasis erachtet Krebs als essenziell für eine effiziente Funktionsweise von Netzwerken (vgl. Krebs, 2002). 
 
-Rodriguez weicht von dieser Sichtweise leicht ab. Er schreibt, dass schwache Beziehungen eine wichtige Rolle für Netzwerke spielen. Breite Verbindungen können helfen, da viele Unterstützer:innen vorhanden sind. Generell sieht Rodriguez indirekte Verbindungen, genauso wie die Broker, als zentral an, die als Mittlerinnen zwischen anderen fungieren (vgl. Rodriguez, 2005).
+Rodriguez weicht von dieser Sichtweise leicht ab. Er schreibt, dass schwache Beziehungen eine wichtige Rolle für Netzwerke spielen. Breite Verbindungen können helfen, da viele Unterstützer:innen vorhanden sind. Generell sieht Rodriguez indirekte Verbindungen, genauso wie die Broker:innen, als zentral an, die als Mittlerinnen zwischen anderen fungieren (vgl. Rodriguez, 2005).
 
 Um diese Erkenntnisse nun in Relation zur RAF zu setzen, ist auch die Betrachtung des Forschungsstandes hinsichtlich der terroristischen Gruppierung essenziell.
 
@@ -221,7 +221,7 @@ Das Gesamtnetzwerk setzt sich aus 64 Männern und 42 Frauen zusammen; ohne die U
 #Wir betrachten die Geschlechterverteilung des Gesamtnetzwerks:
 #raf
 
-raf_sex <- delete.vertices(raf, V(raf)[type == 2])#löscht alle Anschläge bzw. Aktionen
+raf_sex <- delete.vertices(raf, V(raf)[type == 2])#löscht alle Anschläge
 
 V(raf_sex) [V(raf_sex)$sex == 1]$color <- "darkseagreen" #Knoten mit Attribut "männlich" grün einfärben
 V(raf_sex)[V(raf_sex)$sex == 2]$color <- "darkorange3" #Knoten mit Attribut "weiblich" orange einfärben
@@ -316,7 +316,7 @@ edgematrix <-as.matrix(el)
 ```
 ### Wandel im Laufe der Jahre 1970-1977
 
-Im Jahr **1970** besteht das Netzwerk aus 24 Knoten, darunter die Gründungsmitglieder: Bereits hier zeichnet sich ab, dass Meinhof, Baader, Raspe und Ensslin zentral im Netzwerk vertreten sind und viele Verbindungen aufweisen. Schubert, Proll, Mahler, Georgens und Homann sind weniger zentralisiert, weisen aber noch einige Verbindungen auf. Brigitte Asdonk und Monika Berberich haben deutlich weniger Verbindungen zu anderen Mitgliedern. Untereinander sind diese Gründungsmitglieder mit einer maximalen Pfaddistanz von vier voneinander entfernt. Dabei stehen Baader, Meinhof und Ensslin klar in der Mitte und weisen die meisten Verbindungen auf (8). Georgens ist dort ebenfalls zu verorten und weist sieben Verbindungen zu den anderen Gründungsmitgliedern auf. Von zehn Gründungsmitgliedern sind drei männlich und sieben weiblich.
+Im Jahr **1970** besteht das Netzwerk aus 22 Knoten, darunter die Gründungsmitglieder: Bereits hier zeichnet sich ab, dass Meinhof, Baader, Raspe und Ensslin zentral im Netzwerk vertreten sind und viele Verbindungen aufweisen. Schubert, Proll, Mahler, Georgens und Homann sind weniger zentralisiert, weisen aber noch einige Verbindungen auf. Brigitte Asdonk und Monika Berberich haben deutlich weniger Verbindungen zu anderen Mitgliedern. Untereinander sind diese Gründungsmitglieder mit einer maximalen Pfaddistanz von vier voneinander entfernt. Dabei stehen Baader, Meinhof und Ensslin klar in der Mitte und weisen die meisten Verbindungen auf (8). Georgens ist dort ebenfalls zu verorten und weist sieben Verbindungen zu den anderen Gründungsmitgliedern auf. Von zehn Gründungsmitgliedern sind drei männlich und sieben weiblich.
 
 ```{r 1970,fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
 raf_year <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
@@ -865,11 +865,11 @@ legend("bottomleft",
 Die Dichte innerhalb eines Netzwerkes gibt Aufschluss darüber, wie effektiv oder geheim ein Netzwerk war. Laut Koschade ist ein Netzwerk umso geheimer, je niedriger die Dichte ist (vgl. Koschade, 2006, S. 22). Dies liegt daran, dass die Gefahr einer Massen-Enttarnung der Mitglieder tendenziell höher sein kann, wenn viele enge Verbindungen bestehen (ebd.). Generell liegt die Herausforderung in der Balance zwischen dem Versuch, unauffällig zu bleiben einerseits und dem Bedarf eines gewissen Maßes an Kommunikation und Verbindung (z.B. zur Planung von Aktionen) andererseits (vgl. Baker & Faulkner, 1993).
 
 Das Gesamtnetzwerk der RAF weist einen relativ geringen Dichtewert von 13,1% auf. Dies liegt jedoch auch daran, dass hier viele Akteur:innen betrachtet werden, die sich aufgrund des zeitlichen Abstands der ersten und der zweiten Generation niemals kannten, weshalb die Dichtewerte der einzelnen Generationen relevanter sind: Der Wert der ersten Generation beträgt hier ca. 30%, der der zweiten Generation etwa 29,8%.
-Dabei begann (1970) die RAF mit einer Dichte von ca. 23,8%, was jedoch an der relativ geringen Menge an Akteuren liegt (22) - im gesamten Beobachtungszeitraum ist der Dichtewert in diesem Jahr jedoch am höchsten. Dies kann daran liegen, dass die Gründungsmitglieder sich untereinander gut kannten und daher noch enger vernetzt ware. Die weiteste Distanz innerhalb des Netzwerkes bestand aus gerade einmal 4 Knoten (zwischen Astrid Proll und Manfred Grashof). 1971 beträgt der Dichtewert nur noch 15,7%, jedoch kamen auch 15 neue Akteure hinzu, sodass der enge Kreis um die Gründungsmitglieder von 1970 etwas vergrößert und die Beziehungen weniger dicht wurden. Ab 1972 liegt der Dichtewert relativ konstant bei circa 13% mit einer maximalen Pfaddistanz von 6, dieser Wert ändert sich kaum im beobachteten Zeitraum. Nur im Jahr 1975 sinkt die Dichte auf unter 13%, allerdings nur minimal darunter auf 12,8%. In diesem Jahr ist die Pfaddistanz jedoch auch geringer und beträgt nur 4 Schritte zwischen Hans-Joachim Klein und Monika Haas. Bezogen auf den direkten Kontakt der Mitglieder lässt sich also kein Unterschied zwischen der ersten und der zweiten Generation erkennen. Betrachtet man die jeweilige Gesamtdichte der beiden Generationen, ist ebenfalls kein erheblicher Unterschied zu erkennen, in beiden Generationen beträgt diese circa 30%. 
+Dabei begann (1970) die RAF mit einer Dichte von ca. 23,8%, was jedoch an der relativ geringen Menge an Akteur:innen liegt (22) - im gesamten Beobachtungszeitraum ist der Dichtewert in diesem Jahr nämlich am höchsten. Dies kann daran liegen, dass die Gründungsmitglieder sich untereinander gut kannten und daher noch enger vernetzt waren. Die weiteste Distanz innerhalb des Netzwerkes bestand aus gerade einmal 4 Knoten (zwischen Astrid Proll und Manfred Grashof). 1971 beträgt der Dichtewert nur noch 15,7%, jedoch kamen auch 15 neue Personen hinzu, sodass der enge Kreis um die Gründungsmitglieder von 1970 etwas vergrößert und die Beziehungen weniger dicht wurden. Ab 1972 liegt der Dichtewert relativ konstant bei circa 13% mit einer maximalen Pfaddistanz von 6, dieser Wert ändert sich kaum im beobachteten Zeitraum. Nur im Jahr 1975 sinkt die Dichte auf unter 13%, allerdings nur minimal auf 12,8%. In diesem Jahr ist die Pfaddistanz jedoch auch geringer und beträgt nur 4 Schritte zwischen Hans-Joachim Klein und Monika Haas. Bezogen auf den direkten Kontakt der Mitglieder lässt sich also kein Unterschied zwischen der ersten und der zweiten Generation erkennen. Betrachtet man die jeweilige Gesamtdichte der beiden Generationen, ist ebenfalls kein erheblicher Unterschied zu erkennen, in beiden Generationen beträgt diese circa 30%. 
 
 ## Beziehungen
 
-Die Beziehungen zwischen den einzelnen Akteuren wurden in verschiedene Kategorien aufgeteilt. Dabei war der häufigste Beziehungstyp „Bekanntschaft“ bzw. „Kontakt“, gefolgt von “Freundschaft”.
+Die Beziehungen zwischen den einzelnen Akteur:innen wurden in verschiedene Kategorien aufgeteilt. Dabei war der häufigste Beziehungstyp „Bekanntschaft“ beziehungsweise „Kontakt“, gefolgt von “Freundschaft”.
 
 ```{r Einlesen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 el <- read.csv("https://raw.githubusercontent.com/ca048/RAF-Forschungsdesign/master/edges.csv", header=T, as.is=T, sep = ",")
@@ -929,9 +929,9 @@ legend("topleft",
        ncol=1, )
 ```
 
-Es überrascht kaum, dass die meisten Akteure zumindest Kontakt miteinander hatten, da sie schließlich Mitglieder der gleichen Organisation waren. In der Literatur gehen die Meinungen hinsichtlich der Stärke von Beziehungen innerhalb von Terrornetzwerken auseinander. Rodriguez (2005) zufolge gibt es oft viele schwache Beziehungen, dabei bezieht er sich auf das Netzwerk der Zug-Attentate in Spanien vom 11. März 2004. 88% der Beziehungen in diesem Netzwerk sind schwache Beziehungen und prägen so maßgeblich Form und Dynamik des Netzwerkes. Rodriguez schließt daher darauf, dass Wissen und Ressourcen oft durch Mittelspersonen weitergetragen wird. Dies deckt sich mit der Existenz von Brokern (Analyse folgt) in unserem Netzwerk, die in der Öffentlichkeit weniger bekannt sind, aber wichtige Rollen gespielt haben (vgl. Rodriguez, 2005). Krebs hingegen erklärt, dass im Netzwerk der 9/11-Attentäter kaum schwache Beziehungen bestanden haben, um zu verhindern, dass Informationen nach außen sickern (vgl. Krebs, 2002). Diese beiden Sichtweisen könnte man jedoch so verbinden, dass es innerhalb des Netzwerkes einen harten, engen Kern gab, sowie auch Unterstützer*innen, die aber durchaus mit der RAF verbunden und keine vollkommen Außenstehenden waren, weshalb die Gefahr aufzufliegen, weniger groß war. 
+Es überrascht kaum, dass die meisten Akteur:innen zumindest Kontakt miteinander hatten, da sie schließlich Mitglieder der gleichen Organisation waren. In der Literatur gehen die Meinungen hinsichtlich der Stärke von Beziehungen innerhalb von Terrornetzwerken auseinander. Rodriguez (2005) zufolge gibt es oft viele schwache Beziehungen, dabei bezieht er sich auf das Netzwerk der Zug-Attentate in Spanien vom 11. März 2004. 88% der Beziehungen in diesem Netzwerk sind schwache Beziehungen und prägen so maßgeblich Form und Dynamik des Netzwerkes. Rodriguez schließt daher darauf, dass Wissen und Ressourcen oft durch Mittelspersonen weitergetragen werden. Dies deckt sich mit der Existenz von Broker:innen (Analyse folgt) in unserem Netzwerk, die in der Öffentlichkeit weniger bekannt sind, aber wichtige Rollen gespielt haben (vgl. Rodriguez, 2005). Krebs hingegen erklärt, dass im Netzwerk der 9/11-Attentäter:innen kaum schwache Beziehungen bestanden haben, um zu verhindern, dass Informationen nach außen sickern (vgl. Krebs, 2002). Diese beiden Sichtweisen könnte man jedoch so verbinden, dass es innerhalb des Netzwerkes einen harten, engen Kern gab, sowie auch Unterstützer:innen, die aber durchaus mit der RAF verbunden und keine vollkommen Außenstehenden waren, weshalb die Gefahr aufzufliegen weniger groß war. 
 
-Das Freundschaftsnetzwerk innerhalb der RAF zeigt auf, dass die meisten Akteure viel Kontakt untereinander hatten, wobei Einzelne nur mit wenigen Akteuren befreundet waren.
+Das Freundschaftsnetzwerk innerhalb der RAF zeigt auf, dass die meisten Akteur:innen viel Kontakt untereinander hatten, wobei Einzelne nur mit wenigen Personen befreundet waren.
 
 ```{r Freundschaftsnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 
@@ -967,7 +967,7 @@ legend("bottomleft",
 
 ### Liebesbeziehungen
 
-Das Beziehungsnetzwerk verdeutlicht, dass es insgesamt (mindestens) 17 Paare innerhalb der RAF gab. Dabei bestanden die meisten Liebesbeziehungen innerhalb der ersten Generation, aber auch teilweise zwischen beiden Generationen. Es gibt kaum Auffälligkeiten zwischen den Akteuren außer einigen Dreiecksbeziehungen, die im Laufe der Jahre entstanden sind. So war z.B. Gudrun Ensslin vor der „Gründung“ der RAF noch mit ihrem Verlobten Bernward Vesper zusammen, von dem sie sich  jedoch für Andreas Baader trennte. Hier ist anzumerken, dass Ensslin dabei auch ihren Sohn hinter sich ließ, der nach Vespers Selbstmord von Pflegeeltern großgezogen wurde. 
+Das Beziehungsnetzwerk verdeutlicht, dass es insgesamt (mindestens) 17 Paare innerhalb der RAF gab. Dabei bestanden die meisten Liebesbeziehungen innerhalb der ersten Generation, aber auch teilweise zwischen beiden Generationen. Es gibt kaum Auffälligkeiten zwischen den Akteur:innen außer einigen Dreiecksbeziehungen, die im Laufe der Jahre entstanden sind. So war zum Beispiel Gudrun Ensslin vor der Entstehung der RAF noch mit ihrem Verlobten Bernward Vesper zusammen, von dem sie sich jedoch für Andreas Baader trennte. Hier ist anzumerken, dass Ensslin dabei auch ihren Sohn hinter sich ließ, der nach Vespers Selbstmord von Pflegeeltern großgezogen wurde. 
 
 Brigitte Mohnhaupt und Peter-Jürgen Boock hatten, bevor sie zusammen kamen, ebenfalls andere Beziehungen. Nach ihrem Beitritt zur RAF verließ auch Ulrike Meinhof ihre Zwillingstöchter. 
 
@@ -1001,13 +1001,13 @@ legend(-1.2, -0.8,
        ncol=1, )
 ```
 
-Dies zeigt, dass sich die Beziehungen der Mitglieder im Verlauf der Zeit stark auf die RAF konzentriert haben, sodass viele Liebesbeziehungen innerhalb der Gruppe bestanden. Dies liegt vermutlich daran, dass es einfacher ist, eine Beziehung mit einem Gleichgesinnten aufrechtzuerhalten, zumal so die Geheimhaltung erleichtert werden kann, da man nicht aufpassen muss, wie viel man Externen anvertraut. Daraus lässt sich ableiten, dass die innere Verbindung unter den einzelnen Akteuren so stark war, dass Menschen außerhalb der RAF auf Dauer unwichtig wurden.
+Dies zeigt, dass sich die Beziehungen der Mitglieder im Verlauf der Zeit stark auf die RAF konzentriert haben, sodass viele Liebesbeziehungen innerhalb der Gruppe bestanden. Dies liegt vermutlich daran, dass es einfacher ist, eine Beziehung mit Gleichgesinnten aufrechtzuerhalten, zumal so die Geheimhaltung erleichtert werden kann, da man nicht aufpassen muss, wie viel man Externen anvertraut. Daraus lässt sich ableiten, dass die innere Verbindung unter den einzelnen Akteur:innen so stark war, dass Menschen außerhalb der RAF auf Dauer unwichtig wurden.
 
 ### Verwandtschaft
 
-Dieselbe Schlussfolgerung lässt sich auf das Verwandtschaftsnetzwerk anwenden. Auffällig ist, dass verschiedene RAF Mitglieder mit ihren Geschwistern zusammen der RAF beigetreten sind, beziehungsweise diese an Bord geholt haben. Insgesamt gab es in den ersten beiden Generationen vier Geschwisterpaare.
+Dieselbe Schlussfolgerung lässt sich auf das Verwandtschaftsnetzwerk anwenden. Auffällig ist, dass verschiedene RAF Mitglieder mit ihren Geschwistern zusammen der RAF beigetreten sind beziehungsweise diese an Bord geholt haben. Insgesamt gab es in den ersten beiden Generationen vier Geschwisterpaare.
 
- Andere Verwandtschaftsbeziehungen wurden nicht erfasst. Diese existierten innerhalb der RAF entweder nicht oder sie wurden in den zugrundeliegenden Quellen nicht erwähnt. Ersteres ist jedoch plausibel, wenn auch nicht belegbar, da sich Mitglieder öfters von bestehenden Beziehungen entfernt haben, anstatt diese mit in die Terrorgruppe zu integrieren. So beispielsweise Ulrike Meinhof, die ihre Töchter für die Gruppe zurückließ. Geschwisterpaare stellen daher möglicherweise einen Sonderfall dar, da sie durch die gemeinsame Herkunft und Sozialisierung vermutlich ähnliche Motive hatten, sich der RAF anzuschließen. Im Folgenden soll dies jedoch noch genauer betrachtet werden.
+ Andere Verwandtschaftsbeziehungen wurden nicht erfasst. Diese existierten innerhalb der RAF entweder nicht oder sie wurden in den zugrundeliegenden Quellen nicht erwähnt. Ersteres ist jedoch plausibel, wenn auch nicht belegbar, da sich Mitglieder öfter von bestehenden Beziehungen entfernt haben, anstatt diese mit in die Terrorgruppe zu integrieren. So beispielsweise Ulrike Meinhof, die ihre Töchter für die Gruppe zurückließ. Geschwisterpaare stellen daher möglicherweise einen Sonderfall dar, da sie durch die gemeinsame Herkunft und Sozialisierung vermutlich ähnliche Motive hatten, sich der RAF anzuschließen. Im Folgenden soll dies jedoch noch genauer betrachtet werden.
 
 ```{r Verwandtschaftsnetzwerk, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 kinship <- subgraph.edges(raf, E(raf)[relationship== "10"]) # Erstellt ein neues Teilnetzwerk in dem nur Akteure mit Verwandschaftsbeziehungen dargestellt werden 
@@ -1175,11 +1175,11 @@ legend("bottomleft",
 
 Das Versorgungsnetzwerk zeigt deutlich, dass es einen Broker gab, der in der breiten Öffentlichkeit wenig Beachtung erfahren hat. Der Hauptakteur für externe Unterstützung war **Hans-Joachim Dellwo**, von Beruf Anwalt (Verbindung zu ca. 15 Knoten). Durch seine Beschäftigung in der Anwaltskanzlei von **Klaus Croissant** kam er in Kontakt mit der RAF und war während der Inhaftierung der Spitze der ersten Generation in Stammheim der zentrale Kurier zwischen den Inhaftierten und den Mitgliedern der zweiten Generation. Zusammen mit Volker Speitel schmuggelte er die Waffen, die in der Todesnacht von Stammheim benutzt wurden, in das Gefängnis. Dellwo sagte sich jedoch nach der Todesnacht von der RAF los, was ein Indiz dafür sein kann, dass er nicht sonderlich gut in die Gruppe eingebunden war, sondern nur als Kurier fungierte. Allerdings unterstütze er so indirekt die Transition hin zur zweiten Generation, zu der er den Kontakt herstellte.
 
-### Anschläge und Aktionen
+### Anschläge
 
-Die Untersuchung der Anschlags-/Aktionsbeteiligung zeigt, dass es einen Zusammenhang zwischen größeren, bzw. bekannteren Aktionen der RAF und Ausbildungsmissionen gibt. Anders als bei medial präsenten Ereignissen wie der Schleyer-Entführung waren bei kleineren Aktionen, wie z.B. Banküberfällen und Polizistenmorden, teilweise wenige Mitglieder oder auch Unterstützer*innen beteiligt. Allerdings ist auch nicht auszuschließen, dass bei Aktionen, die medial (und damit gesellschaftlich) bekannt waren, die Aufklärung sorgfältiger begangen wurde und deshalb mehr Mittäter bekannt sind.
+Die Untersuchung der Anschlagsbeteiligung zeigt, dass es einen Zusammenhang zwischen größeren, bzw. bekannteren Aktionen der RAF und Ausbildungsmissionen gibt. Anders als bei medial präsenten Ereignissen wie der Schleyer-Entführung waren bei kleineren Aktionen, wie z.B. Banküberfällen und Polizistenmorden, teilweise wenige Mitglieder oder auch Unterstützer*innen beteiligt. Allerdings ist auch nicht auszuschließen, dass bei Aktionen, die medial (und damit gesellschaftlich) bekannt waren, die Aufklärung sorgfältiger begangen wurde und deshalb mehr Mittäter bekannt sind.
 
-```{r Aktionsbeteiligungsnetzwerk,fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
+```{r Anschlagsnetzwerk,fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
 
 participation <- subgraph.edges(raf, E(raf)[relationship== " 7"]) # erstellt ein neues Teilnetzwerk, in dem nur die Akteure angezeigt werden, die an einer Aktion beteiligt waren
 participation <- simplify(participation, remove.multiple = TRUE) # entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
@@ -1237,7 +1237,7 @@ ego_bef1 <- simplify(ego_bef1, remove.multiple = TRUE)# entfernt alle doppelten 
 
 # Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
 V(ego_bef1)[V(ego_bef1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
-V(ego_bef1)[V(ego_bef1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
+V(ego_bef1)[V(ego_bef1)$type == 2]$shape <- "square" # Anschläge werden als Quadrat dargestellt
 V(ego_bef1)[V(ego_bef1)$name == "Befreiung Andreas Baader 14.05.1970"]$color <- "cornflowerblue" # die betrachtete Aktion wird blau hervorgehoben
 V(ego_bef1)[V(ego_bef1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
 V(ego_bef1)[V(ego_bef1)$sex == 2]$color <- "darkorange3" # Frauen werden orange dargestellt
@@ -1257,7 +1257,7 @@ plot(ego_bef1,
      rescale=T)
 
 legend("bottomleft", 
-       c("Männer","Frauen", "Aktion"),
+       c("Männer","Frauen", "Anschlag"),
        col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1311,7 +1311,7 @@ plot(ego_ent1,
      edge.color="grey40")
 
 legend("bottomleft", 
-       c("Männer","Frauen", "Aktion"),
+       c("Männer","Frauen", "Anschlag"),
        col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1333,7 +1333,7 @@ V(ego_ent1)[V(ego_ent1)$generation == 3]$color <- "white" # Mitglieder der erste
 V(ego_ent1)[V(ego_ent1)$generation == 99]$color <- "white" # Mitglieder, zu denen es keine Angabe bezüglich ihrer Generationszugehörigkeit gibt, werden weiß dargestellt
 V(ego_ent1)[V(ego_ent1)$generation == 3]$vertex.frame.color <- "black" # setzt Rahmenfarbe auf schwarz
 V(ego_ent1)[V(ego_ent1)$generation == 99]$vertex.frame.color <- "black" # setzt Rahmenfarbe auf schwarz
-V(ego_ent1)[V(ego_ent1)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977"]$color <- "cornflowerblue" # Aktion wird blau hervorgehoben
+V(ego_ent1)[V(ego_ent1)$name == "Entfuehrung Hanns Martin-Schleyer 05.09.1977"]$color <- "cornflowerblue" # Anschlag wird blau hervorgehoben
 
 plot(ego_ent1,
      layout=layout_with_kk,
@@ -1347,7 +1347,7 @@ plot(ego_ent1,
      edge.color="grey40")
 
 legend("bottomleft", 
-       c("1. Generation","2. Generation", "Beide Generationen", "Aktion"),
+       c("1. Generation","2. Generation", "Beide Generationen", "Anschlag"),
        col=c("grey80", "grey30", "white", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1406,7 +1406,7 @@ plot(ego_ejp1,
      vertex.size=10)
 
 legend(-1.2, -1, 
-       c("Männer","Frauen", "Aktion"),
+       c("Männer","Frauen", "Anschlag"),
        col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1438,7 +1438,7 @@ plot(ego_ejp1,
      sub="nur direkte Beteiligung an der Aktion (Beziehungen 1. Grades)")
 
 legend(-1.2, -1, 
-       c("1. Generation","2. Generation", "Beide Generationen", "Aktion"),
+       c("1. Generation","2. Generation", "Beide Generationen", "Anschlag"),
        col=c("grey80", "grey30", "white", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1571,7 +1571,7 @@ plot(ego_ab1,
      edge.color="grey40")
 
 legend("bottomleft", 
-       c("Männer","Frauen", "Aktionen"),
+       c("Männer","Frauen", "Anschlag"),
        col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1625,7 +1625,7 @@ plot(ego_pb1,
      vertex.size=10)
 
 legend("bottomleft", 
-       c("Männer","Frauen","Aktionen"),
+       c("Männer","Frauen","Anschlag"),
        col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
        pch = 19, 
        border = "black", 

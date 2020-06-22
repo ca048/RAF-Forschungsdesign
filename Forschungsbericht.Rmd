@@ -382,7 +382,7 @@ plot(cl, raf_1970,
      main="Cluster-Walktrap Analyse von 1970")
 ```
 
-Ein Jahr später, **1971**, sind bereits elf neue Akteur:innen hinzugekommen, unter ihnen Brigitte Mohnhaupt, die später noch sehr relevant wird.
+Ein Jahr später, **1971**, sind bereits elf neue Akteur:innen hinzugekommen, unter ihnen Brigitte Mohnhaupt, die später noch relevant wird.
 
 ```{r 1971, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE }
 #Nun kommen die von 1971 dazu:
@@ -424,6 +424,7 @@ legend("bottomleft",
        box.col = "grey50", 
        ncol=1, )
 ```
+
 Die Cluster der Gründungsmitglieder erweitern sich. Mohnhaupt scheint ein eigenes Cluster zu bilden, das aber eng mit dem um die Gründungsmitglieder Baader, Meinhof und Ensslin in Kontakt steht. Einige der neuen Mitglieder oder Unterstützer:innen scheinen noch etwas isoliert zu sein, weshalb zusätzlich einige Kleinst- und Einzelcluster sichtbar sind.
 
 ```{r Cluster Walktrap 1971, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
@@ -1199,7 +1200,7 @@ plot(participation,
      main="Aktionsbeteiligungs-Netzwerk")
 
 legend("bottomleft", 
-       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen", "Anschläge"),
+       c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen", "Aktionen"),
        col=c("grey80", "grey20", "white", "lightpink", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1257,7 +1258,7 @@ plot(ego_bef1,
      rescale=T)
 
 legend("bottomleft", 
-       c("Männer","Frauen", "Anschlag"),
+       c("Männer","Frauen", "Aktion"),
        col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1347,7 +1348,7 @@ plot(ego_ent1,
      edge.color="grey40")
 
 legend("bottomleft", 
-       c("1. Generation","2. Generation", "Beide Generationen", "Anschlag"),
+       c("1. Generation","2. Generation", "Beide Generationen", "Aktion"),
        col=c("grey80", "grey30", "white", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1438,7 +1439,7 @@ plot(ego_ejp1,
      sub="nur direkte Beteiligung an der Aktion (Beziehungen 1. Grades)")
 
 legend(-1.2, -1, 
-       c("1. Generation","2. Generation", "Beide Generationen", "Anschlag"),
+       c("1. Generation","2. Generation", "Beide Generationen", "Aktion"),
        col=c("grey80", "grey30", "white", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1571,7 +1572,7 @@ plot(ego_ab1,
      edge.color="grey40")
 
 legend("bottomleft", 
-       c("Männer","Frauen", "Anschlag"),
+       c("Männer","Frauen", "Aktionen"),
        col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
        pch = 19, 
        border = "black", 
@@ -1591,10 +1592,7 @@ Vergleicht man Andreas Baaders Ego-Netzwerk nun mit dem Ego-Netzwerk von Peter-J
 
 Peter-Jürgen Boock war wie Brigitte Mohnhaupt auch in den ersten beiden Generationen involviert. Das sieht man sehr anschaulich in seinem Ego-Netzwerk. Es scheint fast, als gäbe es eine klare Trennung zwischen der ersten und der zweiten Generation, da es wenige Berührungspunkte dazwischen gibt. Boocks Rolle als Broker zwischen den Generationen wird dadurch verdeutlicht. 
 
-Da er bereits mit 17 Jahren Baader, Ensslin und Astrid Proll in einem Erziehungsheim kennenlernte, wurde er schon in jungen Jahren in die Strukturen eingefügt. Er war zwischenzeitlich zwar nicht aktiv, stieß aber während den Stammheimprozessen wieder dazu und wurde gemeinsam mit seiner späteren Partnerin Mohnhaupt zu einer zentralen Figur der zweiten Generation. Somit konnte er möglicherweise auf seinen Verbindungen zu den Gründungsmitgliedern der ersten Generation auf- und seine eigene Rolle in der RAF ausbauen. Seine vielen direkten Kontakte zu Mitgliedern der zweiten Generation sind darauf zurückzuführen, dass er an der Mehrheit der Aktionen beteiligt war, sowohl vorbereitend als auch in deren Ausführung, wie sein Ego-Netzwerk inklusive der Aktionen belegt:
-
-
-```{r Ego-Netzwerk Peter-Jürgen Boock, fig.height=14, fig.width=20, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+```{r Einlesen Ego-Netzwerk Peter-Jürgen Boock, fig.height=14, fig.width=20, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 # selektiert aus dem Netzwerk der RAF alle Knoten, die mit Boock über einen Schritt verbunden sind und erstellt ein Ego-Netzwerk ersten Grades
 ego_pb <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Peter-Juergen Boock", mode = "all")
 # liefert eine Liste der Verbindungen von Boock
@@ -1604,6 +1602,16 @@ ego_pb1 <- ego_pb[[1]] # notwendiger Zwischenschrit, damit das igraph-Objekt her
 ego_pb1 <- simplify(ego_pb1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
 #ego_pb1
 
+# selektiert aus dem Netzwerk der RAF alle Knoten, die mit Boock über einen Schritt verbunden sind und erstellt ein Ego-Netzwerk ersten Grades
+ego_pb <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Peter-Juergen Boock", mode = "all")
+# liefert eine Liste der Verbindungen von Boock
+#ego_pb
+
+ego_pb1 <- ego_pb[[1]] # notwendiger Zwischenschrit, damit das igraph-Objekt hergestellt wird
+ego_pb1 <- simplify(ego_pb1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
+#ego_pb1
+
+
 # Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
 V(ego_pb1)[V(ego_pb1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
 V(ego_pb1)[V(ego_pb1)$sex == 1]$color <- "darkseagreen" # Männer werden grün dargestellt
@@ -1612,32 +1620,7 @@ V(ego_pb1)[V(ego_pb1)$name == "Peter-Juergen Boock"]$color <- "firebrick" # Booc
 V(ego_pb1)[V(ego_pb1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
 V(ego_pb1)[V(ego_pb1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
 
-# Visualisierung von Boocks Ego-Netzwerk
-plot(ego_pb1, 
-     layout=layout_with_kk,
-     rescale=T,
-     asp=0, # der ganze Raum wird für die Darstellung ausgenutzt
-     main="Ego-Netzwerk Peter-Jürgen Boock",
-     sub="nur direkte Beziehungen ersten Grades",
-     edge.color="grey40",
-     vertex.label.family="sans",
-     vertex.label.color="black",
-     vertex.size=10)
-
-legend("bottomleft", 
-       c("Männer","Frauen","Anschlag"),
-       col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
-       pch = 19, 
-       border = "black", 
-       pt.cex=3, 
-       cex=1.5,
-       x.intersp = 1.5,
-       bty="o", 
-       bg = "grey90",
-       box.col = "grey50", 
-       ncol=1, )
 ```
-
 
 ```{r Ego-Netzwerk Peter-Jürgen Boock nach Generation, fig.height=14, fig.width=20, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 # nun selektieren wir nur Personen, sodass nur angezeigt wird, mit welchen Personen und nicht mit welchen Aktionen Boock direkt verbunden war
@@ -1679,6 +1662,40 @@ legend("bottomleft",
        ncol=1, )
 ```
 
+Da er bereits mit 17 Jahren Baader, Ensslin und Astrid Proll in einem Erziehungsheim kennenlernte, wurde er schon in jungen Jahren in die Strukturen eingefügt. Er war zwischenzeitlich zwar nicht aktiv, stieß aber während den Stammheimprozessen wieder dazu und wurde gemeinsam mit seiner späteren Partnerin Mohnhaupt zu einer zentralen Figur der zweiten Generation. Somit konnte er möglicherweise auf seinen Verbindungen zu den Gründungsmitgliedern der ersten Generation auf- und seine eigene Rolle in der RAF ausbauen. Seine vielen direkten Kontakte zu Mitgliedern der zweiten Generation sind darauf zurückzuführen, dass er an der Mehrheit der Aktionen beteiligt war, sowohl vorbereitend als auch in deren Ausführung, wie sein Ego-Netzwerk inklusive der Aktionen belegt:
+
+```{r Ego-Netzwerk Peter-Jürgen Boock, echo=FALSE, fig.height=14, fig.width=20, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+
+# Visualisierung von Boocks Ego-Netzwerk
+plot(ego_pb1, 
+     layout=layout_with_kk,
+     rescale=T,
+     asp=0, # der ganze Raum wird für die Darstellung ausgenutzt
+     main="Ego-Netzwerk Peter-Jürgen Boock",
+     sub="nur direkte Beziehungen ersten Grades",
+     edge.color="grey40",
+     vertex.label.family="sans",
+     vertex.label.color="black",
+     vertex.size=10)
+
+legend("bottomleft", 
+       c("Männer","Frauen","Aktionen"),
+       col=c("darkseagreen", "darkorange3", "cornflowerblue"), 
+       pch = 19, 
+       border = "black", 
+       pt.cex=3, 
+       cex=1.5,
+       x.intersp = 1.5,
+       bty="o", 
+       bg = "grey90",
+       box.col = "grey50", 
+       ncol=1, )
+```
+
+
+
+
 Zudem hatte Boock auch Kontakt zu Monika Haas und Wadi Haddad, die bei der Entführung der Landshut eine Rolle spielten. Generell war die Flugzeugentführung zwar eher eine Aktion für die RAF (zur Befreiung inhaftierter Mitglieder) und wurde vorwiegend von palästinensischen Terrorist:innen durchgeführt. Boock jedoch war auch an der Vorbereitung beteiligt, was seine Kontakte zu Haas und Waddad verdeutlichen. 
 
 Wenn man jedoch davon ausgeht, dass Boock eine zentrale Rolle innerhalb der zweiten Generation gespielt hat (zumindest was die Durchführung verschiedener Aktionen angeht), scheint es, dass die allgemeine Verbindung einzelner Akteur:innen in der ersten Generation deutlich wichtiger war, als in der zweiten. 
@@ -1719,7 +1736,7 @@ plot(ego_bm1,
      main="Ego-Netzwerk Brigitte Mohnhaupt",
      sub="nur direkte Beziehungen ersten Grades",
      edge.color="grey40",
-     vertex.size=5,
+     vertex.size=10,
      vertex.label.family="sans",
      vertex.label.color="black")
 
@@ -1953,4 +1970,3 @@ Teilweise ähnelten sich unsere Aufgabenbereiche, jedoch wurden diese jeweils no
 
 Unser größter Meilenstein war es, letztlich eine gemeinsame Linie gefunden zu haben - auch wenn wir anfangs eine Vielzahl an breiten, diversen Ideen hatten und nicht genau wussten, wo wir mit unserem Projekt hinwollen. Schlussendlich haben wir eine Eingrenzung vorgenommen und uns etwas wehmütig von anderen spannenden Aspekten verabschiedet. Diese Entscheidung half uns allerdings, fokussiert zu arbeiten. Auch die Corona-Krise war gewissermaßen eine Herausforderung. Da man sich nicht einfach zusammensetzen konnte, waren Absprachen teils etwas umständlicher als in der direkten Kommunikation. Rückblickend betrachtet haben wir die virtuelle Gruppenarbeit jedoch gut bewältigt. Klare Absprachen, Deadlines und regelmäßige Videokonferenzen waren dabei essenziell. Das Projekt auch virtuell vollendet zu haben, werten wir daher auch ein Stück weit als persönlichen Erfolg.
 Insgesamt haben wir viele für uns interessante Schlüsse ziehen können, unser Wissen über die RAF erweitert und ein anschauliches Verständnis der Terrororganisation gewonnen. Auf diesem Weg hat uns stets das gemeinsame Interesse an der Materie angetrieben und dafür gesorgt, dass wir über ein halbes Jahr hinweg am Ball geblieben sind. Unser gemeinsamer Antrieb hat uns durch herausfordernde Phasen gebracht und während der Projektarbeit zusammengeschweißt. Die Teamarbeit hat überwiegend sehr gut funktioniert, was sicherlich auch daran lag, dass wir vorab klare Regeln besprochen hatten und aufkommende Probleme immer offen angesprochen und gelöst haben. Unseren anfänglichen Plan, dass jede:r ein Protokoll über den eigenen Workload führt und monatlich besprochen wird, ob Aufgaben ausgewogen aufgeteilt  sind, haben wir letztlich nicht umgesetzt. Dadurch fiel es uns nicht ganz leicht, den eigenen Workload einzuschätzen. Das lag einfach daran, dass wir ein so großes Interesse an dem Thema hatten, dass das in den Hintergrund geriet. Hatte man sich beispielsweise einmal in R Studio eingearbeitet oder wollte der Lösung für ein Problem auf den Grund gehen, waren ohne es zu bemerken einige Stunden vergangen. Insgesamt hatten wir aber ein gutes Gespür dafür, ob unsere Aufgaben gleichwertig verteilt waren und haben viele Aufgaben auch gemeinsam bearbeitet, so hat jede:r ein Buch zur Datenerhebung gelesen oder an der Erstellung des Forschungsberichts mitgewirkt.
-

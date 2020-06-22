@@ -1,7 +1,4 @@
-Datensatz des Netzwerkforschungsprojekts zur RAF  
-Codebuch (Stand 2020-06-01)
-
-erstellt von Hannah Bauer (hb062@hdm-stuttgart.de)
+# Codebuch RAF-Netzwerkforschung
 
 ## Inhalt
 - Edges.csv (Edgelist)
@@ -168,13 +165,3 @@ definiert die Motivation, die den Aktionen zugrunde lag
 Eine vorherige Codierung mit "NA" hat zu Problemen bei der Netzwerkgenerierung geführt, was mit Vergabe des Werts "99" stattdessen behoben werden konnte.
 
 ##
-
-
-
-
-
-
-
-
-
-

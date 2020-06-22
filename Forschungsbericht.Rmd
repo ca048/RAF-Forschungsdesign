@@ -137,7 +137,7 @@ Unter https://github.com/ca048/RAF-Forschungsdesign/blob/master/Codebuch.md ist 
 
 ## Gesamtnetzwerk
 
-Nun sollen die erstellten Netzwerke und Datensätze interpretiert werden. Das **Gesamtnetzwerk** umfasst 139 Knoten, davon 30 Ereignisse und 109 Akteur:innen. Die Aufteilung auf die beiden Generationen und Unterstützer:innen gestaltet sich folgendermaßen: 43 Menschen gehören der ersten Generation an, 35 der zweiten und 3 Mitglieder tauchen in beiden Generationen auf. Ferner wurden 27 Unterstützer:innen berücksichtigt; bei einer Person gibt es keine näheren Angaben, da es sich um einen V-Mann handelt.
+Nun sollen die erstellten Netzwerke und Datensätze interpretiert werden. Das **Gesamtnetzwerk** umfasst 139 Knoten, davon 30 Ereignisse und 109 Akteur:innen. Die Aufteilung auf die beiden Generationen und Unterstützer:innen gestaltet sich folgendermaßen: 43 Menschen gehören der ersten Generation an, 35 der zweiten und 3 Mitglieder tauchen in beiden Generationen auf. Ferner wurden 27 Unterstützer:innen berücksichtigt; bei einer Person gibt es keine näheren Angaben, da es sich um eine V-Person handelt.
 
 ```{r Wichtigste Packages abrufen, include=FALSE}
 
@@ -424,7 +424,7 @@ legend("bottomleft",
        box.col = "grey50", 
        ncol=1, )
 ```
-Die Cluster der Gründungsmitglieder erweitern sich. Mohnhaupt scheint ein eigenes Cluster zu bilden, das aber eng mit dem um die Gründungsmitglieder Baader, Meinhof und Ensslin in Kontakt steht. Einige der neuen Mitglieder oder Unterstützer:innen scheinen noch etwas isoliert zu sein.
+Die Cluster der Gründungsmitglieder erweitern sich. Mohnhaupt scheint ein eigenes Cluster zu bilden, das aber eng mit dem um die Gründungsmitglieder Baader, Meinhof und Ensslin in Kontakt steht. Einige der neuen Mitglieder oder Unterstützer:innen scheinen noch etwas isoliert zu sein, weshalb zusätzlich einige Kleinst- und Einzelcluster sichtbar sind.
 
 ```{r Cluster Walktrap 1971, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 
@@ -441,7 +441,7 @@ plot(c2, raf_1971,
       main="Cluster-Walktrap Analyse von 1971")
 ```
 
-Im Jahr **1972** gibt es lediglich fünf neue Akteur:innen und damit einen geringeren Zuwachs als im Vorjahr. Es ist auffällig, dass einige Personen kaum vernetzt sind und nur ein bis zwei direkte Kontakte haben. Vor allem die neu dazu gewonnenen Akteur:innen haben weniger Kontakte, beispielsweise Ingrid Siepmann, Hanna Krabbe (jeweils nur eine Verbindung) und Emiliane M. (nur zwei). Darauf basiert die Vermutung, dass es den Gründungsmitgliedern nicht um schnelle Neurekrutierungen ging, sondern stets auf Zuverlässigkeit geachtet wurde beziehungsweise, dass die Gruppe möglicherweise auch teils sehr mit sich selbst beschäftigt war und Neumitgliedschaften nur aus einzelnen Kontakten oder Gesprächen entstanden.
+Im Jahr **1972** gibt es lediglich fünf neue Akteur:innen und damit einen geringeren Zuwachs als im Vorjahr. Es ist auffällig, dass einige Personen kaum vernetzt sind und nur ein bis zwei direkte Kontakte haben. Vor allem die neu dazu gewonnenen Akteur:innen haben weniger Kontakte, beispielsweise Ingrid Siepmann, Hanna Krabbe (jeweils nur eine Verbindung) und Emiliane M. (nur zwei). Darauf basiert die Vermutung, dass es den Gründungsmitgliedern nicht um schnelle Neurekrutierungen ging, sondern stets auf Zuverlässigkeit geachtet wurde beziehungsweise, dass die Gruppe möglicherweise auch teils sehr mit sich selbst beschäftigt war (Mai-Offensive in diesem Jahr) und Neumitgliedschaften nur aus einzelnen Kontakten oder Gesprächen entstanden.
 
 ```{r 1972, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #Nun kommen die von 1972 dazu:
@@ -505,7 +505,7 @@ plot(c3, raf_1972,
       main="Cluster-Walktrap Analyse von 1972")
 ```
 
-Wieder etwas mehr, sieben neue Personen gibt es im Netzwerk von **1973**. Einzelne Akteur:innen bleiben weiterhin unvernetzt. Immer noch haben die neuen Mitglieder Schwierigkeiten, Anschluss zu finden: Taufer, Roll, Hammerschmidt, Pohle, Siepmann. Neu dabei sind Wisniewski, Croissant, Pohl, Klein und Boock. Während Croissant, Beer und Pohl gleich integriert sind, dümpeln Klein, Boock und Wisniewski noch etwas verloren am Rand. Die weiteste Pfaddistanz zwischen Hans-Jürgen Bäcker und Ingrid Siepmann beträgt 6. Sowohl der Wert und die Pfaddistanz mit exakt diesen zwei Personen wird sich hier einpendeln.
+Wieder etwas mehr, sieben neue Personen gibt es im Netzwerk von **1973**. Einzelne Akteur:innen bleiben weiterhin unvernetzt. Immer noch haben im vergangenen Jahr dazugekommenen Mitglieder wie Taufer, Roll, Hammerschmidt, Pohle und Siepmann Schwierigkeiten, Anschluss zu finden. Neu dabei sind Wisniewski, Croissant, Pohl, Klein und Boock. Während Croissant, Beer und Pohl gleich integriert sind, dümpeln Klein, Boock und Wisniewski noch etwas verloren am Rand. Die weiteste Pfaddistanz zwischen Hans-Jürgen Bäcker und Ingrid Siepmann beträgt 6. Sowohl der Wert und die Pfaddistanz mit exakt diesen zwei Personen wird sich hier einpendeln. Interessant ist, dass Baader, Meinhof und Ensslin bereits im Vorjahr inhaftiert wurden und dennoch gut vernetzt sind. Es lässt sich hier vermuten, dass die teilweise schlechte Integration der Neumitglieder von 1972 damit zusammenhängt, dass die alte Führungsriege sie eben nicht persönlich kannte und in Freiheit stets zentral für das Zusammenhalten des Netzwerkes war.
 
 ```{r RAF 1973, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #Nun kommen die von 1973 dazu:
@@ -565,7 +565,7 @@ plot(c4, raf_1973,
       main="Cluster-Walktrap Analyse von 1973")
 ```
 
-**1974** stoßen fünf neue Akteur:innen zur Gruppe. Bezüglich der Cluster gibt es wieder vermehrt größere Cluster. Dazu kommen wenige Kleinst- und Einzelcluster, darin weiterhin Hammerschmidt, Roll, Siepmann und Pohle. Waltraud Boock scheint vor allem durch ihren Ehemann Peter-Jürgen Boock Anschluss zu finden, obwohl dieser erst neu eingetreten war. Auch die anderen neuen Mitglieder scheinen sogleich Anschluss zu finden, so sind auch Speitel, Hausner, Helbig und Eckes gleich gut integriert. Die höchste Pfaddistanz beträgt weiterhin 6 Knoten zwischen Siepmann und Bäcker.
+**1974** stoßen fünf neue Akteur:innen zur Gruppe, darunter Peter-Jürgen Boock. Bezüglich der Cluster gibt es wieder vermehrt größere Cluster. Dazu kommen wenige Kleinst- und Einzelcluster, darin weiterhin Hammerschmidt, Roll, Siepmann und Pohle. Waltraud Boock scheint vor allem durch ihren Ehemann Peter-Jürgen Boock Anschluss zu finden, obwohl dieser erst neu eingetreten war. Auch die anderen neuen Mitglieder scheinen sogleich Anschluss zu finden, so sind auch Speitel, Hausner, Helbig und Eckes gleich gut integriert. Die höchste Pfaddistanz beträgt weiterhin 6 Knoten zwischen Siepmann und Bäcker.
 
 ```{r RAF 1974, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #Nun kommen die von 1974 dazu:
@@ -623,7 +623,7 @@ plot(c5, raf_1974,
       main="Cluster-Walktrap Analyse von 1974")
 ```
 
-Unter den neun neuen Akteur:innen im Jahr **1975** fällt Siegfried Haag besonders auf. Er nimmt sofort eine Broker-Rolle ein: Monika Haas, Verena Becker, Ulrich Wessel, Bernhard Roessner und Roland Mayer sind direkt mit ihm verbunden und ebenfalls neu – es liegt also nahe, dass er sie zum Eintritt bewegt hat und vielleicht auch ihr Mentor war.
+Unter den neun neuen Akteur:innen im Jahr **1975** fällt Siegfried Haag besonders auf. Er nimmt sofort eine Broker-Rolle ein: Monika Haas, Verena Becker, Ulrich Wessel, Bernhard Roessner und Roland Mayer sind direkt mit ihm verbunden und ebenfalls neu – es liegt also nahe, dass er sie zum Eintritt bewegt hat und vielleicht auch ihr Mentor war. Betrachtet man den historischen Kontext macht das Sinn, denn Haag war Baaders Anwalt und konnte so Instruktionen weitergeben. Als damalige Führungsperson konnte er den Übergang zwischen der ersten und der zweiten Generation in diesem Jahr begleiten und den Kampf gegen die Haftbedingungen der Mitglieder der ersten Generation koordinieren.
 
 ```{r RAF 1975, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #Nun kommen die von 1975 dazu:
@@ -735,7 +735,7 @@ legend(-1.2,-1.2,
 
 ```
 
-Die Cluster scheinen wieder definierter zu sein, weiterhin etwas außerhalb sind Roll, Siepmann und auch Lotze. Alle anderen neuen Akteur:innen sind sofort integriert. Die vorher scheinbar ständige Außenseiterin Hammerschmidt tritt im Jahr 1975 aus. Siepmann und Bäcker verzeichnen die längste Pfaddistanz mit 6.
+Die Cluster scheinen wieder definierter zu sein, weiterhin etwas außerhalb sind Roll, Siepmann und auch Lotze. Alle anderen neuen Akteur:innen sind sofort integriert. Die vorher scheinbar ständige Außenseiterin Hammerschmidt tritt im Jahr 1975 aus. Siepmann und Bäcker verzeichnen die längste Pfaddistanz mit 6. In Ansätzen lässt sich über die Cluster die Aufteilung zwischen erster und zweiter Generation beziehungsweise zwischen Inhaftierten (grün) und Nicht-Inhaftierten (orange) erkennen. Auch hier ist Haag zentral in seinem Cluster.
 
 ```{r Cluster Walktrap 1976, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 
@@ -794,7 +794,7 @@ legend("bottomleft",
        ncol=1, )
 ```
 
-Siepmann hat inzwischen Kontakt zu Kuby, ist sonst aber immer noch recht einsam, zusammen mit Pohle. Lotze, Roll und Bäcker sind gleichbleibend außerhalb des Hauptnetzwerkes. Die höchste Pfaddistanz zwischen Bäcker und Siepmann (6 Knoten) ist unverändert.
+Siepmann hat inzwischen Kontakt zu Kuby, ist sonst aber immer noch recht einsam, zusammen mit Pohle. Lotze, Roll und Bäcker sind gleichbleibend außerhalb des Hauptnetzwerkes. Die Clusteraufteilung ähnelt in ihren Grundzügen der des Vorjahres, das Cluster um Haag und vor allem auch Mohnhaupt erweitert und verdichtet sich. Dass die zweite Generation nun sehr aktiv ist und der Übergang abgeschlossen, zeigt sich hier recht offensichtlich. Aus diesem großen, eng vernetzten Cluster deutet sich auch der bevorstehende Deutsche Herbst an. Die höchste Pfaddistanz zwischen Bäcker und Siepmann (6 Knoten) ist unverändert.
 
 ```{r Cluster Walktrap 1977, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 
@@ -813,7 +813,7 @@ plot(c8, raf_1977,
       main="Cluster-Walktrap Analyse von 1977")
 ```
 
-**Später im Jahr 1977** (Deutscher Herbst) zeigt sich hingegen ein großer Schwund: Drei Akteure treten aus (Klein, Speitel, Dellwo), fünf sterben (Todesnacht von Stammheim, Ensslin, Baader, Meinhof, Raspe und Schubert).
+**Später im Jahr 1977** zeigt sich hingegen ein großer Schwund: Drei Akteur:innen treten aus (Klein, Speitel, Dellwo), fünf sterben (Todesnacht von Stammheim, Ensslin, Baader, Meinhof, Raspe und Schubert).
 
 ```{r Nach 1977, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
 #Was 1977 noch passiert ist:
@@ -1935,17 +1935,17 @@ Jule Ahles, Celina Arnemann, Hannah Bauer, Jan Kraft, Jana Mack, Stefanie Sommer
 
 **Arbeitsaufwand und Rollen im Team**
 
-- Jule Ahles: Literaturrecherche & Auswertung, Forschungsbericht, Coding, ca. 200 Stunden
+- Jule Ahles: Literaturrecherche & Auswertung, Forschungsbericht, Coding, mind. 150 Stunden
 
-- Celina Arnemann: (Projektleitung) Literaturrecherche & Auswertung (insbesondere Erstellung der Nodelist), Forschungsbericht, ca. 150 Stunden
+- Celina Arnemann: (Projektleitung) Literaturrecherche & Auswertung (insbesondere Erstellung der Nodelist), Forschungsbericht, mind. 150 Stunden
 
 - Hannah Bauer: Literaturrecherche & Auswertung, Forschungsbericht, Coding, mind. 150 Stunden 
 
-- Jan Kraft: Literaturrecherche & Auswertung , Forschungsbericht, ca. 150 Stunden
+- Jan Kraft: Literaturrecherche & Auswertung , Forschungsbericht, mind. 150 Stunden
 
-- Jana Mack: Literaturrecherche & Auswertung, Forschungsbericht, ca. 150 Stunden
+- Jana Mack: Literaturrecherche & Auswertung, Forschungsbericht, mind. 150 Stunden
 
-- Stefanie Sommer: Literaturrecherche & Auswertung, Forschungsbericht, ca. 150 Stunden
+- Stefanie Sommer: Literaturrecherche & Auswertung, Forschungsbericht, mind. 150 Stunden
 
 Teilweise ähnelten sich unsere Aufgabenbereiche, jedoch wurden diese jeweils noch aufgeteilt. Beispielsweise haben wir unterschiedliche Bücher für die Recherche gelesen oder unterschiedliche Teile des Forschungsberichts verfasst. Darüber hinaus hatten die einzelnen Teammitglieder individuelle Schwerpunkte.
 

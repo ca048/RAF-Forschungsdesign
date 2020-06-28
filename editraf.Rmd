@@ -7,7 +7,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(include = FALSE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 **Die RAF? Das waren doch Baader und Meinhof, oder? Vielleicht auch noch Baader und Ensslin. Aber es gab ein weiteres Power Couple, das die Fäden hinter dem Terror in den deutschen 70ern zog – bisher jedoch eher wenig Beachtung fand. Die Rede ist von Brigitte Mohnhaupt und Peter-Jürgen Boock. Ergebnisse einer Netzwerkanalyse.**
 
@@ -31,7 +31,7 @@ library(knitr)
 library(rmarkdown)
 ```
 
-```{r Gesamtnetzwerk einlesen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r Gesamtnetzwerk einlesen, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 # Zunächst soll das Gesamtnetzwerk der RAF generiert werden.
 
 # Dazu werden zuerst Edge - und Nodelist eingelesen:
@@ -68,18 +68,15 @@ legend("bottomleft",
 
 ```{r Ego-Netzwerk Brigitte Mohnhaupt, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 
-raf
-
 ego_bm <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Brigitte Mohnhaupt", mode = "all") # selektiert aus dem Netzwerk raf alle Knoten, die mit Mohnhaupt über einen Schritt verbunden sind.
 
-# liefert eine Liste der Verbindungen 
-ego_bm
+
 #man braucht diesen Zwischenschrit, damit das igraph-Objekt hergestellt wird
 ego_bm1 <- ego_bm[[1]]
-ego_bm1
+#ego_bm1
 
 ego_bm1 <- simplify(ego_bm1, remove.multiple = TRUE)# entfernt alle doppelten / mehrfachen Beziehungen zwischen zwei Knoten, da es ausreicht, eine Kante zu sehen, um zu wissen, dass die Akteure eine Verbindung hatten
-ego_bm1
+#ego_bm1
 
 # Anpassung der Darstellung der Knoten: verschiedene Formen und Farben zur besseren Unterscheidbarkeit
 V(ego_bm1)[V(ego_bm1)$type == 1]$shape <- "circle" # Personen werden als Kreis dargestellt
@@ -92,7 +89,7 @@ V(ego_bm1)[V(ego_bm1)$generation == 4]$color <- "lightpink" # Unterstützer*inne
 V(ego_bm1)[V(ego_bm1)$name == "Brigitte Mohnhaupt"]$color <- "firebrick" # Mohnhaupt wird rot hervorgehoben
 V(ego_bm1)[V(ego_bm1)$type == 2]$color <- "cornflowerblue" # Aktionen werden blau dargestellt
 V(ego_bm1)[V(ego_bm1)$type == 2]$shape <- "square" # Aktionen werden als Quadrat dargestellt
-ego_bm1
+#ego_bm1
 
 # Visualisierung des Ego-Netzwerks:
 plot(ego_bm1, 
@@ -106,7 +103,7 @@ plot(ego_bm1,
      vertex.label.family="sans",
      vertex.label.color="black")
 
-legend("bottomleft", 
+legend(-1.2, -0.8, 
        c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen", "Aktionen"),
        col=c("grey80", "grey30", "white", "lightpink", "cornflowerblue"), 
        pch = 19, 
@@ -130,7 +127,7 @@ Mohnhaupt entwickelte sich schnell zur Autoritätsperson. In ihrer Rolle als Men
 ### Das “kleine Licht” von Peter-Jürgen Boock
 
 
-```{r Ego-Netzwerk Peter-Jürgen Boock, echo=FALSE, fig.height=14, fig.width=20, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r Ego-Netzwerk Peter-Jürgen Boock, echo=FALSE, fig.height=11, fig.width=17, message=FALSE, warning=FALSE, paged.print=FALSE}
 # selektiert aus dem Netzwerk der RAF alle Knoten, die mit Boock über einen Schritt verbunden sind und erstellt ein Ego-Netzwerk ersten Grades
 ego_pb <- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Peter-Juergen Boock", mode = "all")
 # liefert eine Liste der Verbindungen von Boock
@@ -167,12 +164,12 @@ plot(ego_pb1,
      asp=0, #legt fest, dass der ganze Raum ausgenutzt werden soll
      main="Ego-Netzwerk von Peter-Jürgen Boock",
      sub="nur direkte Beziehungen ersten Grades",
-     vertex.size=10,
+     vertex.size=5,
      vertex.label.family="sans",
      vertex.label.color="black",
      edge.color="grey40")
 
-legend("bottomleft", 
+legend(-1.2, -0.9, 
        c("1. Generation","2. Generation", "Beide Generationen", "Unterstützer:innen","Aktionen"),
        col=c("grey80", "grey20", "white", "lightpink", "cornflowerblue"), 
        pch = 19, 
@@ -193,11 +190,10 @@ Interessant: Boock pflegte Kontakt zu den Unterstützer:innen Monika Haas und Wa
 Im Gegensatz zu seiner Geliebten distanzierte sich Boock 1981 vom Terror, machte sogar Aussage gegen ehemalige Verbündete. Mohnhaupt hingegen, die “RAF-Hardlinerin”, zeigte niemals Reue für ihre Taten. Wirft man einen Blick auf das Netzwerk der ausgetretenen Mitglieder, wird auch hier Boocks Brokerfunktion deutlich. Es kommt die Vermutung auf, dass er einige andere mit sich zog oder sie zumindest für einen späteren Austritt inspirierte, als er den Schritt weg vom bewaffneten Kampf wagte.
 
 
-```{r Ausgetretene Mitglieder, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE}
+```{r Ausgetretene Mitglieder,  echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
 
-raf
 raf_mem <- delete.vertices(raf, V(raf)[generation == "4"]) # löscht alle Unterstützer*innen
-raf_mem
+
 
 raf_resignation <- delete_vertices(raf_mem, V(raf_mem) [resignation != 1])#löscht die nicht Ausgetretenen
 raf_death <- delete_vertices(raf_resignation, V(raf_resignation) [type == 2])#löscht die Anschläge

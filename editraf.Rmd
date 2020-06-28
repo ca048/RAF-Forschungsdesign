@@ -231,7 +231,7 @@ legend("bottomleft",
 
 ```
 
-### Zwischenüberschrift (“”)
+### Im Schatten der Legende
 Als Broker:innen waren die beiden relevant - erreichten jedoch niemals den Status von Andreas Baader, der in der ersten Generation die Fäden zog. Denn neben Mohnhaupt und Boock gab es in der zweiten Generation weitere recht zentrale Akteure. Statt sich an einzelnen Führungspersonen wie Baader, Ensslin und anderen Gründungsmitgliedern zu orientieren, scharte man sich um mehrere Personen. Kurz: Flache und weniger offensichtliche Hierarchien ersetzen den Personenkult.
 
 ### Und wenn sie nicht gestorben sind…
@@ -239,7 +239,7 @@ Die Netzwerkanalyse verdeutlicht die wichtige Rolle Mohnhaupts und Boocks bei de
 
 Und was machen “Bonnie und Clyde” heute? Mohnhaupt wurde vor 13 Jahren aus dem Gefängnis entlassen und lebt unter neuem Namen irgendwo in Deutschland. Von Hartz IV. Boock zog eine Runde durch die deutsche Talkshow-Landschaft und arbeitet heute als Autor in Italien. Liebesbeziehungen spielten in der RAF stets eine große Rolle. Diese hier ist bei Weitem nicht so bekannt wie die von Baader und Ensslin. Sie blieb zwar ohne Happy End, dafür mit schrecklicher Bilanz: Insgesamt 62 Todesopfer und 230 Verletzte gehen auf das Konto der RAF. Eine Konsequenz, die Mohnhaupt einzugehen bereit war, als sie an jenem Morgen Anfang Februar 1977 aus den Gefängnistoren in Bühl trat. Fest entschlossen, die RAF zu neuen Ufern zu führen. 
 
-### Infobox
+### Infokasten
 
 #### Wichtige Begriffe
 

@@ -1697,7 +1697,7 @@ plot(ego_esb1,
 raf # igraph-Objekt wird geladen
 
 # Erstellen eines Ego-Netzwerks der Landshut-Entführung inklusive der daran beteiligten RAF-Mitglieder, Selektion der direkten Verbindungen (ersten Grades)
-ego_lhl<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Entfuehrung Lufthansa Maschine Landshut 13.10.1977", mode = "all")
+ego_lhl<- make_ego_graph(raf, order=1, nodes = V(raf)$name == "Entfuehrung Landshut 13.10.1977", mode = "all")
 
 # Alle zusammenhängenden Edges werden aufgelistet 
 ego_lhl

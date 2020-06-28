@@ -165,6 +165,7 @@ plot(ego_pb1,
      main="Ego-Netzwerk von Peter-Jürgen Boock",
      sub="nur direkte Beziehungen ersten Grades",
      vertex.size=5,
+     vertex.label.cex=0.7,
      vertex.label.family="sans",
      vertex.label.color="black",
      edge.color="grey40")
